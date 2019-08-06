@@ -1,0 +1,13 @@
+!!python/object/apply:collections.OrderedDict
+- - - InsulinOnly
+    - !!python/object/apply:collections.OrderedDict
+      - - - inputs
+          - !!python/object/apply:collections.OrderedDict
+            - - - Insulin
+                - 1
+              - - AA
+                - 0
+              - - Rapamycin
+                - 0
+        - - obs
+          - - IRS1a@t=0 < IRS1a@t=20
