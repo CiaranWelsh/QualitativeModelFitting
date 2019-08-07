@@ -4,7 +4,7 @@ import numpy as np
 import tensorflow as tf
 
 from qualitative_model_fitting import _simulator
-from parser_training._parser_training import _Base
+from parser_training._parser_training import _Base, Encoder, Decoder
 
 # registery for rules classes
 REGISTERED_MUTEXCL_RULES = set()
@@ -81,23 +81,44 @@ class _MultiplierRule(_CombRuleBase):
 
 class Parser:
 
-    model_file = '../data/nn_model.h5'
+    model_file = os.path.join(os.path.dirname(__file__), 'nn_model.h5')
+    if not os.path.isfile(model_file):
+        raise FileNotFoundError(model_file)
+
     model = tf.keras.models.load_model(model_file)
 
+    def __init__(self, rules: str) -> None:
+        self.rules = rules
+        if isinstance(self.rules, str):
+            self.rules = [self.rules]
 
-    def __init__(self, rule: str) -> None:
-        self.rule = rule
+    def classify(self):
+        labels = []
+        for rule in self.rules:
+            enc = Encoder()
+            dec = Decoder()
+            encoded = enc.encode(rule)
+            X = encoded.iloc[0, 1:].values
+            X = X.reshape(1, -1)
+            y = self.model.predict(X)
+            y = pd.DataFrame(y)
+            encoded_label = y.idxmax(1)[0]
+            label = dec.decode(encoded_label)
+            labels.append(label)
+        return labels
 
-    def _dispatch(self):
-        clsobj = None
-        for cls in REGISTERED_MUTEXCL_RULES:
-            obj = cls(self.rule)
-            if obj.pattern is None:
-                continue
-            extracted = obj._extract_grammar()
-            if extracted != []:
-                clsobj = (cls, obj)
-                break
-        # if clsobj is None:
-        #     raise ValueError('Did not recognise "{}" as valid syntax for an existing rule'.format(self.rule))
-        return clsobj
+        # print(self.rules)
+
+    # def classify(self):
+    #     clsobj = None
+    #     for cls in REGISTERED_MUTEXCL_RULES:
+    #         obj = cls(self.rule)
+    #         if obj.pattern is None:
+    #             continue
+    #         extracted = obj._extract_grammar()
+    #         if extracted != []:
+    #             clsobj = (cls, obj)
+    #             break
+    #     # if clsobj is None:
+    #     #     raise ValueError('Did not recognise "{}" as valid syntax for an existing rule'.format(self.rule))
+    #     return clsobj

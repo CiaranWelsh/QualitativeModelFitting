@@ -24,7 +24,8 @@ class TestDataCreation(unittest.TestCase):
     def test_create_data(self):
         ctd = CreateTrainingData(2, seed=30)
         actual = ctd.create_training_data()
-        count = Counter(actual['string'])
+        print(actual)
+        count = Counter(actual['rule'])
         self.assertEqual(count['LTT_mx >= LTT_mx'], 2)
         # self.assertEqual(expected, actual)
 
@@ -43,7 +44,7 @@ class TestDataCreation(unittest.TestCase):
     def test_shape(self):
         ctd = CreateTrainingData(100, seed=3)
         df = ctd.create_training_data()
-        expected = 100
+        expected = 300
         actual = df.shape[0]
         self.assertEqual(expected, actual)
 

@@ -93,7 +93,7 @@ class CreateTrainingData(_Base):
             if positive_or_negative > 0.5:
                 sign = self.positive_operators
             operator = np.random.choice(sign)
-            s += f'{clause1}@{time1} {operator} {clause2}@{time2}, {self.labels["time"]}\n'
+            s += f'{clause1}@t={time1} {operator} {clause2}@t={time2}, {self.labels["time"]}\n'
         return s.rstrip()
 
     def _create_multiplier_data(self):
@@ -114,14 +114,18 @@ class CreateTrainingData(_Base):
         data = pd.read_csv(StringIO(data), header=None)
         data.columns = cols
 
+        print(data)
+        labels = data['label']
+
         enc = Encoder()
         data = enc.encode(data)
+        data = pd.concat([data, labels], axis=1)
 
         if self.fname:
             data.to_csv(self.fname)
 
         data = shuffle(data)
-        return data.reset_index()
+        return data.reset_index(drop=True)
 
 
 class Encoder(_Base):
@@ -130,12 +134,17 @@ class Encoder(_Base):
         pass
 
     def encode(self, data):
-        strings = data['string'].values
+        if isinstance(data, pd.DataFrame):
+            data = data['string'].values
+        elif isinstance(data, str):
+            data = [data]
+        elif isinstance(data, list):
+            data = data
         new_strings = []
         clause_1s = []
         operators = []
         clause_2s = []
-        for string in strings:
+        for string in data:
             clause1, operator, clause2 = string.split(' ')
             if '@' in clause1 and '@' in clause2:
                 clause_encoding = self.time_encoding
@@ -149,9 +158,21 @@ class Encoder(_Base):
             operators.append(operator_encoding)
 
         df2 = pd.DataFrame([clause_1s, operators, clause_2s]).transpose()
-        df2.columns = ['clause1', 'operator', 'clause2']
+        if isinstance(data, (list, np.ndarray)):
+            data = pd.DataFrame(data)
         df = pd.concat([data, df2], axis=1)
+        df.columns = ['rule', 'clause1', 'operator', 'clause2']
         return df
+
+
+class Decoder(_Base):
+
+    def __init__(self):
+        pass
+
+    def decode(self, label):
+        dct = {v: k for k, v in self.labels.items()}
+        return dct[label]
 
 
 if __name__ == '__main__':
@@ -168,14 +189,13 @@ if __name__ == '__main__':
     MODEL_PATH = os.path.join(DATA_DIR, 'nn_model.h5')
 
     # Create dataset
-    CREATE_DATA = True
+    CREATE_DATA = False
 
     # retrain model
     OVERWRITE_MODEL = True
 
     # train sequential model
     TRAIN_MODEL = True
-
 
     if CREATE_DATA:
         train = CreateTrainingData(10000, fname=TRAIN_DATA_FILE)
@@ -187,10 +207,8 @@ if __name__ == '__main__':
         test_data = pd.read_csv(TEST_DATA_FILE, index_col=0)
         val_data = pd.read_csv(VAL_DATA_FILE, index_col=0)
 
-        print(train_data)
 
         features = ['clause1', 'operator', 'clause2']
-
         train_labels = train_data['label']
         test_labels = test_data['label']
         val_labels = val_data['label']
@@ -211,9 +229,7 @@ if __name__ == '__main__':
                 optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['acc']
             )
             history = model.fit(train_data, train_labels, batch_size=100, epochs=100,
-                      validation_data=(val_data, val_labels))
-
-            print(history.history.keys())
+                                validation_data=(val_data, val_labels))
 
             plt.figure()
             for k, v in history.history.items():
@@ -231,12 +247,3 @@ if __name__ == '__main__':
         results = model.predict(test_data)
         test_results = pd.DataFrame(results)
         print(test_results.idxmax(1))
-
-
-
-
-
-
-
-
-
