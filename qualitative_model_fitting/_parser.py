@@ -1,8 +1,10 @@
 import os, glob, re
 import pandas as pd
 import numpy as np
+import tensorflow as tf
 
 from qualitative_model_fitting import _simulator
+from parser_training._parser_training import _Base
 
 # registery for rules classes
 REGISTERED_MUTEXCL_RULES = set()
@@ -78,6 +80,10 @@ class _MultiplierRule(_CombRuleBase):
 
 
 class Parser:
+
+    model_file = '../data/nn_model.h5'
+    model = tf.keras.models.load_model(model_file)
+
 
     def __init__(self, rule: str) -> None:
         self.rule = rule
