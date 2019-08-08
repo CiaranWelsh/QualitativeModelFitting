@@ -13,10 +13,18 @@ from sklearn.utils import shuffle
 
 from sklearn.model_selection import train_test_split
 
-"""
-todo think about multi-label classification
+#todo think about multi-label classification
 
 """
+Create a keras model for classifying rules (i.e. observations) for use in parsing the config file. 
+
+"""
+
+# useful rules
+#  include min and max rules max(IRS1) > max(Akt)
+#  include option for numerical qualifier IRS1@t=45 > 2*Akt@t=45
+#  use one hot encoding
+# Encode clause1 and 2 individually 
 
 
 class _Base:
@@ -41,7 +49,7 @@ class _Base:
     }
 
 
-class CreateTrainingData(_Base):
+class CreateTrainingDataSimple(_Base):
 
     def __init__(self, n_instances: int, seed=None, end_time=1000, fname=None) -> None:
         self.n_instances = n_instances
@@ -198,9 +206,9 @@ if __name__ == '__main__':
     TRAIN_MODEL = True
 
     if CREATE_DATA:
-        train = CreateTrainingData(10000, fname=TRAIN_DATA_FILE)
-        test = CreateTrainingData(1000, fname=TEST_DATA_FILE)
-        val = CreateTrainingData(2000, fname=VAL_DATA_FILE)
+        train = CreateTrainingDataSimple(10000, fname=TRAIN_DATA_FILE)
+        test = CreateTrainingDataSimple(1000, fname=TEST_DATA_FILE)
+        val = CreateTrainingDataSimple(2000, fname=VAL_DATA_FILE)
 
     if TRAIN_MODEL:
         train_data = pd.read_csv(TRAIN_DATA_FILE, index_col=0)
