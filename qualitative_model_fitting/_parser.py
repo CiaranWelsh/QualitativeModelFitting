@@ -4,7 +4,7 @@ import numpy as np
 import tensorflow as tf
 
 from qualitative_model_fitting import _simulator
-from parser_training._parser_training import _Base, Encoder, Decoder
+from parser_training._parser_training import _Base, EncoderOld, DecoderOld
 
 # registery for rules classes
 REGISTERED_MUTEXCL_RULES = set()
@@ -27,8 +27,8 @@ class Parser:
     def classify(self):
         labels = []
         for rule in self.rules:
-            enc = Encoder()
-            dec = Decoder()
+            enc = EncoderOld()
+            dec = DecoderOld()
             encoded = enc.encode(rule)
             X = encoded.iloc[0, 1:].values
             X = X.reshape(1, -1)

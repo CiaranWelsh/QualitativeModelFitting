@@ -5,20 +5,24 @@ import os, glob, re
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from time import time
 from io import StringIO
 from string import ascii_letters
 from typing import Optional
 import tensorflow as tf
+from functools import reduce
+
 from sklearn.utils import shuffle
 
 from sklearn.model_selection import train_test_split
 
-#todo think about multi-label classification
+# todo think about multi-label classification
 
 """
 Create a keras model for classifying rules (i.e. observations) for use in parsing the config file. 
 
 """
+
 
 # useful rules
 #  include min and max rules max(IRS1) > max(Akt)
@@ -28,35 +32,48 @@ Create a keras model for classifying rules (i.e. observations) for use in parsin
 
 
 class _Base:
-    positive_operators = ['>', '<', '>=', '<=', '=']
-    negative_operators = ['!>', '!<', '!=']
+    operators = ['>', '<', '>=', '<=', '=', '!=']
 
-    operator_offset = 2
-    operator_encodings = dict(
-        zip(
-            positive_operators + negative_operators,
-            range(operator_offset, len(positive_operators) + len(negative_operators) + operator_offset)
-        )
-    )
-
-    not_time_encoding = 0
-    time_encoding = 1
-
-    labels = {
-        'always': 0,
-        'never': 1,
-        'time': 2
+    label_encodings = {
+        'point': '11',
+        'range': '12',
+        'fun': '13',
+        'const': '14',
+        'expression': '15',
     }
+    label_decodings = {v: k for k, v in label_encodings.items()}
+    operator_offset = len(label_encodings) + int(label_encodings['point'])
+    operator_encodings = dict(
+        zip(operators, ['{:02d}'.format(i) for i in range(operator_offset, len(operators) + operator_offset)])
+    )
+    operator_decodings = {k: v for v, k in operator_encodings.items()}
+
+    valid_functions = ['max', 'min', 'mean', 'all']
+    numerical_operators = ['*', '/', '+', '-', '**']
+
+    valid_combs = [
+        (label_encodings['point'],),
+        (label_encodings['range'],),
+        (label_encodings['const'],),
+        (label_encodings['point'], label_encodings['expression']),
+        (label_encodings['range'], label_encodings['fun']),
+        (label_encodings['range'], label_encodings['expression']),
+    ]
+
+    nchar = len(label_encodings['point'])
 
 
-class CreateTrainingDataSimple(_Base):
+class CreateTrainingData(_Base):
 
     def __init__(self, n_instances: int, seed=None, end_time=1000, fname=None) -> None:
         self.n_instances = n_instances
         self.seed = seed
         self.end_time = end_time
         self.fname = fname
-        self.create_training_data()
+        self.data = self.label_data(self.create_data())
+
+        if self.fname:
+            self.data.to_csv(self.fname)
 
     def _sample_letters(self):
         if self.seed:
@@ -71,105 +88,92 @@ class CreateTrainingDataSimple(_Base):
             np.random.seed(self.seed)
         return np.random.choice(range(self.end_time))
 
-    def _create_always_data(self, n):
-        s = ''
-        for i in range(n):
-            clause1 = self._sample_letters()
-            clause2 = self._sample_letters()
-            operator = np.random.choice(self.positive_operators)
-            s += f'{clause1} {operator} {clause2}, {self.labels["always"]}\n'
-        return s.rstrip()
+    def point(self, text):
+        time_sample = self.sample_time()
+        return f'{text}@t={time_sample}'
 
-    def _create_never_data(self, n):
-        s = ''
-        for i in range(n):
-            clause1 = self._sample_letters()
-            clause2 = self._sample_letters()
-            operator = np.random.choice(self.negative_operators)
-            s += f'{clause1} {operator} {clause2}, {self.labels["never"]}\n'
-        return s.rstrip()
-
-    def _create_time_data(self, n):
-        s = ''
-        for i in range(n):
-            clause1 = self._sample_letters()
-            time1 = self.sample_time()
-            clause2 = self._sample_letters()
-            time2 = self.sample_time()
-            positive_or_negative = np.random.uniform(0, 1)
-            sign = self.negative_operators
-            if positive_or_negative > 0.5:
-                sign = self.positive_operators
-            operator = np.random.choice(sign)
-            s += f'{clause1}@t={time1} {operator} {clause2}@t={time2}, {self.labels["time"]}\n'
-        return s.rstrip()
-
-    def _create_multiplier_data(self):
+    def range(self, text):
         """
-        skip this for now
+        Ensure second time is larger than first
+        :param text:
         :return:
         """
-        pass
+        time1 = 1
+        time2 = 0
+        while time2 < time1:
+            time1 = self.sample_time()
+            time2 = self.sample_time()
 
-    def create_training_data(self):
+        return f'{text}@t=({time1},{time2})'
 
-        always = self._create_always_data(self.n_instances)
-        never = self._create_never_data(self.n_instances)
-        time = self._create_time_data(self.n_instances)
-        data = f'{always}\n{never}\n{time}'
+    def fun(self, text):
+        fun_sample = np.random.choice(self.valid_functions)
+        return f'{fun_sample}({text})'
 
-        cols = ['string', 'label']
-        data = pd.read_csv(StringIO(data), header=None)
-        data.columns = cols
+    def const(self, text):
+        num = np.random.choice(np.linspace(0.1, 10))
+        return f'{round(num, 2)}'
 
-        print(data)
-        labels = data['label']
+    def expression(self, text):
+        operator_sample = np.random.choice(self.numerical_operators)
+        constant_sample = self.const(text)
+        r = np.random.sample(1)
+        return f'{constant_sample}{operator_sample}{text}' if r > 0.5 else f'{text}{operator_sample}{constant_sample}'
 
-        enc = Encoder()
-        data = enc.encode(data)
-        data = pd.concat([data, labels], axis=1)
+    def create_clause(self):
+        """
 
-        if self.fname:
-            data.to_csv(self.fname)
+        :return:
+        """
+        text = self._sample_letters()
+        idx = list(range(len(self.valid_combs)))
+        idx = np.random.choice(idx)
+        feature_ids = self.valid_combs[idx]
+        feature_names = [self.label_decodings[i] for i in feature_ids]
+        one_hot_features = {i: 0 for i in self.label_encodings.keys()}
+        update_features = {i: 1 for i in feature_names}
+        one_hot_features.update(update_features)
 
-        data = shuffle(data)
-        return data.reset_index(drop=True)
+        # now pipe text through labels starting at 0
+        methods = [getattr(self, i) for i in feature_names]
+        for i in methods:
+            text = i(text)
+        one_hot_features = pd.Series(one_hot_features)
+        return text, one_hot_features
 
+    def reduce_label(self, label):
+        return reduce(lambda x, y: f'{x}{y}', label)
 
-class Encoder(_Base):
+    def create_data(self):
+        clauses, features, labels = [], [], []
+        for i in range(self.n_instances):
+            clause, f = self.create_clause()
+            clauses.append(clause)
+            features.append(f)
 
-    def __init__(self):
-        pass
+        clauses = pd.DataFrame(clauses, columns=['clause'])
+        features = pd.DataFrame(features)
+        df = pd.concat([clauses, features], axis=1)
+        return df
 
-    def encode(self, data):
-        if isinstance(data, pd.DataFrame):
-            data = data['string'].values
-        elif isinstance(data, str):
-            data = [data]
-        elif isinstance(data, list):
-            data = data
-        new_strings = []
-        clause_1s = []
-        operators = []
-        clause_2s = []
-        for string in data:
-            clause1, operator, clause2 = string.split(' ')
-            if '@' in clause1 and '@' in clause2:
-                clause_encoding = self.time_encoding
-            else:
-                clause_encoding = self.not_time_encoding
-            operator_encoding = self.operator_encodings[operator]
-
-            new_strings.append(f'{clause_encoding} {operator_encoding} {clause_encoding}')
-            clause_1s.append(clause_encoding)
-            clause_2s.append(clause_encoding)
-            operators.append(operator_encoding)
-
-        df2 = pd.DataFrame([clause_1s, operators, clause_2s]).transpose()
-        if isinstance(data, (list, np.ndarray)):
-            data = pd.DataFrame(data)
-        df = pd.concat([data, df2], axis=1)
-        df.columns = ['rule', 'clause1', 'operator', 'clause2']
+    @staticmethod
+    def label_data(data):
+        features = (data.iloc[:, 1:])
+        # create vocab based on unique rows
+        label_df = features.drop_duplicates().reset_index(drop=True)
+        labels = []
+        for i in range(features.shape[0]):
+            f = features.iloc[i].values
+            current_label = None
+            j = 0
+            while current_label is None:
+                l = label_df.iloc[j].values
+                if np.array_equal(f, l):
+                    current_label = j
+                j += 1
+            labels.append(current_label)
+        labels = pd.Series(labels, name='label')
+        df = pd.concat([features, labels], axis=1)
         return df
 
 
@@ -179,8 +183,28 @@ class Decoder(_Base):
         pass
 
     def decode(self, label):
-        dct = {v: k for k, v in self.labels.items()}
-        return dct[label]
+        label = str(label)
+        begin = 0
+        end = self.nchar
+        size = int(len(label) / self.nchar)
+        l = []
+        for i in range(size):
+            l.append(label[begin: end])
+            begin = end
+            end += self.nchar
+        # find the operator first
+        operator_idx = None
+        for i in range(len(l)):
+            try:
+                operator = self.operator_decodings[l[i]]
+                operator_idx = i
+            except KeyError:
+                continue
+        clause1 = l[:operator_idx]
+        clause2 = l[operator_idx + 1:]
+        clause1 = [self.label_decodings[i] for i in clause1]
+        clause2 = [self.label_decodings[i] for i in clause2]
+        return clause1, operator, clause2
 
 
 if __name__ == '__main__':
@@ -196,62 +220,129 @@ if __name__ == '__main__':
     VAL_DATA_FILE = os.path.join(DATA_DIR, 'val_data.csv')
     MODEL_PATH = os.path.join(DATA_DIR, 'nn_model.h5')
 
+    # need a df with point, range etc as features. one hot encoding!
+
     # Create dataset
     CREATE_DATA = False
 
     # retrain model
-    OVERWRITE_MODEL = True
+    OVERWRITE_MODEL = False
 
-    # train sequential model
+    # load model from file
+    LOAD_MODEL = False
+
+    # train sequential model. Continues training if LOAD_MODEL is True
     TRAIN_MODEL = True
 
     if CREATE_DATA:
-        train = CreateTrainingDataSimple(10000, fname=TRAIN_DATA_FILE)
-        test = CreateTrainingDataSimple(1000, fname=TEST_DATA_FILE)
-        val = CreateTrainingDataSimple(2000, fname=VAL_DATA_FILE)
+        N = 1000
+        train = CreateTrainingData(int(0.8 * N), fname=TRAIN_DATA_FILE)
+        test = CreateTrainingData(int(0.1 * N), fname=TEST_DATA_FILE)
+        val = CreateTrainingData(int(0.1 * N), fname=VAL_DATA_FILE)
+
+    train_data = pd.read_csv(TRAIN_DATA_FILE, index_col=0)
+    test_data = pd.read_csv(TEST_DATA_FILE, index_col=0)
+    val_data = pd.read_csv(VAL_DATA_FILE, index_col=0)
+
+    train_labels = train_data['label']
+    test_labels = test_data['label']
+    val_labels = val_data['label']
+
+    num_output = len(train_labels.unique())
+    print(train_labels)
+    print(train_labels.unique())
+    print('number of labels', num_output)
+
+    # train_labels = tf.keras.utils.to_categorical(train_labels)
+    # test_labels = tf.keras.utils.to_categorical(test_labels)
+    # val_labels = tf.keras.utils.to_categorical(val_labels)
+    # print(x)
+
+    for i in [train_data, test_data, val_data]:
+        i.drop('label', axis=1)
+
+    plt.figure()
+    plt.hist(train_labels)
+    plt.show()
 
     if TRAIN_MODEL:
-        train_data = pd.read_csv(TRAIN_DATA_FILE, index_col=0)
-        test_data = pd.read_csv(TEST_DATA_FILE, index_col=0)
-        val_data = pd.read_csv(VAL_DATA_FILE, index_col=0)
 
-
-        features = ['clause1', 'operator', 'clause2']
-        train_labels = train_data['label']
-        test_labels = test_data['label']
-        val_labels = val_data['label']
-
-        train_data = train_data[features]
-        test_data = test_data[features]
-        val_data = val_data[features]
-
-        if not os.path.isfile(MODEL_PATH) or OVERWRITE_MODEL:
-
+        #
+        if LOAD_MODEL:
+            model = tf.keras.models.load_model(MODEL_PATH)
+        else:
+            dropout_param = 0.8
             model = tf.keras.Sequential([
-                tf.keras.layers.Dense(64, input_shape=(train_data.shape[1],), activation='relu'),
-                tf.keras.layers.Dense(32, activation='relu'),
-                tf.keras.layers.Dense(16, activation='relu'),
-                tf.keras.layers.Dense(3, activation='softmax'),
+                tf.keras.layers.Dense(8, input_shape=(train_data.shape[1],), activation='tanh'),
+                tf.keras.layers.Dropout(dropout_param),
+                # tf.keras.layers.Dense(16, activation='tanh'),
+                # tf.keras.layers.Dropout(dropout_param),
+                # tf.keras.layers.Dense(32, activation='relu'),
+                # tf.keras.layers.Dropout(dropout_param),
+                # tf.keras.layers.Dense(16, activation='relu'),
+                # tf.keras.layers.Dropout(dropout_param),
+                tf.keras.layers.Dense(num_output, activation='softmax'),
             ])
             model.compile(
-                optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['acc']
+                optimizer='adam', loss='sparse_categorical_crossentropy',
+                metrics=['accuracy', 'sparse_categorical_crossentropy']
             )
-            history = model.fit(train_data, train_labels, batch_size=100, epochs=100,
-                                validation_data=(val_data, val_labels))
+        if TRAIN_MODEL:
+            # print(model.summary())
+            # print(train_data)
+            # print(train_data.shape)
+            # print(train_labels)
+            class PlotterCallback(tf.keras.callbacks.Callback):
 
-            plt.figure()
+                def on_epoch_end(self, epoch, logs=None):
+                    from matplotlib.gridspec import GridSpec
+                    grid = GridSpec(2, 2)
+                    fig = plt.figure()
+                    i = 0
+                    for k, v in logs.items():
+                        fig.add_subplot(grid[i])
+                        plt.plot(v, label=k)
+                        plt.title(k)
+                        plt.legend()
+                        sns.despine(fig=fig, top=True, right=True)
+                        fname = os.path.join(DATA_DIR, '{}.png'.format(k))
+                        plt.savefig(fname, dpi=300, bbox_inches='tight')
+                        print('saved to "{}"'.format(fname))
+                        i += 1
+
+
+            tensorboard = tf.keras.callbacks.TensorBoard(log_dir="logs/{}".format(time()))
+            early_stopping = tf.keras.callbacks.EarlyStopping(
+                monitor='val_loss',
+                min_delta=0,
+                patience=0,
+                verbose=0, mode='auto'
+            )
+
+            history = model.fit(train_data, train_labels, batch_size=100, epochs=500,
+                                validation_data=(val_data, val_labels),
+                                callbacks=[tensorboard, early_stopping]
+                                )
+
             for k, v in history.history.items():
+                fig = plt.figure()
                 plt.plot(v, label=k)
-            plt.legend()
-            plt.show()
+                plt.title(k)
+                plt.legend()
+                sns.despine(fig=fig, top=True, right=True)
+                fname = os.path.join(DATA_DIR, '{}.png'.format(k))
+                plt.savefig(fname, dpi=300, bbox_inches='tight')
+                print('saved to "{}"'.format(fname))
 
             model.save(MODEL_PATH)
 
-        else:
-            model = tf.keras.models.load_model(MODEL_PATH)
-
-        results = model.evaluate(test_data, test_labels, batch_size=50)
-        print(results)
-        results = model.predict(test_data)
-        test_results = pd.DataFrame(results)
-        print(test_results.idxmax(1))
+            results = model.evaluate(test_data, test_labels, batch_size=100)
+            print(results)
+            results = model.predict(test_data.iloc[:5])
+            print(results)
+            test_results = pd.DataFrame(results)
+            # prediction = pd.concat([test_results.idxmax(1), test_labels[:5]], axis=1)
+            # prediction.columns = ['predicted', 'actual']
+            # print(prediction)
+            print(test_results.idxmax(1))
+            # print(test_labels)
