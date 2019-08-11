@@ -82,10 +82,20 @@ class TestDataCreation2(unittest.TestCase):
         actual = x.loc[0, 'clause']
         self.assertEqual(expected, actual)
 
+    def test_create_data2(self):
+        ctd = CreateTrainingData(2, seed=3)
+        build an encoder and decoder to convert strings into numerical sequences of equal length. 
+        # x = ctd.create_data()
+        # expected = '_d_iav_tk@t=874*0.71'
+        # actual = x.loc[0, 'clause']
+        # self.assertEqual(expected, actual)
+
     def test_label_Data(self):
         ctd = CreateTrainingData(5, seed=7)
         x = ctd.label_data(ctd.create_data())
         self.assertTrue('label' in x.columns)
+
+
 
     # def test_decoder(self):
     #     d = Decoder()

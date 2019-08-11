@@ -1,4 +1,3 @@
-import nltk
 import numpy as np
 import pandas as pd
 import os, glob, re
@@ -154,10 +153,12 @@ class CreateTrainingData(_Base):
         clauses = pd.DataFrame(clauses, columns=['clause'])
         features = pd.DataFrame(features)
         df = pd.concat([clauses, features], axis=1)
+        # print(df)
         return df
 
     @staticmethod
     def label_data(data):
+        clauses = data.iloc[:, 0]
         features = (data.iloc[:, 1:])
         # create vocab based on unique rows
         label_df = features.drop_duplicates().reset_index(drop=True)
@@ -173,7 +174,7 @@ class CreateTrainingData(_Base):
                 j += 1
             labels.append(current_label)
         labels = pd.Series(labels, name='label')
-        df = pd.concat([features, labels], axis=1)
+        df = pd.concat([clauses, features, labels], axis=1)
         return df
 
 
@@ -223,7 +224,7 @@ if __name__ == '__main__':
     # need a df with point, range etc as features. one hot encoding!
 
     # Create dataset
-    CREATE_DATA = False
+    CREATE_DATA = True
 
     # retrain model
     OVERWRITE_MODEL = False
@@ -232,7 +233,7 @@ if __name__ == '__main__':
     LOAD_MODEL = False
 
     # train sequential model. Continues training if LOAD_MODEL is True
-    TRAIN_MODEL = True
+    TRAIN_MODEL = False
 
     if CREATE_DATA:
         N = 1000
@@ -244,26 +245,35 @@ if __name__ == '__main__':
     test_data = pd.read_csv(TEST_DATA_FILE, index_col=0)
     val_data = pd.read_csv(VAL_DATA_FILE, index_col=0)
 
+    # tok = tf.keras.preprocessing.text.Tokenizer(6, filters=ascii_letters+',.')
+    # print(train_data['clause'].head())
+    # tok.fit_on_texts(train_data['clause'])
+    # print(tok.word_counts)
+    # print(tok.texts_to_sequences(train_data['clause']))
+
     train_labels = train_data['label']
     test_labels = test_data['label']
     val_labels = val_data['label']
-
+    #
     num_output = len(train_labels.unique())
     print(train_labels)
     print(train_labels.unique())
     print('number of labels', num_output)
+
+    print(train_data[['clause']])
 
     # train_labels = tf.keras.utils.to_categorical(train_labels)
     # test_labels = tf.keras.utils.to_categorical(test_labels)
     # val_labels = tf.keras.utils.to_categorical(val_labels)
     # print(x)
 
-    for i in [train_data, test_data, val_data]:
-        i.drop('label', axis=1)
+    # for i in [train_data, test_data, val_data]:
+    #     i.drop('label', axis=1)
+        # i = i[['point', 'range']]
 
-    plt.figure()
-    plt.hist(train_labels)
-    plt.show()
+    # plt.figure()
+    # plt.hist(train_labels)
+    # plt.show()
 
     if TRAIN_MODEL:
 
@@ -271,21 +281,22 @@ if __name__ == '__main__':
         if LOAD_MODEL:
             model = tf.keras.models.load_model(MODEL_PATH)
         else:
-            dropout_param = 0.8
+            dropout_param = 0.25
             model = tf.keras.Sequential([
-                tf.keras.layers.Dense(8, input_shape=(train_data.shape[1],), activation='tanh'),
+                tf.keras.layers.Dense(64, input_shape=(train_data.shape[1],), activation='tanh'),
+                # tf.keras.layers.Embedding(6, 800),
                 tf.keras.layers.Dropout(dropout_param),
-                # tf.keras.layers.Dense(16, activation='tanh'),
-                # tf.keras.layers.Dropout(dropout_param),
-                # tf.keras.layers.Dense(32, activation='relu'),
-                # tf.keras.layers.Dropout(dropout_param),
+                tf.keras.layers.Dense(32, activation='tanh'),
+                tf.keras.layers.Dropout(dropout_param),
+                tf.keras.layers.Dense(16, activation='relu'),
+                tf.keras.layers.Dropout(dropout_param),
                 # tf.keras.layers.Dense(16, activation='relu'),
                 # tf.keras.layers.Dropout(dropout_param),
                 tf.keras.layers.Dense(num_output, activation='softmax'),
             ])
             model.compile(
                 optimizer='adam', loss='sparse_categorical_crossentropy',
-                metrics=['accuracy', 'sparse_categorical_crossentropy']
+                metrics=['accuracy']
             )
         if TRAIN_MODEL:
             # print(model.summary())
