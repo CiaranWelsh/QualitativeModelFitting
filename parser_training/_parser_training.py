@@ -1,4 +1,3 @@
-import nltk
 import numpy as np
 import pandas as pd
 import os, glob, re
@@ -197,13 +196,13 @@ if __name__ == '__main__':
     MODEL_PATH = os.path.join(DATA_DIR, 'nn_model.h5')
 
     # Create dataset
-    CREATE_DATA = False
+    CREATE_DATA = True
 
     # retrain model
-    OVERWRITE_MODEL = True
+    OVERWRITE_MODEL = False
 
     # train sequential model
-    TRAIN_MODEL = True
+    TRAIN_MODEL = False
 
     if CREATE_DATA:
         train = CreateTrainingDataSimple(10000, fname=TRAIN_DATA_FILE)
