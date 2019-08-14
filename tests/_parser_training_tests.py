@@ -17,7 +17,7 @@ class TestDataCreation(unittest.TestCase):
 
     def test_sample_time(self):
         ctd = CreateTrainingData(10, seed=42)
-        actual = ctd.sample_time()
+        actual = ctd._sample_time()
         expected = 102
         self.assertEqual(expected, actual)
 
@@ -62,7 +62,7 @@ class TestDataCreation2(unittest.TestCase):
 
     def test_sample_time(self):
         ctd = CreateTrainingData(10, seed=42)
-        actual = ctd.sample_time()
+        actual = ctd._sample_time()
         expected = 102
         self.assertEqual(expected, actual)
 
@@ -71,8 +71,8 @@ class TestDataCreation2(unittest.TestCase):
 
     def test_create_clause(self):
         ctd = CreateTrainingData(2, seed=6)
-        expected = ('JuQTpQqzbl@t=(906,906)/7.17', {'point': 0, 'range': 1, 'fun': 0, 'const': 0, 'expression': 1})
-        actual = ctd.create_clause()
+        expected = ('JuQTpQqzbl@t=(906,906)/7.17', {'point': 0, 'interval': 1, 'fun': 0, '_const': 0, 'expression': 1})
+        actual = ctd._create_clause()
         self.assertEqual(expected, actual)
 
     def test_create_data(self):
@@ -84,7 +84,7 @@ class TestDataCreation2(unittest.TestCase):
 
     def test_create_data2(self):
         ctd = CreateTrainingData(2, seed=3)
-        build an encoder and decoder to convert strings into numerical sequences of equal length. 
+        # build an encoder and decoder to convert strings into numerical sequences of equal length.
         # x = ctd.create_data()
         # expected = '_d_iav_tk@t=874*0.71'
         # actual = x.loc[0, 'clause']
@@ -96,11 +96,79 @@ class TestDataCreation2(unittest.TestCase):
         self.assertTrue('label' in x.columns)
 
 
+class EncoderTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        pass
+
+    def test_encoder_mean(self):
+        string = 'mean IRS1@t=(0, 100) > mean IRS1a@t=(0, 100)'
+        encoder = Encoder(string)
+        expected = [2, 3, 1, 5, 6, 2, 3, 1, 5]
+        actual = encoder.encode()
+        self.assertListEqual(expected, actual)
+
+    def test_encoder_all(self):
+        string = 'all IRS1@t=(0, 100) > all IRS1a@t=(0, 100)'
+        encoder = Encoder(string)
+        expected = [2, 3, 1, 5, 6, 2, 3, 1, 5]
+        actual = encoder.encode()
+        self.assertListEqual(expected, actual)
+
+    def test_encoder_min(self):
+        string = 'min IRS1@t=(0, 100) > min IRS1a@t=(0, 100)'
+        encoder = Encoder(string)
+        expected = [2, 3, 1, 5, 6, 2, 3, 1, 5]
+        actual = encoder.encode()
+        self.assertListEqual(expected, actual)
+
+    def test_encoder_max(self):
+        string = 'max IRS1@t=(0, 100) > max IRS1a@t=(0, 100)'
+        encoder = Encoder(string)
+        expected = [2, 3, 1, 5, 6, 2, 3, 1, 5]
+        actual = encoder.encode()
+        self.assertListEqual(expected, actual)
+
+    def test_encoder_interval(self):
+        string = 'A@t=(0, 10) == B@t=4'
+        enc = Encoder(string)
+        expected = [3, 1, 5, 6, 3, 1, 4]
+        actual = enc.encode()
+        self.assertListEqual(expected, actual)
+
+    def test_encoder_interval(self):
+        string = 'A@t=(0, 10) == B@t=4 / 2'
+        enc = Encoder(string)
+        expected = [3, 1, 5, 6, 3, 1, 7, 4]
+        actual = enc.encode()
+        self.assertListEqual(expected, actual)
+
+    def test_dispatch(self):
+        encoder = Encoder(self.mean_string)
+        encoder.dispatch()
+
+class CreateDataTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        pass
+
+    def test_create_clause(self):
+        td = CreateTrainingData(2, seed=4)
+        expected = ('87-fbOxiYj_@t=(122,122)', 5)
+        actual = td._create_clause()
+        self.assertEqual(expected, actual)
+
+    def test_create_data(self):
+        td = CreateTrainingData(2, seed=5)
+        expected = 'oV_M@t=867 != oV_M@t=867'
+        actual = td.create_data().iloc[0, 0]
+        print(td.create_data())
+        self.assertEqual(expected, actual)
 
     # def test_decoder(self):
     #     d = Decoder()
     #     x = d.decode(102105111101)
-    #     expected = "(['range', 'expression'], '!=', ['point'])"
+    #     expected = "(['interval', 'expression'], '!=', ['point'])"
     #     actual = str(x)
     #     self.assertEqual(expected, actual)
 

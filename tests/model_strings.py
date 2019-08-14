@@ -78,8 +78,8 @@ model ModelWithMTOR()
     var pS6K          in Cell;
     var FourEBP1      in Cell;
     var pFourEBP1     in Cell;
-    const Rapamycin;    
-    const Insulin; 
+    _const Rapamycin;    
+    _const Insulin; 
 
     kIRS1In             = 1;
     kIRS1Out            = 0.1;

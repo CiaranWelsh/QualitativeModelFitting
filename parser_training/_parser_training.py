@@ -4,12 +4,14 @@ import os, glob, re
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from copy import deepcopy
 from time import time
 from io import StringIO
 from string import ascii_letters
 from typing import Optional
 import tensorflow as tf
 from functools import reduce
+from itertools import combinations, permutations
 
 from sklearn.utils import shuffle
 
@@ -27,49 +29,108 @@ Create a keras model for classifying rules (i.e. observations) for use in parsin
 #  include min and max rules max(IRS1) > max(Akt)
 #  include option for numerical qualifier IRS1@t=45 > 2*Akt@t=45
 #  use one hot encoding
-# Encode clause1 and 2 individually 
+# Encode clause1 and 2 individually
 
 
-class _Base:
-    operators = ['>', '<', '>=', '<=', '=', '!=']
+class _EncodingBase:
+    TIME_SYMBOL_STR = '@t='
 
-    label_encodings = {
-        'point': '11',
-        'range': '12',
-        'fun': '13',
-        'const': '14',
-        'expression': '15',
+    _valid_functions = ['mean', 'all', 'min', 'max']
+    _valid_mathematical_operators = ['+', '-', '/', '*', '**', ]
+    _valid_operators = ['>', '=>', '<', '=<', '==', '!=']
+
+    _function_pattern = [f'\A{i}' for i in _valid_functions]
+    _function_pattern = '|'.join(_function_pattern)
+
+    # _text_pattern = '\A[^@,][\w]*'
+    _text_pattern = '\A[\w]+@'
+    _digit_pattern = '\A\d+'
+    _interval_pattern = '\A\(\d*[, ]+\d*\)'
+
+    _operator_pattern = [f'\A{i}' for i in _valid_operators]
+    _operator_pattern = '|'.join(_operator_pattern)
+
+    _math_operator_pattern = '\A\+|\A-|\A/|\A\*|\A\*\*'
+
+    _time_symbol_pattern = f'\At='
+
+    _patterns = {
+        _function_pattern: '_encode_functions',
+        _text_pattern: '_encode_text',
+        _time_symbol_pattern: '_encode_time_symbol',
+        _digit_pattern: '_encode_digit',
+        _interval_pattern: '_encode_interval',
+        _operator_pattern: '_encode_operator',
+        _math_operator_pattern: '_encode_math_operator',
     }
-    label_decodings = {v: k for k, v in label_encodings.items()}
-    operator_offset = len(label_encodings) + int(label_encodings['point'])
-    operator_encodings = dict(
-        zip(operators, ['{:02d}'.format(i) for i in range(operator_offset, len(operators) + operator_offset)])
-    )
-    operator_decodings = {k: v for v, k in operator_encodings.items()}
 
-    valid_functions = ['max', 'min', 'mean', 'all']
-    numerical_operators = ['*', '/', '+', '-', '**']
+    TIME_SYMBOL_NUMBER = 1
+    FUNC = 2
+    TEXT = 3
+    DIGIT = 4
+    INTERAVL = 5
+    OPERATOR = 6
+    MATH_OPERATOR = 7
 
-    valid_combs = [
-        (label_encodings['point'],),
-        (label_encodings['range'],),
-        (label_encodings['const'],),
-        (label_encodings['point'], label_encodings['expression']),
-        (label_encodings['range'], label_encodings['fun']),
-        (label_encodings['range'], label_encodings['expression']),
-    ]
+    vocab = {
+        _function_pattern: FUNC,
+        _text_pattern: TEXT,
+        _digit_pattern: DIGIT,
+        _interval_pattern: INTERAVL,
+        _operator_pattern: OPERATOR,
+        _math_operator_pattern: MATH_OPERATOR,
+        _time_symbol_pattern: TIME_SYMBOL_NUMBER,
+    }
 
-    nchar = len(label_encodings['point'])
+    valid_combs = {
+        ('point',): 1,
+        ('interval',): 2,
+        ('point', 'expression'): 3,
+        ('fun', 'interval'): 4,
+        ('interval', 'expression'): 5,
+    }
+    dupe_labels = [(k, k) for k in valid_combs.keys()]
+    labels_decoder = dict(enumerate(dupe_labels + [i for i in combinations(valid_combs, 2)] ))
+    labels_encoder = {v: k for k, v in labels_decoder.items()}
 
 
-class CreateTrainingData(_Base):
+class Encoder(_EncodingBase):
+
+    def __init__(self, clause):
+        # for modifying
+        self.clause = clause.strip()
+        # for storing
+        self.original_clause = deepcopy(clause.strip())
+
+    def dispatch(self):
+        l = []
+        for pattern, method in self._patterns.items():
+            match = re.findall(pattern, self.clause)
+            if match:
+                l.append(self.vocab[pattern])
+                self.clause = re.sub(pattern, '', self.clause).strip()
+                return l
+        raise SyntaxError('No valid patterns have been found. ')
+
+    def encode(self):
+        seq = []
+        done = False
+
+        while not done:
+            seq += self.dispatch()
+            if self.clause == '':
+                done = True
+        return seq
+
+
+class CreateTrainingData(_EncodingBase):
 
     def __init__(self, n_instances: int, seed=None, end_time=1000, fname=None) -> None:
         self.n_instances = n_instances
         self.seed = seed
         self.end_time = end_time
         self.fname = fname
-        self.data = self.label_data(self.create_data())
+        # self.data = self.label_data(self.create_data())
 
         if self.fname:
             self.data.to_csv(self.fname)
@@ -82,16 +143,16 @@ class CreateTrainingData(_Base):
         sample = np.random.choice(ascii, word_length)
         return ''.join(sample)
 
-    def sample_time(self):
+    def _sample_time(self):
         if self.seed:
             np.random.seed(self.seed)
         return np.random.choice(range(self.end_time))
 
     def point(self, text):
-        time_sample = self.sample_time()
+        time_sample = self._sample_time()
         return f'{text}@t={time_sample}'
 
-    def range(self, text):
+    def interval(self, text):
         """
         Ensure second time is larger than first
         :param text:
@@ -100,60 +161,57 @@ class CreateTrainingData(_Base):
         time1 = 1
         time2 = 0
         while time2 < time1:
-            time1 = self.sample_time()
-            time2 = self.sample_time()
+            time1 = self._sample_time()
+            time2 = self._sample_time()
 
         return f'{text}@t=({time1},{time2})'
 
     def fun(self, text):
-        fun_sample = np.random.choice(self.valid_functions)
-        return f'{fun_sample}({text})'
-
-    def const(self, text):
-        num = np.random.choice(np.linspace(0.1, 10))
-        return f'{round(num, 2)}'
+        fun_sample = np.random.choice(self._valid_functions)
+        return f'{fun_sample} {text}'
 
     def expression(self, text):
-        operator_sample = np.random.choice(self.numerical_operators)
-        constant_sample = self.const(text)
+        operator_sample = np.random.choice(self._valid_mathematical_operators)
+        constant_sample = np.random.choice(range(100))
         r = np.random.sample(1)
         return f'{constant_sample}{operator_sample}{text}' if r > 0.5 else f'{text}{operator_sample}{constant_sample}'
 
-    def create_clause(self):
+    def _create_clause(self):
         """
 
         :return:
         """
         text = self._sample_letters()
-        idx = list(range(len(self.valid_combs)))
-        idx = np.random.choice(idx)
-        feature_ids = self.valid_combs[idx]
-        feature_names = [self.label_decodings[i] for i in feature_ids]
-        one_hot_features = {i: 0 for i in self.label_encodings.keys()}
-        update_features = {i: 1 for i in feature_names}
-        one_hot_features.update(update_features)
+        label = np.random.choice(list(self.valid_combs.keys()))
 
         # now pipe text through labels starting at 0
-        methods = [getattr(self, i) for i in feature_names]
+        methods = [getattr(self, i) for i in label]
         for i in methods:
             text = i(text)
-        one_hot_features = pd.Series(one_hot_features)
-        return text, one_hot_features
+        return text, label
 
-    def reduce_label(self, label):
+    @staticmethod
+    def reduce_label(label):
         return reduce(lambda x, y: f'{x}{y}', label)
 
     def create_data(self):
-        clauses, features, labels = [], [], []
+        clauses, labels, encoding = [], [], []
         for i in range(self.n_instances):
-            clause, f = self.create_clause()
+            clause1, label1 = self._create_clause()
+            clause2, label2 = self._create_clause()
+            op = np.random.choice(self._valid_operators)
+            clause = f'{clause1} {op} {clause2}'
+            label = self.labels_encoder[(label1, label2)]
             clauses.append(clause)
-            features.append(f)
+            labels.append(label)
+            e = Encoder(clause).encode()
+            encoding.append(e)
 
-        clauses = pd.DataFrame(clauses, columns=['clause'])
-        features = pd.DataFrame(features)
-        df = pd.concat([clauses, features], axis=1)
-        # print(df)
+        label = pd.DataFrame(labels, columns=['label'])
+        clauses = pd.DataFrame(clauses, columns=['statement'])
+        encoding = pd.DataFrame([encoding]).transpose()
+        encoding.columns = ['encoding']
+        df = pd.concat([clauses, encoding, label], axis=1)
         return df
 
     @staticmethod
@@ -178,34 +236,6 @@ class CreateTrainingData(_Base):
         return df
 
 
-class Decoder(_Base):
-
-    def __init__(self):
-        pass
-
-    def decode(self, label):
-        label = str(label)
-        begin = 0
-        end = self.nchar
-        size = int(len(label) / self.nchar)
-        l = []
-        for i in range(size):
-            l.append(label[begin: end])
-            begin = end
-            end += self.nchar
-        # find the operator first
-        operator_idx = None
-        for i in range(len(l)):
-            try:
-                operator = self.operator_decodings[l[i]]
-                operator_idx = i
-            except KeyError:
-                continue
-        clause1 = l[:operator_idx]
-        clause2 = l[operator_idx + 1:]
-        clause1 = [self.label_decodings[i] for i in clause1]
-        clause2 = [self.label_decodings[i] for i in clause2]
-        return clause1, operator, clause2
 
 
 if __name__ == '__main__':
@@ -221,7 +251,7 @@ if __name__ == '__main__':
     VAL_DATA_FILE = os.path.join(DATA_DIR, 'val_data.csv')
     MODEL_PATH = os.path.join(DATA_DIR, 'nn_model.h5')
 
-    # need a df with point, range etc as features. one hot encoding!
+    # need a df with point, interval etc as features. one hot encoding!
 
     # Create dataset
     CREATE_DATA = True
@@ -245,35 +275,13 @@ if __name__ == '__main__':
     test_data = pd.read_csv(TEST_DATA_FILE, index_col=0)
     val_data = pd.read_csv(VAL_DATA_FILE, index_col=0)
 
-    # tok = tf.keras.preprocessing.text.Tokenizer(6, filters=ascii_letters+',.')
-    # print(train_data['clause'].head())
-    # tok.fit_on_texts(train_data['clause'])
-    # print(tok.word_counts)
-    # print(tok.texts_to_sequences(train_data['clause']))
-
     train_labels = train_data['label']
     test_labels = test_data['label']
     val_labels = val_data['label']
-    #
-    num_output = len(train_labels.unique())
-    print(train_labels)
-    print(train_labels.unique())
-    print('number of labels', num_output)
 
-    print(train_data[['clause']])
-
-    # train_labels = tf.keras.utils.to_categorical(train_labels)
-    # test_labels = tf.keras.utils.to_categorical(test_labels)
-    # val_labels = tf.keras.utils.to_categorical(val_labels)
-    # print(x)
-
-    # for i in [train_data, test_data, val_data]:
-    #     i.drop('label', axis=1)
-        # i = i[['point', 'range']]
-
-    # plt.figure()
-    # plt.hist(train_labels)
-    # plt.show()
+    plt.figure()
+    plt.hist(train_labels)
+    plt.show()
 
     if TRAIN_MODEL:
 

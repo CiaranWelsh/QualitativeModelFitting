@@ -29,7 +29,7 @@ class Parser:
         for rule in self.rules:
             enc = EncoderOld()
             dec = DecoderOld()
-            encoded = enc.encode(rule)
+            encoded = enc.preprocess(rule)
             X = encoded.iloc[0, 1:].values
             X = X.reshape(1, -1)
             y = self.model.predict(X)
