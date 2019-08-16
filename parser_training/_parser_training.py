@@ -1,23 +1,17 @@
 import numpy as np
 import pandas as pd
-import os, glob, re
+import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from copy import deepcopy
 from time import time
-from io import StringIO
 from string import ascii_letters
-from typing import Optional
 import tensorflow as tf
 from functools import reduce
-from itertools import combinations, permutations
-
-from sklearn.utils import shuffle
-
-from sklearn.model_selection import train_test_split
 
 # todo think about multi-label classification
+from qualitative_model_fitting import Encoder
+from qualitative_model_fitting._parser import _EncodingBase
 
 """
 Create a keras model for classifying rules (i.e. observations) for use in parsing the config file. 
@@ -32,97 +26,6 @@ Create a keras model for classifying rules (i.e. observations) for use in parsin
 # Encode clause1 and 2 individually
 
 
-class _EncodingBase:
-    TIME_SYMBOL_STR = '@t='
-
-    _valid_functions = ['mean', 'all', 'min', 'max']
-    _valid_mathematical_operators = ['+', '-', '/', '*', '**', ]
-    _valid_operators = ['>', '=>', '<', '=<', '==', '!=']
-
-    _function_pattern = [f'\A{i}' for i in _valid_functions]
-    _function_pattern = '|'.join(_function_pattern)
-
-    # _text_pattern = '\A[^@,][\w]*'
-    _text_pattern = '\A[\w]+@'
-    _digit_pattern = '\A\d+'
-    _interval_pattern = '\A\(\d*[, ]+\d*\)'
-
-    _operator_pattern = [f'\A{i}' for i in _valid_operators]
-    _operator_pattern = '|'.join(_operator_pattern)
-
-    _math_operator_pattern = '\A\+|\A-|\A/|\A\*|\A\*\*'
-
-    _time_symbol_pattern = f'\At='
-
-    _patterns = {
-        _function_pattern: '_encode_functions',
-        _text_pattern: '_encode_text',
-        _time_symbol_pattern: '_encode_time_symbol',
-        _digit_pattern: '_encode_digit',
-        _interval_pattern: '_encode_interval',
-        _operator_pattern: '_encode_operator',
-        _math_operator_pattern: '_encode_math_operator',
-    }
-
-    TIME_SYMBOL_NUMBER = 1
-    FUNC = 2
-    TEXT = 3
-    DIGIT = 4
-    INTERAVL = 5
-    OPERATOR = 6
-    MATH_OPERATOR = 7
-
-    vocab = {
-        _function_pattern: FUNC,
-        _text_pattern: TEXT,
-        _digit_pattern: DIGIT,
-        _interval_pattern: INTERAVL,
-        _operator_pattern: OPERATOR,
-        _math_operator_pattern: MATH_OPERATOR,
-        _time_symbol_pattern: TIME_SYMBOL_NUMBER,
-    }
-
-    valid_combs = {
-        ('point',): 1,
-        ('interval',): 2,
-        ('point', 'expression'): 3,
-        ('fun', 'interval'): 4,
-        ('interval', 'expression'): 5,
-    }
-    dupe_labels = [(k, k) for k in valid_combs.keys()]
-    labels_decoder = dict(enumerate(dupe_labels + [i for i in combinations(valid_combs, 2)] ))
-    labels_encoder = {v: k for k, v in labels_decoder.items()}
-
-
-class Encoder(_EncodingBase):
-
-    def __init__(self, clause):
-        # for modifying
-        self.clause = clause.strip()
-        # for storing
-        self.original_clause = deepcopy(clause.strip())
-
-    def dispatch(self):
-        l = []
-        for pattern, method in self._patterns.items():
-            match = re.findall(pattern, self.clause)
-            if match:
-                l.append(self.vocab[pattern])
-                self.clause = re.sub(pattern, '', self.clause).strip()
-                return l
-        raise SyntaxError('No valid patterns have been found. ')
-
-    def encode(self):
-        seq = []
-        done = False
-
-        while not done:
-            seq += self.dispatch()
-            if self.clause == '':
-                done = True
-        return seq
-
-
 class CreateTrainingData(_EncodingBase):
 
     def __init__(self, n_instances: int, seed=None, end_time=1000, fname=None) -> None:
@@ -130,7 +33,7 @@ class CreateTrainingData(_EncodingBase):
         self.seed = seed
         self.end_time = end_time
         self.fname = fname
-        # self.data = self.label_data(self.create_data())
+        self.data = self.create_data()
 
         if self.fname:
             self.data.to_csv(self.fname)
@@ -154,7 +57,7 @@ class CreateTrainingData(_EncodingBase):
 
     def interval(self, text):
         """
-        Ensure second time is larger than first
+        Ensure second interval_time is larger than first
         :param text:
         :return:
         """
@@ -201,41 +104,40 @@ class CreateTrainingData(_EncodingBase):
             clause2, label2 = self._create_clause()
             op = np.random.choice(self._valid_operators)
             clause = f'{clause1} {op} {clause2}'
-            label = self.labels_encoder[(label1, label2)]
+            # label = self.labels_encoder[(label1, label2)]
             clauses.append(clause)
-            labels.append(label)
+            # labels.append(label)
             e = Encoder(clause).encode()
             encoding.append(e)
 
-        label = pd.DataFrame(labels, columns=['label'])
+        # label = pd.DataFrame(labels, columns=['label'])
         clauses = pd.DataFrame(clauses, columns=['statement'])
         encoding = pd.DataFrame([encoding]).transpose()
         encoding.columns = ['encoding']
-        df = pd.concat([clauses, encoding, label], axis=1)
+        df = pd.concat([clauses, encoding], axis=1)
         return df
 
     @staticmethod
     def label_data(data):
         clauses = data.iloc[:, 0]
-        features = (data.iloc[:, 1:])
-        # create vocab based on unique rows
-        label_df = features.drop_duplicates().reset_index(drop=True)
-        labels = []
-        for i in range(features.shape[0]):
-            f = features.iloc[i].values
-            current_label = None
-            j = 0
-            while current_label is None:
-                l = label_df.iloc[j].values
-                if np.array_equal(f, l):
-                    current_label = j
-                j += 1
-            labels.append(current_label)
-        labels = pd.Series(labels, name='label')
-        df = pd.concat([clauses, features, labels], axis=1)
-        return df
-
-
+        print(clauses)
+        # features = (data.iloc[:, 1:])
+        # # create vocab based on unique rows
+        # label_df = features.drop_duplicates().reset_index(drop=True)
+        # labels = []
+        # for i in range(features.shape[0]):
+        #     f = features.iloc[i].values
+        #     current_label = None
+        #     j = 0
+        #     while current_label is None:
+        #         l = label_df.iloc[j].values
+        #         if np.array_equal(f, l):
+        #             current_label = j
+        #         j += 1
+        #     labels.append(current_label)
+        # labels = pd.Series(labels, name='label')
+        # df = pd.concat([clauses, features, labels], axis=1)
+        # return df
 
 
 if __name__ == '__main__':
@@ -275,17 +177,25 @@ if __name__ == '__main__':
     test_data = pd.read_csv(TEST_DATA_FILE, index_col=0)
     val_data = pd.read_csv(VAL_DATA_FILE, index_col=0)
 
-    train_labels = train_data['label']
-    test_labels = test_data['label']
-    val_labels = val_data['label']
+    print(train_data)
 
-    plt.figure()
-    plt.hist(train_labels)
-    plt.show()
+    train_X = train_data['encoding']
+    # train_y = train_data['label']
+    test_X = test_data['encoding']
+    # test_y = test_data['label']
+    val_X = val_data['encoding']
+    # val_y = val_data['label']
+
+    # output layer
+    # num_output = len(train_data['label'].unique())
+    print(train_X)
+
+    # plt.figure()
+    # plt.hist(train_labels)
+    # plt.show()
 
     if TRAIN_MODEL:
 
-        #
         if LOAD_MODEL:
             model = tf.keras.models.load_model(MODEL_PATH)
         else:

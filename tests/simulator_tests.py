@@ -6,7 +6,7 @@ from collections import OrderedDict
 
 from .model_strings import *
 from qualitative_model_fitting._simulator import *
-
+from qualitative_model_fitting import MODEL1
 
 class TimeSeriesTests(unittest.TestCase):
 

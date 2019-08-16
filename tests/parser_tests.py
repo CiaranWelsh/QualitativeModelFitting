@@ -1,35 +1,33 @@
 import unittest
 
 from collections import OrderedDict
+from tests import TEST_INPUT1
 
-from qualitative_model_fitting._parser import Parser
+from qualitative_model_fitting._parser import _Parser
 
 
-class _RuleTests(unittest.TestCase):
+class RuleTests(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.yaml_input = OrderedDict(
-            InsulinOnly=OrderedDict(
-                inputs=OrderedDict(
-                    Insulin=1,
-                    AA=0,
-                    Rapamycin=0
-                ),
-                obs=[
-                    'IRS1a > Akt',
-                    'IRS1 != PI3Ka',
-                    'IRS1@t=35 = Akt@t=65',
-                ]
-            )
-        )
+        pass
 
-    def test(self):
-        input = self.yaml_input['InsulinOnly']['obs']
-        p = Parser(input)
-        res = p.classify()
-        expected = ['always', 'never', 'time']
-        self.assertEqual(expected, res)
+    def test_encoder(self):
+        input = TEST_INPUT1['InsulinOnly']['obs']
+        p = _Parser(input)
+        actual = p.statements.iloc[:3, 1].tolist()
+        expected = [
+            [3, 6, 3], [3, 6, 3], [3, 1, 4, 6, 3, 1, 4]
+        ]
+        self.assertEqual(expected, actual)
 
+def suite():
+    s = unittest.TestSuite()
+    s.addTest(RuleTests())
+    return s
 
 if __name__ == '__main__':
-    unittest.main()
+    runner = unittest.TextTestRunner()
+    runner.run(suite())
+
+
+

@@ -2,6 +2,7 @@ import unittest
 from collections import Counter
 
 from parser_training._parser_training import *
+from qualitative_model_fitting import Encoder
 
 
 class TestDataCreation(unittest.TestCase):
@@ -143,9 +144,17 @@ class EncoderTests(unittest.TestCase):
         actual = enc.encode()
         self.assertListEqual(expected, actual)
 
+    def test_encoder_random1(self):
+        string = '_X@t=(468,925)**43 <= all Ba@t=(498,704)'
+        enc = Encoder(string)
+        expected = [3, 1, 5, 7, 4, 6, 2, 3, 1, 5]
+        actual = enc.encode()
+        self.assertEqual(expected, actual)
+
     def test_dispatch(self):
         encoder = Encoder(self.mean_string)
-        encoder.dispatch()
+        encoder._encode_part()
+
 
 class CreateDataTests(unittest.TestCase):
 
@@ -164,6 +173,9 @@ class CreateDataTests(unittest.TestCase):
         actual = td.create_data().iloc[0, 0]
         print(td.create_data())
         self.assertEqual(expected, actual)
+
+    def test(self):
+        pass
 
     # def test_decoder(self):
     #     d = Decoder()
