@@ -1,7 +1,6 @@
-import os, glob
-
 from qualitative_model_fitting import TimeSeries
 from qualitative_model_fitting import TestCase
+from qualitative_model_fitting._case import TestCaseMeta
 
 '''
 The simulator will run all interval_time series at once then the test maker 
@@ -16,12 +15,10 @@ then apply any math
 '''
 
 
+
 # todo make all test cases use a subclass of type metaclass to automatically register them into a collection
 # test maker should have all the unit methods which will combine to make the necessary for each class
 # Each statement should get its own class
-
-class TestCaseMeta(type):
-    pass
 
 
 class TestFactory:
@@ -49,7 +46,7 @@ class TestFactory:
         for condition_name, condition_dict in self.inputs.items():
             data = self.time_series_data[condition_name]
             obs = condition_dict['obs']
-            cls = type(
+            cls = type(     # Use metaclass instead of 'type' to autoregister tests to Suite
                 condition_name,
                 (TestCase,),
                 {

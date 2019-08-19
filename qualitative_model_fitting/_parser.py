@@ -30,7 +30,6 @@ class _Parser:
 
     def _to_df(self):
         s = pd.DataFrame(self._statement)
-        print(s)
         s.columns = ['statement']
         e, m = self._encode_statements()
         e = pd.DataFrame([e]).transpose()

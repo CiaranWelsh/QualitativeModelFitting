@@ -4,10 +4,32 @@ from collections import OrderedDict
 import pandas as pd
 import numpy as np
 from qualitative_model_fitting import _Parser
+from qualitative_model_fitting._suite import Suite, GLOBAL_TEST_SUITE
 
 
-class TestCase:
+class TestCaseMeta(type):
+    def __new__(cls, clsname, bases, attrs):
+        newclass = super(TestCaseMeta, cls).__new__(cls, clsname, bases, attrs)
+        cls._register_cls(newclass)
+        return newclass
 
+    def _register_cls(cls):
+        """
+        Adds created classes to the GLOBAL_TEST_SUITE. Does not
+        include the parent class _case.TestCase.
+
+        Returns:
+
+        """
+        # import here to avoid UnboundLocalError
+        from qualitative_model_fitting._suite import GLOBAL_TEST_SUITE
+        # do not add _case.TestCase to register
+        if cls.__name__ != 'TestCase':
+            GLOBAL_TEST_SUITE.add_test_case(cls)
+        return GLOBAL_TEST_SUITE
+
+
+class TestCase(metaclass=TestCaseMeta):
     # variables are filled by TestMaker
     data = None
     obs = None
@@ -54,17 +76,17 @@ class TestCase:
             # when when False, digit behaves like a constant in an expression
             # interval_time symbol
             # 1 is interval_time
-            print('match:', m, 'e', e)
+            # print('match:', m, 'e', e)
             if e is 1:
                 # this means that the next element is either a interval_time digit or a interval_time interval
                 time_symbol_encountered = True
-                print('time symbol encountered')
+                # print('time symbol encountered')
                 continue
             # 2 in funct
             elif e is 2:
                 function_encountered = True
                 # save for later
-                funct = m#self.function_modifier(m, variable_name, )
+                funct = m  # self.function_modifier(m, variable_name, )
                 # print('fun ct', func)
             # 3 is text
             elif e is 3:
@@ -72,14 +94,14 @@ class TestCase:
             # 4 is digit
             elif e is 4:
                 if time_symbol_encountered:
-                    print('from point time. time symbol is {}'.format(time_symbol_encountered))
+                    # print('from point time. time symbol is {}'.format(time_symbol_encountered))
                     s += self.point_time(int(m), variable_name)
                 elif numerical_operator_encountered:
-                    print('from point time. numerical op flag is {}'.format(numerical_operator_encountered))
+                    # print('from point time. numerical op flag is {}'.format(numerical_operator_encountered))
                     # could convert division to 1/x to prevent need for ordering?
                     s += self.mathematical_operator(variable_name, numerical_operator, m)
                 elif not numerical_operator_encountered:
-                    print('from point time. numerical op flag is {}'.format(numerical_operator_encountered))
+                    # print('from point time. numerical op flag is {}'.format(numerical_operator_encountered))
                     s += self.simple_expression(m, data_variable_name=variable_name)
                     # s += self.expression()
                 # reset time flag
@@ -96,7 +118,7 @@ class TestCase:
             elif e is 7:
                 numerical_operator_encountered = True
                 numerical_operator = m
-                print('encountered numerical operator')
+                # print('encountered numerical operator')
                 # reset time flag
                 time_symbol_encountered = False
             else:
@@ -111,8 +133,8 @@ class TestCase:
         for i in range(self.statements.shape[0])[:1]:
             encoded = self.statements['encoded'].iloc[i]
             matches = self.statements['matches'].iloc[i]
-            print(encoded)
-            print(matches)
+            # print(encoded)
+            # print(matches)
 
             operator_ids = [i for i in encoded if i is 6]
             if len(operator_ids) != 1:
@@ -122,8 +144,8 @@ class TestCase:
             operator_index = encoded.index(self.labels['mathematical_operator'])
             clause1_matches = matches[:operator_index]
             clause1_encoded = encoded[:operator_index]
-            clause2_matches = matches[operator_index+1:]
-            clause2_encoded = encoded[operator_index+1:]
+            clause2_matches = matches[operator_index + 1:]
+            clause2_encoded = encoded[operator_index + 1:]
             operator_match = matches[operator_index]
             operator_encoded = encoded[operator_index]
 
@@ -135,16 +157,15 @@ class TestCase:
             s = 'import pandas as pd\n'
             s += 'import numpy as np\n'
             s += f'def {method_name}(self):\n'
-            s += clause1 +'\n'
-            s += clause2 +'\n'
-            s += compare_statement +'\n'
-            print(s)
+            s += clause1 + '\n'
+            s += clause2 + '\n'
+            s += compare_statement + '\n'
+            # print(s)
             # render the staticmethod from string s and store in __dict__
             exec(s, self.__dict__)
             # exec(, self.__dict__, {'pd': pd, 'np': np})
             test_methods[method_name] = self.__dict__[method_name]
         return test_methods
-
 
     @staticmethod
     def text(text, data_variable_name=None):
@@ -171,8 +192,8 @@ class TestCase:
     @staticmethod
     def interval_time(start, end, data_variable_name=None):
         # a comparison cannot be able between two intervals of different lengths
-        print('start is: ', start)
-        print('end is: ', end)
+        # print('start is: ', start)
+        # print('end is: ', end)
         if data_variable_name is None:
             data_variable_name = 'self.data'
         s = f"    {data_variable_name} = {data_variable_name}.loc[{start}: {end}, ]\n    print({data_variable_name})\n"
@@ -180,16 +201,16 @@ class TestCase:
 
     @staticmethod
     def point_time(time, data_variable_name=None):
-        print('we have point time')
+        # print('we have point time')
         if data_variable_name is None:
             data_variable_name = 'self.data'
         return f"    {data_variable_name} = float({data_variable_name}.loc[{time}])\n    print({data_variable_name})"
 
     @staticmethod
     def compare(operator, clause1_funct, clause2_funct):
-        print('a now we compare')
-        print('c1', clause1_funct)
-        print('c2', clause2_funct)
+        # print('a now we compare')
+        # print('c1', clause1_funct)
+        # print('c2', clause2_funct)
         clause1 = f'clause1.{clause1_funct}()' if clause1_funct else 'clause1'
         clause2 = f'clause2.{clause2_funct}()' if clause2_funct else 'clause2'
         s = f"    boolean = {clause1} {operator} {clause2}\n"
@@ -201,7 +222,7 @@ class TestCase:
 
     @staticmethod
     def function_modifier(function, data_variable_name=None):
-        print('now is a func')
+        # print('now is a func')
         if data_variable_name is None:
             data_variable_name = 'self.data'
         return f"    {data_variable_name} = {data_variable_name}({function})\n    print({data_variable_name})\n"
@@ -218,3 +239,12 @@ class TestCase:
             return f"    {data_variable_name} = {data_variable_name} {operator} {expression}\n"
         else:
             return f"    {data_variable_name} = {expression}\n"
+
+    def __str__(self):
+        s = self.statements['statement'].tolist()
+        s = '\n'.join(s)
+        classname = self.__class__.__name__ + '\n' + '-' * len(self.__class__.__name__)
+        return f'{classname}\n{s}'
+
+    def __repr__(self):
+        return self.__str__()

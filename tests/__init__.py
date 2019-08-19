@@ -184,13 +184,13 @@ TEST_INPUT1 = OrderedDict(
         obs=[
             'IRS1a@t=10 > Akt@t=10',
             'IRS1@t=35 == Akt@t=65',
-            '43-IRS1@t=(683,783) != 94-IRS1@t=(689,817)',
-            'IRS1@t=(515,654) >= mean IRS1@t=(138,483)',
-            'IRS1@t=(728,798)-74 != IRS1@t=39',
-            'IRS1@t=13 > 71+IRS1@t=(260,519)',
-            'IRS1@t=13 > 71 + IRS1@t=(260,519)',
-            'IRS1@t=(299,749)**80 >= IRS1**12@t=(99,522)',
-            'mean IRS1@t=(178,620) >= 28-IRS1@t=797',
+            'sum IRS1@t=(68,78) - 43 != 94',
+            'all IRS1@t=(51,65) >= mean IRS1@t=(13,48)',
+            'any IRS1@t=(51,65) >= mean IRS1@t=(13,48)',
+            'all IRS1@t=(72,79)-74 == IRS1@t=39',
+            'IRS1@t=13 > all IRS1@t=(26,51)',
+            'IRS1@t=13 > any IRS1@t=(26,51)',
+            'mean IRS1@t=(17,62) >= 28-IRS1@t=97',
         ]
     )
 )

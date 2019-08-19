@@ -6,8 +6,8 @@ import unittest
 
 class RunnerBase:
 
-    def __init__(self):
-        pass
+    def __init__(self, suite):
+        self.suite = suite
 
 
 class ManualRunner(RunnerBase):
