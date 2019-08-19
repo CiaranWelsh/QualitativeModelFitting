@@ -6,7 +6,7 @@ import numpy as np
 from qualitative_model_fitting import _Parser
 
 
-class TestCase():
+class TestCase:
 
     # variables are filled by TestMaker
     data = None
@@ -27,7 +27,7 @@ class TestCase():
         'text': 3,
         'digit': 4,
         'interval': 5,
-        'operator': 6,
+        'mathematical_operator': 6,
         'math_operator': 7,
     }
 
@@ -44,6 +44,8 @@ class TestCase():
         s = ''
         time_symbol_encountered = False
         function_encountered = False
+        numerical_operator_encountered = False
+        numerical_operator = None
         funct = None
         while matches:
             e = encoded.pop(0)
@@ -69,11 +71,17 @@ class TestCase():
                 s += self.text(m, variable_name)
             # 4 is digit
             elif e is 4:
-                print('from point time. time symboooooool is {}'.format(time_symbol_encountered))
                 if time_symbol_encountered:
+                    print('from point time. time symbol is {}'.format(time_symbol_encountered))
                     s += self.point_time(int(m), variable_name)
-                else:
-                    continue
+                elif numerical_operator_encountered:
+                    print('from point time. numerical op flag is {}'.format(numerical_operator_encountered))
+                    # could convert division to 1/x to prevent need for ordering?
+                    s += self.mathematical_operator(variable_name, numerical_operator, m)
+                elif not numerical_operator_encountered:
+                    print('from point time. numerical op flag is {}'.format(numerical_operator_encountered))
+                    s += self.simple_expression(m, data_variable_name=variable_name)
+                    # s += self.expression()
                 # reset time flag
                 time_symbol_encountered = False
             # 5 is interval
@@ -81,15 +89,14 @@ class TestCase():
                 start, end = eval(m)
                 s += self.interval_time(start, end, variable_name)
                 function_encountered = False
-            # 6 is operator (comparative operator)
+            # 6 is mathematical_operator (comparative mathematical_operator)
             elif e is 6:
                 s += self.compare(m)
-            # 7 is numerical operator
+            # 7 is numerical mathematical_operator
             elif e is 7:
-                if not time_symbol_encountered:
-                    s += self.digit(int(m), variable_name)
-                else:
-                    continue
+                numerical_operator_encountered = True
+                numerical_operator = m
+                print('encountered numerical operator')
                 # reset time flag
                 time_symbol_encountered = False
             else:
@@ -109,10 +116,10 @@ class TestCase():
 
             operator_ids = [i for i in encoded if i is 6]
             if len(operator_ids) != 1:
-                raise SyntaxError('Only 1 operator is allowed in each '
+                raise SyntaxError('Only 1 mathematical_operator is allowed in each '
                                   'statement. {} seems'
                                   ' to have {}'.format(matches, len(operator_ids)))
-            operator_index = encoded.index(self.labels['operator'])
+            operator_index = encoded.index(self.labels['mathematical_operator'])
             clause1_matches = matches[:operator_index]
             clause1_encoded = encoded[:operator_index]
             clause2_matches = matches[operator_index+1:]
@@ -199,3 +206,15 @@ class TestCase():
             data_variable_name = 'self.data'
         return f"    {data_variable_name} = {data_variable_name}({function})\n    print({data_variable_name})\n"
 
+    @staticmethod
+    def mathematical_operator(left, operator, right):
+        return f"    {left} = {left} {operator} {right}\n"
+
+    @staticmethod
+    def simple_expression(expression, operator=None, data_variable_name=None):
+        if data_variable_name is None:
+            data_variable_name = 'self.data'
+        if operator is not None:
+            return f"    {data_variable_name} = {data_variable_name} {operator} {expression}\n"
+        else:
+            return f"    {data_variable_name} = {expression}\n"

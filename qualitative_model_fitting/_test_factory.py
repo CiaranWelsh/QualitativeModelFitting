@@ -24,7 +24,7 @@ class TestCaseMeta(type):
     pass
 
 
-class TestMaker:
+class TestFactory:
 
     def __init__(self, ant_str, inputs, time_start, time_end, steps):
         self.ant_str = ant_str

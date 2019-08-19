@@ -30,6 +30,7 @@ class _Parser:
 
     def _to_df(self):
         s = pd.DataFrame(self._statement)
+        print(s)
         s.columns = ['statement']
         e, m = self._encode_statements()
         e = pd.DataFrame([e]).transpose()
@@ -42,7 +43,7 @@ class _Parser:
 class Encoder:
     TIME_SYMBOL_STR = '@t='
 
-    _valid_functions = ['mean', 'all', 'min', 'max', 'any']
+    _valid_functions = ['mean', 'all', 'min', 'max', 'any', 'sum']
     _valid_mathematical_operators = ['+', '-', '/', '*', '**', ]
     _valid_operators = ['>', '>=', '<', '<=', '==', '!=']
 
@@ -84,7 +85,7 @@ class Encoder:
         'text': 3,
         'digit': 4,
         'interval': 5,
-        'operator': 6,
+        'mathematical_operator': 6,
         'math_operator': 7,
     }
 
