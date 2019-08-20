@@ -8,6 +8,11 @@ from qualitative_model_fitting._suite import Suite, GLOBAL_TEST_SUITE
 
 
 class TestCaseMeta(type):
+    """
+    Classes of type TestCaseMeta are like regular classes but they
+    are automatically registered into a variable stored in
+    qualitative_model_fitting._suite.GLOBAL_TEST_SUITE.
+    """
     def __new__(cls, clsname, bases, attrs):
         newclass = super(TestCaseMeta, cls).__new__(cls, clsname, bases, attrs)
         cls._register_cls(newclass)
@@ -30,6 +35,11 @@ class TestCaseMeta(type):
 
 
 class TestCase(metaclass=TestCaseMeta):
+    """
+    Parent class of all tests. A TestCase understands user input
+    via the Parser and pieces together a function that tests
+    each observation.
+    """
     # variables are filled by TestMaker
     data = None
     obs = None
@@ -52,14 +62,18 @@ class TestCase(metaclass=TestCaseMeta):
         'mathematical_operator': 6,
         'math_operator': 7,
     }
+    obs = None
+    data = None
 
-    def __init__(self, obs, data):
-        # set metaclass
-        self.data = data
-        self.obs = obs
+    def __init__(self):
         self.statements = self._encode_obs()
         # make copy for preservatin of original data frame
         self.data_copy = self.data.copy()
+
+        for i in [self.obs, self.data]:
+            if i is None:
+                raise AttributeError(f'The "{i}" attribute is None, '
+                                     'please set with an appropriate value')
         self.tests = self.make_tests()
 
     def __get__(self, item):
@@ -67,11 +81,31 @@ class TestCase(metaclass=TestCaseMeta):
             raise AttributeError(f'item "{item}" is not an attribute of class "{self.__name__}"')
         return self.__dict__[item]
 
-    def _encode_obs(self):
+    def _encode_obs(self) -> list:
+        """
+        Uses the parser to encode user inputs for easier interpretation of
+        which rules to use
+
+        Returns:
+
+        """
         p = _Parser(self.obs)
         return p.statements
 
-    def dispatcher(self, variable_name, matches, encoded):
+    def dispatch(self, variable_name, matches, encoded) -> tuple:
+        """
+        Determine which methods are needed to test observation. This mechanism
+        of creating TestCases is in its beta stage of development and may be
+        subject to change to increase flexibility.
+
+        Args:
+            variable_name: Usually clause1 or clause2
+            matches: Elements of statement matched by regular expressions
+            encoded: The encoded version of matches.
+
+        Returns: tuple(string, function)
+
+        """
         s = ''
         time_symbol_encountered = False
         function_encountered = False
@@ -132,12 +166,15 @@ class TestCase(metaclass=TestCaseMeta):
                 time_symbol_encountered = False
             else:
                 raise ValueError('we have a problem')
-        # copy back to original dataframe.
-        # this is a problem because the code doesn't get EXECUTED here
-        # self.data = self.data_copy.copy()
         return s, funct
 
-    def make_tests(self):
+    def make_tests(self) -> dict:
+        """
+        Calls the :py:meth:`dispatch` method on each user input.
+
+        Returns:
+
+        """
         test_methods = OrderedDict()
         for i in range(self.statements.shape[0]):
             encoded = self.statements['encoded'].iloc[i]
@@ -158,8 +195,8 @@ class TestCase(metaclass=TestCaseMeta):
             operator_match = matches[operator_index]
             operator_encoded = encoded[operator_index]
 
-            clause1, clause1_func = self.dispatcher('clause1', clause1_matches, clause1_encoded)
-            clause2, clause2_func = self.dispatcher('clause2', clause2_matches, clause2_encoded)
+            clause1, clause1_func = self.dispatch('clause1', clause1_matches, clause1_encoded)
+            clause2, clause2_func = self.dispatch('clause2', clause2_matches, clause2_encoded)
             compare_statement = self.compare(operator_match, clause1_func, clause2_func)
 
             method_name = f'test_statement_{i}'
@@ -181,15 +218,7 @@ class TestCase(metaclass=TestCaseMeta):
     @staticmethod
     def text(text, data_variable_name=None):
         """
-        Deal with text variables by pulling out the correct data column
 
-        The problem with this is that it actually does the work
-        whereas I need the blueprint to do the work.
-
-        Do I need to make_tests each clause separetly?
-        Get the index of the number 6. Need to ensure no
-        multiple number 6 is present. Then split the list on the index
-        of number 6.
         :return:
         """
         if data_variable_name is None:

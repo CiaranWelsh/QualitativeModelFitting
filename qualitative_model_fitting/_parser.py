@@ -1,18 +1,23 @@
-import os, glob, re
+import re
 from copy import deepcopy
 from itertools import combinations
 
 import pandas as pd
-import numpy as np
-
-import parser_training
 import qualitative_model_fitting
-from qualitative_model_fitting import _simulator
 
 
 class _Parser:
+    """
+    Translate user observations into an encoding that
+    can be programmatically interpreted
+    """
 
     def __init__(self, statement: (str, list)) -> None:
+        """
+
+        Args:
+            statement: syntactically correct observations or list of.
+        """
         self._statement = statement
         if isinstance(self._statement, str):
             self._statement = [self._statement]
@@ -20,6 +25,11 @@ class _Parser:
         self.statements = self._to_df()
 
     def _encode_statements(self):
+        """
+        Turn statements into numerical list to help interpretation
+        Returns:
+
+        """
         encoded = []
         matches = []
         for i in self._statement:
@@ -40,6 +50,11 @@ class _Parser:
 
 
 class Encoder:
+    """
+    Uses regular expressions to encode statements into
+    numerical sequences which are used to decide how to
+    construct a test case for the observation
+    """
     TIME_SYMBOL_STR = '@t='
 
     _valid_functions = ['mean', 'all', 'min', 'max', 'any', 'sum']
@@ -112,13 +127,23 @@ class Encoder:
     labels_encoder = {v: k for k, v in labels_decoder.items()}
 
     def __init__(self, clause):
+        """
+
+        Args:
+            clause: String to left or right side of statement (split by a comparison operator)
+        """
         # for modifying
         self.clause = clause.strip()
         # for storing
         self.original_clause = deepcopy(clause.strip())
 
     def _encode_part(self):
-        # todo rename dispatch. Didn't use this as a dispatcher in the end
+        """
+
+        Returns:
+
+        """
+        # todo rename dispatch. Didn't use this as a dispatch in the end
         indicators = []
         matches = []
         for pattern, method in self._patterns.items():
@@ -141,6 +166,11 @@ class Encoder:
         raise SyntaxError('No valid patterns have been found for clause "{}"'.format(self.clause))
 
     def encode(self):
+        """
+
+        Returns:
+
+        """
         match_seq = []
         ind_seq = []
 

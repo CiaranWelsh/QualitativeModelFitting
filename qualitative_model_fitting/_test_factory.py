@@ -1,29 +1,19 @@
-from qualitative_model_fitting import TimeSeries
+import pandas as pd
+from typing import Optional
+
 from qualitative_model_fitting import TestCase
-from qualitative_model_fitting._case import TestCaseMeta
-from qualitative_model_fitting._suite import Suite, GLOBAL_TEST_SUITE
-
-'''
-The simulator will run all interval_time series at once then the test maker 
-will distribute those dataframes along with conditions to test cases. 
-the test cases will be collected into a suit and then executed by 
-the runner
-
-First get the text part of each statement
-then refine the interval_time pount. 
-then apply any functions 
-then apply any math
-'''
-
-
-# todo make all test cases use a subclass of type metaclass to automatically register them into a collection
-# test maker should have all the unit methods which will combine to make the necessary for each class
-# Each statement should get its own class
+from qualitative_model_fitting import TimeSeries
+from qualitative_model_fitting._suite import GLOBAL_TEST_SUITE, Suite
 
 
 class TestFactory:
+    """
+    Factory class that builds TestCases on the fly.
+    """
 
-    def __init__(self, ant_str, inputs, time_start, time_end, steps, suite=None):
+    def __init__(self, ant_str: str, inputs: dict,
+                 time_start: (int, float), time_end: (int, float),
+                 steps: int, suite: Optional[Suite]):
         self.ant_str = ant_str
         self.inputs = inputs
         self.time_start = time_start
@@ -35,19 +25,33 @@ class TestFactory:
 
         self.suite = self.create_test_suite()
 
-    def _run_timeseries(self):
+    def _run_timeseries(self) -> pd.DataFrame:
+        """
+        wrapper around TimeSeries. Simulate time series data
+        for testing conditions.
+
+        Returns:
+
+        """
         return TimeSeries(
             self.ant_str, self.inputs,
             self.time_start, self.time_end, self.steps
         ).simulate()
 
-    def create_test_suite(self):
+    def create_test_suite(self) -> Suite:
+        """
+        Iterate over conditions and create subclasses of
+        type TestCase. If suite not specified in constructor
+        objects are automatically stored in the GLOBAL_TEST_SUITE
+
+        Returns:
+
+        """
         for condition_name, condition_dict in self.inputs.items():
             data = self.time_series_data[condition_name]
             obs = condition_dict['obs']
             # automatically added to GLOBAL_TEST_SUITE by TestCaseMeta
-            cls = type(condition_name, (TestCase,), {})
-            #todo might need to instantiate the objects here??? Might not.
+            cls = type(condition_name, (TestCase,), {'data': data, 'obs': obs})
             if self.suite is not None:
                 #  might be better to put the running code in Runner.
                 if self.suite.name == 'global_test_suite':

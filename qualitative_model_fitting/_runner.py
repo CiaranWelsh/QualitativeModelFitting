@@ -2,42 +2,62 @@ import os, glob
 import numpy as np
 import pandas as pd
 
+from typing import Optional
+
 from qualitative_model_fitting._suite import Suite
 from qualitative_model_fitting._simulator import TimeSeries
-from typing import Optional
+from qualitative_model_fitting._results import PandasResult, DictResults
 
 
 class _RunnerBase:
+    """
+    Base class for Runner types
+    """
 
-    def __init__(self, suite: Optional[Suite], timeseries_kwargs={}):
+    def __init__(self, suite: Optional[Suite]):
+        """
+
+        Args:
+            suite: A Suite of tests to run.
+        """
         self.suite = suite
-        self.timeseries_kwargs = timeseries_kwargs
 
-    def _run_timeseries(self) -> dict:
-        for i in ['ant_str', 'inputs', 'time_start',
-                  'time_end', 'steps']:
-            if not self.timeseries_kwargs.get(i):
-                raise AttributeError(f'Please give argument "{i}" to '
-                                     f'timeseries_kwargs dict')
-
-        return TimeSeries(**self.timeseries_kwargs).simulate()
+        if self.suite.isempty():
+            raise ValueError('Test suite is empty')
 
 
 class ManualRunner(_RunnerBase):
+    """
+    Runner for the manual interface. No optimization required.
+    """
 
-    def run_tests(self):
-        print('run tests')
+    def run_tests(self) -> DictResults:
+        """
+        Run the results in test suite and store the results in a
+        DictResults object.
+
+        Returns:
+
+        """
+        results = DictResults()
         for test_case in self.suite:
-            test = test_case()
-            # todo ensure make_tests dict return a set of bound functions so we do not have to
-            #  pass test_case back into the function as argument.
-            # todo ensure tests are producted for all statements.
-            print(test.make_tests()['test_statement_0'](test_case))
-            # test = test_case().make_tests()
-            # for k, v in test.items():
-            #     print(k, v)
-            #     v(test)
+            test_case = test_case()
+            results.obs[test_case] = test_case.obs
+            obs = test_case.obs
+            tests = test_case.make_tests()
+            results[test_case.__class__.__name__] = {}
+            i = 0
+            for test_name, test_method in tests.items():
+                results[test_case.__class__.__name__][obs[i]] = test_method()
+                i += 0
+        return results
 
 
 class AutomaticRunner(_RunnerBase):
-    pass
+    """
+    Runner for automatic interface. Not yet implemented
+    but eventually will modify parameters to satisfy conditions
+    """
+
+    def __init__(self):
+        raise NotImplementedError

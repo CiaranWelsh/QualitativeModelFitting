@@ -7,14 +7,25 @@ from collections import OrderedDict
 
 
 class TimeSeries:
+    """
+    Wrapper around tellurium's ODE integration feature.
+    """
 
-    def __init__(self, ant_str: str, inputs: (dict, str), start: int, stop: int, steps: int, **kwargs) -> None:
+    def __init__(self, ant_str: str, inputs: (dict, str), start: int, stop: int, steps: int) -> None:
+        """
+
+        Args:
+            ant_str: The model to integrate. Must be valid antimony model
+            inputs: Nested dict. Contains details of how to configure model for integration (see docs)
+            start: start time of integration
+            stop:  end time of intergration
+            steps: number of steps for integration
+        """
         self.ant_str = ant_str
         self.inputs = inputs
         self.start = start
         self.stop = stop
         self.steps = steps
-        self.kwargs = kwargs
 
         if isinstance(self.inputs, dict):
             for k, v in self.inputs.items():
@@ -67,31 +78,3 @@ class TimeSeries:
             dct[condition_name] = results
 
         return dct
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
