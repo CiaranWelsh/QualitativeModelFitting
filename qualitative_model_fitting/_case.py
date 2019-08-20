@@ -25,7 +25,7 @@ class TestCaseMeta(type):
         from qualitative_model_fitting._suite import GLOBAL_TEST_SUITE
         # do not add _case.TestCase to register
         if cls.__name__ != 'TestCase':
-            GLOBAL_TEST_SUITE.add_test_case(cls)
+            GLOBAL_TEST_SUITE.append(cls)
         return GLOBAL_TEST_SUITE
 
 
@@ -53,10 +53,19 @@ class TestCase(metaclass=TestCaseMeta):
         'math_operator': 7,
     }
 
-    def __init__(self):
+    def __init__(self, obs, data):
+        # set metaclass
+        self.data = data
+        self.obs = obs
         self.statements = self._encode_obs()
         # make copy for preservatin of original data frame
         self.data_copy = self.data.copy()
+        self.tests = self.make_tests()
+
+    def __get__(self, item):
+        if item not in self.__dict__:
+            raise AttributeError(f'item "{item}" is not an attribute of class "{self.__name__}"')
+        return self.__dict__[item]
 
     def _encode_obs(self):
         p = _Parser(self.obs)
@@ -128,9 +137,9 @@ class TestCase(metaclass=TestCaseMeta):
         # self.data = self.data_copy.copy()
         return s, funct
 
-    def make_test(self):
+    def make_tests(self):
         test_methods = OrderedDict()
-        for i in range(self.statements.shape[0])[:1]:
+        for i in range(self.statements.shape[0]):
             encoded = self.statements['encoded'].iloc[i]
             matches = self.statements['matches'].iloc[i]
             # print(encoded)
@@ -160,10 +169,12 @@ class TestCase(metaclass=TestCaseMeta):
             s += clause1 + '\n'
             s += clause2 + '\n'
             s += compare_statement + '\n'
-            # print(s)
             # render the staticmethod from string s and store in __dict__
             exec(s, self.__dict__)
-            # exec(, self.__dict__, {'pd': pd, 'np': np})
+            # bind the newly defined function to self (necessary to prevent the need
+            # for passing self as first argument
+            self.__dict__[method_name] = self.__dict__[method_name].__get__(self, method_name)
+            # store handle in another dict for easy retrieval later
             test_methods[method_name] = self.__dict__[method_name]
         return test_methods
 
@@ -175,7 +186,7 @@ class TestCase(metaclass=TestCaseMeta):
         The problem with this is that it actually does the work
         whereas I need the blueprint to do the work.
 
-        Do I need to make_test each clause separetly?
+        Do I need to make_tests each clause separetly?
         Get the index of the number 6. Need to ensure no
         multiple number 6 is present. Then split the list on the index
         of number 6.
@@ -196,7 +207,7 @@ class TestCase(metaclass=TestCaseMeta):
         # print('end is: ', end)
         if data_variable_name is None:
             data_variable_name = 'self.data'
-        s = f"    {data_variable_name} = {data_variable_name}.loc[{start}: {end}, ]\n    print({data_variable_name})\n"
+        s = f"    {data_variable_name} = {data_variable_name}.loc[{start}: {end}, ]\n"
         return s
 
     @staticmethod
@@ -204,7 +215,7 @@ class TestCase(metaclass=TestCaseMeta):
         # print('we have point time')
         if data_variable_name is None:
             data_variable_name = 'self.data'
-        return f"    {data_variable_name} = float({data_variable_name}.loc[{time}])\n    print({data_variable_name})"
+        return f"    {data_variable_name} = float({data_variable_name}.loc[{time}])\n"
 
     @staticmethod
     def compare(operator, clause1_funct, clause2_funct):
@@ -225,7 +236,7 @@ class TestCase(metaclass=TestCaseMeta):
         # print('now is a func')
         if data_variable_name is None:
             data_variable_name = 'self.data'
-        return f"    {data_variable_name} = {data_variable_name}({function})\n    print({data_variable_name})\n"
+        return f"    {data_variable_name} = {data_variable_name}({function})\n"
 
     @staticmethod
     def mathematical_operator(left, operator, right):

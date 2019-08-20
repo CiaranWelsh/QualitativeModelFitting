@@ -195,6 +195,31 @@ TEST_INPUT1 = OrderedDict(
     )
 )
 
+TEST_INPUT2 = OrderedDict(
+    InsulinOnly=OrderedDict(
+        inputs=OrderedDict(
+            Insulin=1,
+            AA=0,
+            Rapamycin=0
+        ),
+        obs=[
+            'IRS1a@t=10 > Akt@t=10',
+            'IRS1@t=35 == Akt@t=65',
+        ]
+    ),
+    InsulinAndRapamycin=OrderedDict(
+        inputs=OrderedDict(
+            Insulin=1,
+            AA=0,
+            Rapamycin=1
+        ),
+        obs=[
+            'IRS1a@t=10 > Akt@t=10',
+            'IRS1@t=35 == Akt@t=65',
+        ]
+    )
+)
+
 
 
 
