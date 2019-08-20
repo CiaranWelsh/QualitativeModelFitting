@@ -2,7 +2,9 @@ import unittest
 
 from tests import MODEL1, TEST_INPUT1
 from qualitative_model_fitting._test_factory import TestFactory
-from qualitative_model_fitting._suite import GLOBAL_TEST_SUITE, Suite
+from qualitative_model_fitting._suite import Suite
+from qualitative_model_fitting import GLOBAL_TEST_SUITE
+
 
 class TestMakerTests(unittest.TestCase):
 

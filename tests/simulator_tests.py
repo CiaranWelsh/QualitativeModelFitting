@@ -1,12 +1,11 @@
 import unittest
-import os, glob
-import yaml
 
 from collections import OrderedDict
+import os
+import yaml
+from tests import MODEL1, TEST_INPUT2, TEST_INPUT1
+from qualitative_model_fitting._simulator import TimeSeries
 
-from .model_strings import *
-from qualitative_model_fitting._simulator import *
-from qualitative_model_fitting import MODEL1
 
 class TimeSeriesTests(unittest.TestCase):
 
@@ -33,8 +32,7 @@ class TimeSeriesTests(unittest.TestCase):
 
     def tearDown(self) -> None:
         if os.path.isfile(self.yaml_file):
-            pass
-            # os.remove(self.yaml_file)
+            os.remove(self.yaml_file)
 
     def test_read_inputs_from_yaml(self):
         ts = TimeSeries(MODEL1, self.yaml_file, 0, 10, 11)

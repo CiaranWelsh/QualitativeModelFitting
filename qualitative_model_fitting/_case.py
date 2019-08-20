@@ -1,10 +1,9 @@
-from types import MethodType
 from collections import OrderedDict
 
 import pandas as pd
-import numpy as np
-from qualitative_model_fitting import _Parser
-from qualitative_model_fitting._suite import Suite, GLOBAL_TEST_SUITE
+
+from qualitative_model_fitting import _suite, GLOBAL_TEST_SUITE
+from qualitative_model_fitting._parser import _Parser
 
 
 class TestCaseMeta(type):
@@ -13,6 +12,7 @@ class TestCaseMeta(type):
     are automatically registered into a variable stored in
     qualitative_model_fitting._suite.GLOBAL_TEST_SUITE.
     """
+
     def __new__(cls, clsname, bases, attrs):
         newclass = super(TestCaseMeta, cls).__new__(cls, clsname, bases, attrs)
         cls._register_cls(newclass)
@@ -27,7 +27,6 @@ class TestCaseMeta(type):
 
         """
         # import here to avoid UnboundLocalError
-        from qualitative_model_fitting._suite import GLOBAL_TEST_SUITE
         # do not add _case.TestCase to register
         if cls.__name__ != 'TestCase':
             GLOBAL_TEST_SUITE.append(cls)

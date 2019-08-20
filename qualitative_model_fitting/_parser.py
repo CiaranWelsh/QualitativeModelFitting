@@ -3,7 +3,6 @@ from copy import deepcopy
 from itertools import combinations
 
 import pandas as pd
-import qualitative_model_fitting
 
 
 class _Parser:
@@ -33,7 +32,7 @@ class _Parser:
         encoded = []
         matches = []
         for i in self._statement:
-            e, m = Encoder(i).encode()
+            e, m = _Encoder(i).encode()
             encoded.append(e)
             matches.append(m)
         return encoded, matches
@@ -49,7 +48,7 @@ class _Parser:
         return pd.concat([s, e, m], axis=1)
 
 
-class Encoder:
+class _Encoder:
     """
     Uses regular expressions to encode statements into
     numerical sequences which are used to decide how to
@@ -147,15 +146,15 @@ class Encoder:
         indicators = []
         matches = []
         for pattern, method in self._patterns.items():
-            if qualitative_model_fitting.VERBOSE:
-                print('clause is', self.clause)
-                print('pattern is:', pattern)
-                print('method is:', method)
+            # if VERBOSE:
+            #     print('clause is', self.clause)
+            #     print('pattern is:', pattern)
+            #     print('method is:', method)
 
             match = re.findall(pattern, self.clause)
-            if qualitative_model_fitting.VERBOSE:
-                print('match is:', match)
-                print('\n')
+            # if VERBOSE:
+            #     print('match is:', match)
+            #     print('\n')
 
             if match:
                 indicators.append(self.vocab[pattern])

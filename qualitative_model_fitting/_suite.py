@@ -1,8 +1,6 @@
-from typing import Optional
+# from qualitative_model_fitting._case import TestCase
 
-from qualitative_model_fitting._case import TestCase
-
-#todo think about an alternative interface whereby
+# todo think about an alternative interface whereby
 #  a interface/protocol is supplied and the user can define
 #  their own test cases to a suite.
 
@@ -38,7 +36,7 @@ class Suite:
             return True
         return False
 
-    def append(self, test: TestCase) -> None:
+    def append(self, test) -> None:
         """
         akin to the list.append method. Only accepts TestCase objects.
         Cannot already have an element `test` in the suite
@@ -52,9 +50,6 @@ class Suite:
         if test in self:
             raise ValueError(f'Test suite already '
                              f'has a test named "{test}". {self.tests}')
-        if not isinstance(test, TestCase):
-            raise TypeError('Can only store instances of TestCase in '
-                            'a Suite. Got r"{}"'.format(type(test)))
         self._tests.append(test)
 
     def pop(self, idx: int):
@@ -109,5 +104,14 @@ class Suite:
         return self.tests[item]
 
 
+def get_global_test_suite():
+    """
+    Function to initialise the global test suite.
+    Called on package import
+    Returns:
 
-GLOBAL_TEST_SUITE = Suite([], name='global_test_suite')
+    """
+    if 'GLOBAL_TEST_SUITE' in globals():
+        return globals()['GLOBAL_TEST_SUITE']
+    else:
+        return Suite([], name='global_test_suite')

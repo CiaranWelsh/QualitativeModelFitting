@@ -2,7 +2,7 @@ import unittest
 from collections import Counter
 
 from parser_training._parser_training import *
-from qualitative_model_fitting import Encoder
+from qualitative_model_fitting import _Encoder
 
 
 class TestDataCreation(unittest.TestCase):
@@ -104,55 +104,55 @@ class EncoderTests(unittest.TestCase):
 
     def test_encoder_mean(self):
         string = 'mean IRS1@t=(0, 100) > mean IRS1a@t=(0, 100)'
-        encoder = Encoder(string)
+        encoder = _Encoder(string)
         expected = [2, 3, 1, 5, 6, 2, 3, 1, 5]
         actual = encoder.encode()
         self.assertListEqual(expected, actual)
 
     def test_encoder_all(self):
         string = 'all IRS1@t=(0, 100) > all IRS1a@t=(0, 100)'
-        encoder = Encoder(string)
+        encoder = _Encoder(string)
         expected = [2, 3, 1, 5, 6, 2, 3, 1, 5]
         actual = encoder.encode()
         self.assertListEqual(expected, actual)
 
     def test_encoder_min(self):
         string = 'min IRS1@t=(0, 100) > min IRS1a@t=(0, 100)'
-        encoder = Encoder(string)
+        encoder = _Encoder(string)
         expected = [2, 3, 1, 5, 6, 2, 3, 1, 5]
         actual = encoder.encode()
         self.assertListEqual(expected, actual)
 
     def test_encoder_max(self):
         string = 'max IRS1@t=(0, 100) > max IRS1a@t=(0, 100)'
-        encoder = Encoder(string)
+        encoder = _Encoder(string)
         expected = [2, 3, 1, 5, 6, 2, 3, 1, 5]
         actual = encoder.encode()
         self.assertListEqual(expected, actual)
 
     def test_encoder_interval(self):
         string = 'A@t=(0, 10) == B@t=4'
-        enc = Encoder(string)
+        enc = _Encoder(string)
         expected = [3, 1, 5, 6, 3, 1, 4]
         actual = enc.encode()
         self.assertListEqual(expected, actual)
 
     def test_encoder_interval(self):
         string = 'A@t=(0, 10) == B@t=4 / 2'
-        enc = Encoder(string)
+        enc = _Encoder(string)
         expected = [3, 1, 5, 6, 3, 1, 7, 4]
         actual = enc.encode()
         self.assertListEqual(expected, actual)
 
     def test_encoder_random1(self):
         string = '_X@t=(468,925)**43 <= all Ba@t=(498,704)'
-        enc = Encoder(string)
+        enc = _Encoder(string)
         expected = [3, 1, 5, 7, 4, 6, 2, 3, 1, 5]
         actual = enc.encode()
         self.assertEqual(expected, actual)
 
     def test_dispatch(self):
-        encoder = Encoder(self.mean_string)
+        encoder = _Encoder(self.mean_string)
         encoder._encode_part()
 
 

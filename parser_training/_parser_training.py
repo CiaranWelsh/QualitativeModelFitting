@@ -10,7 +10,7 @@ import tensorflow as tf
 from functools import reduce
 
 # todo think about multi-label classification
-from qualitative_model_fitting import Encoder
+from qualitative_model_fitting import _Encoder
 from qualitative_model_fitting._parser import _EncodingBase
 
 """
@@ -107,7 +107,7 @@ class CreateTrainingData(_EncodingBase):
             # label = self.labels_encoder[(label1, label2)]
             clauses.append(clause)
             # labels.append(label)
-            e = Encoder(clause).encode()
+            e = _Encoder(clause).encode()
             encoding.append(e)
 
         # label = pd.DataFrame(labels, columns=['label'])

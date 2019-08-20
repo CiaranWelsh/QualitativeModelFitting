@@ -1,12 +1,6 @@
-import os, glob
-import numpy as np
-import pandas as pd
-
 from typing import Optional
 
-from qualitative_model_fitting._suite import Suite
-from qualitative_model_fitting._simulator import TimeSeries
-from qualitative_model_fitting._results import PandasResult, DictResults
+from qualitative_model_fitting import _suite, _results
 
 
 class _RunnerBase:
@@ -14,7 +8,7 @@ class _RunnerBase:
     Base class for Runner types
     """
 
-    def __init__(self, suite: Optional[Suite]):
+    def __init__(self, suite: Optional[_suite.Suite]):
         """
 
         Args:
@@ -22,16 +16,13 @@ class _RunnerBase:
         """
         self.suite = suite
 
-        if self.suite.isempty():
-            raise ValueError('Test suite is empty')
-
 
 class ManualRunner(_RunnerBase):
     """
     Runner for the manual interface. No optimization required.
     """
 
-    def run_tests(self) -> DictResults:
+    def run_tests(self) -> _results.DictResults:
         """
         Run the results in test suite and store the results in a
         DictResults object.
@@ -39,7 +30,11 @@ class ManualRunner(_RunnerBase):
         Returns:
 
         """
-        results = DictResults()
+
+        if self.suite.isempty():
+            raise ValueError('Test suite is empty')
+
+        results = _results.DictResults()
         for test_case in self.suite:
             test_case = test_case()
             results.obs[test_case] = test_case.obs

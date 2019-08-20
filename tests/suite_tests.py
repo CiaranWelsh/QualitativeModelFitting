@@ -1,6 +1,7 @@
 import unittest
 
-from qualitative_model_fitting._suite import Suite, GLOBAL_TEST_SUITE
+from qualitative_model_fitting._suite import Suite
+from qualitative_model_fitting import GLOBAL_TEST_SUITE
 from qualitative_model_fitting._test_factory import TestFactory
 
 from tests import MODEL1, TEST_INPUT1, TEST_INPUT2

@@ -1,9 +1,4 @@
-import pandas as pd
-from typing import Optional
-
-from qualitative_model_fitting import TestCase
-from qualitative_model_fitting import TimeSeries
-from qualitative_model_fitting._suite import GLOBAL_TEST_SUITE, Suite
+from qualitative_model_fitting import _case, _simulator, _suite, GLOBAL_TEST_SUITE
 
 
 class TestFactory:
@@ -13,7 +8,7 @@ class TestFactory:
 
     def __init__(self, ant_str: str, inputs: dict,
                  time_start: (int, float), time_end: (int, float),
-                 steps: int, suite: Optional[Suite]):
+                 steps: int, suite=None):
         self.ant_str = ant_str
         self.inputs = inputs
         self.time_start = time_start
@@ -25,7 +20,7 @@ class TestFactory:
 
         self.suite = self.create_test_suite()
 
-    def _run_timeseries(self) -> pd.DataFrame:
+    def _run_timeseries(self) -> dict:
         """
         wrapper around TimeSeries. Simulate time series data
         for testing conditions.
@@ -33,12 +28,12 @@ class TestFactory:
         Returns:
 
         """
-        return TimeSeries(
+        return _simulator.TimeSeries(
             self.ant_str, self.inputs,
             self.time_start, self.time_end, self.steps
         ).simulate()
 
-    def create_test_suite(self) -> Suite:
+    def create_test_suite(self) -> _suite.Suite:
         """
         Iterate over conditions and create subclasses of
         type TestCase. If suite not specified in constructor
@@ -51,7 +46,7 @@ class TestFactory:
             data = self.time_series_data[condition_name]
             obs = condition_dict['obs']
             # automatically added to GLOBAL_TEST_SUITE by TestCaseMeta
-            cls = type(condition_name, (TestCase,), {'data': data, 'obs': obs})
+            cls = type(condition_name, (_case.TestCase,), {'data': data, 'obs': obs})
             if self.suite is not None:
                 #  might be better to put the running code in Runner.
                 if self.suite.name == 'global_test_suite':
@@ -65,4 +60,3 @@ class TestFactory:
             return self.suite
         else:
             return GLOBAL_TEST_SUITE
-

@@ -2,29 +2,11 @@
 todo write a docstring
 
 """
-__all__ = ['_simulator', '_parser']
-from qualitative_model_fitting._simulator import TimeSeries
-from qualitative_model_fitting._parser import _Parser, Encoder
-from qualitative_model_fitting._case import TestCase
-from qualitative_model_fitting._test_factory import TestCase
-from qualitative_model_fitting._runner import _RunnerBase, AutomaticRunner, ManualRunner
-from qualitative_model_fitting._suite import Suite
 
-VERBOSE = False
+from qualitative_model_fitting import _suite
+GLOBAL_TEST_SUITE = _suite.get_global_test_suite()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+from qualitative_model_fitting._api import manual_interface
 
 
