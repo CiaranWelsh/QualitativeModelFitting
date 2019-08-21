@@ -221,5 +221,41 @@ TEST_INPUT2 = OrderedDict(
 )
 
 
+MODEL2 = """
+model SimpleFeedback()
+    compartment Cell = 1;
+    var A in Cell;
+    var B in Cell;
+    var C in Cell;
+    const S;
+    const I;
+   
+    A = 0;
+    B = 0;
+    C = 0;
+    S = 0;
+    I = 0;
+    BI = 0;
+    
+    k1 = 0.1;
+    k2 = 0.1;
+    k3 = 0.1;
+    k4 = 0.1;
+    k5 = 10;
+    k6 = 0.1;
+    k7 = 0.1;
+    k8 = 0.1;
+    
+    R1: => A            ; Cell * k1*S;
+    R2: A =>            ; Cell * k2*A*C;
+    R3: => B            ; Cell * k3*A;
+    R4: B =>            ; Cell * k4*B;
+    R5: B + I => BI     ; Cell * k5*B*I;
+    R6: BI => B + I     ; Cell * k6*BI;
+    R7: => C            ; Cell * k7*B;
+    R8: C =>            ; Cell * k8*C;
+end
+"""
+
 
 

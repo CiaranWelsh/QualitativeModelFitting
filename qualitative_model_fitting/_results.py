@@ -9,10 +9,23 @@ class DictResults:
     """
     A dictionary like interface to a storage class for test results
     """
-    _obs = {}
+    # _obs = {}
+    data = {}
 
     def __init__(self):
         pass
+
+    def __len__(self):
+        return self.num_observations()
+
+    def num_conditions(self):
+        return len(self.__dict__)
+
+    def num_observations(self):
+        count = 0
+        for cond_name, cond_dict in self.__dict__.items():
+            count += len(cond_dict)
+        return count
 
     def __contains__(self, item):
         return item in self.__dict__
@@ -34,14 +47,6 @@ class DictResults:
 
     def items(self):
         return self.__dict__.items()
-
-    @property
-    def obs(self):
-        return self._obs
-
-    @obs.setter
-    def obs(self, value):
-        self._obs = value
 
     def __str__(self):
         return str(self.__dict__)

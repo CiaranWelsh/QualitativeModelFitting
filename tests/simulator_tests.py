@@ -4,8 +4,8 @@ from collections import OrderedDict
 import os
 import yaml
 from tests import MODEL1, TEST_INPUT2, TEST_INPUT1
-from qualitative_model_fitting._simulator import TimeSeries
-
+from qualitative_model_fitting._simulator import TimeSeries, TimeSeriesPlotter
+import pandas as pd
 
 class TimeSeriesTests(unittest.TestCase):
 
@@ -62,6 +62,48 @@ class TimeSeriesTests(unittest.TestCase):
 
 class SimpleObservationTest(unittest.TestCase):
     pass
+
+
+class TimeSeriesPlotterTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.yaml_input = OrderedDict(
+            InsulinOnly=OrderedDict(
+                inputs=OrderedDict(
+                    Insulin=1,
+                    AA=0,
+                    Rapamycin=0
+                ),
+                obs=[
+                    'IRS1a@t=0 < IRS1a@t=20'
+                ]
+            ),
+            InsulinAndAA=OrderedDict(
+                inputs=OrderedDict(
+                    Insulin=1,
+                    AA=1,
+                    Rapamycin=0
+                ),
+                obs=[
+                    'IRS1a@t=0 < IRS1a@t=20'
+                ]
+            )
+        )
+        self.ts = TimeSeries(MODEL1, self.yaml_input, 0, 10, 11)
+
+    def test(self):
+        plot_selection = dict(
+            IRS1=['IRS1', 'IRS1', 'pIRS1']
+        )
+        conditions = ['InsulinOnly']
+        plotter = TimeSeriesPlotter(
+            self.ts.simulate(),
+            plot_selection,
+            conditions,
+            savefig=True,
+            fname='test_plot.png'
+        )
+        print(plotter.plot())
 
 
 if __name__ == '__main__':

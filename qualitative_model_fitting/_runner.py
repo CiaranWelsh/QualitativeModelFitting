@@ -37,14 +37,17 @@ class ManualRunner(_RunnerBase):
         results = _results.DictResults()
         for test_case in self.suite:
             test_case = test_case()
-            results.obs[test_case] = test_case.obs
+            # results.obs[test_case] = test_case.obs
             obs = test_case.obs
             tests = test_case.make_tests()
             results[test_case.__class__.__name__] = {}
-            i = 0
-            for test_name, test_method in tests.items():
+            for i, (test_name, test_method) in enumerate(tests.items()):
+                print('name', test_case.__class__.__name__)
+                print('obs i', obs[i])
+                print('method out', test_method())
                 results[test_case.__class__.__name__][obs[i]] = test_method()
-                i += 0
+                results.data[test_case.__class__.__name__] = test_case.data
+        print('results', results)
         return results
 
 
