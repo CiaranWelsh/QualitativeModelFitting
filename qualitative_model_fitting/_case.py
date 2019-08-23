@@ -1,9 +1,12 @@
+import logging
 from collections import OrderedDict
 
 import pandas as pd
 
 from qualitative_model_fitting import _suite, GLOBAL_TEST_SUITE
 from qualitative_model_fitting._parser import _Parser
+
+LOG = logging.getLogger(__name__)
 
 
 class TestCaseMeta(type):
@@ -118,32 +121,26 @@ class TestCase(metaclass=TestCaseMeta):
             # when when False, digit behaves like a constant in an expression
             # interval_time symbol
             # 1 is interval_time
-            # print('match:', m, 'e', e)
             if e is 1:
                 # this means that the next element is either a interval_time digit or a interval_time interval
                 time_symbol_encountered = True
-                # print('time symbol encountered')
                 continue
             # 2 in funct
             elif e is 2:
                 function_encountered = True
                 # save for later
                 funct = m  # self.function_modifier(m, variable_name, )
-                # print('fun ct', func)
             # 3 is text
             elif e is 3:
                 s += self.text(m, variable_name)
             # 4 is digit
             elif e is 4:
                 if time_symbol_encountered:
-                    # print('from point time. time symbol is {}'.format(time_symbol_encountered))
                     s += self.point_time(int(m), variable_name)
                 elif numerical_operator_encountered:
-                    # print('from point time. numerical op flag is {}'.format(numerical_operator_encountered))
                     # could convert division to 1/x to prevent need for ordering?
                     s += self.mathematical_operator(variable_name, numerical_operator, m)
                 elif not numerical_operator_encountered:
-                    # print('from point time. numerical op flag is {}'.format(numerical_operator_encountered))
                     s += self.simple_expression(m, data_variable_name=variable_name)
                     # s += self.expression()
                 # reset time flag
@@ -160,7 +157,6 @@ class TestCase(metaclass=TestCaseMeta):
             elif e is 7:
                 numerical_operator_encountered = True
                 numerical_operator = m
-                # print('encountered numerical operator')
                 # reset time flag
                 time_symbol_encountered = False
             else:
@@ -176,10 +172,9 @@ class TestCase(metaclass=TestCaseMeta):
         """
         test_methods = OrderedDict()
         for i in range(self.statements.shape[0]):
+            LOG.debug(f'\nCurrently looking at "{list(self.statements.iloc[i])}"')
             encoded = self.statements['encoded'].iloc[i]
             matches = self.statements['matches'].iloc[i]
-            # print(encoded)
-            # print(matches)
 
             operator_ids = [i for i in encoded if i is 6]
             if len(operator_ids) != 1:
@@ -199,9 +194,14 @@ class TestCase(metaclass=TestCaseMeta):
             compare_statement = self.compare(operator_match, clause1_func, clause2_func)
 
             method_name = f'test_statement_{i}'
-            s = 'import pandas as pd\n'
+            s = 'import logging\n'
+            s += 'import pandas as pd\n'
             s += 'import numpy as np\n'
             s += f'def {method_name}(self):\n'
+            s += f'    LOG = logging.getLogger(__name__)\n'
+            # s += f'    the_statement_string = {}\n'
+            s += f'    LOG.debug("The class is: {self.__class__.__name__}")\n'
+            s += f'    LOG.debug("statement is: {self.statements["statement"].iloc[i]}")\n'
             s += clause1 + '\n'
             s += clause2 + '\n'
             s += compare_statement + '\n'
@@ -212,6 +212,7 @@ class TestCase(metaclass=TestCaseMeta):
             self.__dict__[method_name] = self.__dict__[method_name].__get__(self, method_name)
             # store handle in another dict for easy retrieval later
             test_methods[method_name] = self.__dict__[method_name]
+            LOG.debug('\nThe method to test this condition produced is: \n {}\n'.format(s))
         return test_methods
 
     @staticmethod
@@ -231,8 +232,6 @@ class TestCase(metaclass=TestCaseMeta):
     @staticmethod
     def interval_time(start, end, data_variable_name=None):
         # a comparison cannot be able between two intervals of different lengths
-        # print('start is: ', start)
-        # print('end is: ', end)
         if data_variable_name is None:
             data_variable_name = 'self.data'
         s = f"    {data_variable_name} = {data_variable_name}.loc[{start}: {end}, ]\n"
@@ -240,28 +239,29 @@ class TestCase(metaclass=TestCaseMeta):
 
     @staticmethod
     def point_time(time, data_variable_name=None):
-        # print('we have point time')
         if data_variable_name is None:
             data_variable_name = 'self.data'
-        return f"    {data_variable_name} = float({data_variable_name}.loc[{time}])\n"
+        s = ''
+        s += "    LOG.debug({})".format(data_variable_name)
+        return f"    {data_variable_name} = float({data_variable_name}.loc[{float(time)}])\n"
 
     @staticmethod
     def compare(operator, clause1_funct, clause2_funct):
-        # print('a now we compare')
-        # print('c1', clause1_funct)
-        # print('c2', clause2_funct)
         clause1 = f'clause1.{clause1_funct}()' if clause1_funct else 'clause1'
         clause2 = f'clause2.{clause2_funct}()' if clause2_funct else 'clause2'
         s = f"    boolean = {clause1} {operator} {clause2}\n"
         s += f"    if isinstance(boolean, (pd.Series)) and len(boolean) > 1:\n"
         s += f"        raise ValueError('The truth value of an array is ambiguous. " \
              f"Please use the any or all modifiers to clarify how you wish to evaluate test.')\n"
+        s += "    LOG.debug(f'clause1 {} clause2')\n".format(operator)
+        s += "    operator = '{}'\n".format(operator)
+        s += "    LOG.debug('{} {} {}'.format(clause1, operator, clause2))\n"
+        s += "    LOG.debug('output: ' + str(boolean))\n"
         s += f"    return boolean\n"
         return s
 
     @staticmethod
     def function_modifier(function, data_variable_name=None):
-        # print('now is a func')
         if data_variable_name is None:
             data_variable_name = 'self.data'
         return f"    {data_variable_name} = {data_variable_name}({function})\n"

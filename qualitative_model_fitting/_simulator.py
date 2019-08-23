@@ -9,7 +9,10 @@ from matplotlib.gridspec import GridSpec
 import matplotlib
 matplotlib.use('Qt5Agg')
 import seaborn as sns
-sns.set_context(context='talk')
+
+import logging
+logging.getLogger("matplotlib").setLevel(logging.CRITICAL)
+
 
 class TimeSeries:
     """
@@ -32,7 +35,6 @@ class TimeSeries:
         self.stop = stop
         self.steps = steps
 
-        print(self.inputs)
 
         # if isinstance(self.inputs, (dict, OrderedDict)):
         #     for k, v in self.inputs.items():
@@ -70,11 +72,11 @@ class TimeSeries:
     def simulate(self) -> dict:
         dct = OrderedDict()
         for condition_name, condition in self.inputs.items():
-            for i in ['inputs', 'obs']:
-                if i not in condition:
-                    raise ValueError(f'Every condition must have two keys: inputs and obs. {i} not found')
+            if not isinstance(condition, dict):
+                raise TypeError('Was expecting a nested dictionary that looks like this: '
+                                '{condition_name: {S=1, I=1}}. Instead, got'
+                                ' \n"{}"'.format(self.inputs))
             cond_inputs = condition['inputs']
-            cond_obs = condition['obs']
             # always reset the model before simulating in a loop
             self.model.reset()
             # set conditions
@@ -92,13 +94,16 @@ class TimeSeries:
 
 class _PlotterBase:
 
-    def __init__(self, data, plot_selection, conditions, subplot_titles={}, savefig=False,
+    def __init__(self, ts: TimeSeries, plot_selection: dict, conditions: list,
+                 subplot_titles={}, savefig=False,
                  plot_dir=os.path.abspath(''), fname=None, ncols=3, wspace=0.25, hspace=0.3,
                  figsize=(12, 7), legend_fontsize=12,
-                 legend_loc='best', subplots_adjust={}, **kwargs):
-        self.data = data
+                 legend_loc='best', subplots_adjust={},seaborn_context='talk',
+                 **kwargs):
+        sns.set_context(context=seaborn_context)
+        self.ts = ts
         self.plot_selection = plot_selection
-        self.conditions = conditions
+        self.conditions = [conditions] if isinstance(conditions, str) else conditions
         self.subplot_titles = subplot_titles
         self.fname = fname
         self.savefig = savefig
@@ -112,6 +117,8 @@ class _PlotterBase:
         self.subplots_adjust = subplots_adjust
         self.kwargs = kwargs
 
+        self.data = self._simulate()
+
         if not self.savefig:
             self.animation = False
 
@@ -122,6 +129,9 @@ class _PlotterBase:
         self._remainder = self._nplots % ncols
         if self._remainder > 0:
             self._num_rows += 1
+
+    def _simulate(self):
+        return self.ts.simulate()
 
     def _recursive_fname(self, zipped_inputs) -> str:
         """
@@ -164,7 +174,6 @@ class _PlotterBase:
             f.write(s)
 
         s = f"ffmpeg -f concat -safe 0 -r {fps} -i {tmp} {fname}"
-        print('final command', s)
         os.system(s)
         os.remove(tmp)
 
@@ -172,32 +181,33 @@ class _PlotterBase:
 class TimeSeriesPlotter(_PlotterBase):
 
     def plot(self):
-        # take care of title
         fig = plt.figure(figsize=self.figsize)
         gs = GridSpec(self._num_rows, self.ncols, wspace=self.wspace, hspace=self.hspace)
         count = 0
-        print(self.data)
         for k, v in self.plot_selection.items():
             ax = fig.add_subplot(gs[count])
             for cond in self.conditions:
                 data = self.data[cond]
                 for i in v:
-                    plt.plot(data.index, data[i], label=f'{cond}_{i}')
+                    plt.plot(
+                        data.index,
+                        data[i],
+                        label=f'{cond}_{i}' if len(self.conditions) != 1 else f'{i}'
+                    )
             plt.legend(loc=self.legend_loc, fontsize=self.legend_fontsize)
             plt.title(k)
             sns.despine(fig, top=True, right=True)
             count += 1
 
-        # plt.show()
-        # plt.suptitle(plot_suptitle)
+        # # plt.suptitle(plot_suptitle)
         plt.subplots_adjust(**self.subplots_adjust)
         if self.savefig:
             if not os.path.isdir(self.plot_dir):
                 os.makedirs(self.plot_dir)
+
             fname = os.path.join(self.plot_dir, self.fname)
             plt.savefig(fname, dpi=300, bbox_inches='tight')
             print('saved to {}'.format(fname))
-
+            return fname
         else:
             plt.show()
-        # return fname

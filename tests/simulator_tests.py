@@ -91,7 +91,7 @@ class TimeSeriesPlotterTests(unittest.TestCase):
         )
         self.ts = TimeSeries(MODEL1, self.yaml_input, 0, 10, 11)
 
-    def test(self):
+    def test_plot_1(self):
         plot_selection = dict(
             IRS1=['IRS1', 'IRS1', 'pIRS1']
         )
@@ -101,6 +101,22 @@ class TimeSeriesPlotterTests(unittest.TestCase):
             plot_selection,
             conditions,
             savefig=True,
+            fname='test_plot.png'
+        )
+        print(plotter.data)
+
+    def test_plot_2(self):
+        print(self.ts.simulate()['InsulinAndAA'].columns)
+        plot_selection = dict(
+            Akt=['Akt', 'pAkt'],
+            IRS1=['IRS1', 'IRS1a']
+        )
+        conditions = ['InsulinOnly']
+        plotter = TimeSeriesPlotter(
+            self.ts.simulate(),
+            plot_selection,
+            conditions,
+            savefig=False,
             fname='test_plot.png'
         )
         print(plotter.plot())

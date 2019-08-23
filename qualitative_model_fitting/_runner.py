@@ -1,7 +1,9 @@
+import logging
 from typing import Optional
 
 from qualitative_model_fitting import _suite, _results
 
+LOG = logging.getLogger(__name__)
 
 class _RunnerBase:
     """
@@ -42,9 +44,9 @@ class ManualRunner(_RunnerBase):
             tests = test_case.make_tests()
             results[test_case.__class__.__name__] = {}
             for i, (test_name, test_method) in enumerate(tests.items()):
-                print('name', test_case.__class__.__name__)
-                print('obs i', obs[i])
-                print('method out', test_method())
+                # LOG.debug(f'name', test_case.__class__.__name__)
+                # LOG.debug(f'obs i', obs[i])
+                # LOG.debug(f'method out', test_method())
                 results[test_case.__class__.__name__][obs[i]] = test_method()
                 results.data[test_case.__class__.__name__] = test_case.data
         print('results', results)

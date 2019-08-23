@@ -1,4 +1,7 @@
+import logging
 from qualitative_model_fitting import _case, _simulator, _suite, GLOBAL_TEST_SUITE
+import pandas as pd
+LOG = logging.getLogger(__name__)
 
 
 class TestFactory:
@@ -44,9 +47,15 @@ class TestFactory:
         """
         for condition_name, condition_dict in self.inputs.items():
             data = self.time_series_data[condition_name]
+            # with pd.option_context(
+            #         'display.max_rows', None,
+            #         'display.max_columns', None):
+            #     LOG.debug('\n{}'.format(data['IRS1a']))
             obs = condition_dict['obs']
             # automatically added to GLOBAL_TEST_SUITE by TestCaseMeta
+            LOG.debug(f'\n Defined a new type derived from TestCase called: {condition_name}\n')
             cls = type(condition_name, (_case.TestCase,), {'data': data, 'obs': obs})
+            # LOG.debug(f'\n Data associated with {condition_name} is:\n {data}\n')
             if self.suite is not None:
                 #  might be better to put the running code in Runner.
                 if self.suite.name == 'global_test_suite':

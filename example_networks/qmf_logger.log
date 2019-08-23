@@ -1,0 +1,373 @@
+DEBUG:qualitative_model_fitting._test_factory:
+ Defined a new type derived from TestCase called: InsulinOnly
+
+DEBUG:qualitative_model_fitting._test_factory:
+ Defined a new type derived from TestCase called: InsulinAndAA
+
+DEBUG:qualitative_model_fitting._case:
+Currently looking at "['IRS1a@t=0 < IRS1a@t=10', [3, 1, 4, 6, 3, 1, 4], ['IRS1a', '@t=', '0', '<', 'IRS1a', '@t=', '10']]"
+DEBUG:qualitative_model_fitting._case:
+The method to test this condition produced is: 
+ import logging
+import pandas as pd
+import numpy as np
+def test_statement_0(self):
+    LOG = logging.getLogger(__name__)
+    LOG.debug("The class is: InsulinOnly")
+    LOG.debug("statement is: IRS1a@t=0 < IRS1a@t=10")
+    clause1 = self.data['IRS1a']
+    clause1 = float(clause1.loc[0.0])
+
+    clause2 = self.data['IRS1a']
+    clause2 = float(clause2.loc[10.0])
+
+    boolean = clause1 < clause2
+    if isinstance(boolean, (pd.Series)) and len(boolean) > 1:
+        raise ValueError('The truth value of an array is ambiguous. Please use the any or all modifiers to clarify how you wish to evaluate test.')
+    LOG.debug(f'clause1 < clause2')
+    operator = '<'
+    LOG.debug('{} {} {}'.format(clause1, operator, clause2))
+    LOG.debug('output: ' + str(boolean))
+    return boolean
+
+
+
+DEBUG:qualitative_model_fitting._case:
+Currently looking at "['IRS1a@t=10 < IRS1a@t=20', [3, 1, 4, 6, 3, 1, 4], ['IRS1a', '@t=', '10', '<', 'IRS1a', '@t=', '20']]"
+DEBUG:qualitative_model_fitting._case:
+The method to test this condition produced is: 
+ import logging
+import pandas as pd
+import numpy as np
+def test_statement_1(self):
+    LOG = logging.getLogger(__name__)
+    LOG.debug("The class is: InsulinOnly")
+    LOG.debug("statement is: IRS1a@t=10 < IRS1a@t=20")
+    clause1 = self.data['IRS1a']
+    clause1 = float(clause1.loc[10.0])
+
+    clause2 = self.data['IRS1a']
+    clause2 = float(clause2.loc[20.0])
+
+    boolean = clause1 < clause2
+    if isinstance(boolean, (pd.Series)) and len(boolean) > 1:
+        raise ValueError('The truth value of an array is ambiguous. Please use the any or all modifiers to clarify how you wish to evaluate test.')
+    LOG.debug(f'clause1 < clause2')
+    operator = '<'
+    LOG.debug('{} {} {}'.format(clause1, operator, clause2))
+    LOG.debug('output: ' + str(boolean))
+    return boolean
+
+
+
+DEBUG:qualitative_model_fitting._case:
+Currently looking at "['IRS1a@t=20 < IRS1a@t=30', [3, 1, 4, 6, 3, 1, 4], ['IRS1a', '@t=', '20', '<', 'IRS1a', '@t=', '30']]"
+DEBUG:qualitative_model_fitting._case:
+The method to test this condition produced is: 
+ import logging
+import pandas as pd
+import numpy as np
+def test_statement_2(self):
+    LOG = logging.getLogger(__name__)
+    LOG.debug("The class is: InsulinOnly")
+    LOG.debug("statement is: IRS1a@t=20 < IRS1a@t=30")
+    clause1 = self.data['IRS1a']
+    clause1 = float(clause1.loc[20.0])
+
+    clause2 = self.data['IRS1a']
+    clause2 = float(clause2.loc[30.0])
+
+    boolean = clause1 < clause2
+    if isinstance(boolean, (pd.Series)) and len(boolean) > 1:
+        raise ValueError('The truth value of an array is ambiguous. Please use the any or all modifiers to clarify how you wish to evaluate test.')
+    LOG.debug(f'clause1 < clause2')
+    operator = '<'
+    LOG.debug('{} {} {}'.format(clause1, operator, clause2))
+    LOG.debug('output: ' + str(boolean))
+    return boolean
+
+
+
+DEBUG:qualitative_model_fitting._case:
+Currently looking at "['IRS1a@t=20 < IRS1a@t=40', [3, 1, 4, 6, 3, 1, 4], ['IRS1a', '@t=', '20', '<', 'IRS1a', '@t=', '40']]"
+DEBUG:qualitative_model_fitting._case:
+The method to test this condition produced is: 
+ import logging
+import pandas as pd
+import numpy as np
+def test_statement_3(self):
+    LOG = logging.getLogger(__name__)
+    LOG.debug("The class is: InsulinOnly")
+    LOG.debug("statement is: IRS1a@t=20 < IRS1a@t=40")
+    clause1 = self.data['IRS1a']
+    clause1 = float(clause1.loc[20.0])
+
+    clause2 = self.data['IRS1a']
+    clause2 = float(clause2.loc[40.0])
+
+    boolean = clause1 < clause2
+    if isinstance(boolean, (pd.Series)) and len(boolean) > 1:
+        raise ValueError('The truth value of an array is ambiguous. Please use the any or all modifiers to clarify how you wish to evaluate test.')
+    LOG.debug(f'clause1 < clause2')
+    operator = '<'
+    LOG.debug('{} {} {}'.format(clause1, operator, clause2))
+    LOG.debug('output: ' + str(boolean))
+    return boolean
+
+
+
+DEBUG:qualitative_model_fitting._case:
+Currently looking at "['IRS1a@t=0 < IRS1a@t=10', [3, 1, 4, 6, 3, 1, 4], ['IRS1a', '@t=', '0', '<', 'IRS1a', '@t=', '10']]"
+DEBUG:qualitative_model_fitting._case:
+The method to test this condition produced is: 
+ import logging
+import pandas as pd
+import numpy as np
+def test_statement_0(self):
+    LOG = logging.getLogger(__name__)
+    LOG.debug("The class is: InsulinOnly")
+    LOG.debug("statement is: IRS1a@t=0 < IRS1a@t=10")
+    clause1 = self.data['IRS1a']
+    clause1 = float(clause1.loc[0.0])
+
+    clause2 = self.data['IRS1a']
+    clause2 = float(clause2.loc[10.0])
+
+    boolean = clause1 < clause2
+    if isinstance(boolean, (pd.Series)) and len(boolean) > 1:
+        raise ValueError('The truth value of an array is ambiguous. Please use the any or all modifiers to clarify how you wish to evaluate test.')
+    LOG.debug(f'clause1 < clause2')
+    operator = '<'
+    LOG.debug('{} {} {}'.format(clause1, operator, clause2))
+    LOG.debug('output: ' + str(boolean))
+    return boolean
+
+
+
+DEBUG:qualitative_model_fitting._case:
+Currently looking at "['IRS1a@t=10 < IRS1a@t=20', [3, 1, 4, 6, 3, 1, 4], ['IRS1a', '@t=', '10', '<', 'IRS1a', '@t=', '20']]"
+DEBUG:qualitative_model_fitting._case:
+The method to test this condition produced is: 
+ import logging
+import pandas as pd
+import numpy as np
+def test_statement_1(self):
+    LOG = logging.getLogger(__name__)
+    LOG.debug("The class is: InsulinOnly")
+    LOG.debug("statement is: IRS1a@t=10 < IRS1a@t=20")
+    clause1 = self.data['IRS1a']
+    clause1 = float(clause1.loc[10.0])
+
+    clause2 = self.data['IRS1a']
+    clause2 = float(clause2.loc[20.0])
+
+    boolean = clause1 < clause2
+    if isinstance(boolean, (pd.Series)) and len(boolean) > 1:
+        raise ValueError('The truth value of an array is ambiguous. Please use the any or all modifiers to clarify how you wish to evaluate test.')
+    LOG.debug(f'clause1 < clause2')
+    operator = '<'
+    LOG.debug('{} {} {}'.format(clause1, operator, clause2))
+    LOG.debug('output: ' + str(boolean))
+    return boolean
+
+
+
+DEBUG:qualitative_model_fitting._case:
+Currently looking at "['IRS1a@t=20 < IRS1a@t=30', [3, 1, 4, 6, 3, 1, 4], ['IRS1a', '@t=', '20', '<', 'IRS1a', '@t=', '30']]"
+DEBUG:qualitative_model_fitting._case:
+The method to test this condition produced is: 
+ import logging
+import pandas as pd
+import numpy as np
+def test_statement_2(self):
+    LOG = logging.getLogger(__name__)
+    LOG.debug("The class is: InsulinOnly")
+    LOG.debug("statement is: IRS1a@t=20 < IRS1a@t=30")
+    clause1 = self.data['IRS1a']
+    clause1 = float(clause1.loc[20.0])
+
+    clause2 = self.data['IRS1a']
+    clause2 = float(clause2.loc[30.0])
+
+    boolean = clause1 < clause2
+    if isinstance(boolean, (pd.Series)) and len(boolean) > 1:
+        raise ValueError('The truth value of an array is ambiguous. Please use the any or all modifiers to clarify how you wish to evaluate test.')
+    LOG.debug(f'clause1 < clause2')
+    operator = '<'
+    LOG.debug('{} {} {}'.format(clause1, operator, clause2))
+    LOG.debug('output: ' + str(boolean))
+    return boolean
+
+
+
+DEBUG:qualitative_model_fitting._case:
+Currently looking at "['IRS1a@t=20 < IRS1a@t=40', [3, 1, 4, 6, 3, 1, 4], ['IRS1a', '@t=', '20', '<', 'IRS1a', '@t=', '40']]"
+DEBUG:qualitative_model_fitting._case:
+The method to test this condition produced is: 
+ import logging
+import pandas as pd
+import numpy as np
+def test_statement_3(self):
+    LOG = logging.getLogger(__name__)
+    LOG.debug("The class is: InsulinOnly")
+    LOG.debug("statement is: IRS1a@t=20 < IRS1a@t=40")
+    clause1 = self.data['IRS1a']
+    clause1 = float(clause1.loc[20.0])
+
+    clause2 = self.data['IRS1a']
+    clause2 = float(clause2.loc[40.0])
+
+    boolean = clause1 < clause2
+    if isinstance(boolean, (pd.Series)) and len(boolean) > 1:
+        raise ValueError('The truth value of an array is ambiguous. Please use the any or all modifiers to clarify how you wish to evaluate test.')
+    LOG.debug(f'clause1 < clause2')
+    operator = '<'
+    LOG.debug('{} {} {}'.format(clause1, operator, clause2))
+    LOG.debug('output: ' + str(boolean))
+    return boolean
+
+
+
+DEBUG:builtins:The class is: InsulinOnly
+DEBUG:builtins:statement is: IRS1a@t=0 < IRS1a@t=10
+DEBUG:builtins:clause1 < clause2
+DEBUG:builtins:0.0 < 4.859905989328156
+DEBUG:builtins:output: True
+DEBUG:builtins:The class is: InsulinOnly
+DEBUG:builtins:statement is: IRS1a@t=10 < IRS1a@t=20
+DEBUG:builtins:clause1 < clause2
+DEBUG:builtins:4.859905989328156 < 6.614714144941045
+DEBUG:builtins:output: True
+DEBUG:builtins:The class is: InsulinOnly
+DEBUG:builtins:statement is: IRS1a@t=20 < IRS1a@t=30
+DEBUG:builtins:clause1 < clause2
+DEBUG:builtins:6.614714144941045 < 7.698443757323339
+DEBUG:builtins:output: True
+DEBUG:builtins:The class is: InsulinOnly
+DEBUG:builtins:statement is: IRS1a@t=20 < IRS1a@t=40
+DEBUG:builtins:clause1 < clause2
+DEBUG:builtins:6.614714144941045 < 8.429801201186674
+DEBUG:builtins:output: True
+DEBUG:qualitative_model_fitting._case:
+Currently looking at "['IRS1a@t=0 < IRS1a@t=10', [3, 1, 4, 6, 3, 1, 4], ['IRS1a', '@t=', '0', '<', 'IRS1a', '@t=', '10']]"
+DEBUG:qualitative_model_fitting._case:
+The method to test this condition produced is: 
+ import logging
+import pandas as pd
+import numpy as np
+def test_statement_0(self):
+    LOG = logging.getLogger(__name__)
+    LOG.debug("The class is: InsulinAndAA")
+    LOG.debug("statement is: IRS1a@t=0 < IRS1a@t=10")
+    clause1 = self.data['IRS1a']
+    clause1 = float(clause1.loc[0.0])
+
+    clause2 = self.data['IRS1a']
+    clause2 = float(clause2.loc[10.0])
+
+    boolean = clause1 < clause2
+    if isinstance(boolean, (pd.Series)) and len(boolean) > 1:
+        raise ValueError('The truth value of an array is ambiguous. Please use the any or all modifiers to clarify how you wish to evaluate test.')
+    LOG.debug(f'clause1 < clause2')
+    operator = '<'
+    LOG.debug('{} {} {}'.format(clause1, operator, clause2))
+    LOG.debug('output: ' + str(boolean))
+    return boolean
+
+
+
+DEBUG:qualitative_model_fitting._case:
+Currently looking at "['IRS1a@t=20 > IRS1a@t=40', [3, 1, 4, 6, 3, 1, 4], ['IRS1a', '@t=', '20', '>', 'IRS1a', '@t=', '40']]"
+DEBUG:qualitative_model_fitting._case:
+The method to test this condition produced is: 
+ import logging
+import pandas as pd
+import numpy as np
+def test_statement_1(self):
+    LOG = logging.getLogger(__name__)
+    LOG.debug("The class is: InsulinAndAA")
+    LOG.debug("statement is: IRS1a@t=20 > IRS1a@t=40")
+    clause1 = self.data['IRS1a']
+    clause1 = float(clause1.loc[20.0])
+
+    clause2 = self.data['IRS1a']
+    clause2 = float(clause2.loc[40.0])
+
+    boolean = clause1 > clause2
+    if isinstance(boolean, (pd.Series)) and len(boolean) > 1:
+        raise ValueError('The truth value of an array is ambiguous. Please use the any or all modifiers to clarify how you wish to evaluate test.')
+    LOG.debug(f'clause1 > clause2')
+    operator = '>'
+    LOG.debug('{} {} {}'.format(clause1, operator, clause2))
+    LOG.debug('output: ' + str(boolean))
+    return boolean
+
+
+
+DEBUG:qualitative_model_fitting._case:
+Currently looking at "['IRS1a@t=0 < IRS1a@t=10', [3, 1, 4, 6, 3, 1, 4], ['IRS1a', '@t=', '0', '<', 'IRS1a', '@t=', '10']]"
+DEBUG:qualitative_model_fitting._case:
+The method to test this condition produced is: 
+ import logging
+import pandas as pd
+import numpy as np
+def test_statement_0(self):
+    LOG = logging.getLogger(__name__)
+    LOG.debug("The class is: InsulinAndAA")
+    LOG.debug("statement is: IRS1a@t=0 < IRS1a@t=10")
+    clause1 = self.data['IRS1a']
+    clause1 = float(clause1.loc[0.0])
+
+    clause2 = self.data['IRS1a']
+    clause2 = float(clause2.loc[10.0])
+
+    boolean = clause1 < clause2
+    if isinstance(boolean, (pd.Series)) and len(boolean) > 1:
+        raise ValueError('The truth value of an array is ambiguous. Please use the any or all modifiers to clarify how you wish to evaluate test.')
+    LOG.debug(f'clause1 < clause2')
+    operator = '<'
+    LOG.debug('{} {} {}'.format(clause1, operator, clause2))
+    LOG.debug('output: ' + str(boolean))
+    return boolean
+
+
+
+DEBUG:qualitative_model_fitting._case:
+Currently looking at "['IRS1a@t=20 > IRS1a@t=40', [3, 1, 4, 6, 3, 1, 4], ['IRS1a', '@t=', '20', '>', 'IRS1a', '@t=', '40']]"
+DEBUG:qualitative_model_fitting._case:
+The method to test this condition produced is: 
+ import logging
+import pandas as pd
+import numpy as np
+def test_statement_1(self):
+    LOG = logging.getLogger(__name__)
+    LOG.debug("The class is: InsulinAndAA")
+    LOG.debug("statement is: IRS1a@t=20 > IRS1a@t=40")
+    clause1 = self.data['IRS1a']
+    clause1 = float(clause1.loc[20.0])
+
+    clause2 = self.data['IRS1a']
+    clause2 = float(clause2.loc[40.0])
+
+    boolean = clause1 > clause2
+    if isinstance(boolean, (pd.Series)) and len(boolean) > 1:
+        raise ValueError('The truth value of an array is ambiguous. Please use the any or all modifiers to clarify how you wish to evaluate test.')
+    LOG.debug(f'clause1 > clause2')
+    operator = '>'
+    LOG.debug('{} {} {}'.format(clause1, operator, clause2))
+    LOG.debug('output: ' + str(boolean))
+    return boolean
+
+
+
+DEBUG:builtins:The class is: InsulinAndAA
+DEBUG:builtins:statement is: IRS1a@t=0 < IRS1a@t=10
+DEBUG:builtins:clause1 < clause2
+DEBUG:builtins:0.0 < 4.79830780536025
+DEBUG:builtins:output: True
+DEBUG:builtins:The class is: InsulinAndAA
+DEBUG:builtins:statement is: IRS1a@t=20 > IRS1a@t=40
+DEBUG:builtins:clause1 > clause2
+DEBUG:builtins:3.606560483356988 > 1.060623994244922
+DEBUG:builtins:output: True
+DEBUG:__main__:doing a log
