@@ -131,6 +131,7 @@ class _PlotterBase:
             self._num_rows += 1
 
     def _simulate(self):
+        print('ts', self.ts)
         return self.ts.simulate()
 
     def _recursive_fname(self, zipped_inputs) -> str:

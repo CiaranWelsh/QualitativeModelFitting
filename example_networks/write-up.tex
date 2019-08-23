@@ -27,6 +27,15 @@ The abstract text goes here.
 		\item The more RhebGTP present the more mTORC1 activation and S6K/4EBP phos \cite{Inoki2003}
 	\end{itemize}
 
+	\subsection{\cite{nobukini2005amino}}
+	\begin{itemize}
+		\item Figure 1B
+		\item S6K response to AA with mild phos but not to insulin. When combined, S6K has much larger phos response.
+		\item Akt S473 is phos basally with no change with addition of AA. Insulin causes massive phos of Akt but both AA and insulin together produce a weaker signal.
+		\item TSC2 is not phos by AA stim but is by insulin or both. Looks like AA provides no potentiation to the insulin signal.
+		\item
+	\end{itemize}
+
 
 	\cite{Inoki2006}
 
@@ -42,7 +51,20 @@ The abstract text goes here.
 \end{itemize}
 
 
-
+\subsection{Ideas for language extension}
+Define conditions within the language?
+Keywords and language useage for end user:
+\begin{itemize}
+	\item Oscillations x: Look for oscillations in x
+	\item transient increasing x: Look for a transient increasing curve
+	\item x@t=5 > x@t=10
+	\item max x@t=(0, 100) > 50
+	\item
+	\item define condition name {Insulin: 1, AA: 0}
+	\item define condition combinations name {Insulin: 1, AA: 0}
+	\item Then to reference the condition:
+	\item all x[name]@t=(0,100) > max x[other_name]@t=(0, 100)
+\end{itemize}
 
 
 
