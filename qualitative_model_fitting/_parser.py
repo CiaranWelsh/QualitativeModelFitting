@@ -39,7 +39,6 @@ class _Parser:
 
     def _to_df(self):
         s = pd.DataFrame(self._statement)
-        print(s)
         s.columns = ['statement']
         e, m = self._encode_statements()
         e = pd.DataFrame([e]).transpose()
@@ -65,6 +64,7 @@ class _Encoder:
     _function_pattern = '|'.join(_function_pattern)
 
     _text_pattern = '\A(?!\d+)(\w+)(?=[@+/*-]*)'
+    _condition_pattern = '\A\[(.*)\]'
     _digit_pattern = '\A(\d+)'
     _interval_pattern = '\A(\(\d*[, ]+\d*\))'
 
@@ -92,6 +92,7 @@ class _Encoder:
     INTERVAL = 5
     OPERATOR = 6
     MATH_OPERATOR = 7
+    CONDITION = 8
 
     labels = {
         'time_symbol': 1,
@@ -101,6 +102,7 @@ class _Encoder:
         'interval': 5,
         'mathematical_operator': 6,
         'math_operator': 7,
+        'condition': 8,
     }
 
     vocab = {
@@ -111,6 +113,7 @@ class _Encoder:
         _operator_pattern: OPERATOR,
         _math_operator_pattern: MATH_OPERATOR,
         _time_symbol_pattern: TIME_SYMBOL_NUMBER,
+        _condition_pattern: CONDITION
     }
 
     valid_combs = {

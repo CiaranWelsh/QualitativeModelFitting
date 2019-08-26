@@ -182,15 +182,15 @@ TEST_INPUT1 = OrderedDict(
             Rapamycin=0
         ),
         obs=[
-            'IRS1a@t=10 > Akt@t=10',
-            'IRS1@t=35 == Akt@t=65',
-            'sum IRS1@t=(68,78) - 43 != 94',
-            'all IRS1@t=(51,65) >= mean IRS1@t=(13,48)',
-            'any IRS1@t=(51,65) >= mean IRS1@t=(13,48)',
-            'all IRS1@t=(72,79)-74 == IRS1@t=39',
-            'IRS1@t=13 > all IRS1@t=(26,51)',
-            'IRS1@t=13 > any IRS1@t=(26,51)',
-            'mean IRS1@t=(17,62) >= 28-IRS1@t=97',
+            'IRS1a[InsulinOnly]@t=10 > Akt[InsulinOnly]@t=10',
+            'IRS1[InsulinOnly]@t=35 == Akt[InsulinOnly]@t=65',
+            'sum IRS1[InsulinOnly]@t=(68,78) - 43 != 94',
+            'all IRS1[InsulinOnly]@t=(51,65) >= mean IRS1[InsulinOnly]@t=(13,48)',
+            'any IRS1[InsulinOnly]@t=(51,65) >= mean IRS1[InsulinOnly]@t=(13,48)',
+            'all IRS1[InsulinOnly]@t=(72,79)-74 == IRS1[InsulinOnly]@t=39',
+            'IRS1[InsulinOnly]@t=13 > all IRS1[InsulinOnly]@t=(26,51)',
+            'IRS1[InsulinOnly]@t=13 > any IRS1[InsulinOnly]@t=(26,51)',
+            'mean IRS1[InsulinOnly]@t=(17,62) >= 28-IRS1[InsulinOnly]@t=97',
         ]
     )
 )
@@ -203,8 +203,8 @@ TEST_INPUT2 = OrderedDict(
             Rapamycin=0
         ),
         obs=[
-            'IRS1a@t=10 > Akt@t=10',
-            'IRS1@t=35 == Akt@t=65',
+            'IRS1a[InsulinOnly]@t=10 > Akt[InsulinOnly]@t=10',
+            'IRS1[InsulinOnly]@t=35 == Akt[InsulinOnly]@t=65',
         ]
     ),
     InsulinAndRapamycin=OrderedDict(
@@ -214,8 +214,9 @@ TEST_INPUT2 = OrderedDict(
             Rapamycin=1
         ),
         obs=[
-            'IRS1a@t=10 > Akt@t=10',
-            'IRS1@t=35 == Akt@t=65',
+            'IRS1a[InsulinAndRapamycin]@t=10 > Akt[InsulinOnly]@t=10',
+            'IRS1[InsulinAndRapamycin]@t=35 == Akt[InsulinOnly]@t=65',
+            'IRS1[InsulinAndRapamycin]@t=35 == Akt[InsulinOnly]@t=65',
         ]
     )
 )

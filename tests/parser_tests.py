@@ -5,7 +5,7 @@ from tests import TEST_INPUT1
 from qualitative_model_fitting._parser import _Parser
 
 
-class RuleTests(unittest.TestCase):
+class ParserTests(unittest.TestCase):
 
     def setUp(self) -> None:
         pass

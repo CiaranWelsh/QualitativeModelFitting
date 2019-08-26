@@ -46,7 +46,7 @@ class TestFactory:
 
         """
         for condition_name, condition_dict in self.inputs.items():
-            data = self.time_series_data[condition_name] 
+            data = self.time_series_data
             # with pd.option_context(
             #         'display.max_rows', None,
             #         'display.max_columns', None):

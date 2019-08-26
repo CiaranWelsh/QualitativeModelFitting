@@ -117,3 +117,6 @@ if __name__ == '__main__':
     print(res.to_df())
 
     run_timeseries(inputs, ['InsulinAndAA'])
+
+    would SQL suffice as a language for my purposes? Might be clunky.
+    
