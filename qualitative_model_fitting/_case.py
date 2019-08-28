@@ -4,7 +4,7 @@ from collections import OrderedDict
 import pandas as pd
 
 from qualitative_model_fitting import _suite, GLOBAL_TEST_SUITE
-from qualitative_model_fitting._parser import _Parser
+from qualitative_model_fitting._parser import Parser
 
 LOG = logging.getLogger(__name__)
 
