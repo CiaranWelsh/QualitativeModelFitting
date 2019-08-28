@@ -7,10 +7,12 @@ from collections import OrderedDict
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 import matplotlib
+
 matplotlib.use('Qt5Agg')
 import seaborn as sns
 
 import logging
+
 logging.getLogger("matplotlib").setLevel(logging.CRITICAL)
 
 
@@ -34,25 +36,13 @@ class TimeSeries:
         self.start = start
         self.stop = stop
         self.steps = steps
-
-
-        # if isinstance(self.inputs, (dict, OrderedDict)):
-        #     for k, v in self.inputs.items():
-        #         if not isinstance(v, dict):
-        #             raise ValueError('If using dict type for inputs argument, it '
-        #                              ' should be a nested dictionary. Got {} of type {}'.format(
-        #                 v, type(v)
-        #             )
-        #             )
-        # if isinstance(self.inputs, str):
-        #     if not os.path.isfile(self.inputs):
-        #         raise ValueError('If using str type for inputs argument, must be a str pointing '
-        #                          'to a yaml file on disk')
-        #     self.inputs = self._read_yaml()
-        # else:
-        #     raise ValueError('inputs argument should be (dict, str). Got "{}"'.format(type(self.inputs)))
-
         self.model = self._load_model()
+
+        nested_flag = False
+        for k, v in self.inputs.items():
+            if isinstance(v, dict):
+                nested_flag = True
+        self.nested_flag = nested_flag
 
     def _read_yaml(self):
         with open(self.inputs, 'r') as f:
@@ -69,27 +59,49 @@ class TimeSeries:
             setattr(self.model, k, v)
         return self.model
 
-    def simulate(self) -> dict:
-        dct = OrderedDict()
-        for condition_name, condition in self.inputs.items():
-            if not isinstance(condition, dict):
+    def simulate(self):
+        if self.nested_flag:
+            return self._simulate_nested()
+        else:
+            return self._simulate_non_nested()
+
+    def _simulate_nested(self) -> dict:
+        """
+        _simulate_non_nested time series from nested input
+        Returns:
+
+        """
+        for k, v in self.inputs.items():
+            if not isinstance(v, dict):
                 raise TypeError('Was expecting a nested dictionary that looks like this: '
                                 '{condition_name: {S=1, I=1}}. Instead, got'
                                 ' \n"{}"'.format(self.inputs))
-            cond_inputs = condition['inputs']
+        dct = OrderedDict()
+        for condition_name, condition_vals in self.inputs.items():
             # always reset the model before simulating in a loop
-            self.model.reset()
-            # set conditions
-            self.model = self._update_initial_conditions(cond_inputs)
-            globals = dict(zip(self.model.getGlobalParameterIds(), self.model.getGlobalParameterValues()))
-            self.model.timeCourseSelections += list(globals.keys())
-            results = self.model.simulate(self.start, self.stop, self.steps)
-            colnames = [i.replace('[', '').replace(']', '') for i in results.colnames]
-            results = pd.DataFrame(results, columns=colnames)
-            results.set_index('time', inplace=True)
+            results = TimeSeries(self.ant_str, condition_vals, self.start, self.stop, self.steps).simulate()
             dct[condition_name] = results
 
         return dct
+
+    def _simulate_non_nested(self) -> dict:
+        # always reset the model before simulating in a loop
+        self.model.reset()
+        # set conditions
+        self.model = self._update_initial_conditions(self.inputs)
+        globals = dict(
+            zip(
+                self.model.getGlobalParameterIds(),
+                self.model.getGlobalParameterValues()
+            )
+        )
+        self.model.timeCourseSelections += list(globals.keys())
+        results = self.model.simulate(self.start, self.stop, self.steps)
+        colnames = [i.replace('[', '').replace(']', '') for i in results.colnames]
+        results = pd.DataFrame(results, columns=colnames)
+        results.set_index('time', inplace=True)
+
+        return results
 
 
 class _PlotterBase:
@@ -98,7 +110,7 @@ class _PlotterBase:
                  subplot_titles={}, savefig=False,
                  plot_dir=os.path.abspath(''), fname=None, ncols=3, wspace=0.25, hspace=0.3,
                  figsize=(12, 7), legend_fontsize=12,
-                 legend_loc='best', subplots_adjust={},seaborn_context='talk',
+                 legend_loc='best', subplots_adjust={}, seaborn_context='talk',
                  **kwargs):
         sns.set_context(context=seaborn_context)
         self.ts = ts
@@ -132,7 +144,7 @@ class _PlotterBase:
 
     def _simulate(self):
         print('ts', self.ts)
-        return self.ts.simulate()
+        return self.ts._simulate_non_nested()
 
     def _recursive_fname(self, zipped_inputs) -> str:
         """
@@ -160,7 +172,7 @@ class _PlotterBase:
 
     def animate(self, fname, ext='mp4', ovewrite=False, fps=8):
         if not hasattr(self, 'files_'):
-            raise ValueError('must simulate files first')
+            raise ValueError('must _simulate_non_nested files first')
         # files_str = "' '".join(self.files_)
         fname = f'{fname}.{ext}'
 

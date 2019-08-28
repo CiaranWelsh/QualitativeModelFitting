@@ -1,5 +1,5 @@
 import tellurium as te
-from qualitative_model_fitting._simulator import TimeSeries, TimeSeriesPlotter
+from qualitative_model_fitting._simulator_old import TimeSeries, TimeSeriesPlotter
 import matplotlib.pyplot as plt
 import seaborn
 seaborn.set_context('talk')

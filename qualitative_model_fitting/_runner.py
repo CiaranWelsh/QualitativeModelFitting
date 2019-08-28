@@ -1,63 +1,69 @@
 import logging
-from typing import Optional
 
-from qualitative_model_fitting import _suite, _results
+from ._simulator import TimeSeries
+from ._interpreter import _Clause, _Statement
 
 LOG = logging.getLogger(__name__)
 
-class _RunnerBase:
-    """
-    Base class for Runner types
-    """
 
-    def __init__(self, suite: Optional[_suite.Suite]):
-        """
+class ManualRunner:
 
-        Args:
-            suite: A Suite of tests to run.
-        """
-        self.suite = suite
+    def __init__(self, model, ts_definition, obs):
+        self.ant_str = model
+        self.ts_definition = ts_definition
+        self.obs = obs
 
+    def run(self):
+        self.data = self._run_timeseries()
+        result = {}
+        for statement in self.obs:
+            result[str(statement)] = self._statement(statement)
+        return result
 
-class ManualRunner(_RunnerBase):
-    """
-    Runner for the manual interface. No optimization required.
-    """
+    def _run_timeseries(self):
+        dct = {}
+        for ts in self.ts_definition:
+            conditions = ts['conditions']
+            start = ts['integration_settings']['start']
+            stop = ts['integration_settings']['stop']
+            step = ts['integration_settings']['step']
+            data = TimeSeries(self.ant_str, conditions, int(start), int(stop), int(step)).simulate()
+            dct[ts['name']] = data
+        return dct
 
-    def run_tests(self) -> _results.DictResults:
-        """
-        Run the results in test suite and store the results in a
-        DictResults object.
+    def _statement(self, statement):
+        if not isinstance(statement, _Statement):
+            raise TypeError
+        name = statement.name
+        clause1_value = self._clause(statement.clause1)
+        clause2_value = self._clause(statement.clause2)
+        op_func = statement.operator.operator
+        return {'truth': op_func(clause1_value, clause2_value)}
 
-        Returns:
+    def _clause(self, clause):
+        if not isinstance(clause, _Clause):
+            raise TypeError
+        condition = clause.model_entity.condition
+        if condition not in self.data.keys():
+            raise ValueError(f'Condition {condition} has been referenced'
+                             f' but it does not exist. These are your defined '
+                             f'condition names: {self.data.keys()}')
 
-        """
+        name = clause.model_entity.component_name
+        if name not in self.data[condition].columns:
+            raise ValueError(f'model entity {name} not found. '
+                             f'These are valid model entities: {list(self.data[condition].columns)}')
 
-        if self.suite.isempty():
-            raise ValueError('Test suite is empty')
+        time = clause.model_entity.time
+        time = eval(time)
 
-        results = _results.DictResults()
-        for test_case in self.suite:
-            test_case = test_case()
-            # results.obs[test_case] = test_case.obs
-            obs = test_case.obs
-            tests = test_case.make_tests()
-            results[test_case.__class__.__name__] = {}
-            for i, (test_name, test_method) in enumerate(tests.items()):
-                # LOG.debug(f'name', test_case.__class__.__name__)
-                # LOG.debug(f'obs i', obs[i])
-                # LOG.debug(f'method out', test_method())
-                results[test_case.__class__.__name__][obs[i]] = test_method()
-                results.data[test_case.__class__.__name__] = test_case.data
-        print('results', results)
-        return results
+        clause_value = self.data[condition][name]
+        if isinstance(time, tuple):
+            clause_value = clause_value.loc[time[0]: time[1]]
+        else:
+            clause_value = clause_value.loc[time]
 
+        if clause.modifier:
+            clause_value = clause.modifier(clause_value)
 
-class AutomaticRunner(_RunnerBase):
-    """
-    Runner for automatic interface. Not yet implemented
-    but eventually will modify parameters to satisfy conditions
-    """
-
-    def __init__(self):
-        raise NotImplementedError
+        return clause_value

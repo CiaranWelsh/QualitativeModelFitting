@@ -19,20 +19,17 @@ class Parser:
     name                    : 
     OPERATOR                : ">" 
                             | "<" 
-                            | "=" 
+                            | "==" 
                             | "!="
                             | "<="
                             | ">="
-    
-    
-    //"condition" SYMBOL "{" WORD "=" DIGIT+ "}"
-    clause1         : [FUNC] model_entity
-    clause2         : [FUNC] model_entity
-    model_entity    : SYMBOL "[" CONDITION "]" _TIME_SYMBOL (POINT_TIME| INTERVAL_TIME) 
-    FUNC            : "mean"|"all"|"any"|"min"|"max"
-    _TIME_SYMBOL    : "@t=" 
-    POINT_TIME      :  DIGIT+
-    INTERVAL_TIME   : "(" DIGIT+ [WS]* "," [WS]* DIGIT + ")"
+    clause1                 : [FUNC] model_entity
+    clause2                 : [FUNC] model_entity
+    model_entity            : SYMBOL "[" CONDITION "]" _TIME_SYMBOL (POINT_TIME| INTERVAL_TIME) 
+    FUNC                    : "mean"|"all"|"any"|"min"|"max"
+    _TIME_SYMBOL            : "@t=" 
+    POINT_TIME              :  DIGIT+
+    INTERVAL_TIME           : "(" DIGIT+ [WS]* "," [WS]* DIGIT + ")"
     SYMBOL                  : /[A-Za-z0-9]+/
     OBS_NAME                : SYMBOL
     CONDITION               : SYMBOL

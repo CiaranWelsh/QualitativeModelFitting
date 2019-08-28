@@ -1,13 +1,13 @@
 import os, glob
-import pandas
+import pandas as pd
+import numpy as np
 from lark import Tree, Token
 import operator
 
 
 class Interpreter:
 
-    def __init__(self, ant_str, tree):
-        self.ant_str = ant_str
+    def __init__(self, tree):
         self.tree = tree
 
     def get_timeseries_blocks(self):
@@ -24,7 +24,11 @@ class Interpreter:
         obs = self.observation_block(self.get_observation_block())
         return ts_list, obs
 
-    def timeseries_block(self, block):
+    @staticmethod
+    def timeseries_block(block):
+        name = block.children[0]
+        assert name.type == 'SYMBOL'
+        name = name.value
         args = [i for i in block.find_data('ts_arg_list')]
         names = []
         amounts = []
@@ -54,25 +58,24 @@ class Interpreter:
             if v == [] or v is None:
                 raise ValueError
 
-        return dict(conditions=ts_args, integration_settings=integration_settings)
+        return dict(name=name, conditions=ts_args, integration_settings=integration_settings)
 
-    def observation_block(self, block):
+    @staticmethod
+    def observation_block(block):
         block = [i for i in block]
         if len(block) != 1:
             raise SyntaxError('There must be exactly 1'
                               ' observation block but found "{}"'.format(len(block)))
         block = block[0]
-        # filter statements
-        statements = {}
         statement_list = [i for i in block.find_data('statement')]
         new_statement_list = []
         for state in statement_list:
-            s = Statement(state)
+            s = _Statement(state)
             new_statement_list.append(s)
         return new_statement_list
 
 
-class Statement:
+class _Statement:
 
     def __init__(self, statement):  # clause1, op, clause2, name=None):
         self.statement = statement
@@ -82,32 +85,49 @@ class Statement:
         # first element should be the name
         name = self.statement.children[0]
         assert name.type == 'OBS_NAME'
-        return name
+        return name.value
 
     @property
     def clause1(self):
         cl1 = self.statement.children[1]
         assert cl1.data == 'clause1'
-        return Clause(cl1)
+        return _Clause(cl1)
 
     @property
     def operator(self):
-        return Operator(self.statement.children[2])
+        return _Operator(self.statement.children[2])
 
     @property
     def clause2(self):
         cl2 = self.statement.children[3]
         assert cl2.data == 'clause2'
-        return Clause(cl2)
+        return _Clause(cl2)
+
+    def __str__(self):
+        return f'{self.name}: {self.clause1} {self.operator} {self.clause2}'
+
+    def __repr__(self):
+        return self.__str__()
 
 
-class Clause:
+class _Clause:
 
     def __init__(self, clause):  # model_component, condition, time, modifiers=None):
         self.clause = clause
 
     @property
     def modifier(self):
+        function = None
+        for i in self.clause.children:
+            if isinstance(i, Tree):
+                continue
+            elif isinstance(i, Token):
+                if i.type == 'FUNC':
+                    function = getattr(np, i.value)
+                    break  # only allows 1
+        return function
+
+    def modifier_as_str(self):
         function = None
         for i in self.clause.children:
             if isinstance(i, Tree):
@@ -124,13 +144,22 @@ class Clause:
         for i in self.clause.children:
             if isinstance(i, Tree):
                 if i.data == 'model_entity':
-                    me = ModelEntity(i)
+                    me = _ModelEntity(i)
             else:
                 continue
         return me
 
+    def __str__(self):
+        if self.modifier:
+            return f'{self.modifier_as_str()} {str(self.model_entity)}'
+        else:
+            return f'{str(self.model_entity)}'
 
-class ModelEntity:
+    def __repr__(self):
+        return self.__str__()
+
+
+class _ModelEntity:
     time_type = None
 
     def __init__(self, model_entity):
@@ -159,8 +188,14 @@ class ModelEntity:
             raise SyntaxError
         return time.value
 
+    def __str__(self):
+        return f'{self.component_name}[{self.condition}]@t={self.time}'
 
-class Operator:
+    def __repr__(self):
+        return self.__str__()
+
+
+class _Operator:
 
     def __init__(self, op):
         self.op = op
@@ -181,3 +216,9 @@ class Operator:
             return operator.eq
         else:
             raise SyntaxError(self.op)
+
+    def __str__(self):
+        return self.op
+
+    def __repr__(self):
+        return self.__str__()
