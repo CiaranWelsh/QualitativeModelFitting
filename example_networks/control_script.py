@@ -69,54 +69,59 @@ if __name__ == '__main__':
     all_inputs = {i: 0 for i in all_inputs}
     all_inputs['Insulin'] = 1
 
-
-
-
-    inputs = dict(
-        NullCondition=dict(
-            inputs=dict(),
-            obs=[
-                'all pS6K@t=(0, 100) == 0',
-            ],
-        ),
-        InsulinOnly=dict(
-            inputs=dict(
-                Insulin=1,
-            ),
-            obs=[
-                # IRS1 conditions
-                'IRS1a@t=0 < IRS1a@t=10',
-                'IRS1a@t=10 < IRS1a@t=20',
-                'IRS1a@t=20 < IRS1a@t=30',
-                'IRS1a@t=20 < IRS1a@t=40',
-                # S6K conditions
-                # 'pS6K@t=30 > '
-            ]
-        ),
-        AAOnly=dict(
-            inputs=dict(
-                AA=1
-            ),
-            obs=[
-
-            ]
-        ),
-        InsulinAndAA=dict(
-            inputs=dict(
-                Insulin=1,
-                AA=1
-            ),
-            obs=[
-                'IRS1a@t=0 < IRS1a@t=10',
-                'IRS1a@t=20 > IRS1a@t=40'
-            ]
-        ),
-    )
-
-    res = qmf.manual_interface(model_string, inputs, 0, 100, 101)
-    print(res.to_df())
-
-    run_timeseries(inputs, ['InsulinAndAA'])
-
-    would SQL suffice as a language for my purposes? Might be clunky.
+    input_string = f"""
+    timeseries Null {{}} 0 100 101
     
+    observation
+        pS6K[Null]
+    """
+
+
+
+
+    # inputs = dict(
+    #     NullCondition=dict(
+    #         inputs=dict(),
+    #         obs=[
+    #             'all pS6K@t=(0, 100) == 0',
+    #         ],
+    #     ),
+    #     InsulinOnly=dict(
+    #         inputs=dict(
+    #             Insulin=1,
+    #         ),
+    #         obs=[
+    #             # IRS1 conditions
+    #             'IRS1a@t=0 < IRS1a@t=10',
+    #             'IRS1a@t=10 < IRS1a@t=20',
+    #             'IRS1a@t=20 < IRS1a@t=30',
+    #             'IRS1a@t=20 < IRS1a@t=40',
+    #             # S6K conditions
+    #             # 'pS6K@t=30 > '
+    #         ]
+    #     ),
+    #     AAOnly=dict(
+    #         inputs=dict(
+    #             AA=1
+    #         ),
+    #         obs=[
+    #
+    #         ]
+    #     ),
+    #     InsulinAndAA=dict(
+    #         inputs=dict(
+    #             Insulin=1,
+    #             AA=1
+    #         ),
+    #         obs=[
+    #             'IRS1a@t=0 < IRS1a@t=10',
+    #             'IRS1a@t=20 > IRS1a@t=40'
+    #         ]
+    #     ),
+    # )
+
+    res = qmf.manual_interface(model_string, input_string)
+    print(res)
+
+    # run_timeseries(inputs, ['InsulinAndAA'])
+

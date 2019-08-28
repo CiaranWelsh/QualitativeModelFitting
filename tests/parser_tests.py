@@ -28,11 +28,12 @@ class MyTestCase(unittest.TestCase):
         observation 
             Obs1: Akt[Insulin]@t=0 > Akt[InsulinAndRapa]@t=10
             Obs2: mean Akt[Insulin]@t=(0,100) > Akt[InsulinAndRapa]@t=10
+            Obs3: all Akt[InsulinAndRapa]@t=(0, 100) == 0
         """
 
         expected = """start
   block
-    timeseries_block
+    _timeseries_block
       Insulin
       ts_arg
         Insulin
@@ -44,7 +45,7 @@ class MyTestCase(unittest.TestCase):
       100
       101
   block
-    timeseries_block
+    _timeseries_block
       InsulinAndRapa
       ts_arg
         Insulin

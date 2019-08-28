@@ -6,26 +6,42 @@ import operator
 
 
 class Interpreter:
+    """
+    Read a Lark tree into a set of classes.
+    """
 
-    def __init__(self, tree):
+    def __init__(self, tree: Tree):
+        """
+
+        Args:
+            tree:
+        """
         self.tree = tree
 
-    def get_timeseries_blocks(self):
-        return self.tree.find_data('timeseries_block')
+    def _get_timeseries_blocks(self):
+        return self.tree.find_data('_timeseries_block')
 
-    def get_observation_block(self):
+    def _get_observation_block(self):
         return self.tree.find_data('observation_block')
 
     def interpret(self):
         ts_list = []
-        for ts_block in self.get_timeseries_blocks():
-            ts_list.append(self.timeseries_block(ts_block))
+        for ts_block in self._get_timeseries_blocks():
+            ts_list.append(self._timeseries_block(ts_block))
 
-        obs = self.observation_block(self.get_observation_block())
+        obs = self.observation_block(self._get_observation_block())
         return ts_list, obs
 
     @staticmethod
-    def timeseries_block(block):
+    def _timeseries_block(block):
+        """
+        Intepret the time series block
+        Args:
+            block:
+
+        Returns:
+
+        """
         name = block.children[0]
         assert name.type == 'SYMBOL'
         name = name.value
@@ -62,6 +78,14 @@ class Interpreter:
 
     @staticmethod
     def observation_block(block):
+        """
+        interpret the observation block
+        Args:
+            block:
+
+        Returns:
+
+        """
         block = [i for i in block]
         if len(block) != 1:
             raise SyntaxError('There must be exactly 1'

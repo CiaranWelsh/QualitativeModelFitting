@@ -1,3 +1,6 @@
+#todo get the ER in the model with some observations
+
+
 functions = """
 
 function MM(km, Vmax, S)

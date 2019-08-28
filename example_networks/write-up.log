@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.27)  23 AUG 2019 14:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.27)  28 AUG 2019 23:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -54,8 +54,7 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip44
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count87
-)
-(/home/ncw135/Documents/QualitativeModelFitting/out/write-up.aux)
+) (./write-up.aux)
 \openout1 = `write-up.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
@@ -156,132 +155,103 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 20.
 
-
-Package natbib Warning: Citation `Patursky-Polischuk2014' on page 1 undefined o
-n input line 20.
-
-
-Package natbib Warning: Citation `lacher2010rheb' on page 1 undefined on input 
-line 21.
-
-
-Package natbib Warning: Citation `lacher2010rheb' on page 1 undefined on input 
-line 22.
-
-
-Package natbib Warning: Citation `Inoki2003' on page 1 undefined on input line 
-24.
-
-
-Package natbib Warning: Citation `Inoki2003' on page 1 undefined on input line 
-25.
-
-
-Package natbib Warning: Citation `Inoki2003' on page 1 undefined on input line 
-27.
-
-
 Overfull \hbox (1.59671pt too wide) in paragraph at lines 27--28
 []\OT1/cmr/m/n/10 The more Rhe-bGTP present the more mTORC1 ac-ti-va-tion and S
 6K/4EBP
  []
 
-
-Package natbib Warning: Citation `nobukini2005amino' on page 1 undefined on inp
-ut line 30.
-
-
-Package natbib Warning: Citation `Inoki2006' on page 1 undefined on input line 
-33.
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-./write-up.tex:59: Missing $ inserted.
+(./write-up.bbl
+./write-up.bbl:16: Missing $ inserted.
 <inserted text> 
                 $
-l.59 	\item all x[name]@t=(0,100) > max x[other_
-                                                name]@t=(0, 100)
+l.16   ffile:///home/ncw135/downloads/10.1038_
+                                              ncb839.ris or cell proliferati...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 59.
+(Font)              <7> on input line 16.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 59.
+(Font)              <5> on input line 16.
 
-./write-up.tex:60: LaTeX Error: Command \end{itemize} invalid in math mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.60 \end{itemize}
-                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+LaTeX Font Warning: Command \em invalid in math mode on input line 18.
 
 
-./write-up.tex:60: LaTeX Error: Something's wrong--perhaps a missing \item.
+./write-up.bbl:18: LaTeX Error: Command \itshape invalid in math mode.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.60 \end{itemize}
-                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+l.18 \newblock {\em
+                    Oncogene}, 29(50):6543, 2010.
+Please use the math alphabet \mathit instead of the \itshape command. 
 
-
-./write-up.tex:60: LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.60 \end{itemize}
-                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-./write-up.tex:60: Missing $ inserted.
+./write-up.bbl:19: Missing $ inserted.
 <inserted text> 
                 $
-l.60 \end{itemize}
-                  
+l.19 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./write-up.bbl:19: Missing } inserted.
+<inserted text> 
+                }
+l.19 
+     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-No file write-up.bbl.
 
-Package natbib Warning: There were undefined citations.
+Underfull \hbox (badness 1688) in paragraph at lines 12--19
+[]\OT1/cmr/m/n/10 MD Lacher, R Pincheira, Z Zhu, B Camoretti-Mercado, M Matli,
+ []
 
-[2] (/home/ncw135/Documents/QualitativeModelFitting/out/write-up.aux) ) 
+
+Overfull \hbox (147.6388pt too wide) in paragraph at lines 12--19
+\OT1/cmr/m/n/10 ffile:///home/ncw135/downloads/10.1038$[]\OML/cmm/m/it/10 cb\OT
+1/cmr/m/n/10 839\OML/cmm/m/it/10 :risorcellproliferationandtumorigenesis: []; \
+OT1/cmr/m/n/10 29(50) :
+ []
+
+./write-up.bbl:19: Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.19 
+     
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]) [2] (./write-up.aux) ) 
 Here is how much of TeX's memory you used:
- 1802 strings out of 494847
- 25331 string characters out of 6179080
- 79450 words of memory out of 5000000
- 5126 multiletter control sequences out of 15000+600000
- 9117 words of font info for 32 fonts, out of 8000000 for 9000
+ 1806 strings out of 494847
+ 25115 string characters out of 6179080
+ 79495 words of memory out of 5000000
+ 5129 multiletter control sequences out of 15000+600000
+ 8848 words of font info for 31 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 41i,6n,26p,275b,186s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb>
-Output written on /home/ncw135/Documents/QualitativeModelFitting/out/write-up.p
-df (2 pages, 104859 bytes).
+ 41i,6n,25p,275b,211s stack positions out of 5000i,500n,10000p,200000b,80000s
+</u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ti10.pfb>
+Output written on write-up.pdf (2 pages, 111082 bytes).
 PDF statistics:
  51 PDF objects out of 1000 (max. 8388607)
  36 compressed objects within 1 object stream
