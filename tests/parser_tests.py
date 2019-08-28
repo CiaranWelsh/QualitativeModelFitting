@@ -1,27 +1,87 @@
 import unittest
 
-from tests import TEST_INPUT1
+from qualitative_model_fitting._parser import Parser
 
-from qualitative_model_fitting._parser import _Parser
+tests = [
+    "word > other",
+    "IRS1a[condition]@t=10 > Akt[condition]@t=10"
+]
 
 
-class RuleTests(unittest.TestCase):
+class MyTestCase(unittest.TestCase):
 
     def setUp(self) -> None:
-        pass
+        self.parser = Parser()
 
-    def test_encoder(self):
-        input = TEST_INPUT1['InsulinOnly']['obs']
-        p = _Parser(input)
-        actual = p.statements.iloc[:3, 1].tolist()
+    def test_something(self):
+        string = """
+        timeseries InsulinOnly {
+            Insulin=1, Rapamycin=0, AA=0
+        } 0, 100, 101
+        timeseries InsulinAndRapa {
+            Insulin=1, Rapamycin=1
+        } 0, 100, 101
+        timeseries InsulinAndRapaAndAA {
+            Insulin=1, Rapamycin=1, AA=1.0
+        } 0, 100, 101
+        
+        observation 
+            Obs1: Akt[Insulin]@t=0 > Akt[InsulinAndRapa]@t=10
+            Obs2: mean Akt[Insulin]@t=(0,100) > Akt[InsulinAndRapa]@t=10
+        """
+
+        expected = """start
+  block
+    timeseries_block
+      Insulin
+      ts_arg
+        Insulin
+        1
+        ts_arg
+          Rapamycin
+          0
+      0
+      100
+      101
+  block
+    timeseries_block
+      InsulinAndRapa
+      ts_arg
+        Insulin
+        1
+        ts_arg
+          Rapamycin
+          1
+      0
+      100
+      101
+  block
+    observation_block
+      statement
+        clause
+          Akt
+          Insulin
+          0
+        gl
+        clause
+          Akt
+          InsulinAndRapa
+          10
+      statement
+        clause
+          mean
+          Akt
+          Insulin
+          0
+        gl
+        clause
+          Akt
+          InsulinAndRapa
+          10"""
+        actual = self.parser.pretty(string)
         print(actual)
-        expected = [[3, 1, 4, 6, 3, 1, 4], [3, 1, 4, 6, 3, 1, 4], [2, 3, 1, 5, 7, 4, 6, 4]]
-        self.assertEqual(expected, actual)
-
+        # self.assertEqual(expected.strip(), actual.strip())
 
 
 if __name__ == '__main__':
     unittest.main()
-
-
-
