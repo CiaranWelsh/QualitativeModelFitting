@@ -1,5 +1,9 @@
 """
 todo write a docstring
+todo all documentation
+todo import necessary in __init__
+todo clean up the rest of the repo
+todo expand grammer to allow expressions
 
 """
 import logging
