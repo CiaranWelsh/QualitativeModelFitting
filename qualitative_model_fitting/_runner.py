@@ -1,7 +1,7 @@
 import logging
 
 from ._simulator import TimeSeries
-from ._interpreter import _Clause, _Statement
+from ._interpreter import _Clause, _Observation
 
 LOG = logging.getLogger(__name__)
 
@@ -14,10 +14,10 @@ class ManualRunner:
         self.obs = obs
 
     def run(self):
-        self.data = self._run_timeseries()
+        data = self._run_timeseries()
         result = {}
-        for statement in self.obs:
-            result[str(statement)] = self._statement(statement)
+        for obs in self.obs:
+            result[str(obs.name)] = obs.reduce(data)
         return result
 
     def _run_timeseries(self):
@@ -32,7 +32,7 @@ class ManualRunner:
         return dct
 
     def _statement(self, statement):
-        if not isinstance(statement, _Statement):
+        if not isinstance(statement, _Observation):
             raise TypeError
         name = statement.name
         clause1_value = self._clause(statement.clause1)

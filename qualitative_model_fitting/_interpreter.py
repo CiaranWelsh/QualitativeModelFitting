@@ -5,18 +5,6 @@ from lark import Tree, Token, Visitor, Transformer, v_args
 import operator
 from ._simulator import TimeSeries
 
-class Transf(Transformer):
-
-    def __init__(self):
-        self.timeseries = {}
-
-    def timeseries_block(self):
-        Try out larks Transformer and visitor functions
-
-
-class InterpreterWithTransformer():
-    pass
-
 class Interpreter:
     """
     Read a Lark tree into a set of classes.
@@ -31,7 +19,7 @@ class Interpreter:
         self.tree = tree
 
     def _get_timeseries_blocks(self):
-        return self.tree.find_data('_timeseries_block')
+        return self.tree.find_data('timeseries_block')
 
     def _get_observation_block(self):
         return self.tree.find_data('observation_block')
@@ -106,36 +94,37 @@ class Interpreter:
         statement_list = [i for i in block.find_data('statement')]
         new_statement_list = []
         for state in statement_list:
-            s = _Statement(state)
+            s = _Observation(state)
             new_statement_list.append(s)
         return new_statement_list
 
 
-class _Statement:
+class _Observation:
 
-    def __init__(self, statement):  # clause1, op, clause2, name=None):
-        self.statement = statement
+    def __init__(self, obs):  # clause1, op, clause2, name=None):
+        self.obs = obs
+        print('In obs')
 
     @property
     def name(self):
         # first element should be the name
-        name = self.statement.children[0]
+        name = self.obs.children[0]
         assert name.type == 'OBS_NAME'
         return name.value
 
     @property
     def clause1(self):
-        cl1 = self.statement.children[1]
+        cl1 = self.obs.children[1]
         assert cl1.data == 'clause1'
         return _Clause(cl1)
 
     @property
     def operator(self):
-        return _Operator(self.statement.children[2])
+        return _Operator(self.obs.children[2])
 
     @property
     def clause2(self):
-        cl2 = self.statement.children[3]
+        cl2 = self.obs.children[3]
         assert cl2.data == 'clause2'
         return _Clause(cl2)
 
@@ -145,35 +134,59 @@ class _Statement:
     def __repr__(self):
         return self.__str__()
 
+    def reduce(self, ts_data, obs=None):
+        print('obsversation reduce invoked')
+        if obs is None:
+            obs = self.obs
+
+        elements = []
+        for i in obs.children:
+            # print(i)
+            if isinstance(i, Tree):
+                print('idata', i.data)
+                if i.data == 'clause1':
+                    elements.append(_Clause(i).reduce(ts_data))
+                if i.data == 'clause2':
+                    elements.append(_Clause(i).reduce(ts_data))
+            elif isinstance(i, Token):
+                elements.append(i)
+        print('output of observation reduce')
+        print(elements)
+        return elements
+
+
 
 class _Clause:
 
     def __init__(self, clause):  # model_component, condition, time, modifiers=None):
         self.clause = clause
 
-        self.model_entity, self.expression, self.modifier = self.dispatch()
+        # self.model_entity, self.expression, self.modifier = self.reduce()
 
-    def dispatch(self):
-        model_entity = None
-        expression = None
-        modifier = None
-        for i in self.clause.children:
+    def reduce(self, ts_data, clause=None):
+        print('clause reduce invoked')
+        if clause is None:
+            clause = self.clause
+        elements = []
+        for i in clause.children:
+            print('clause i is', i)
             if isinstance(i, Tree):
-                if i.data == 'model_entity':
-                    model_entity = _ModelEntity(i)
-                elif i.data == 'expression':
-                    expression = _Expression(i)
+                if i.data == 'expression':
+                    elements.append(_Expression(i).reduce(ts_data))
             elif isinstance(i, Token):
                 if i.type == 'FUNC':
-                    modifier = getattr(np, i.value)
-        return model_entity, expression, modifier
+                    elements.append(getattr(np, i.value))
+        print('Output of clause reduce')
+        print(elements)
+        return elements
 
     def __str__(self):
-        if self.modifier:
-            return f'{self.modifier.__name__} {str(self.model_entity)}'
-        else:
-            return f'{str(self.model_entity)}'
-
+        return str(self.clause)
+    #     if self.modifier:
+    #         return f'{self.modifier.__name__} {str(self.model_entity)}'
+    #     else:
+    #         return f'{str(self.model_entity)}'
+    #
     def __repr__(self):
         return self.__str__()
 
@@ -185,22 +198,36 @@ class _Expression:
 
     def __init__(self, exprs):
         self.exprs = exprs
-        print(self.exprs)
+        # print(self.exprs)
         # print(self.exprs.pretty())
-        self.elements = self.dispatch()
 
-    def dispatch(self):
-        l = []
-        for i in self.exprs.iter_subtrees():
-            if i.data == 'model_entity':
-                l.append(_ModelEntity(i))
-        return l
+    def reduce(self, ts_data, expression=None):
+        print('expression reduce invoked')
+        reduced = None
+        if expression is None:
+            expression = self.exprs
+        elements = []
+        if not isinstance(expression, (Tree, Token)):
+            return expression
+        for i in expression.children:
+            if isinstance(i, Tree):
+                print('expression i is', i)
+                if i.data == 'model_entity':
+                    reduced = self.reduce(ts_data, _ModelEntity(i).reduce(ts_data))
+        print('output of expression reduce')
+        print(reduced)
+        return reduced
+
+    def compute(self):
+        print('compute func')
+        print(self.exprs)
 
     def __str__(self):
         return f'{self.exprs}'
 
     def __repr__(self):
         return self.__str__()
+
 
 
 class _ModelEntity:
@@ -227,7 +254,7 @@ class _ModelEntity:
         if time.type == 'POINT_TIME':
             self.time_type = 'POINT'
         elif time.type == 'INTERVAL_TIME':
-            self.time_type == 'INTERVAL'
+            self.time_type = 'INTERVAL'
         else:
             raise SyntaxError
         return time.value
@@ -238,6 +265,13 @@ class _ModelEntity:
     def __repr__(self):
         return self.__str__()
 
+    def reduce(self, ts_data):
+        print('model entity reduce invoked')
+        time = eval(self.time)
+        if isinstance(time, tuple):
+            return ts_data[self.condition][self.component_name].loc[float(time[0]): float(time[1])]
+        else:
+            return ts_data[self.condition][self.component_name].loc[float(time)]
 
 class _Operator:
 

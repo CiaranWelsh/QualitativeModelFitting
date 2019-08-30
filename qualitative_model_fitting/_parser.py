@@ -1,5 +1,6 @@
-from lark import Lark
+from lark import Lark, Transformer, v_args, Visitor
 
+from ._simulator import TimeSeries
 
 # todo implement combinations modifier
 
@@ -16,16 +17,18 @@ class Parser:
     
     observation_block       : "observation" statement+
     statement               : OBS_NAME ":" clause1 OPERATOR clause2
-    name                    : 
     OPERATOR                : ">" 
                             | "<" 
                             | "==" 
                             | "!="
                             | "<="
                             | ">="
-    clause1                 : [FUNC] (model_entity | expression)
-    clause2                 : [FUNC] (model_entity | expression)
-    expression              : NUMBER NUMERICAL_OPERATOR NUMBER 
+    clause1                 : [FUNC] expression
+    clause2                 : [FUNC] expression
+    // clause1                 : [FUNC] (model_entity | expression)
+    // clause2                 : [FUNC] (model_entity | expression)
+    expression              : model_entity
+                            | NUMBER NUMERICAL_OPERATOR NUMBER 
                             | NUMBER                            
                             | model_entity NUMERICAL_OPERATOR NUMBER 
                             | NUMBER NUMERICAL_OPERATOR model_entity 

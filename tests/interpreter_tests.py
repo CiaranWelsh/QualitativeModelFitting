@@ -3,7 +3,7 @@ import unittest
 import numpy as np
 
 from qualitative_model_fitting._parser import Parser
-from qualitative_model_fitting._interpreter import _Clause, _ModelEntity, _Operator, _Statement, Interpreter
+from qualitative_model_fitting._interpreter import _Clause, _ModelEntity, _Operator, _Observation, Interpreter
 
 from tests import MODEL1
 
@@ -154,3 +154,13 @@ class TestInterpreter(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+'''
+clause 
+    - expression
+        - model_entity
+        - numerical operation
+    - function 
+    - model_entity
+'''
