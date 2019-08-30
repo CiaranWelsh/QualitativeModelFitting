@@ -6,9 +6,9 @@ from lark import Lark
 class Parser:
     grammar = """
     start                   : block+
-    block                   : _timeseries_block  
+    block                   : timeseries_block  
                             | observation_block 
-    _timeseries_block        : "timeseries" SYMBOL "{" ts_arg_list "}" START "," STOP "," STEP
+    timeseries_block        : "timeseries" SYMBOL "{" ts_arg_list "}" START "," STOP "," STEP
     ts_arg_list             : (ts_arg [","])*
     ts_arg                  : SYMBOL "=" FLOAT 
                             | SYMBOL "=" DIGIT+
@@ -23,9 +23,13 @@ class Parser:
                             | "!="
                             | "<="
                             | ">="
-    clause1                 : [FUNC] model_entity
+    clause1                 : [FUNC] (model_entity | expression)
+    clause2                 : [FUNC] (model_entity | expression)
+    expression              : NUMBER NUMERICAL_OPERATOR NUMBER 
+                            | NUMBER                            
+                            | model_entity NUMERICAL_OPERATOR NUMBER 
+                            | NUMBER NUMERICAL_OPERATOR model_entity 
                             
-    clause2                 : [FUNC] model_entity
     model_entity            : SYMBOL "[" CONDITION "]" _TIME_SYMBOL (POINT_TIME| INTERVAL_TIME) 
     FUNC                    : "mean"|"all"|"any"|"min"|"max"
     _TIME_SYMBOL            : "@t=" 
@@ -37,7 +41,13 @@ class Parser:
     START                   : DIGIT+
     STOP                    : DIGIT+
     STEP                    : DIGIT+
-    
+    NUMERICAL_OPERATOR      : "+"
+                            | "-"
+                            | "*"
+                            | "/"
+                            | "**"
+                            | "//"
+                            | "%"
     %import common.DIGIT
     %import common.NUMBER
     %import common.FLOAT

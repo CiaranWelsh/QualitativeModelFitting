@@ -1,9 +1,21 @@
 import os, glob
 import pandas as pd
 import numpy as np
-from lark import Tree, Token
+from lark import Tree, Token, Visitor, Transformer, v_args
 import operator
+from ._simulator import TimeSeries
 
+class Transf(Transformer):
+
+    def __init__(self):
+        self.timeseries = {}
+
+    def timeseries_block(self):
+        Try out larks Transformer and visitor functions
+
+
+class InterpreterWithTransformer():
+    pass
 
 class Interpreter:
     """
@@ -139,45 +151,53 @@ class _Clause:
     def __init__(self, clause):  # model_component, condition, time, modifiers=None):
         self.clause = clause
 
-    @property
-    def modifier(self):
-        function = None
-        for i in self.clause.children:
-            if isinstance(i, Tree):
-                continue
-            elif isinstance(i, Token):
-                if i.type == 'FUNC':
-                    function = getattr(np, i.value)
-                    break  # only allows 1
-        return function
+        self.model_entity, self.expression, self.modifier = self.dispatch()
 
-    def modifier_as_str(self):
-        function = None
-        for i in self.clause.children:
-            if isinstance(i, Tree):
-                continue
-            elif isinstance(i, Token):
-                if i.type == 'FUNC':
-                    function = i.value
-                    break  # only allows 1
-        return function
-
-    @property
-    def model_entity(self):
-        me = None
+    def dispatch(self):
+        model_entity = None
+        expression = None
+        modifier = None
         for i in self.clause.children:
             if isinstance(i, Tree):
                 if i.data == 'model_entity':
-                    me = _ModelEntity(i)
-            else:
-                continue
-        return me
+                    model_entity = _ModelEntity(i)
+                elif i.data == 'expression':
+                    expression = _Expression(i)
+            elif isinstance(i, Token):
+                if i.type == 'FUNC':
+                    modifier = getattr(np, i.value)
+        return model_entity, expression, modifier
 
     def __str__(self):
         if self.modifier:
-            return f'{self.modifier_as_str()} {str(self.model_entity)}'
+            return f'{self.modifier.__name__} {str(self.model_entity)}'
         else:
             return f'{str(self.model_entity)}'
+
+    def __repr__(self):
+        return self.__str__()
+
+
+class _Expression:
+    # type can be either 'numerical' for a pure expression
+    #  or 'composite' for an expression where one of the operants
+    #  is a model_entity
+
+    def __init__(self, exprs):
+        self.exprs = exprs
+        print(self.exprs)
+        # print(self.exprs.pretty())
+        self.elements = self.dispatch()
+
+    def dispatch(self):
+        l = []
+        for i in self.exprs.iter_subtrees():
+            if i.data == 'model_entity':
+                l.append(_ModelEntity(i))
+        return l
+
+    def __str__(self):
+        return f'{self.exprs}'
 
     def __repr__(self):
         return self.__str__()

@@ -33,52 +33,87 @@ class MyTestCase(unittest.TestCase):
 
         expected = """start
   block
-    _timeseries_block
-      Insulin
+    InsulinOnly
+    ts_arg_list
       ts_arg
         Insulin
         1
-        ts_arg
-          Rapamycin
-          0
-      0
-      100
-      101
+      ts_arg
+        Rapamycin
+        0
+      ts_arg
+        AA
+        0
+    0
+    100
+    101
   block
-    _timeseries_block
-      InsulinAndRapa
+    InsulinAndRapa
+    ts_arg_list
       ts_arg
         Insulin
         1
-        ts_arg
-          Rapamycin
-          1
-      0
-      100
-      101
+      ts_arg
+        Rapamycin
+        1
+    0
+    100
+    101
+  block
+    InsulinAndRapaAndAA
+    ts_arg_list
+      ts_arg
+        Insulin
+        1
+      ts_arg
+        Rapamycin
+        1
+      ts_arg
+        AA
+        1.0
+    0
+    100
+    101
   block
     observation_block
       statement
-        clause
-          Akt
-          Insulin
-          0
-        gl
-        clause
-          Akt
-          InsulinAndRapa
-          10
+        Obs1
+        clause1
+          model_entity
+            Akt
+            Insulin
+            0
+        >
+        clause2
+          model_entity
+            Akt
+            InsulinAndRapa
+            10
       statement
-        clause
+        Obs2
+        clause1
           mean
-          Akt
-          Insulin
-          0
-        gl
-        clause
-          Akt
-          InsulinAndRapa
-          10"""
+          model_entity
+            Akt
+            Insulin
+            (0,100)
+        >
+        clause2
+          model_entity
+            Akt
+            InsulinAndRapa
+            10
+      statement
+        Obs3
+        clause1
+          all
+          model_entity
+            Akt
+            InsulinAndRapa
+            (0, 100)
+        ==
+        clause2
+          expression	0"""
         actual = self.parser.pretty(string)
         print(actual)
         # self.assertEqual(expected.strip(), actual.strip())

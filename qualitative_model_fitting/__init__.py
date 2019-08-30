@@ -4,7 +4,7 @@ todo all documentation
 todo expand grammer to allow expressions
 todo expand to steady state simulations as well
 todo build in loops so we can do bulk validations
-
+todo support events
 """
 import logging
 
