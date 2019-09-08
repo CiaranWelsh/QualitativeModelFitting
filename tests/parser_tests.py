@@ -162,6 +162,37 @@ class MyTestCase(unittest.TestCase):
         actual = str(parsed)
         self.assertEqual(expected, actual)
 
+    def test7(self):
+        obs = 'Obs7: Akt[InsulinOnly]@t=0 > Akt[InsulinAndRapa]@t=0'
+        parsed = self.get_statement(obs)
+        print(parsed)
+        expected = "[Tree(statement, [Token(OBS_NAME, 'Obs7'), Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]), Token(OPERATOR, '>'), Tree(clause2, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinAndRapa'), Token(POINT_TIME, '0')])])])]"
+        actual = str(parsed)
+        self.assertEqual(expected, actual)
+
+    def test8(self):
+        obs = 'Obs8: Akt[InsulinOnly]@t=0*2 > Akt[InsulinAndRapa]@t=0'
+        parsed = self.get_statement(obs)
+        print(parsed)
+        expected = "[Tree(statement, [Token(OBS_NAME, 'Obs8'), Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]), Token(OPERATOR, '>'), Tree(clause2, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinAndRapa'), Token(POINT_TIME, '0')])])])]"
+        actual = str(parsed)
+        self.assertEqual(expected, actual)
+
+    def test9(self):
+        obs = 'Obs9: 1 + Akt[InsulinOnly]@t=0*2 > Akt[InsulinAndRapa]@t=0'
+        parsed = self.get_statement(obs)
+        print(parsed)
+        expected = "[Tree(statement, [Token(OBS_NAME, 'Obs9'), Tree(clause1, [Tree(expression, [Token(NUMBER, '1'), Token(ADD, '+'), Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])]), Token(OPERATOR, '>'), Tree(clause2, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinAndRapa'), Token(POINT_TIME, '0')])])])]"
+        actual = str(parsed)
+        self.assertEqual(expected, actual)
+
+    def test10(self):
+        obs = 'Obs10: mean Akt[InsulinOnly]@t=(0, 5) > Akt[InsulinAndRapa]@t=0'
+        parsed = self.get_statement(obs)
+        expected = "[Tree(statement, [Token(OBS_NAME, 'Obs10'), Tree(clause1, [Token(FUNC, 'mean'), Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(INTERVAL_TIME, '(0, 5)')])]), Token(OPERATOR, '>'), Tree(clause2, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinAndRapa'), Token(POINT_TIME, '0')])])])]"
+        actual = str(parsed)
+        self.assertEqual(expected, actual)
+
 
 
 

@@ -28,12 +28,8 @@ class Parser:
 
     ?expression              : term ((ADD|SUB) term)*
     ?term.2                    : factor ((MUL|DIV) factor)*
-    ?factor                  : NUMBER   
+    ?factor                  : NUMBER | model_entity
     
-    // expression -> (+|-|ε) term ((+|-) term)*
-    // term -> factor ((*|/) factor)*
-    // factor -> var | number | (expression)                           
-
     model_entity            : SYMBOL "[" CONDITION "]" _TIME_SYMBOL (POINT_TIME| INTERVAL_TIME) 
     FUNC                    : "mean"|"all"|"any"|"min"|"max"
     _TIME_SYMBOL            : "@t=" 
