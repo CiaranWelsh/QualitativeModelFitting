@@ -25,36 +25,15 @@ class Parser:
                             | ">="
     clause1                 : [FUNC] expression
     clause2                 : [FUNC] expression
-    // clause1                 : [FUNC] (model_entity | expression)
-    // clause2                 : [FUNC] (model_entity | expression)
 
+    ?expression              : term ((ADD|SUB) term)*
+    ?term.2                    : factor ((MUL|DIV) factor)*
+    ?factor                  : NUMBER   
     
-    expression              : term+
-                            //| model_entity
-    //                        | NUMBER NUMERICAL_OPERATOR NUMBER 
-    //                        | NUMBER                            
-    //                        | model_entity NUMERICAL_OPERATOR NUMBER 
-    //                        | NUMBER NUMERICAL_OPERATOR model_entity 
-                            
-    ?term                   : addop
-                            | mulop
-                            | NUMBER
-    
-    
-    addop.2                 : term ADD term -> add 
-                            | term SUB term -> sub
-    
-    
-    mulop                   : term MUL term -> mul
-                            | term DIV term -> div
-                                
-                            // NUMBER "**" NUMBER -> pow
-                            // | NUMBER "*" NUMBER -> mul
-                            // | NUMBER "/" NUMBER -> div
-                            // | NUMBER "+" NUMBER -> plus
-                            // | NUMBER "-" NUMBER -> minus
-                            //| numerical_expression NUMERICAL_OPERATOR numerical_expression
-    
+    // expression -> (+|-|ε) term ((+|-) term)*
+    // term -> factor ((*|/) factor)*
+    // factor -> var | number | (expression)                           
+
     model_entity            : SYMBOL "[" CONDITION "]" _TIME_SYMBOL (POINT_TIME| INTERVAL_TIME) 
     FUNC                    : "mean"|"all"|"any"|"min"|"max"
     _TIME_SYMBOL            : "@t=" 
@@ -66,16 +45,18 @@ class Parser:
     START                   : DIGIT+
     STOP                    : DIGIT+
     STEP                    : DIGIT+
-    ADD                     : "+"
-    SUB                     : "-"
+    POW                     : "**"
     MUL                     : "*"
     DIV                     : "/"
-    POW                     : "**"
-    NUMERICAL_OPERATOR      : ADD
-                            | SUB
-                            | MUL
-                            | DIV
-                            | POW
+    ADD                     : "+"
+    SUB                     : "-"
+    NUMERICAL_OPERATOR      : "+"
+                            | "-"
+                            | "*"
+                            | "/"
+                            | "**"
+                            | "//"
+                            | "%"
     COMMENT                 : /\/\/.*/
     %import common.DIGIT
     %import common.NUMBER
