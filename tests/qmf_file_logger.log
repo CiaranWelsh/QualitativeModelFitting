@@ -1,0 +1,702 @@
+2019-09-08 11:17:06,253 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - [8]
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:17:06,451 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "8 > 1.2"
+2019-09-08 11:17:21,830 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:17:22,019 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:17:22,019 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:17:22,019 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:17:22,019 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:17:22,019 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:17:22,019 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+2019-09-08 11:17:22,020 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:17:22,020 - qualitative_model_fitting._interpreter - DEBUG - [8]
+2019-09-08 11:17:22,020 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:17:22,020 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:17:22,020 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:17:22,020 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:17:22,020 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:17:22,020 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:17:22,020 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "8 > 1.2"
+2019-09-08 11:18:21,975 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:18:22,163 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:18:22,163 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:18:22,163 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:18:22,163 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+2019-09-08 11:18:22,164 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:18:22,164 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4')])
+2019-09-08 11:18:22,164 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:18:22,164 - qualitative_model_fitting._interpreter - DEBUG - [4]
+2019-09-08 11:18:22,164 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:18:22,164 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:18:22,164 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:18:22,164 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:18:22,164 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:18:22,164 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:18:22,164 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "4 > 1.2"
+2019-09-08 11:18:53,602 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:18:53,788 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4')])
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - [4]
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:18:53,789 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "4 > 1.2"
+2019-09-08 11:19:01,347 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:19:01,532 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:19:01,532 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:19:01,532 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:01,532 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:19:01,532 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:01,533 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+2019-09-08 11:19:01,533 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:19:01,533 - qualitative_model_fitting._interpreter - DEBUG - [8]
+2019-09-08 11:19:01,533 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:19:01,533 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:01,533 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:19:01,533 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:19:01,533 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:19:01,533 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:19:01,533 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "8 > 1.2"
+2019-09-08 11:19:16,327 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:19:16,514 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:19:16,514 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:19:16,514 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:16,514 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+2019-09-08 11:19:16,514 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:16,514 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4')])
+2019-09-08 11:19:16,515 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:19:16,515 - qualitative_model_fitting._interpreter - DEBUG - [4]
+2019-09-08 11:19:16,515 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:19:16,515 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:16,515 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:19:16,515 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:19:16,515 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:19:16,515 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:19:16,515 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "4 > 1.2"
+2019-09-08 11:19:32,651 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:19:32,834 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:19:32,834 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:19:32,834 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:32,834 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:19:32,834 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:32,834 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+2019-09-08 11:19:32,835 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:19:32,835 - qualitative_model_fitting._interpreter - DEBUG - [8]
+2019-09-08 11:19:32,835 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:19:32,835 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:32,835 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:19:32,835 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:19:32,835 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:19:32,835 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:19:32,835 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "8 > 1.2"
+2019-09-08 11:19:40,178 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:19:40,366 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:19:40,366 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:19:40,366 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:40,366 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+2019-09-08 11:19:40,366 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:40,366 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4')])
+2019-09-08 11:19:40,367 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:19:40,367 - qualitative_model_fitting._interpreter - DEBUG - [4]
+2019-09-08 11:19:40,367 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:19:40,367 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:40,367 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:19:40,367 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:19:40,367 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:19:40,367 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:19:40,367 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "4 > 1.2"
+2019-09-08 11:19:57,663 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:19:57,850 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:19:57,850 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:19:57,850 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:57,851 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:19:57,851 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:57,851 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+2019-09-08 11:19:57,851 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:19:57,851 - qualitative_model_fitting._interpreter - DEBUG - [8]
+2019-09-08 11:19:57,851 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:19:57,851 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:19:57,851 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:19:57,851 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:19:57,851 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:19:57,851 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:19:57,851 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "8 > 1.2"
+2019-09-08 11:20:51,219 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:20:51,480 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:20:51,480 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:20:51,480 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:20:51,480 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+2019-09-08 11:20:51,480 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:20:51,480 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4')])
+2019-09-08 11:20:51,480 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:20:51,481 - qualitative_model_fitting._interpreter - DEBUG - [4]
+2019-09-08 11:20:51,481 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:20:51,481 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:20:51,481 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:20:51,481 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:20:51,481 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:20:51,481 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:20:51,481 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "4 > 1.2"
+2019-09-08 11:21:05,382 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:21:05,568 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:21:05,568 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:21:05,568 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:21:05,568 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:21:05,568 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:21:05,568 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+2019-09-08 11:21:05,568 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:21:05,568 - qualitative_model_fitting._interpreter - DEBUG - [8]
+2019-09-08 11:21:05,568 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:21:05,569 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:21:05,569 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:21:05,569 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:21:05,569 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:21:05,569 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:21:05,569 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "8 > 1.2"
+2019-09-08 11:23:16,550 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - [8]
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:23:16,737 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:23:16,738 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "8 > 1.2"
+2019-09-08 11:23:59,049 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:24:20,354 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:24:20,542 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:24:20,542 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:24:20,542 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:24:20,542 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+2019-09-08 11:24:20,543 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:24:20,543 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4')])
+2019-09-08 11:24:20,543 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:24:20,543 - qualitative_model_fitting._interpreter - DEBUG - [4]
+2019-09-08 11:24:20,543 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:24:20,543 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:24:20,543 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:24:20,543 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:24:20,543 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:24:20,543 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:24:20,543 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "4 > 1.2"
+2019-09-08 11:24:24,665 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:24:24,852 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:24:24,852 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:24:24,852 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:24:24,852 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+2019-09-08 11:24:24,852 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:24:24,852 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4')])
+2019-09-08 11:24:24,852 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:24:24,852 - qualitative_model_fitting._interpreter - DEBUG - [4]
+2019-09-08 11:24:24,852 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:24:24,853 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:24:24,853 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:24:24,853 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:24:24,853 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:24:24,853 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:24:24,853 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "4 > 1.2"
+2019-09-08 11:24:36,155 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:24:36,338 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - [8]
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:24:36,339 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "8 > 1.2"
+2019-09-08 11:24:46,646 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:25:07,230 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:27:38,063 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:27:38,063 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:28:54,096 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:29:11,302 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:29:36,736 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:29:36,920 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:29:36,920 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:29:36,921 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:29:36,921 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:29:36,921 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:29:36,921 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+2019-09-08 11:29:36,921 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:29:36,921 - qualitative_model_fitting._interpreter - DEBUG - [8]
+2019-09-08 11:29:36,921 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:29:36,921 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:29:36,921 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:29:36,921 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:29:36,921 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:29:36,921 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:29:36,921 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "8 > 1.2"
+2019-09-08 11:30:54,112 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:30:54,297 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - [8]
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Token(NUMBER, '6'), Token(NUMERICAL_OPERATOR, '/'), Token(NUMBER, '5.0')])
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - Output of clause reduce
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - [1.2]
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - output of observation reduce
+2019-09-08 11:30:54,298 - qualitative_model_fitting._interpreter - DEBUG - full observation comparison is: "8 > 1.2"
+2019-09-08 11:49:20,407 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:49:20,590 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:49:20,590 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:49:20,590 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:49:20,591 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:52:07,779 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:52:07,969 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:52:07,969 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:52:07,969 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:52:07,969 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+2019-09-08 11:52:55,877 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:52:56,067 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:52:56,068 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:52:56,068 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:52:56,068 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+2019-09-08 11:52:56,068 - qualitative_model_fitting._interpreter - DEBUG - expression
+2019-09-08 11:53:07,310 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:53:07,505 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:53:07,505 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:53:07,505 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:53:07,505 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:53:07,505 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [])
+2019-09-08 11:53:52,227 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:53:52,504 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:53:52,504 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:53:52,504 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:53:52,504 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+2019-09-08 11:53:52,504 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [])
+2019-09-08 11:54:32,420 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:54:32,616 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:54:32,616 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:54:32,616 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:54:32,616 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:54:32,617 - qualitative_model_fitting._interpreter - DEBUG - tree with new exprs Tree(expression, [])
+2019-09-08 11:54:32,617 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [])
+2019-09-08 11:55:37,244 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:55:37,432 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:55:37,432 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:55:37,433 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:55:37,433 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:55:37,433 - qualitative_model_fitting._interpreter - DEBUG - 0
+2019-09-08 11:55:37,433 - qualitative_model_fitting._interpreter - DEBUG - 1
+2019-09-08 11:55:37,433 - qualitative_model_fitting._interpreter - DEBUG - 2
+2019-09-08 11:55:37,433 - qualitative_model_fitting._interpreter - DEBUG - tree with new exprs Tree(expression, [])
+2019-09-08 11:55:37,433 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [])
+2019-09-08 11:55:42,545 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:55:42,733 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:55:42,734 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:55:42,734 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:55:42,734 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:55:47,025 - qualitative_model_fitting._runner - CRITICAL - in run
+2019-09-08 11:55:47,210 - qualitative_model_fitting._interpreter - DEBUG - obsversation reduce invoked
+2019-09-08 11:55:47,211 - qualitative_model_fitting._interpreter - DEBUG - clause reduce invoked
+2019-09-08 11:55:47,211 - qualitative_model_fitting._interpreter - DEBUG - expression reduce invoked
+2019-09-08 11:55:47,211 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+2019-09-08 11:55:47,211 - qualitative_model_fitting._interpreter - DEBUG - Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+2019-09-08 11:55:47,211 - qualitative_model_fitting._interpreter - DEBUG - +
+2019-09-08 11:55:47,211 - qualitative_model_fitting._interpreter - DEBUG - Tree(expression, [Token(NUMBER, '3')])
+2019-09-08 11:55:47,211 - qualitative_model_fitting._interpreter - DEBUG - tree with new exprs Tree(expression, [])
+2019-09-08 11:55:47,211 - qualitative_model_fitting._interpreter - DEBUG - expression is Tree(expression, [])
+qualitative_model_fitting._runner:run:CRITICAL:in run
+qualitative_model_fitting._interpreter:reduce:DEBUG:obsversation reduce invoked
+qualitative_model_fitting._interpreter:reduce:DEBUG:clause reduce invoked
+qualitative_model_fitting._interpreter:reduce:DEBUG:expression reduce invoked
+qualitative_model_fitting._interpreter:reduce:DEBUG:expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+qualitative_model_fitting._interpreter:_process_expression:DEBUG:Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+qualitative_model_fitting._interpreter:_process_expression:DEBUG:+
+qualitative_model_fitting._interpreter:_process_expression:DEBUG:Tree(expression, [Token(NUMBER, '3')])
+qualitative_model_fitting._interpreter:_process_expression:DEBUG:tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter:_process_expression:DEBUG:expression is Tree(expression, [])
+qualitative_model_fitting._runner: run: CRITICAL: in run
+qualitative_model_fitting._interpreter: reduce: DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter: reduce: DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter: reduce: DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter: reduce: DEBUG: expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+qualitative_model_fitting._interpreter: _process_expression: DEBUG: Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+qualitative_model_fitting._interpreter: _process_expression: DEBUG: +
+qualitative_model_fitting._interpreter: _process_expression: DEBUG: Tree(expression, [Token(NUMBER, '3')])
+qualitative_model_fitting._interpreter: _process_expression: DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter: _process_expression: DEBUG: expression is Tree(expression, [])
+qualitative_model_fitting._runner - run - CRITICAL - in run
+qualitative_model_fitting._interpreter - reduce - DEBUG - obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG - clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG - expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG - expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG - Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG - +
+qualitative_model_fitting._interpreter - _process_expression - DEBUG - Tree(expression, [Token(NUMBER, '3')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG - tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG - expression is Tree(expression, [])
+qualitative_model_fitting._runner - run - CRITICAL: in run
+qualitative_model_fitting._interpreter - reduce - DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '4')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: *
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: expression is Tree(expression, [])
+qualitative_model_fitting._runner - run - CRITICAL: in run
+qualitative_model_fitting._interpreter - reduce - DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '4')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: *
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._runner - run - CRITICAL: in run
+qualitative_model_fitting._interpreter - reduce - DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: +
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '3')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._runner - run - CRITICAL: in run
+qualitative_model_fitting._interpreter - reduce - DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '4')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: *
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. []
+qualitative_model_fitting._runner - run - CRITICAL: in run
+qualitative_model_fitting._interpreter - reduce - DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: +
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '3')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '3')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [8, 3])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [8, 3]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 8
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 3
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. []
+qualitative_model_fitting._runner - run - CRITICAL: in run
+qualitative_model_fitting._interpreter - reduce - DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '4')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '4')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 4
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: *
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 5
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [4, 5])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [4, 5]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 4
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 5
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. []
+qualitative_model_fitting._runner - run - CRITICAL: in run
+qualitative_model_fitting._interpreter - reduce - DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression is Tree(expression, [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '4')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '4')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 4
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: new children list is [4]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: *
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 5
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: new children list is [4, 5]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [4, 5])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [4, 5]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 4
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 5
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. []
+qualitative_model_fitting._runner - run - CRITICAL: in run
+qualitative_model_fitting._interpreter - reduce - DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression is expression
+  expression	4
+  *
+  expression
+    2
+    +
+    3
+
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '4')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '4')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 4
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: new children list is [4]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: *
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '2'), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 5
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: new children list is [4, 5]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [4, 5])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [4, 5]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 4
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 5
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. []
+qualitative_model_fitting._runner - run - CRITICAL: in run
+qualitative_model_fitting._interpreter - reduce - DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression is expression
+  expression
+    4
+    *
+    2
+  +
+  expression	3
+
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 8
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: new children list is [8]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: +
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '3')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '3')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 3
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: new children list is [8, 3]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [8, 3])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [8, 3]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 8
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 3
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. []
+qualitative_model_fitting._runner - run - CRITICAL: in run
+qualitative_model_fitting._interpreter - reduce - DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression is expression
+  expression
+    expression	1
+    +
+    expression
+      4
+      *
+      2
+  +
+  expression	3
+
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '1')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '1')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 1
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: new children list is [1]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: +
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '4'), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 8
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: new children list is [1, 8]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [1, 8])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [1, 8]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 1
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 8
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. []
+qualitative_model_fitting._runner - run - CRITICAL: in run
+qualitative_model_fitting._interpreter - reduce - DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression is expression
+  expression
+    expression	1
+    +
+    expression	4
+  *
+  expression
+    expression	2
+    +
+    expression	3
+
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '4')])]), Token(NUMERICAL_OPERATOR, '*'), Tree(expression, [Tree(expression, [Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '3')])])]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '4')])])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Tree(expression, [Token(NUMBER, '4')])]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '1')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '1')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 1
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: new children list is [1]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: +
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '4')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '4')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 4
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: new children list is [1, 4]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [1, 4])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [1, 4]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 1
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 4
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. []
+qualitative_model_fitting._runner - run - CRITICAL: in run
+qualitative_model_fitting._interpreter - reduce - DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression is expression
+  expression
+    expression
+      expression	1
+      +
+      4
+    *
+    2
+  +
+  3
+
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Tree(expression, [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Tree(expression, [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '4')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '4')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '1')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '1')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 1
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: new children list is [1]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: +
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 4
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [1])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [1]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 1
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. []
+qualitative_model_fitting._runner - run - CRITICAL: in run
+qualitative_model_fitting._interpreter - reduce - DEBUG: obsversation reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: clause reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression reduce invoked
+qualitative_model_fitting._interpreter - reduce - DEBUG: expression is expression
+  expression
+    expression
+      expression	1
+      +
+      4
+    *
+    2
+  +
+  3
+
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Tree(expression, [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '3')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Tree(expression, [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '4')]), Token(NUMERICAL_OPERATOR, '*'), Token(NUMBER, '2')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '4')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [Tree(expression, [Token(NUMBER, '1')]), Token(NUMERICAL_OPERATOR, '+'), Token(NUMBER, '4')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: Tree(expression, [Token(NUMBER, '1')])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. [Token(NUMBER, '1')]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: result of process expresssion is 1
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: new children list is [1]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: +
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 4
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [1])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are not tokens. [1]
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: 1
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: tree with new exprs Tree(expression, [])
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: _process_expression invoked
+qualitative_model_fitting._interpreter - _process_expression - DEBUG: all children are tokens. Reducing. []

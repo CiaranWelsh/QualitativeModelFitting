@@ -14,10 +14,11 @@ class ManualRunner:
         self.obs = obs
 
     def run(self):
+        LOG.critical('in run')
         data = self._run_timeseries()
-        result = {}
+        result = []
         for obs in self.obs:
-            result[str(obs.name)] = obs.reduce(data)
+            result.append(obs.reduce(data))
         return result
 
     def _run_timeseries(self):

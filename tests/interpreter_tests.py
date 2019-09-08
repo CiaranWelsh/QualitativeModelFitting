@@ -150,6 +150,8 @@ class TestInterpreter(unittest.TestCase):
         i = Interpreter(self.tree)
         ts, obs = i.interpret()
         print(obs[4])
+        import logging
+        print('x', logging.root.manager.loggerDict)
 
 
 if __name__ == '__main__':

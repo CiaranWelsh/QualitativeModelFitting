@@ -27,12 +27,34 @@ class Parser:
     clause2                 : [FUNC] expression
     // clause1                 : [FUNC] (model_entity | expression)
     // clause2                 : [FUNC] (model_entity | expression)
-    expression              : model_entity
-                            | NUMBER NUMERICAL_OPERATOR NUMBER 
-                            | NUMBER                            
-                            | model_entity NUMERICAL_OPERATOR NUMBER 
-                            | NUMBER NUMERICAL_OPERATOR model_entity 
+
+    
+    expression              : term+
+                            //| model_entity
+    //                        | NUMBER NUMERICAL_OPERATOR NUMBER 
+    //                        | NUMBER                            
+    //                        | model_entity NUMERICAL_OPERATOR NUMBER 
+    //                        | NUMBER NUMERICAL_OPERATOR model_entity 
                             
+    ?term                   : addop
+                            | mulop
+                            | NUMBER
+    
+    
+    addop.2                 : term ADD term -> add 
+                            | term SUB term -> sub
+    
+    
+    mulop                   : term MUL term -> mul
+                            | term DIV term -> div
+                                
+                            // NUMBER "**" NUMBER -> pow
+                            // | NUMBER "*" NUMBER -> mul
+                            // | NUMBER "/" NUMBER -> div
+                            // | NUMBER "+" NUMBER -> plus
+                            // | NUMBER "-" NUMBER -> minus
+                            //| numerical_expression NUMERICAL_OPERATOR numerical_expression
+    
     model_entity            : SYMBOL "[" CONDITION "]" _TIME_SYMBOL (POINT_TIME| INTERVAL_TIME) 
     FUNC                    : "mean"|"all"|"any"|"min"|"max"
     _TIME_SYMBOL            : "@t=" 
@@ -44,13 +66,17 @@ class Parser:
     START                   : DIGIT+
     STOP                    : DIGIT+
     STEP                    : DIGIT+
-    NUMERICAL_OPERATOR      : "+"
-                            | "-"
-                            | "*"
-                            | "/"
-                            | "**"
-                            | "//"
-                            | "%"
+    ADD                     : "+"
+    SUB                     : "-"
+    MUL                     : "*"
+    DIV                     : "/"
+    POW                     : "**"
+    NUMERICAL_OPERATOR      : ADD
+                            | SUB
+                            | MUL
+                            | DIV
+                            | POW
+    COMMENT                 : /\/\/.*/
     %import common.DIGIT
     %import common.NUMBER
     %import common.FLOAT
@@ -58,6 +84,7 @@ class Parser:
     %import common.LETTER
     %import common.WS
     %ignore WS
+    %ignore COMMENT
     """
 
     def __init__(self):
