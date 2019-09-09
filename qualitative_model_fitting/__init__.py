@@ -5,6 +5,9 @@ todo expand grammer to allow expressions
 todo expand to steady state simulations as well
 todo build in loops so we can do bulk validations
 todo support events
+todo build interface to control logging.
+ perhaps a logging class whereby options such as logging levels
+ can be dynamically updated
 """
 import logging
 
@@ -19,13 +22,14 @@ OPTIONS = dict(
     logging=dict(
         level=dict(
             fh=logging.DEBUG,
-            ch=logging.DEBUG,
+            ch=logging.INFO,
         ),
-        use_file_logger=True,
+        use_file_logger=False,
         use_console_logger=True,
         filename='qmf_file_logger.log',
     )
 )
+
 
 def logging_config():
     logger = logging.getLogger(__name__)
@@ -39,16 +43,20 @@ def logging_config():
     # create console handler with a higher log level
     if OPTIONS['logging']['use_console_logger']:
         ch = logging.StreamHandler()
-        fh.setLevel(OPTIONS['logging']['level']['ch'])
+        ch.setLevel(OPTIONS['logging']['level']['ch'])
         ch.setFormatter(formatter)
         logger.addHandler(ch)
     # create formatter and add it to the handlers
     # add the handlers to the logger
     return logger
 
-LOG = logging_config()
 
+LOG = logging_config()
 
 # silence matplotlib logger
 mpl_logger = logging.getLogger('matplotlib.pyplot').setLevel(logging.CRITICAL)
+
+
+def change_logging_level(handler='ch', level=logging.INFO):
+    pass
 

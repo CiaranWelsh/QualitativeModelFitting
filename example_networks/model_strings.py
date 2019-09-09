@@ -58,7 +58,6 @@ model_string = f"""
 
 {functions}
 
-
 model ComplexPI3KModel
     compartment Cell=1;
     var IRS1 in Cell;

@@ -11,15 +11,10 @@ class ManualInterfaceTests(unittest.TestCase):
 
     def setUp(self) -> None:
         self.input = """
-          timeseries None {
-              S=0, I=0
-          } 0, 100, 101
-          timeseries S {
-              S=1, I=0
-          } 0, 100, 101
-          timeseries I {
-              S=0, I=1
-          } 0, 100, 101
+          timeseries None {S=0, I=0} 0, 100, 101
+          timeseries S {S=1, I=0} 0, 100, 101
+          timeseries I {S=0, I=1} 0, 100, 101
+          
           timeseries SI {
               S=1, I=1
           } 0, 100, 101
@@ -28,13 +23,15 @@ class ManualInterfaceTests(unittest.TestCase):
               Obs1: A[None]@t=0 > A[S]@t=10
               Obs2: mean B[SI]@t=(0, 100) > C[I]@t=10
               Obs3: C[SI]@t=10 == A[None]@t=10
+              Obs4: C[SI]@t=10 == A[S]@t=10*2 - 1
           """
 
     def test_correct_number_of_observations(self):
         results = manual_interface(MODEL2, self.input)
-        expected = 3
-        actual = results.shape[0]
-        self.assertEqual(expected, actual)
+        expected = [False, True, False, False]
+        actual = results['evaluation'].tolist()
+        print(results)
+        self.assertListEqual(expected, actual)
 
 
 if __name__ == '__main__':

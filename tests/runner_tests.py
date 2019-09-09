@@ -22,12 +22,8 @@ TIMESERIES_STRING = """
 class TestRunner(unittest.TestCase):
 
     def setUp(self) -> None:
-        string = """
-          observation 
-              //Obs3: 4 > 5
-              Obs4: 4*2 < 5
-              //Obs5: Akt[InsulinOnly]@t=0*2 < Akt[InsulinAndRapa]@t=10
-        """
+        pass
+
 
     @staticmethod
     def get_interpreter(obs):

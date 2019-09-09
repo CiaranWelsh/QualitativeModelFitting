@@ -87,8 +87,8 @@ def manual_interface(ant_str, input_string):
     ts, obs = interpreter.interpret()
     runner = ManualRunner(ant_str, ts, obs)
     results = runner.run()
-    df = pd.DataFrame(results).transpose().reset_index()
-    df.columns = ['observation', 'truth']
+    df = pd.DataFrame(results)
+    df = df[['obs_name', 'comparison', 'evaluation']]
     return df
 
 
