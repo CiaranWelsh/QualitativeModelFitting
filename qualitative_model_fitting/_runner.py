@@ -14,7 +14,6 @@ class ManualRunner:
         self.obs = obs
 
     def run(self):
-        LOG.critical('in run')
         data = self._run_timeseries()
         result = []
         for obs in self.obs:

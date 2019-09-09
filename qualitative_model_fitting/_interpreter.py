@@ -1,6 +1,7 @@
 import os, glob
 import pandas as pd
 import numpy as np
+from functools import reduce
 from lark import Tree, Token, Visitor, Transformer, v_args
 import operator
 from ._simulator import TimeSeries
@@ -176,45 +177,124 @@ class _Clause:
     def __init__(self, clause):  # model_component, condition, time, modifiers=None):
         self.clause = clause
 
-        # self.model_entity, self.expression, self.modifier = self.reduce()
-
     def reduce(self, ts_data, clause=None):
         LOG.debug('clause reduce invoked')
         if clause is None:
             clause = self.clause
 
-        elements = []
-        for i in clause.children:
-            if isinstance(i, Tree):
-                if i.data == 'expression':
-                    exp = _Expression(i).reduce(ts_data)
-                    elements.append(exp)
-            elif isinstance(i, Token):
-                if i.type == 'FUNC':
-                    elements.append(getattr(np, i.value))
-        LOG.debug('Output of clause reduce')
-        LOG.debug(elements)
-        if len(elements) == 1:
-            if isinstance(elements[0], (float, int)):
-                token = elements[0]
-            elif isinstance(elements[0], Token):
-                token = eval(str(elements[0]))
-            else:
-                raise ValueError
-            return token
-        # if we have >1 item in elements we need to reduce the clause further
-        elif len(elements) == 2:
-            # Deal with situation where we have a series and a function modifier (i.e. mean A[CondY]@t=(0, 5))
-            if callable(elements[0]):
-                # can only apply a modifier on a collection obj such as series
-                if not isinstance(elements[1], pd.Series):
-                    raise SyntaxError(f'Cannot apply function modifier to a single entity. You have '
-                                      f'tried to apply the {elements[0]} function to '
-                                      f'{elements[1]}')
+        LOG.debug('clause is {}'.format(clause))
+
+        if not isinstance(clause, (Tree, Token)):
+            raise TypeError('need Token or Tree but found "{}" of type "{}"'.format(clause, type(clause)))
+
+        if isinstance(clause, Tree):
+            if clause.data == 'model_entity':
+                token = _ModelEntity(clause).reduce(ts_data)
+                LOG.debug('since we have an model entity, we reduce here and return {}'.format(token))
+                return token
+            LOG.debug(f'clause.data before l: {clause.data}')
+            reduced_list = [self.reduce(ts_data, i) for i in clause.children]
+            LOG.debug(f'clause.data after l: {clause.data}')
+            LOG.debug(f'list reduced_list is {reduced_list}')
+            if all([isinstance(i, Token) for i in reduced_list]) and clause.data != 'model_entity':
+                LOG.debug('clause condition approved. reducing and returning')
+                reduced = reduce(lambda x, y: f'{str(x)} {str(y)}', clause.children)
+                if isinstance(reduced, (float, int)):
+                    token = Token('NUMBER', reduced)
+                    LOG.debug(f'returning reduced token {token}')
+                    return token
                 else:
-                    return elements[0](elements[1])
+                    raise ValueError(reduced)
+            # reduce the trees to tokens
+            else:
+                LOG.debug('clause condition failed. More processessing is required.')
+                LOG.debug('clause.data is: {}'.format(clause.data))
+                LOG.debug('clause.children is: {}'.format(clause.children))
+                if clause.data == 'model_entity':
+                    LOG.debug('model entity encountered: {}'.format(clause))
+                    model_entity_reduced = _ModelEntity(clause).reduce(ts_data)
+                    LOG.debug(f'reduced model entity, {model_entity_reduced}')
+                    if isinstance(model_entity_reduced, (float, int)):
+                        LOG.debug('reduced model entity is {}'.format(type(model_entity_reduced)))
+                        token = Token('NUMBER', model_entity_reduced)
+                        LOG.debug('token is {}'.format(token))
+                        return self.reduce(ts_data, token)
+                    else:
+                        raise ValueError
+                # elif clause.data == 'term':
+                #     LOG.debug('clause.data = {}'.format(clause.data))
+                #     token = reduce(lambda x, y: f'{str(x)} {str(y)}', clause.children)
+                #     LOG.debug('token is: {}'.format(token))
+                #     token = eval(token)
+                #     if isinstance(token, (int, float)):
+                #         return Token('Number', eval(token))
+                #     else:
+                #         raise ValueError
+                else:
+                    raise ValueError
+                l2 = []
+                for t in clause.children:
+                    LOG.debug(f't is {t}')
+                    if isinstance(t, Tree):
+                        if t.data in ['expression', 'term']:
+                            l2.append(_Expression(t).reduce(ts_data))
+                        else:
+                            raise ValueError(t)
+                    elif isinstance(t, Token):
+                        l2.append(t)
+                    else:
+                        raise ValueError
+                LOG.debug(f'l2 list is {l2}, len: {len(l2)}')
+                if len(l2) == 0:
+                    raise ValueError
+                elif len(l2) == 1:
+                    if isinstance(l2[0], (float, int)):
+                        return self.reduce(ts_data, Token('NUMBER', l2[0]))
+                    elif isinstance(l2[0], Token):
+                        return l2[0]
+                    else:
+                        raise ValueError
+                else:
+                    return self.reduce(ts_data, Tree('expression', l2))
+
+        elif isinstance(clause, Token):
+            LOG.debug('our clause is a token: {}'.format(clause))
+            return clause
         else:
-            raise SyntaxError(clause)
+            raise ValueError
+
+        # elements = []
+        # for i in clause.children:
+        #     if isinstance(i, Tree):
+        #         if i.data == 'expression':
+        #             exp = _Expression(i).reduce(ts_data)
+        #             elements.append(exp)
+        #     elif isinstance(i, Token):
+        #         if i.type == 'FUNC':
+        #             elements.append(getattr(np, i.value))
+        # LOG.debug('Output of clause reduce')
+        # LOG.debug(elements)
+        # if len(elements) == 1:
+        #     if isinstance(elements[0], (float, int)):
+        #         token = elements[0]
+        #     elif isinstance(elements[0], Token):
+        #         token = eval(str(elements[0]))
+        #     else:
+        #         raise ValueError
+        #     return token
+        # # if we have >1 item in elements we need to reduce the clause further
+        # elif len(elements) == 2:
+        #     # Deal with situation where we have a series and a function modifier (i.e. mean A[CondY]@t=(0, 5))
+        #     if callable(elements[0]):
+        #         # can only apply a modifier on a collection obj such as series
+        #         if not isinstance(elements[1], pd.Series):
+        #             raise SyntaxError(f'Cannot apply function modifier to a single entity. You have '
+        #                               f'tried to apply the {elements[0]} function to '
+        #                               f'{elements[1]}')
+        #         else:
+        #             return elements[0](elements[1])
+        # else:
+        #     raise SyntaxError(clause)
 
     def __str__(self):
         return str(self.clause)
@@ -268,21 +348,46 @@ class _Expression:
         # reduced = None
         if expression is None:
             expression = self.exprs
-        LOG.debug('expression is {}'.format(expression.pretty()))
-        if isinstance(expression, Tree):
-            if expression.data == 'expression':
-                return self._process_expression(ts_data, expression)
-            elif expression.data == 'model_entity':
-                reduced_model_entity = _ModelEntity(expression).reduce(ts_data)
-                return self.reduce(ts_data, reduced_model_entity)
+
+        if not isinstance(expression, Tree):
+            raise TypeError
+
+        if all([isinstance(i, Token) for i in expression.children]):
+            LOG.debug('all elements are tokens')
+            string_expression = reduce(lambda x, y: f'{str(x)} {str(y)}', expression.children)
+            evaluated = eval(string_expression)
+            if isinstance(evaluated, (float, int)):
+                token = Token('NUMBER', evaluated)
+                LOG.debug('final token is {}'.format(token))
+                return token
             else:
-                raise NotImplementedError
-        elif isinstance(expression, Token):
-            if expression.type == 'NUMBER':
-                return expression
-        elif isinstance(expression, (float, int, pd.Series)):
-            LOG.debug('final expression ', expression)
-            return expression
+                raise ValueError
+        else:
+            l = []
+            for i in expression.children:
+                if isinstance(i, Tree):
+                    l.append(self.reduce(ts_data, i))
+                elif isinstance(i, Token):
+                    l.append(i)
+                else:
+                    raise ValueError
+            LOG.debug('list is {}'.format(l))
+            return self.reduce(ts_data, Tree('expression', l))
+        # if isinstance(expression, Tree):
+
+        #     if expression.data == 'expression':
+        #         return self._process_expression(ts_data, expression)
+        #     elif expression.data == 'model_entity':
+        #         reduced_model_entity = _ModelEntity(expression).reduce(ts_data)
+        #         return self.reduce(ts_data, reduced_model_entity)
+        #     else:
+        #         raise NotImplementedError
+        # elif isinstance(expression, Token):
+        #     if expression.type == 'NUMBER':
+        #         return expression
+        # elif isinstance(expression, (float, int, pd.Series)):
+        #     LOG.debug('final expression ', expression)
+        #     return expression
 
     def reduce2(self, ts_data, expression=None):
         LOG.debug('expression reduce invoked')

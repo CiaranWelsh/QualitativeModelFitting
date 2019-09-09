@@ -30,7 +30,7 @@ OPTIONS = dict(
 def logging_config():
     logger = logging.getLogger(__name__)
     # logger.setLevel(logging.ERROR)
-    formatter = logging.Formatter('%(name)s - %(funcName)s - %(levelname)s: %(message)s')
+    formatter = logging.Formatter('%(lineno)d:%(levelname)s: %(message)s')
     if OPTIONS['logging']['use_file_logger']:
         fh = logging.FileHandler(OPTIONS['logging']['filename'])
         fh.setLevel(OPTIONS['logging']['level']['fh'])
@@ -49,5 +49,6 @@ def logging_config():
 LOG = logging_config()
 
 
-
+# silence matplotlib logger
+mpl_logger = logging.getLogger('matplotlib.pyplot').setLevel(logging.CRITICAL)
 
