@@ -192,17 +192,21 @@ class _Clause:
                 token = _ModelEntity(clause).reduce(ts_data)
                 LOG.debug('since we have an model entity, we reduce here and return {}'.format(token))
                 return token
-            LOG.debug(f'clause.data before l: {clause.data}')
-            reduced_list = [self.reduce(ts_data, i) for i in clause.children]
-            LOG.debug(f'clause.data after l: {clause.data}')
-            LOG.debug(f'list reduced_list is {reduced_list}')
-            if all([isinstance(i, Token) for i in reduced_list]) and clause.data != 'model_entity':
+            # LOG.debug(f'clause.data before l: {clause.data}')
+            # reduced_list = [self.reduce(ts_data, i) for i in clause.children]
+            # LOG.debug(f'clause.data after l: {clause.data}')
+            # LOG.debug(f'list reduced_list is {reduced_list}')
+            if all([isinstance(i, Token) for i in clause.children]) and clause.data != 'model_entity':
                 LOG.debug('clause condition approved. reducing and returning')
                 reduced = reduce(lambda x, y: f'{str(x)} {str(y)}', clause.children)
+                LOG.debug('reduced is: {}'.format(reduced))
+                LOG.debug('reduced type is: {}'.format(type(reduced)))
                 if isinstance(reduced, (float, int)):
                     token = Token('NUMBER', reduced)
                     LOG.debug(f'returning reduced token {token}')
                     return token
+                elif isinstance(reduced, Token):
+                    return reduced
                 else:
                     raise ValueError(reduced)
             # reduce the trees to tokens

@@ -47740,3 +47740,379 @@ _interpreter - reduce - DEBUG: []
 210:DEBUG: clause condition failed. More processessing is required.
 211:DEBUG: clause.data is: term
 212:DEBUG: clause.children is: [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+195:DEBUG: clause.data before l: clause1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 5
+261:DEBUG: our clause is a token: 5
+197:DEBUG: clause.data after l: clause1
+198:DEBUG: list reduced_list is [Token(NUMBER, '5')]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+195:DEBUG: clause.data before l: clause1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])
+195:DEBUG: clause.data before l: expression
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 5
+261:DEBUG: our clause is a token: 5
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is +
+261:DEBUG: our clause is a token: +
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 6
+261:DEBUG: our clause is a token: 6
+197:DEBUG: clause.data after l: expression
+198:DEBUG: list reduced_list is [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+195:DEBUG: clause.data before l: clause1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])
+195:DEBUG: clause.data before l: expression
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])
+195:DEBUG: clause.data before l: term
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 5
+261:DEBUG: our clause is a token: 5
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is *
+261:DEBUG: our clause is a token: *
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 2
+261:DEBUG: our clause is a token: 2
+197:DEBUG: clause.data after l: term
+198:DEBUG: list reduced_list is [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+195:DEBUG: clause.data before l: clause1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])
+195:DEBUG: clause.data before l: expression
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 6
+261:DEBUG: our clause is a token: 6
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is +
+261:DEBUG: our clause is a token: +
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])
+195:DEBUG: clause.data before l: term
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 5
+261:DEBUG: our clause is a token: 5
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is *
+261:DEBUG: our clause is a token: *
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 2
+261:DEBUG: our clause is a token: 2
+197:DEBUG: clause.data after l: term
+198:DEBUG: list reduced_list is [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+195:DEBUG: clause.data before l: clause1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+195:DEBUG: clause.data before l: expression
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 6
+261:DEBUG: our clause is a token: 6
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is +
+261:DEBUG: our clause is a token: +
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])
+195:DEBUG: clause.data before l: term
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 5
+261:DEBUG: our clause is a token: 5
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is *
+261:DEBUG: our clause is a token: *
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 2
+261:DEBUG: our clause is a token: 2
+197:DEBUG: clause.data after l: term
+198:DEBUG: list reduced_list is [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+195:DEBUG: clause.data before l: clause1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+195:DEBUG: clause.data before l: expression
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')])
+195:DEBUG: clause.data before l: term
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 6
+261:DEBUG: our clause is a token: 6
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is /
+261:DEBUG: our clause is a token: /
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 2.0
+261:DEBUG: our clause is a token: 2.0
+197:DEBUG: clause.data after l: term
+198:DEBUG: list reduced_list is [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+195:DEBUG: clause.data before l: clause1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])
+495:DEBUG: model entity reduce invoked
+501:DEBUG: model entity reduce output is: 
+502:DEBUG: 10.0050015500576
+193:DEBUG: since we have an model entity, we reduce here and return 10.0050015500576
+197:DEBUG: clause.data after l: clause1
+198:DEBUG: list reduced_list is [10.0050015500576]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+195:DEBUG: clause.data before l: clause1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])
+195:DEBUG: clause.data before l: term
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])
+495:DEBUG: model entity reduce invoked
+501:DEBUG: model entity reduce output is: 
+502:DEBUG: 10.0050015500576
+193:DEBUG: since we have an model entity, we reduce here and return 10.0050015500576
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is *
+261:DEBUG: our clause is a token: *
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 2
+261:DEBUG: our clause is a token: 2
+197:DEBUG: clause.data after l: term
+198:DEBUG: list reduced_list is [10.0050015500576, Token(MUL, '*'), Token(NUMBER, '2')]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+200:DEBUG: clause condition approved. reducing and returning
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+210:DEBUG: clause condition failed. More processessing is required.
+211:DEBUG: clause.data is: clause1
+212:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+210:DEBUG: clause condition failed. More processessing is required.
+211:DEBUG: clause.data is: clause1
+212:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+210:DEBUG: clause condition failed. More processessing is required.
+211:DEBUG: clause.data is: clause1
+212:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+210:DEBUG: clause condition failed. More processessing is required.
+211:DEBUG: clause.data is: clause1
+212:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+210:DEBUG: clause condition failed. More processessing is required.
+211:DEBUG: clause.data is: clause1
+212:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+210:DEBUG: clause condition failed. More processessing is required.
+211:DEBUG: clause.data is: clause1
+212:DEBUG: clause.children is: [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+210:DEBUG: clause condition failed. More processessing is required.
+211:DEBUG: clause.data is: clause1
+212:DEBUG: clause.children is: [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+200:DEBUG: clause condition approved. reducing and returning
+202:DEBUG: reduced is: 5
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+200:DEBUG: clause condition approved. reducing and returning
+202:DEBUG: reduced is: 5
+203:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+212:DEBUG: clause condition failed. More processessing is required.
+213:DEBUG: clause.data is: clause1
+214:DEBUG: clause.children is: [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+200:DEBUG: clause condition approved. reducing and returning
+202:DEBUG: reduced is: 5
+203:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+200:DEBUG: clause condition approved. reducing and returning
+202:DEBUG: reduced is: 4
+203:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "5 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+214:DEBUG: clause condition failed. More processessing is required.
+215:DEBUG: clause.data is: clause1
+216:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+214:DEBUG: clause condition failed. More processessing is required.
+215:DEBUG: clause.data is: clause1
+216:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+214:DEBUG: clause condition failed. More processessing is required.
+215:DEBUG: clause.data is: clause1
+216:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+214:DEBUG: clause condition failed. More processessing is required.
+215:DEBUG: clause.data is: clause1
+216:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+214:DEBUG: clause condition failed. More processessing is required.
+215:DEBUG: clause.data is: clause1
+216:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+214:DEBUG: clause condition failed. More processessing is required.
+215:DEBUG: clause.data is: clause1
+216:DEBUG: clause.children is: [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+214:DEBUG: clause condition failed. More processessing is required.
+215:DEBUG: clause.data is: clause1
+216:DEBUG: clause.children is: [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
