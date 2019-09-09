@@ -26,9 +26,9 @@ class Parser:
     clause1                 : [FUNC] expression
     clause2                 : [FUNC] expression
 
-    ?expression              : term ((ADD|SUB) term)*
-    ?term.2                    : factor ((MUL|DIV) factor)*
-    ?factor                  : NUMBER | model_entity
+    ?expression             : term ((ADD|SUB) term)*
+    ?term.2                 : factor ((MUL|DIV) factor)*
+    ?factor                 : NUMBER | model_entity 
     
     model_entity            : SYMBOL "[" CONDITION "]" _TIME_SYMBOL (POINT_TIME| INTERVAL_TIME) 
     FUNC                    : "mean"|"all"|"any"|"min"|"max"

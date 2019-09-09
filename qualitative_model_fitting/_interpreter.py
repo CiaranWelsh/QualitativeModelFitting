@@ -20,7 +20,7 @@ class _Base:
         pass
 
     @staticmethod
-    def reduce_model_entity(entity, ts_data):
+    def reduce_model_entity(entity, ts_data, function_modifier=None):
         token = _ModelEntity(entity).reduce(ts_data)
         LOG.debug('Clause.data is a model entity, we can reduce here and return {}'.format(token))
         if isinstance(token, (float, int)):
@@ -29,8 +29,18 @@ class _Base:
             return token
         elif isinstance(token, Token):
             return token
+        elif isinstance(token, pd.Series):
+            return token
+            # if function_modifier is None:
+            #     raise SyntaxError('specify a function')
+            # if not callable(function_modifier):
+            #     raise ValueError
+            # token = function_modifier(token)
+            # token = Token('NUMBER', token)
+            # return token
+
         else:
-            raise ValueError
+            raise ValueError(token)
 
     @staticmethod
     def reduce_expression(exprs, ts_data):
@@ -231,7 +241,7 @@ class _Clause(_Base):
             raise TypeError('need Token or Tree but found "{}" of type "{}"'.format(clause, type(clause)))
 
         if isinstance(clause, Tree):
-            LOG.debug(f'clause is a tree: {clause.data}, {clause.children}')
+            LOG.debug(f'clause is a tree')
             if clause.data == 'model_entity':
                 return self.reduce_model_entity(clause, ts_data)
 
@@ -247,6 +257,7 @@ class _Clause(_Base):
                 LOG.debug('reduced list is {}'.format(reduced_list))
                 if len(reduced_list) == 0:
                     raise ValueError
+
                 elif len(reduced_list) == 1:
                     if isinstance(reduced_list[0], (float, int)):
                         return self.reduce(ts_data, Token('NUMBER', reduced_list[0]))
@@ -254,8 +265,27 @@ class _Clause(_Base):
                         return reduced_list[0]
                     else:
                         raise ValueError
-                elif len(reduced_list) > 1:
+
+                elif len(reduced_list) == 2:
+                    LOG.debug('reduce_list is len 2: {}'.format(reduced_list))
+                    if reduced_list[0].type == 'FUNC':
+                        if not hasattr(np, str(reduced_list[0])):
+                            raise SyntaxError(f'{reduced_list[0]} is not a valid function.')
+                        func = getattr(np, str(reduced_list[0]))
+                        token = func(reduced_list[1])
+                        if isinstance(token, (float, int)):
+                            token = Token('NUMBER', token)
+                            return token
+                        # elif isinstance(token, bool):
+                        #     return token
+                        else:
+                            raise ValueError(token)
+                    else:
+                        raise ValueError
+
+                elif len(reduced_list) > 2:
                     return self.reduce(ts_data, Tree('expression', reduced_list))
+
                 else:
                     raise ValueError
 
@@ -314,7 +344,7 @@ class _Expression(_Base):
                 elif isinstance(i, Token):
                     l.append(i)
                 else:
-                    raise ValueError
+                    raise ValueError(i)
             LOG.debug('list is {}'.format(l))
             return self.reduce(ts_data, Tree('expression', l))
 

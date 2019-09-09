@@ -128,12 +128,39 @@ class TestRunner(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_run9(self):
-        obs = 'Obs9: Akt[InsulinOnly]@t=0*2 > 5'
+        obs = 'Obs9: Akt[InsulinOnly]@t=0*2 +1 > 5'
         ts, obs = self.get_interpreter(obs)
         runner = ManualRunner(MODEL1, ts, obs)
         result = runner.run()
         actual = result[0]['comparison']
-        expected = '20.0100031001152 > 5'
+        expected = '21.0100031001152 > 5'
+        self.assertEqual(expected, actual)
+
+    def test_run10(self):
+        obs = 'Obs10: 1 + Akt[InsulinOnly]@t=0*2 > 5'
+        ts, obs = self.get_interpreter(obs)
+        runner = ManualRunner(MODEL1, ts, obs)
+        result = runner.run()
+        actual = result[0]['comparison']
+        expected = '21.0100031001152 > 5'
+        self.assertEqual(expected, actual)
+
+    def test_run11(self):
+        obs = 'Obs11: mean Akt[InsulinOnly]@t=(0, 5) > 5'
+        ts, obs = self.get_interpreter(obs)
+        runner = ManualRunner(MODEL1, ts, obs)
+        result = runner.run()
+        actual = result[0]['comparison']
+        expected = '7.632460576669665 > 5'
+        self.assertEqual(expected, actual)
+
+    def test_run12(self):
+        obs = 'Obs12: Akt[InsulinOnly]@t=(0, 5) > 5'
+        ts, obs = self.get_interpreter(obs)
+        runner = ManualRunner(MODEL1, ts, obs)
+        result = runner.run()
+        actual = result[0]['comparison']
+        expected = '15.2649211533 > 5'
         self.assertEqual(expected, actual)
 
     # def test_run2(self):
