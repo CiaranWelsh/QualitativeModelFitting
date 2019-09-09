@@ -188,16 +188,23 @@ class _Clause:
             raise TypeError('need Token or Tree but found "{}" of type "{}"'.format(clause, type(clause)))
 
         if isinstance(clause, Tree):
-            if clause.data == 'model_entity':
-                token = _ModelEntity(clause).reduce(ts_data)
-                LOG.debug('since we have an model entity, we reduce here and return {}'.format(token))
-                return token
-            # LOG.debug(f'clause.data before l: {clause.data}')
+            LOG.debug(f'clause is a tree: {clause.data}, {clause.children}')
             # reduced_list = [self.reduce(ts_data, i) for i in clause.children]
             # LOG.debug(f'clause.data after l: {clause.data}')
             # LOG.debug(f'list reduced_list is {reduced_list}')
-            if all([isinstance(i, Token) for i in clause.children]) and clause.data != 'model_entity':
-                LOG.debug('clause condition approved. reducing and returning')
+            if clause.data == 'model_entity':
+                token = _ModelEntity(clause).reduce(ts_data)
+                LOG.debug('Clause.data is a model entity, we can reduce here and return {}'.format(token))
+                return token
+
+            elif clause.data == 'expression':
+                token = _Expression(clause).reduce(ts_data, clause)
+                LOG.debug('clause is an expression. resulting token is: {}, {}'.format(token, type(token)))
+                return token
+
+            elif all([isinstance(i, Token) for i in clause.children]):
+                LOG.debug('clause is {}, {}'.format(clause.data, clause.children))
+                LOG.debug('All clause children are tokens. Reducing and returning')
                 reduced = reduce(lambda x, y: f'{str(x)} {str(y)}', clause.children)
                 LOG.debug('reduced is: {}'.format(reduced))
                 LOG.debug('reduced type is: {}'.format(type(reduced)))
@@ -209,96 +216,92 @@ class _Clause:
                     return reduced
                 else:
                     raise ValueError(reduced)
-            # reduce the trees to tokens
-            else:
-                LOG.debug('clause condition failed. More processessing is required.')
-                LOG.debug('clause.data is: {}'.format(clause.data))
-                LOG.debug('clause.children is: {}'.format(clause.children))
-                if clause.data == 'model_entity':
-                    LOG.debug('model entity encountered: {}'.format(clause))
-                    model_entity_reduced = _ModelEntity(clause).reduce(ts_data)
-                    LOG.debug(f'reduced model entity, {model_entity_reduced}')
-                    if isinstance(model_entity_reduced, (float, int)):
-                        LOG.debug('reduced model entity is {}'.format(type(model_entity_reduced)))
-                        token = Token('NUMBER', model_entity_reduced)
-                        LOG.debug('token is {}'.format(token))
-                        return self.reduce(ts_data, token)
-                    else:
-                        raise ValueError
-                # elif clause.data == 'term':
-                #     LOG.debug('clause.data = {}'.format(clause.data))
-                #     token = reduce(lambda x, y: f'{str(x)} {str(y)}', clause.children)
-                #     LOG.debug('token is: {}'.format(token))
-                #     token = eval(token)
-                #     if isinstance(token, (int, float)):
-                #         return Token('Number', eval(token))
-                #     else:
-                #         raise ValueError
-                else:
-                    raise ValueError
-                l2 = []
-                for t in clause.children:
-                    LOG.debug(f't is {t}')
-                    if isinstance(t, Tree):
-                        if t.data in ['expression', 'term']:
-                            l2.append(_Expression(t).reduce(ts_data))
-                        else:
-                            raise ValueError(t)
-                    elif isinstance(t, Token):
-                        l2.append(t)
-                    else:
-                        raise ValueError
-                LOG.debug(f'l2 list is {l2}, len: {len(l2)}')
-                if len(l2) == 0:
-                    raise ValueError
-                elif len(l2) == 1:
-                    if isinstance(l2[0], (float, int)):
-                        return self.reduce(ts_data, Token('NUMBER', l2[0]))
-                    elif isinstance(l2[0], Token):
-                        return l2[0]
-                    else:
-                        raise ValueError
-                else:
-                    return self.reduce(ts_data, Tree('expression', l2))
 
+            elif clause.data in ['clause1', 'clause2']:
+                # recursively call self.reduce on each of the clause children
+                reduced_list = [self.reduce(ts_data, i) for i in clause.children]
+                LOG.debug('reduced list is {}'.format(reduced_list))
+                if len(reduced_list) == 0:
+                    raise ValueError
+                elif len(reduced_list) == 1:
+                    if isinstance(reduced_list[0], (float, int)):
+                        return self.reduce(ts_data, Token('NUMBER', reduced_list[0]))
+                    elif isinstance(reduced_list[0], Token):
+                        return reduced_list[0]
+                    else:
+                        raise ValueError
+                elif len(reduced_list) > 1:
+                    return self.reduce(ts_data, Tree('expression', reduced_list))
+                else:
+                    raise ValueError
+
+            else:
+                raise ValueError
+        # and deal with the case where clause is a token
         elif isinstance(clause, Token):
-            LOG.debug('our clause is a token: {}'.format(clause))
+            LOG.debug('our clause is a token: {}, type: {}'.format(clause, type(clause)))
             return clause
         else:
             raise ValueError
 
-        # elements = []
-        # for i in clause.children:
-        #     if isinstance(i, Tree):
-        #         if i.data == 'expression':
-        #             exp = _Expression(i).reduce(ts_data)
-        #             elements.append(exp)
-        #     elif isinstance(i, Token):
-        #         if i.type == 'FUNC':
-        #             elements.append(getattr(np, i.value))
-        # LOG.debug('Output of clause reduce')
-        # LOG.debug(elements)
-        # if len(elements) == 1:
-        #     if isinstance(elements[0], (float, int)):
-        #         token = elements[0]
-        #     elif isinstance(elements[0], Token):
-        #         token = eval(str(elements[0]))
-        #     else:
-        #         raise ValueError
-        #     return token
-        # # if we have >1 item in elements we need to reduce the clause further
-        # elif len(elements) == 2:
-        #     # Deal with situation where we have a series and a function modifier (i.e. mean A[CondY]@t=(0, 5))
-        #     if callable(elements[0]):
-        #         # can only apply a modifier on a collection obj such as series
-        #         if not isinstance(elements[1], pd.Series):
-        #             raise SyntaxError(f'Cannot apply function modifier to a single entity. You have '
-        #                               f'tried to apply the {elements[0]} function to '
-        #                               f'{elements[1]}')
-        #         else:
-        #             return elements[0](elements[1])
-        # else:
-        #     raise SyntaxError(clause)
+            # reduce the trees to tokens
+
+            # else:
+            #     LOG.debug('clause condition failed. More processessing is required.')
+            #     LOG.debug('clause.data is: {}'.format(clause.data))
+            #     LOG.debug('clause.children is: {}'.format(clause.children))
+            #     if clause.data in ['clause1', 'clause2']:
+            #         pass
+            #     elif clause.data == 'model_entity':
+            #         LOG.debug('model entity encountered: {}'.format(clause))
+            #         model_entity_reduced = _ModelEntity(clause).reduce(ts_data)
+            #         LOG.debug(f'reduced model entity, {model_entity_reduced}')
+            #         if isinstance(model_entity_reduced, (float, int)):
+            #             LOG.debug('reduced model entity is {}'.format(type(model_entity_reduced)))
+            #             token = Token('NUMBER', model_entity_reduced)
+            #             LOG.debug('token is {}'.format(token))
+            #             return self.reduce(ts_data, token)
+            #         else:
+            #             raise ValueError
+            # elif clause.data == 'term':
+            #     LOG.debug('clause.data = {}'.format(clause.data))
+            #     token = reduce(lambda x, y: f'{str(x)} {str(y)}', clause.children)
+            #     LOG.debug('token is: {}'.format(token))
+            #     token = eval(token)
+            #     if isinstance(token, (int, float)):
+            #         return Token('Number', eval(token))
+            #     else:
+            #         raise ValueError
+            # else:
+            #     raise ValueError
+            # l2 = []
+            # for t in clause.children:
+            #     LOG.debug(f't is {t}')
+            #     if isinstance(t, Tree):
+            #         if t.data in ['expression', 'term']:
+            #             l2.append(_Expression(t).reduce(ts_data))
+            #         elif t.data == 'model_entity':
+            #             l2.append(_ModelEntity(t).reduce(ts_data))
+            #         else:
+            #             raise ValueError(t)
+            #     elif isinstance(t, Token):
+            #         l2.append(t)
+            #     else:
+            #         raise ValueError
+            # LOG.debug(f'l2 list is {l2}, len: {len(l2)}')
+            # if len(l2) == 0:
+            #     raise ValueError
+            # elif len(l2) == 1:
+            #     if isinstance(l2[0], (float, int)):
+            #         return self.reduce(ts_data, Token('NUMBER', l2[0]))
+            #     elif isinstance(l2[0], Token):
+            #         return l2[0]
+            #     else:
+            #         raise ValueError
+            # else:
+            #     return self.reduce(ts_data, Tree('expression', l2))
+
+
 
     def __str__(self):
         return str(self.clause)

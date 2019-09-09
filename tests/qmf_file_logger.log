@@ -48116,3 +48116,1644 @@ _interpreter - reduce - DEBUG: []
 214:DEBUG: clause condition failed. More processessing is required.
 215:DEBUG: clause.data is: clause1
 216:DEBUG: clause.children is: [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 5
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 4
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "5 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])
+357:DEBUG: expression reduce invoked
+366:DEBUG: all elements are tokens
+371:DEBUG: final token is 11
+257:DEBUG: l2 list is [Token(NUMBER, '11')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 4
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "11 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+247:DEBUG: t is Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])
+357:DEBUG: expression reduce invoked
+357:DEBUG: expression reduce invoked
+366:DEBUG: all elements are tokens
+371:DEBUG: final token is 10
+384:DEBUG: list is [Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '6')]
+357:DEBUG: expression reduce invoked
+366:DEBUG: all elements are tokens
+371:DEBUG: final token is 16
+257:DEBUG: l2 list is [Token(NUMBER, '16')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 4
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "16 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])
+357:DEBUG: expression reduce invoked
+357:DEBUG: expression reduce invoked
+366:DEBUG: all elements are tokens
+371:DEBUG: final token is 10
+384:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10')]
+357:DEBUG: expression reduce invoked
+366:DEBUG: all elements are tokens
+371:DEBUG: final token is 16
+257:DEBUG: l2 list is [Token(NUMBER, '16')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 9
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "16 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+357:DEBUG: expression reduce invoked
+357:DEBUG: expression reduce invoked
+366:DEBUG: all elements are tokens
+371:DEBUG: final token is 10
+384:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+357:DEBUG: expression reduce invoked
+366:DEBUG: all elements are tokens
+371:DEBUG: final token is 23
+257:DEBUG: l2 list is [Token(NUMBER, '23')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 9
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "23 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+247:DEBUG: t is Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+357:DEBUG: expression reduce invoked
+357:DEBUG: expression reduce invoked
+366:DEBUG: all elements are tokens
+371:DEBUG: final token is 3.0
+357:DEBUG: expression reduce invoked
+366:DEBUG: all elements are tokens
+371:DEBUG: final token is 10
+384:DEBUG: list is [Token(NUMBER, '3.0'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+357:DEBUG: expression reduce invoked
+366:DEBUG: all elements are tokens
+371:DEBUG: final token is 20.0
+257:DEBUG: l2 list is [Token(NUMBER, '20.0')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 9
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "20.0 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+247:DEBUG: t is Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+247:DEBUG: t is Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])
+357:DEBUG: expression reduce invoked
+357:DEBUG: expression reduce invoked
+366:DEBUG: all elements are tokens
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 5
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 4
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "5 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 11
+259:DEBUG: l2 list is [Token(NUMBER, '11')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 4
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "11 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+247:DEBUG: t is Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])
+359:DEBUG: expression reduce invoked
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 10
+386:DEBUG: list is [Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '6')]
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 16
+259:DEBUG: l2 list is [Token(NUMBER, '16')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 4
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "16 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])
+359:DEBUG: expression reduce invoked
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 10
+386:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10')]
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 16
+259:DEBUG: l2 list is [Token(NUMBER, '16')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 9
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "16 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+359:DEBUG: expression reduce invoked
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 10
+386:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 23
+259:DEBUG: l2 list is [Token(NUMBER, '23')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 9
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "23 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+247:DEBUG: t is Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+359:DEBUG: expression reduce invoked
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 3.0
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 10
+386:DEBUG: list is [Token(NUMBER, '3.0'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 20.0
+259:DEBUG: l2 list is [Token(NUMBER, '20.0')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 9
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "20.0 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+247:DEBUG: t is Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])
+507:DEBUG: model entity reduce invoked
+513:DEBUG: model entity reduce output is: 
+514:DEBUG: 10.0050015500576
+259:DEBUG: l2 list is [10.0050015500576], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 10.0050015500576
+273:DEBUG: our clause is a token: 10.0050015500576
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 5
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "10.0050015500576 > 5"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+247:DEBUG: t is Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])
+359:DEBUG: expression reduce invoked
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 5
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 4
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "5 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 5
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 4
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "5 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 11
+259:DEBUG: l2 list is [Token(NUMBER, '11')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 4
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "11 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+247:DEBUG: t is Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])
+359:DEBUG: expression reduce invoked
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 10
+386:DEBUG: list is [Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '6')]
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 16
+259:DEBUG: l2 list is [Token(NUMBER, '16')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 4
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "16 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])
+359:DEBUG: expression reduce invoked
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 10
+386:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10')]
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 16
+259:DEBUG: l2 list is [Token(NUMBER, '16')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 9
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "16 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+359:DEBUG: expression reduce invoked
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 10
+386:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 23
+259:DEBUG: l2 list is [Token(NUMBER, '23')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 9
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "23 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+247:DEBUG: t is Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+359:DEBUG: expression reduce invoked
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 3.0
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 10
+386:DEBUG: list is [Token(NUMBER, '3.0'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+373:DEBUG: final token is 20.0
+259:DEBUG: l2 list is [Token(NUMBER, '20.0')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 9
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "20.0 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+247:DEBUG: t is Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])
+507:DEBUG: model entity reduce invoked
+513:DEBUG: model entity reduce output is: 
+514:DEBUG: 10.0050015500576
+259:DEBUG: l2 list is [10.0050015500576], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 10.0050015500576
+273:DEBUG: our clause is a token: 10.0050015500576
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+204:DEBUG: clause condition approved. reducing and returning
+206:DEBUG: reduced is: 5
+207:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "10.0050015500576 > 5"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+247:DEBUG: t is Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])
+359:DEBUG: expression reduce invoked
+359:DEBUG: expression reduce invoked
+368:DEBUG: all elements are tokens
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+196:DEBUG: clause condition approved. reducing and returning
+198:DEBUG: reduced is: 5
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+196:DEBUG: clause condition approved. reducing and returning
+198:DEBUG: reduced is: 4
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "5 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 11
+259:DEBUG: l2 list is [Token(NUMBER, '11')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+196:DEBUG: clause condition approved. reducing and returning
+198:DEBUG: reduced is: 4
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "11 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+247:DEBUG: t is Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])
+326:DEBUG: expression reduce invoked
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 10
+353:DEBUG: list is [Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '6')]
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 16
+259:DEBUG: l2 list is [Token(NUMBER, '16')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+196:DEBUG: clause condition approved. reducing and returning
+198:DEBUG: reduced is: 4
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "16 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])
+326:DEBUG: expression reduce invoked
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 10
+353:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10')]
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 16
+259:DEBUG: l2 list is [Token(NUMBER, '16')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+196:DEBUG: clause condition approved. reducing and returning
+198:DEBUG: reduced is: 9
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "16 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+326:DEBUG: expression reduce invoked
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 10
+353:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 23
+259:DEBUG: l2 list is [Token(NUMBER, '23')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+196:DEBUG: clause condition approved. reducing and returning
+198:DEBUG: reduced is: 9
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "23 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+247:DEBUG: t is Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+326:DEBUG: expression reduce invoked
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 3.0
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 10
+353:DEBUG: list is [Token(NUMBER, '3.0'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 20.0
+259:DEBUG: l2 list is [Token(NUMBER, '20.0')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+196:DEBUG: clause condition approved. reducing and returning
+198:DEBUG: reduced is: 9
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "20.0 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+247:DEBUG: t is Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])
+474:DEBUG: model entity reduce invoked
+480:DEBUG: model entity reduce output is: 
+481:DEBUG: 10.0050015500576
+259:DEBUG: l2 list is [10.0050015500576], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 10.0050015500576
+273:DEBUG: our clause is a token: 10.0050015500576
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+196:DEBUG: clause condition approved. reducing and returning
+198:DEBUG: reduced is: 5
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "10.0050015500576 > 5"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+247:DEBUG: t is Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])
+326:DEBUG: expression reduce invoked
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 5
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 4
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "5 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 11
+259:DEBUG: l2 list is [Token(NUMBER, '11')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 4
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "11 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+247:DEBUG: t is Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])
+326:DEBUG: expression reduce invoked
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 10
+353:DEBUG: list is [Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '6')]
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 16
+259:DEBUG: l2 list is [Token(NUMBER, '16')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 4
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "16 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])
+326:DEBUG: expression reduce invoked
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 10
+353:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10')]
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 16
+259:DEBUG: l2 list is [Token(NUMBER, '16')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 9
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "16 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+247:DEBUG: t is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+326:DEBUG: expression reduce invoked
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 10
+353:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 23
+259:DEBUG: l2 list is [Token(NUMBER, '23')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 9
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "23 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+247:DEBUG: t is Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+326:DEBUG: expression reduce invoked
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 3.0
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 10
+353:DEBUG: list is [Token(NUMBER, '3.0'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+340:DEBUG: final token is 20.0
+259:DEBUG: l2 list is [Token(NUMBER, '20.0')], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 9
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "20.0 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+247:DEBUG: t is Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])
+474:DEBUG: model entity reduce invoked
+480:DEBUG: model entity reduce output is: 
+481:DEBUG: 10.0050015500576
+259:DEBUG: l2 list is [10.0050015500576], len: 1
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 10.0050015500576
+273:DEBUG: our clause is a token: 10.0050015500576
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 5
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "10.0050015500576 > 5"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+218:DEBUG: clause condition failed. More processessing is required.
+219:DEBUG: clause.data is: clause1
+220:DEBUG: clause.children is: [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+247:DEBUG: t is Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])
+326:DEBUG: expression reduce invoked
+326:DEBUG: expression reduce invoked
+335:DEBUG: all elements are tokens
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 5
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 4
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "5 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 4
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 4
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 9
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 9
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 9
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 5
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 5"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+196:DEBUG: All clause children are tokens. Reducing and returning
+198:DEBUG: reduced is: 5
+199:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 5"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+206:DEBUG: clause is clause1, [Token(NUMBER, '5')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 5
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+206:DEBUG: clause is clause2, [Token(NUMBER, '4')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 4
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "5 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+206:DEBUG: clause is clause2, [Token(NUMBER, '4')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 4
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+206:DEBUG: clause is clause2, [Token(NUMBER, '4')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 4
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+206:DEBUG: clause is clause2, [Token(NUMBER, '9')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 9
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+206:DEBUG: clause is clause2, [Token(NUMBER, '9')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 9
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+206:DEBUG: clause is clause2, [Token(NUMBER, '9')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 9
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+206:DEBUG: clause is clause2, [Token(NUMBER, '5')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 5
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 5"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+206:DEBUG: clause is clause2, [Token(NUMBER, '5')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 5
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 5"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+191:DEBUG: clause is a tree: clause1, [Token(NUMBER, '5')]
+206:DEBUG: clause is clause1, [Token(NUMBER, '5')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 5
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '4')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '4')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 4
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "5 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '4')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '4')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 4
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '4')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '4')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 4
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '9')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '9')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 9
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '9')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '9')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 9
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '9')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '9')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 9
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+191:DEBUG: clause is a tree: clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '5')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '5')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 5
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 5"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+191:DEBUG: clause is a tree: clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '5')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '5')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 5
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 5"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+191:DEBUG: clause is a tree: clause1, [Token(NUMBER, '5')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 5
+227:DEBUG: our clause is a token: 5, type: <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '5')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '4')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 4
+227:DEBUG: our clause is a token: 4, type: <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '4')]
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > None"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])
+191:DEBUG: clause is a tree: expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')]
+339:DEBUG: expression reduce invoked
+348:DEBUG: all elements are tokens
+353:DEBUG: final token is 11
+202:DEBUG: clause is an expression. resulting token is: 11, <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '11')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '4')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 4
+227:DEBUG: our clause is a token: 4, type: <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '4')]
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > None"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])
+191:DEBUG: clause is a tree: expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')]
+339:DEBUG: expression reduce invoked
+339:DEBUG: expression reduce invoked
+348:DEBUG: all elements are tokens
+353:DEBUG: final token is 10
+366:DEBUG: list is [Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '6')]
+339:DEBUG: expression reduce invoked
+348:DEBUG: all elements are tokens
+353:DEBUG: final token is 16
+202:DEBUG: clause is an expression. resulting token is: 16, <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '16')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '4')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 4
+227:DEBUG: our clause is a token: 4, type: <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '4')]
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > None"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])
+191:DEBUG: clause is a tree: expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])]
+339:DEBUG: expression reduce invoked
+339:DEBUG: expression reduce invoked
+348:DEBUG: all elements are tokens
+353:DEBUG: final token is 10
+366:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10')]
+339:DEBUG: expression reduce invoked
+348:DEBUG: all elements are tokens
+353:DEBUG: final token is 16
+202:DEBUG: clause is an expression. resulting token is: 16, <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '16')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '9')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 9
+227:DEBUG: our clause is a token: 9, type: <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '9')]
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > None"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+191:DEBUG: clause is a tree: expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')]
+339:DEBUG: expression reduce invoked
+339:DEBUG: expression reduce invoked
+348:DEBUG: all elements are tokens
+353:DEBUG: final token is 10
+366:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+339:DEBUG: expression reduce invoked
+348:DEBUG: all elements are tokens
+353:DEBUG: final token is 23
+202:DEBUG: clause is an expression. resulting token is: 23, <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '23')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '9')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 9
+227:DEBUG: our clause is a token: 9, type: <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '9')]
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > None"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+191:DEBUG: clause is a tree: expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')]
+339:DEBUG: expression reduce invoked
+339:DEBUG: expression reduce invoked
+348:DEBUG: all elements are tokens
+353:DEBUG: final token is 3.0
+339:DEBUG: expression reduce invoked
+348:DEBUG: all elements are tokens
+353:DEBUG: final token is 10
+366:DEBUG: list is [Token(NUMBER, '3.0'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+339:DEBUG: expression reduce invoked
+348:DEBUG: all elements are tokens
+353:DEBUG: final token is 20.0
+202:DEBUG: clause is an expression. resulting token is: 20.0, <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '20.0')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '9')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 9
+227:DEBUG: our clause is a token: 9, type: <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '9')]
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > None"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+191:DEBUG: clause is a tree: clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])
+191:DEBUG: clause is a tree: model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]
+487:DEBUG: model entity reduce invoked
+493:DEBUG: model entity reduce output is: 
+494:DEBUG: 10.0050015500576
+197:DEBUG: Clause.data is a model entity, we can reduce here and return 10.0050015500576
+208:DEBUG: reduced list is [10.0050015500576]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '5')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 5
+227:DEBUG: our clause is a token: 5, type: <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '5')]
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > None"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+191:DEBUG: clause is a tree: clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])
+191:DEBUG: clause is a tree: term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')]
+208:DEBUG: reduced list is [None]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '5')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 5
+227:DEBUG: our clause is a token: 5, type: <class 'lark.lexer.Token'>
+208:DEBUG: reduced list is [Token(NUMBER, '5')]
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > None"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+191:DEBUG: clause is a tree: clause1, [Token(NUMBER, '5')]
+206:DEBUG: clause is clause1, [Token(NUMBER, '5')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 5
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '4')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '4')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 4
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "5 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])
+191:DEBUG: clause is a tree: expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')]
+341:DEBUG: expression reduce invoked
+350:DEBUG: all elements are tokens
+355:DEBUG: final token is 11
+202:DEBUG: clause is an expression. resulting token is: 11, <class 'lark.lexer.Token'>
+223:DEBUG: reduced list is [Token(NUMBER, '11')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '4')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '4')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 4
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])
+191:DEBUG: clause is a tree: expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')]
+341:DEBUG: expression reduce invoked
+341:DEBUG: expression reduce invoked
+350:DEBUG: all elements are tokens
+355:DEBUG: final token is 10
+368:DEBUG: list is [Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '6')]
+341:DEBUG: expression reduce invoked
+350:DEBUG: all elements are tokens
+355:DEBUG: final token is 16
+202:DEBUG: clause is an expression. resulting token is: 16, <class 'lark.lexer.Token'>
+223:DEBUG: reduced list is [Token(NUMBER, '16')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '4')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '4')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 4
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])
+191:DEBUG: clause is a tree: expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])]
+341:DEBUG: expression reduce invoked
+341:DEBUG: expression reduce invoked
+350:DEBUG: all elements are tokens
+355:DEBUG: final token is 10
+368:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10')]
+341:DEBUG: expression reduce invoked
+350:DEBUG: all elements are tokens
+355:DEBUG: final token is 16
+202:DEBUG: clause is an expression. resulting token is: 16, <class 'lark.lexer.Token'>
+223:DEBUG: reduced list is [Token(NUMBER, '16')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '9')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '9')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 9
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+191:DEBUG: clause is a tree: expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')]
+341:DEBUG: expression reduce invoked
+341:DEBUG: expression reduce invoked
+350:DEBUG: all elements are tokens
+355:DEBUG: final token is 10
+368:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+341:DEBUG: expression reduce invoked
+350:DEBUG: all elements are tokens
+355:DEBUG: final token is 23
+202:DEBUG: clause is an expression. resulting token is: 23, <class 'lark.lexer.Token'>
+223:DEBUG: reduced list is [Token(NUMBER, '23')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '9')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '9')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 9
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+191:DEBUG: clause is a tree: expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')]
+341:DEBUG: expression reduce invoked
+341:DEBUG: expression reduce invoked
+350:DEBUG: all elements are tokens
+355:DEBUG: final token is 3.0
+341:DEBUG: expression reduce invoked
+350:DEBUG: all elements are tokens
+355:DEBUG: final token is 10
+368:DEBUG: list is [Token(NUMBER, '3.0'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+341:DEBUG: expression reduce invoked
+350:DEBUG: all elements are tokens
+355:DEBUG: final token is 20.0
+202:DEBUG: clause is an expression. resulting token is: 20.0, <class 'lark.lexer.Token'>
+223:DEBUG: reduced list is [Token(NUMBER, '20.0')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '9')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '9')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 9
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+191:DEBUG: clause is a tree: clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])
+191:DEBUG: clause is a tree: model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]
+489:DEBUG: model entity reduce invoked
+495:DEBUG: model entity reduce output is: 
+496:DEBUG: 10.0050015500576
+197:DEBUG: Clause.data is a model entity, we can reduce here and return 10.0050015500576
+223:DEBUG: reduced list is [10.0050015500576]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '5')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '5')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 5
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "None > 5"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+191:DEBUG: clause is a tree: clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])
+191:DEBUG: clause is a tree: term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')]
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Token(NUMBER, '5')])
+191:DEBUG: clause is a tree: clause1, [Token(NUMBER, '5')]
+206:DEBUG: clause is clause1, [Token(NUMBER, '5')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 5
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '4')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '4')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 4
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "5 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')])
+191:DEBUG: clause is a tree: expression, [Token(NUMBER, '5'), Token(ADD, '+'), Token(NUMBER, '6')]
+354:DEBUG: expression reduce invoked
+363:DEBUG: all elements are tokens
+368:DEBUG: final token is 11
+202:DEBUG: clause is an expression. resulting token is: 11, <class 'lark.lexer.Token'>
+223:DEBUG: reduced list is [Token(NUMBER, '11')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '4')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '4')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 4
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "11 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')])
+191:DEBUG: clause is a tree: expression, [Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '6')]
+354:DEBUG: expression reduce invoked
+354:DEBUG: expression reduce invoked
+363:DEBUG: all elements are tokens
+368:DEBUG: final token is 10
+381:DEBUG: list is [Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '6')]
+354:DEBUG: expression reduce invoked
+363:DEBUG: all elements are tokens
+368:DEBUG: final token is 16
+202:DEBUG: clause is an expression. resulting token is: 16, <class 'lark.lexer.Token'>
+223:DEBUG: reduced list is [Token(NUMBER, '16')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '4')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '4')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '4')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 4
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "16 > 4"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])])
+191:DEBUG: clause is a tree: expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')])]
+354:DEBUG: expression reduce invoked
+354:DEBUG: expression reduce invoked
+363:DEBUG: all elements are tokens
+368:DEBUG: final token is 10
+381:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10')]
+354:DEBUG: expression reduce invoked
+363:DEBUG: all elements are tokens
+368:DEBUG: final token is 16
+202:DEBUG: clause is an expression. resulting token is: 16, <class 'lark.lexer.Token'>
+223:DEBUG: reduced list is [Token(NUMBER, '16')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '9')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '9')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 9
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "16 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+191:DEBUG: clause is a tree: expression, [Token(NUMBER, '6'), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')]
+354:DEBUG: expression reduce invoked
+354:DEBUG: expression reduce invoked
+363:DEBUG: all elements are tokens
+368:DEBUG: final token is 10
+381:DEBUG: list is [Token(NUMBER, '6'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+354:DEBUG: expression reduce invoked
+363:DEBUG: all elements are tokens
+368:DEBUG: final token is 23
+202:DEBUG: clause is an expression. resulting token is: 23, <class 'lark.lexer.Token'>
+223:DEBUG: reduced list is [Token(NUMBER, '23')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '9')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '9')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 9
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "23 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])])
+191:DEBUG: clause is a tree: clause1, [Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')])
+191:DEBUG: clause is a tree: expression, [Tree(term, [Token(NUMBER, '6'), Token(DIV, '/'), Token(NUMBER, '2.0')]), Token(ADD, '+'), Tree(term, [Token(NUMBER, '5'), Token(MUL, '*'), Token(NUMBER, '2')]), Token(ADD, '+'), Token(NUMBER, '7')]
+354:DEBUG: expression reduce invoked
+354:DEBUG: expression reduce invoked
+363:DEBUG: all elements are tokens
+368:DEBUG: final token is 3.0
+354:DEBUG: expression reduce invoked
+363:DEBUG: all elements are tokens
+368:DEBUG: final token is 10
+381:DEBUG: list is [Token(NUMBER, '3.0'), Token(ADD, '+'), Token(NUMBER, '10'), Token(ADD, '+'), Token(NUMBER, '7')]
+354:DEBUG: expression reduce invoked
+363:DEBUG: all elements are tokens
+368:DEBUG: final token is 20.0
+202:DEBUG: clause is an expression. resulting token is: 20.0, <class 'lark.lexer.Token'>
+223:DEBUG: reduced list is [Token(NUMBER, '20.0')]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '9')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '9')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '9')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 9
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "20.0 > 9"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])])
+191:DEBUG: clause is a tree: clause1, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')])
+191:DEBUG: clause is a tree: model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]
+502:DEBUG: model entity reduce invoked
+508:DEBUG: model entity reduce output is: 
+509:DEBUG: 10.0050015500576
+197:DEBUG: Clause.data is a model entity, we can reduce here and return 10.0050015500576
+223:DEBUG: reduced list is [10.0050015500576]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is 10.0050015500576
+242:DEBUG: our clause is a token: 10.0050015500576, type: <class 'lark.lexer.Token'>
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause2, [Token(NUMBER, '5')])
+191:DEBUG: clause is a tree: clause2, [Token(NUMBER, '5')]
+206:DEBUG: clause is clause2, [Token(NUMBER, '5')]
+207:DEBUG: All clause children are tokens. Reducing and returning
+209:DEBUG: reduced is: 5
+210:DEBUG: reduced type is: <class 'lark.lexer.Token'>
+168:DEBUG: output of observation reduce
+169:DEBUG: full observation comparison is: "10.0050015500576 > 5"
+147:DEBUG: obsversation reduce invoked
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])])
+191:DEBUG: clause is a tree: clause1, [Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])]
+181:DEBUG: clause reduce invoked
+185:DEBUG: clause is Tree(term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')])
+191:DEBUG: clause is a tree: term, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(POINT_TIME, '0')]), Token(MUL, '*'), Token(NUMBER, '2')]
