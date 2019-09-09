@@ -23,7 +23,14 @@ class _Base:
     def reduce_model_entity(entity, ts_data):
         token = _ModelEntity(entity).reduce(ts_data)
         LOG.debug('Clause.data is a model entity, we can reduce here and return {}'.format(token))
-        return token
+        if isinstance(token, (float, int)):
+            token = Token('NUMBER', token)
+            LOG.debug('token is {}'.format(token))
+            return token
+        elif isinstance(token, Token):
+            return token
+        else:
+            raise ValueError
 
     @staticmethod
     def reduce_expression(exprs, ts_data):
@@ -299,6 +306,7 @@ class _Expression(_Base):
         if all([isinstance(i, Token) for i in expression.children]):
             return self.reduce_if_all_children_are_tokens(expression, ts_data)
         else:
+            LOG.debug('expression.childre are not all tokens: {}'.format(expression))
             l = []
             for i in expression.children:
                 if isinstance(i, Tree):

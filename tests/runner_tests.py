@@ -123,10 +123,18 @@ class TestRunner(unittest.TestCase):
         ts, obs = self.get_interpreter(obs)
         runner = ManualRunner(MODEL1, ts, obs)
         result = runner.run()
-        print(result)
-        # actual = result[0]['comparison']
-        # expected = '10.0050015500576 > 5'
-        # self.assertEqual(expected, actual)
+        actual = result[0]['comparison']
+        expected = '20.0100031001152 > 5'
+        self.assertEqual(expected, actual)
+
+    def test_run9(self):
+        obs = 'Obs9: Akt[InsulinOnly]@t=0*2 > 5'
+        ts, obs = self.get_interpreter(obs)
+        runner = ManualRunner(MODEL1, ts, obs)
+        result = runner.run()
+        actual = result[0]['comparison']
+        expected = '20.0100031001152 > 5'
+        self.assertEqual(expected, actual)
 
     # def test_run2(self):
     #     obs = 'Obs2: mean Akt[InsulinOnly]@t=(0, 5) > Akt[InsulinAndRapa]@t=10'
