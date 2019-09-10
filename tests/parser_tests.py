@@ -193,6 +193,14 @@ class MyTestCase(unittest.TestCase):
         actual = str(parsed)
         self.assertEqual(expected, actual)
 
+    def test11(self):
+        obs = 'Obs11: all Akt[InsulinOnly]@t=(0, 5) > Akt[InsulinAndRapa]@t=0'
+        parsed = self.get_statement(obs)
+        print(parsed)
+        # expected = "[Tree(statement, [Token(OBS_NAME, 'Obs10'), Tree(clause1, [Token(FUNC, 'mean'), Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinOnly'), Token(INTERVAL_TIME, '(0, 5)')])]), Token(OPERATOR, '>'), Tree(clause2, [Tree(model_entity, [Token(SYMBOL, 'Akt'), Token(CONDITION, 'InsulinAndRapa'), Token(POINT_TIME, '0')])])])]"
+        # actual = str(parsed)
+        # self.assertEqual(expected, actual)
+
 
 
 

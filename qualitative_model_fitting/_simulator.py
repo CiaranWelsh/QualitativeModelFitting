@@ -100,7 +100,6 @@ class TimeSeries:
         colnames = [i.replace('[', '').replace(']', '') for i in results.colnames]
         results = pd.DataFrame(results, columns=colnames)
         results.set_index('time', inplace=True)
-
         return results
 
 
