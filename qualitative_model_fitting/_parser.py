@@ -6,38 +6,61 @@ from ._simulator import TimeSeries
 
 class Parser:
     grammar = """
-    start                   : block+
-    block                   : timeseries_block  
+    start                  : block+
+    ?block                  : timeseries_block  
+                            | steadystate_block
                             | observation_block 
-    timeseries_block        : "timeseries" SYMBOL "{" ts_arg_list "}" START "," STOP "," STEP
-    ts_arg_list             : (ts_arg [","])*
-    ts_arg                  : SYMBOL "=" FLOAT 
-                            | SYMBOL "=" DIGIT+
+    timeseries_block        : "timeseries" NAME "{" ts_arg_list "}" START "," STOP "," STEP
+    steadystate_block       : "steadystate" NAME "{" ts_arg_list "}" 
+    ?ts_arg_list            : (ts_arg [","])*
+    ?ts_arg                 : NAME "=" FLOAT 
+                            | NAME "=" DIGIT+
                             
     
     observation_block       : "observation" statement+
-    statement               : OBS_NAME ":" clause1 OPERATOR clause2
-    OPERATOR                : ">" 
+    ?statement              : comparison_statement | behavioural_statement
+    comparison_statement    : OBS_NAME ":" clause1 OPERATOR clause2
+    behavioural_statement   : OBS_NAME ":" qual_exp 
+    clause1                 : [function] expression
+    clause2                 : [function] expression
+    
+    ?expression             : term ((ADD|SUB) term)*
+    ?term                   : factor ((MUL
+                                      |DIV 
+                                      |MOD
+                                      |FLOOR) factor)*
+    ?factor                 : ("+"|"-") factor 
+                            | atom
+                            | power
+    ?power                  : atom "**" factor
+    ?atom                   : NUMBER 
+                            | NAME
+                            | model_entity
+    
+    ?model_entity           : NAME "[" CONDITION "]" [_TIME_SYMBOL (POINT_TIME| INTERVAL_TIME)] 
+    ?function               : FUNC
+    ?qual_exp                : SHAPE [DIRECTION] model_entity
+    
+    SHAPE                   : "hyperbolic"
+                            | "transient"
+                            | "sigmoidal"
+                            | "oscillation"
+    DIRECTION               : "up" 
+                            | "down"
+    
+    OPERATOR                : ">"
                             | "<" 
                             | "==" 
                             | "!="
                             | "<="
                             | ">="
-    clause1                 : [FUNC] expression
-    clause2                 : [FUNC] expression
-
-    ?expression             : term ((ADD|SUB) term)*
-    ?term.2                 : factor ((MUL|DIV) factor)*
-    ?factor                 : NUMBER | model_entity 
-    
-    model_entity            : SYMBOL "[" CONDITION "]" _TIME_SYMBOL (POINT_TIME| INTERVAL_TIME) 
     FUNC                    : "mean"|"all"|"any"|"min"|"max"
     _TIME_SYMBOL            : "@t=" 
     POINT_TIME              :  DIGIT+
     INTERVAL_TIME           : "(" DIGIT+ [WS]* "," [WS]* DIGIT + ")"
-    SYMBOL                  : /[A-Za-z0-9]+/
-    OBS_NAME                : SYMBOL
-    CONDITION               : SYMBOL
+    OBS_NAME                : NAME
+    CONDITION               : NAME
+    NAME                    : /(?!\d+)[A-Za-z0-9]+/
     START                   : DIGIT+
     STOP                    : DIGIT+
     STEP                    : DIGIT+
@@ -46,6 +69,8 @@ class Parser:
     DIV                     : "/"
     ADD                     : "+"
     SUB                     : "-"
+    MOD                     : "%"
+    FLOOR                   : "//"
     NUMERICAL_OPERATOR      : "+"
                             | "-"
                             | "*"

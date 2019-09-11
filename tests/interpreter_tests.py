@@ -11,27 +11,25 @@ from tests import MODEL1
 class TestInterpreter(unittest.TestCase):
 
     def setUp(self) -> None:
-        string = """
-          timeseries InsulinOnly {
-              Insulin=1, Rapamycin=0, AA=0
-          } 0, 100, 101
-          timeseries InsulinAndRapa {
-              Insulin=1, Rapamycin=1
-          } 0, 100, 101
-          timeseries InsulinAndRapaAndAA {
-              Insulin=1, Rapamycin=1, AA=0.3
-          } 0, 100, 101
+        self.ts_string = """
+        timeseries InsulinOnly {
+          Insulin=1, Rapamycin=0, AA=0
+        } 0, 100, 101
+        timeseries InsulinAndRapa {
+          Insulin=1, Rapamycin=1
+        } 0, 100, 101
+        timeseries InsulinAndRapaAndAA {
+          Insulin=1, Rapamycin=1, AA=0.3
+        } 0, 100, 101
+        
+        //observation 
+        //    Obs1: Akt[InsulinOnly]@t=0 > Akt[InsulinAndRapa]@t=10
+        //    Obs2: mean Akt[InsulinOnly]@t=(0, 100) > Akt[InsulinAndRapa]@t=10
+        //    Obs3: Akt[InsulinOnly]@t=0 == Akt[InsulinAndRapa]@t=0
+        //    Obs4: all Akt[InsulinAndRapa]@t=(0, 100) == 0
+        //    Obs5: Akt[InsulinAndRapa]@t=15*2 == 4.5 + Akt[InsulinOnly]@t=15
 
-          observation 
-              Obs1: Akt[InsulinOnly]@t=0 > Akt[InsulinAndRapa]@t=10
-              Obs2: mean Akt[InsulinOnly]@t=(0, 100) > Akt[InsulinAndRapa]@t=10
-              Obs3: Akt[InsulinOnly]@t=0 == Akt[InsulinAndRapa]@t=0
-              Obs4: all Akt[InsulinAndRapa]@t=(0, 100) == 0
-              Obs5: Akt[InsulinAndRapa]@t=15*2 == 4.5 + Akt[InsulinOnly]@t=15
-
-          """
-        parser = Parser()
-        self.tree = parser.parse(string)
+        """
 
     def test_timeseries_block(self):
         i = Interpreter(self.tree)
@@ -50,12 +48,13 @@ class TestInterpreter(unittest.TestCase):
     def test_clause1(self):
         i = Interpreter(self.tree)
         ts, obs = i.interpret()
-        self.assertIsInstance(obs[0].clause1, _Clause)
+        print(obs)
+        # self.assertIsInstance(obs[0].clause1, _Clause)
 
     def test_clause2(self):
         i = Interpreter(self.tree)
         ts, obs = i.interpret()
-
+        print(obs[0])
         self.assertIsInstance(obs[0].clause2, _Clause)
 
     def test_operator(self):
@@ -65,11 +64,19 @@ class TestInterpreter(unittest.TestCase):
         actual = obs[0].operator
         self.assertEqual(expected, actual)
 
+    def interpreter(self, obs):
+        string = self.ts_string + 'observation\n\t\t\t' + obs
+        parser = Parser()
+        tree = parser.parse(string)
+        i = Interpreter(tree)
+        return i.interpret()
+
     def test_clause_modifier_obs1(self):
-        i = Interpreter(self.tree)
-        ts, obs = i.interpret()
-        clause = obs[0].clause1
-        print(clause)
+        obs_string = 'Obs1: Akt[InsulinOnly]@t=0 > Akt[InsulinAndRapa]@t=10'
+        ts, obs = self.interpreter(obs_string)
+        # print(obs)
+        # clause = obs[0].clause1
+        # print(clause)
         # self.assertIsNone(clause.modifier)
 
     def test_clause_modifier_obs2(self):

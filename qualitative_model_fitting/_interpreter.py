@@ -11,7 +11,6 @@ import logging
 LOG = logging.getLogger(__name__)
 
 
-
 class _Base:
 
     def __init__(self):
@@ -66,6 +65,7 @@ class _Base:
         else:
             raise ValueError(reduced)
 
+
 class Interpreter:
     """
     Read a Lark tree into a set of classes.
@@ -86,12 +86,21 @@ class Interpreter:
         return self.tree.find_data('observation_block')
 
     def interpret(self):
+        # print(self.tree.pretty())
+        names = []
+        amounts = []
         ts_list = []
-        for ts_block in self._get_timeseries_blocks():
-            ts_list.append(self._timeseries_block(ts_block))
+        for ts_block in self.tree.find_data('timeseries_block'):
+            ts_list.append(TimeSeriesBlock(ts_block))
 
-        obs = self.observation_block(self._get_observation_block())
-        return ts_list, obs
+        print(ts_list)
+
+        # ts_list = []
+        # for ts_block in self._get_timeseries_blocks():
+        #     ts_list.append(self._timeseries_block(ts_block))
+        #
+        # obs = self.observation_block(self._get_observation_block())
+        # return ts_list, obs
 
     @staticmethod
     def _timeseries_block(block):
@@ -104,38 +113,36 @@ class Interpreter:
 
         """
         name = block.children[0]
-        assert name.type == 'SYMBOL'
-        name = name.value
-        args = [i for i in block.find_data('ts_arg_list')]
+        if name.type != 'NAME':
+            raise SyntaxError(name)
         names = []
         amounts = []
-        for arg_tree in args:
-            for arg in arg_tree.children:
-                for token in arg.children:
-                    if token.type == 'SYMBOL':
-                        names.append(str(token))
-                    elif token.type == 'DIGIT' or token.type == 'FLOAT':
-                        amounts.append(float(str(token.value)))
-        ts_args = dict(zip(names, amounts))
-        start = None
-        stop = None
-        step = None
-        integration_settings = {'start': None, 'stop': None, 'step': None}
-        for tok in block.children:
-            if isinstance(tok, Tree):
-                pass
-            elif isinstance(tok, Token):
-                if tok.type == 'START':
-                    integration_settings['start'] = float(str(tok.value))
-                elif tok.type == 'STOP':
-                    integration_settings['stop'] = float(str(tok.value))
-                elif tok.type == 'STEP':
-                    integration_settings['step'] = float(str(tok.value))
-        for k, v in integration_settings.items():
-            if v == [] or v is None:
-                raise ValueError
-
-        return dict(name=name, conditions=ts_args, integration_settings=integration_settings)
+        for subtree in block.find_data():
+            print(subtree)
+        #     for token in subtree.children:
+        #         print(token)
+        #         if token.type == 'NAME':
+        #             names.append(str(token))
+        #         elif token.type in ['NUMBER', 'FLOAT', 'DIGIT']:
+        #             amounts.append(float(str(token.value)))
+        #
+        # ts_args = dict(zip(names, amounts))
+        # integration_settings = {'start': None, 'stop': None, 'step': None}
+        # for tok in block.children:
+        #     if isinstance(tok, Tree):
+        #         pass
+        #     elif isinstance(tok, Token):
+        #         if tok.type == 'START':
+        #             integration_settings['start'] = float(str(tok.value))
+        #         elif tok.type == 'STOP':
+        #             integration_settings['stop'] = float(str(tok.value))
+        #         elif tok.type == 'STEP':
+        #             integration_settings['step'] = float(str(tok.value))
+        # for k, v in integration_settings.items():
+        #     if v == [] or v is None:
+        #         raise ValueError
+        #
+        # return dict(name=name, conditions=ts_args, integration_settings=integration_settings)
 
     @staticmethod
     def observation_block(block):
@@ -148,6 +155,30 @@ class Interpreter:
 
         """
         block = [i for i in block]
+        print(block)
+        if len(block) != 1:
+            raise SyntaxError('There must be exactly 1'
+                              ' observation block but found "{}"'.format(len(block)))
+        block = block[0]
+        statement_list = [i for i in block.find_data('statement')]
+        new_statement_list = []
+        for state in statement_list:
+            s = _Observation(state)
+            new_statement_list.append(s)
+        return new_statement_list
+
+    @staticmethod
+    def comparison_observation():
+        """
+        interpret the observation block
+        Args:
+            block:
+
+        Returns:
+
+        """
+        block = [i for i in block]
+        print(block)
         if len(block) != 1:
             raise SyntaxError('There must be exactly 1'
                               ' observation block but found "{}"'.format(len(block)))
@@ -160,7 +191,94 @@ class Interpreter:
         return new_statement_list
 
 
+class TimeSeriesArgument:
+
+    def __init__(self, ts_arg):
+        self.ts_arg = ts_arg
+
+        if ts_arg.data != 'ts_arg':
+            raise ValueError
+
+        if len(ts_arg.children) != 2:
+            raise ValueError('was expecting two arguments but got "{}"'.format(len(ts_arg.children)))
+
+    @property
+    def name(self):
+        return self.ts_arg.children[0]
+
+    @property
+    def amount(self):
+        return self.ts_arg.children[1]
+
+    def __str__(self):
+        return f'{self.name}={self.amount}'
+
+    def __repr__(self):
+        return self.__str__()
+
+
+class TimeSeriesArgumentList(list):
+
+    def __init__(self, *args):
+        self.args = args
+        self._check_all_elements_are_ts_arg()
+
+    def _check_all_elements_are_ts_arg(self):
+        for i in self:
+            if i.data != 'ts_arg':
+                raise ValueError('Was expecting a TimeSeriesArgument but got "{}"'.format(type(i)))
+
+
+class TimeSeriesBlock:
+    start = None
+    stop = None
+    step = None
+
+    def __init__(self, ts_block):
+        self.ts_block = ts_block
+
+        self.ts_arg_list = TimeSeriesArgumentList()
+        for i in self.ts_block.iter_subtrees():
+            if isinstance(i, Tree):
+                if i.data == 'ts_arg':
+                    self.ts_arg_list.append(TimeSeriesArgument(i))
+
+            else:
+                raise ValueError
+
+    def _get_integration_parameters(self):
+
+        for i in self.ts_arg_list.children:
+            start = stop = step = None
+            if isinstance(i, Tree):
+                pass
+
+            elif isinstance(i, Token):
+                if i.type == 'START':
+                    start = float(str(i))
+                elif i.type == 'STOP':
+                    stop = float(str(i))
+                elif i.type == 'STEP':
+                    step = float(str(i))
+                elif i.type == 'NAME':
+                    name = str(i)
+            else:
+                raise ValueError
+
+    def __str__(self):
+        if len(self.ts_arg_list) == 1:
+            ts_arg_list = self.ts_arg_list.children[0]
+        else:
+            ts_arg_list = reduce(lambda x, y: f'{x}, {y}', self.ts_arg_list)
+        return f"timeseries {self.name} {{ {ts_arg_list} }} {self.start}, {self.stop}, {self.step}"
+
+    def __repr__(self):
+        return self.__str__()
+
+
 class _Observation:
+    # comparison or
+    type = 'comparison'
 
     def __init__(self, obs):  # clause1, op, clause2, name=None):
         self.obs = obs
@@ -175,7 +293,7 @@ class _Observation:
     @property
     def clause1(self):
         cl1 = self.obs.children[1]
-        assert cl1.data == 'clause1'
+        assert cl1.type == 'clause1'
         return _Clause(cl1)
 
     @property
@@ -185,7 +303,7 @@ class _Observation:
     @property
     def clause2(self):
         cl2 = self.obs.children[3]
-        assert cl2.data == 'clause2'
+        assert cl2.type == 'clause2'
         return _Clause(cl2)
 
     def __str__(self):
@@ -296,8 +414,6 @@ class _Clause(_Base):
         else:
             raise ValueError
 
-
-
     def __str__(self):
         return str(self.clause)
 
@@ -362,7 +478,7 @@ class _ModelEntity:
     @property
     def component_name(self):
         name = self.model_entity.children[0]
-        assert name.type == 'SYMBOL'
+        assert name.type == 'NAME'
         return name.value
 
     @property
