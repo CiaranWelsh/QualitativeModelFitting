@@ -1,7 +1,7 @@
 import logging
 
 from ._simulator import TimeSeries
-from ._interpreter import _Clause, _Observation
+from qualitative_model_fitting._parser import _Observation, _Clause
 
 LOG = logging.getLogger(__name__)
 

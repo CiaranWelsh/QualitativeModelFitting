@@ -2,8 +2,8 @@ import unittest
 
 import numpy as np
 
-from qualitative_model_fitting._parser import Parser
-from qualitative_model_fitting._interpreter import _Clause, _ModelEntity, _Operator, _Observation, Interpreter
+from qualitative_model_fitting._parser import Parser, _Observation, _Clause, _ModelEntity, _Operator
+from qualitative_model_fitting._interpreter import Interpreter
 
 from tests import MODEL1
 
@@ -35,7 +35,12 @@ class TestInterpreter(unittest.TestCase):
         i = Interpreter(self.tree)
         ts, obs = i.interpret()
         actual = ts
-        expected = [{'name': 'InsulinOnly', 'conditions': {'Insulin': 1.0, 'Rapamycin': 0.0, 'AA': 0.0}, 'integration_settings': {'start': 0.0, 'stop': 100.0, 'step': 101.0}}, {'name': 'InsulinAndRapa', 'conditions': {'Insulin': 1.0, 'Rapamycin': 1.0}, 'integration_settings': {'start': 0.0, 'stop': 100.0, 'step': 101.0}}, {'name': 'InsulinAndRapaAndAA', 'conditions': {'Insulin': 1.0, 'Rapamycin': 1.0, 'AA': 0.3}, 'integration_settings': {'start': 0.0, 'stop': 100.0, 'step': 101.0}}]
+        expected = [{'name': 'InsulinOnly', 'conditions': {'Insulin': 1.0, 'Rapamycin': 0.0, 'AA': 0.0},
+                     'integration_settings': {'start': 0.0, 'stop': 100.0, 'step': 101.0}},
+                    {'name': 'InsulinAndRapa', 'conditions': {'Insulin': 1.0, 'Rapamycin': 1.0},
+                     'integration_settings': {'start': 0.0, 'stop': 100.0, 'step': 101.0}},
+                    {'name': 'InsulinAndRapaAndAA', 'conditions': {'Insulin': 1.0, 'Rapamycin': 1.0, 'AA': 0.3},
+                     'integration_settings': {'start': 0.0, 'stop': 100.0, 'step': 101.0}}]
         self.assertEqual(expected, actual)
 
     def test_statement_name(self):
@@ -64,8 +69,10 @@ class TestInterpreter(unittest.TestCase):
         actual = obs[0].operator
         self.assertEqual(expected, actual)
 
-    def interpreter(self, obs):
+    def interpreter(self, obs, print_string=False):
         string = self.ts_string + 'observation\n\t\t\t' + obs
+        if print_string:
+            print(string)
         parser = Parser()
         tree = parser.parse(string)
         i = Interpreter(tree)
@@ -73,7 +80,8 @@ class TestInterpreter(unittest.TestCase):
 
     def test_clause_modifier_obs1(self):
         obs_string = 'Obs1: Akt[InsulinOnly]@t=0 > Akt[InsulinAndRapa]@t=10'
-        ts, obs = self.interpreter(obs_string)
+        self.interpreter(obs_string)
+        # ts, obs = self.interpreter(obs_string)
         # print(obs)
         # clause = obs[0].clause1
         # print(clause)
@@ -163,7 +171,6 @@ class TestInterpreter(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
 
 '''
 clause 

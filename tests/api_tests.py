@@ -34,7 +34,7 @@ class ManualInterfaceTests(unittest.TestCase):
               Obs2: mean B[SI]@t=(0, 100) > C[I]@t=10
               Obs3: C[SI]@t=10 == A[None]@t=10
               Obs4: C[SI]@t=10 > A[S]@t=10*2 - 1
-              Obs5: hyperbolic up A[S]
+              // Obs5: hyperbolic up A[S]
           """
 
     def test_correct_number_of_observations(self):
