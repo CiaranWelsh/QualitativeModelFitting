@@ -1,5 +1,5 @@
 import operator
-from collections import OrderedDict
+from types import BuiltinFunctionType
 from functools import reduce
 
 import numpy as np
@@ -9,8 +9,8 @@ from lark import Lark, Transformer, v_args, Visitor, Token, Tree
 from ._simulator import TimeSeries
 
 # todo implement combinations modifier
-import logging
 from deprecated import deprecated
+import logging
 
 LOG = logging.getLogger(__name__)
 
@@ -137,7 +137,7 @@ class Parser:
             LOG.warning('steady state functionality is currently a placeholder. '
                         'Not yet implemented')
 
-        observation_block = ObservationBlock(ts_dct)
+        observation_block = _ObservationBlock(ts_dct)
         observations = [i for i in self.tree.find_data('observation_block')][0]
         for i in observations.children:
             if i.data in ['comparison_statement_without_func', 'comparison_statement_with_func']:
@@ -314,12 +314,12 @@ class _ObservationBase:
             return element
 
 
-class ObservationBlock(list):
+class _ObservationBlock(list):
 
     def __init__(self, ts_list, *args):
         self.ts_list = ts_list
         self.args = args
-        super(ObservationBlock, self).__init__(*args)
+        super(_ObservationBlock, self).__init__(*args)
 
         for i in self.args:
             if not isinstance(i, _ComparisonStatement):
@@ -349,7 +349,7 @@ class _ComparisonStatement(_ObservationBase):
                 if i.type == 'OBS_NAME':
                     self.name = str(i)
                 elif i.type == 'OPERATOR':
-                    self.operator = _Operator(str(i)).operator
+                    self.operator = _Operator(str(i))
                 elif i.type == 'FUNC_TYPE1':
                     self.func = str(i)
                 else:
@@ -394,9 +394,9 @@ class _ComparisonStatement(_ObservationBase):
                 self.clause1 = self.clause1.values
             if isinstance(self.clause2, pd.Series):
                 self.clause2 = self.clause2.values
-            return func(self.operator(self.clause1, self.clause2))
+            return func(self.operator.operator(self.clause1, self.clause2))
         elif self.tree.data == 'comparison_statement_without_func':
-            return self.operator(self.clause1.reduce(), self.clause2.reduce())
+            return self.operator.operator(self.clause1.reduce(), self.clause2.reduce())
         else:
             raise ValueError(self.tree)
 
@@ -538,8 +538,6 @@ class _ModelEntity(_ObservationBase):
 
         if not model_entity.data == 'model_entity':
             raise ValueError(model_entity.data)
-
-
 
     @property
     def component_name(self):

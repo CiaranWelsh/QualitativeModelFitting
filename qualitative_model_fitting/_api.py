@@ -1,6 +1,5 @@
 import pandas as pd
 
-from ._interpreter import Interpreter
 from ._runner import ManualRunner
 from ._parser import Parser
 

@@ -257,6 +257,7 @@ class ParserTests(unittest.TestCase):
         actual = obs[0].reduce()
         self.assertTrue(actual)
 
+    #todo build interface into global profile type statement
     obs = 'Obs12: hyperbolic up Akt[InsulinOnly]'
     obs = 'Obs13: oscillation Akt[InsulinOnly]'
     obs = 'Obs14: sigmoidal down Akt[InsulinOnly]'
