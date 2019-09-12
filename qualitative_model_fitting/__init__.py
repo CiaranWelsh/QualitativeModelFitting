@@ -17,6 +17,11 @@ from qualitative_model_fitting._parser import Parser
 from qualitative_model_fitting._runner import ManualRunner
 from qualitative_model_fitting._interpreter import Interpreter
 
+MAJOR = 2
+MINOR = 1
+MICRO = 1
+VERSION = f'{MAJOR}.{MINOR}.{MICRO}'
+
 
 OPTIONS = dict(
     logging=dict(

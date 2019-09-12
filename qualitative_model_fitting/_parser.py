@@ -10,6 +10,7 @@ from ._simulator import TimeSeries
 
 # todo implement combinations modifier
 import logging
+from deprecated import deprecated
 
 LOG = logging.getLogger(__name__)
 
@@ -27,12 +28,19 @@ class Parser:
                             | NAME "=" DIGIT+
                             
     
-    observation_block       : "observation" statement+
-    ?statement              : comparison_statement | behavioural_statement
-    comparison_statement    : OBS_NAME ":" clause1 OPERATOR clause2
-    behavioural_statement   : OBS_NAME ":" qual_exp 
-    clause1                 : [function] expression
-    clause2                 : [function] expression
+    observation_block                   : "observation" statement+
+    ?statement                          : comparison_statement | behavioural_statement
+    ?comparison_statement                : comparison_statement_func 
+                                        | comparison_statement_without_func
+    ?comparison_statement_func           : OBS_NAME ":" function_type1 "("clause1 OPERATOR clause2")"
+    ?comparison_statement_without_func   : OBS_NAME ":" clause1 OPERATOR clause2
+    behavioural_statement               : OBS_NAME ":" qual_exp 
+    
+    
+    clause1                 : clause_with_func | clause_without_func
+    clause2                 : clause_with_func | clause_without_func
+    clause_with_func        : function_type2 "(" expression ")"
+    clause_without_func     : expression
     
     ?expression             : term ((ADD|SUB) term)*
     ?term                   : factor ((MUL
@@ -48,8 +56,9 @@ class Parser:
                             | model_entity
     
     ?model_entity           : NAME "[" CONDITION "]" [_TIME_SYMBOL (POINT_TIME| INTERVAL_TIME)] 
-    ?function               : FUNC
-    ?qual_exp                : SHAPE [DIRECTION] model_entity
+    ?function_type1         : FUNC_TYPE1
+    ?function_type2         : FUNC_TYPE2
+    ?qual_exp               : SHAPE [DIRECTION] model_entity
     
     SHAPE                   : "hyperbolic"
                             | "transient"
@@ -64,7 +73,8 @@ class Parser:
                             | "!="
                             | "<="
                             | ">="
-    FUNC                    : "mean"|"all"|"any"|"min"|"max"
+    FUNC_TYPE1              : "all"|"any"
+    FUNC_TYPE2              : "mean"|"min"|"max"
     _TIME_SYMBOL            : "@t=" 
     POINT_TIME              :  DIGIT+
     INTERVAL_TIME           : "(" DIGIT+ [WS]* "," [WS]* DIGIT + ")"
@@ -130,7 +140,7 @@ class Parser:
         observation_block = ObservationBlock(ts_dct)
         observations = [i for i in self.tree.find_data('observation_block')][0]
         for i in observations.children:
-            if i.data == 'comparison_statement':
+            if i.data in ['comparison_statement_without_func', 'comparison_statement_with_func']:
                 observation_block.append(_ComparisonStatement(i, ts_dct))
             elif i.data == 'qualitative_statement':
                 pass
@@ -245,6 +255,58 @@ class _TimeSeriesArgument:
         return self.__str__()
 
 
+class _ObservationBase:
+    """
+    Some tasks are needed in multiple subclasses involved in
+    interpreting an observation (i.e. converting an entity tree to object).
+    This base provides these classes with these methods.
+    """
+
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def reduce_component(component, ts_dct=None):
+        if isinstance(component, Tree):
+            if component.data == 'model_entity':
+                if ts_dct is None:
+                    raise SyntaxError('ts_dct arg is required component is a model_entity')
+                return _ModelEntity(component, ts_dct).reduce()
+            elif component.data == 'expression':
+                return _Expression(component, ts_dct).reduce()
+            elif component.data == 'term':
+                return _Term(component, ts_dct).reduce()
+            elif component.data in ['clause1', 'clause2']:
+                return _Clause(component, ts_dct)
+            elif component.data in ['clause_without_func', 'clause_with_func']:
+                if not len(component.children) == 1:
+                    raise ValueError
+                return _ObservationBase.reduce_component(component.children[0], ts_dct)
+                # return _Clause(component.children[0], ts_dct, clause_type=component.data)
+            else:
+                raise ValueError(component)
+        elif isinstance(component, Token):
+            if component.type == 'NUMBER':
+                return _ObservationBase.token_to_number(component)
+
+            else:
+                return str(component)
+                # raise ValueError(f'{component}, {component.type}')
+        else:
+            raise ValueError
+
+    def reduce_recursive(self, tree, ts_list):
+        pass
+
+    @staticmethod
+    def token_to_number(token):
+        element = float(str(token))
+        if element.is_integer():
+            return int(element)
+        else:
+            return element
+
+
 class ObservationBlock(list):
 
     def __init__(self, ts_list, *args):
@@ -253,21 +315,28 @@ class ObservationBlock(list):
         super(ObservationBlock, self).__init__(*args)
 
         for i in self.args:
-            if not isinstance(i, (_ComparisonStatement)):
+            if not isinstance(i, (_ComparisonStatementWithoutFunc)):
                 raise TypeError(i)
 
 
-class _ComparisonStatement:
+class _ComparisonStatement(_ObservationBase):
     name = None
     operator = None
     clause1 = None
     clause2 = None
+    func = None
 
-    def __init__(self, statement, ts_list):
-        self.statement = statement
+    def __init__(self, tree, ts_list):
+        self.tree = tree
         self.ts_list = ts_list
 
-        for i in self.statement.children:
+        if not isinstance(tree, Tree):
+            raise TypeError
+
+        # if self.tree.data != ['comparison_statement_with_func']:
+        #     raise ValueError
+
+        for i in self.tree.children:
             if isinstance(i, Token):
                 if i.type == 'OBS_NAME':
                     self.name = str(i)
@@ -275,9 +344,17 @@ class _ComparisonStatement:
                     self.operator = str(i)
             elif isinstance(i, Tree):
                 if i.data == 'clause1':
-                    self.clause1 = _Clause(i, self.ts_list)
+                    if not len(i.children) == 1:
+                        raise ValueError
+                    self.clause1 = _Clause(i, self.ts_list, i.children[0].data)
                 elif i.data == 'clause2':
-                    self.clause2 = _Clause(i, self.ts_list)
+                    if not len(i.children) == 1:
+                        raise ValueError
+                    self.clause2 = _Clause(i, self.ts_list, i.children[0].data)
+                else:
+                    raise ValueError
+            else:
+                raise ValueError
 
     def __str__(self):
         return f'{self.name}: {self.clause1} {self.operator} {self.clause2}'
@@ -286,62 +363,7 @@ class _ComparisonStatement:
         return self.__str__()
 
 
-class _Base:
-
-    def __init__(self):
-        pass
-
-    @staticmethod
-    def reduce_model_entity(entity, ts_data, function_modifier=None):
-        token = _ModelEntity(entity).reduce(ts_data)
-        LOG.debug('Clause.data is a model entity, we can reduce here and return {}'.format(token))
-        if isinstance(token, (float, int)):
-            token = Token('NUMBER', token)
-            LOG.debug('token is {}'.format(token))
-            return token
-        elif isinstance(token, Token):
-            return token
-        elif isinstance(token, pd.Series):
-            return token
-            # if function_modifier is None:
-            #     raise SyntaxError('specify a function')
-            # if not callable(function_modifier):
-            #     raise ValueError
-            # token = function_modifier(token)
-            # token = Token('NUMBER', token)
-            # return token
-
-        else:
-            raise ValueError(token)
-
-    @staticmethod
-    def reduce_expression(exprs, ts_data):
-        token = _Expression(exprs).reduce(ts_data, exprs)
-        LOG.debug('clause is an expression or term. resulting token is: {}, {}'.format(token, type(token)))
-        return token
-
-    @staticmethod
-    def reduce_if_all_children_are_tokens(tree, ts_data):
-        LOG.debug('clause is {}, {}'.format(tree.data, tree.children))
-        LOG.debug('All clause children are tokens. Reducing and returning')
-        reduced = reduce(lambda x, y: f'{str(x)} {str(y)}', tree.children)
-        LOG.debug('reduced is: {}'.format(reduced))
-        LOG.debug('reduced type is: {}'.format(type(reduced)))
-        if isinstance(reduced, str):
-            reduced = eval(reduced)
-
-        if isinstance(reduced, (float, int)):
-            token = Token('NUMBER', reduced)
-            LOG.debug(f'returning reduced token {token}')
-            return token
-        elif isinstance(reduced, Token):
-            return reduced
-
-        else:
-            raise ValueError(reduced)
-
-
-class _Observation:
+class _Observation(_ObservationBase):
     # comparison or
     type = 'comparison'
 
@@ -406,184 +428,98 @@ class _Observation:
                 'comparison': f'{cl1} {str(operator)} {cl2}'}
 
 
-class _Clause(_Base):
+class _Clause(_ObservationBase):
 
-    def __init__(self, clause, ts_list):  # model_component, condition, time, modifiers=None):
+    def __init__(self, clause, ts_list, clause_type):
         self.clause = clause
-        self.ts_list = ts_list
+        self.ts_dct = ts_list
+        self.clause_type = clause_type
+
+        if not isinstance(self.clause, Tree):
+            raise TypeError
+        if self.clause.data not in ['clause1', 'clause2']:
+            raise ValueError()
+        if clause_type not in ['clause_with_func', 'clause_without_func']:
+            raise ValueError(clause_type)
+
         self.clause_elements = self._objectify_clause_elements()
 
     def _objectify_clause_elements(self):
         clause_elements = list()
         for i in self.clause.children:
             if isinstance(i, Token):
-                clause_elements.append(i)
+                if i.type == 'NUMBER':
+                    clause_elements.append(self.token_to_number(i))
+                else:
+                    clause_elements.append(str(i))
             elif isinstance(i, Tree):
-                if i.data == 'model_entity':
-                    clause_elements.append(_ModelEntity(i, self.ts_list))
-                elif i.data == 'expression':
-                    clause_elements.append(_Expression(i))
-                elif i.data == 'term':
-                    clause_elements.append(_Term(i))
-
+                clause_elements.append(self.reduce_component(i, self.ts_dct))
             else:
                 raise ValueError
         return clause_elements
 
-    def reduce(self, ts_data, clause=None):
-        LOG.debug('clause reduce invoked')
-        if clause is None:
-            clause = self.clause
-
-        LOG.debug('clause is {}'.format(clause))
-
-        if not isinstance(clause, (Tree, Token)):
-            raise TypeError('need Token or Tree but found "{}" of type "{}"'.format(clause, type(clause)))
-
-        if isinstance(clause, Tree):
-            LOG.debug(f'clause is a tree')
-            if clause.data == 'model_entity':
-                return self.reduce_model_entity(clause, ts_data)
-
-            elif clause.data == 'expression':
-                return self.reduce_expression(clause, ts_data)
-
-            elif clause.data == 'term':
-                return self.reduce_term(clause, ts_data)
-
-            elif all([isinstance(i, Token) for i in clause.children]):
-                return self.reduce_if_all_children_are_tokens(clause, ts_data)
-
-            elif clause.data in ['clause1', 'clause2']:
-                # recursively call self.reduce on each of the clause children
-                reduced_list = [self.reduce(ts_data, i) for i in clause.children]
-                LOG.debug('reduced list is {}'.format(reduced_list))
-                if len(reduced_list) == 0:
-                    raise ValueError
-
-                elif len(reduced_list) == 1:
-                    if isinstance(reduced_list[0], (float, int)):
-                        return self.reduce(ts_data, Token('NUMBER', reduced_list[0]))
-                    elif isinstance(reduced_list[0], Token):
-                        return reduced_list[0]
-                    else:
-                        raise ValueError
-
-                elif len(reduced_list) == 2:
-                    LOG.debug('reduce_list is len 2: {}'.format(reduced_list))
-                    if reduced_list[0].type == 'FUNC':
-                        if not hasattr(np, str(reduced_list[0])):
-                            raise SyntaxError(f'{reduced_list[0]} is not a valid function.')
-                        func = getattr(np, str(reduced_list[0]))
-                        token = func(reduced_list[1])
-                        if isinstance(token, (float, int)):
-                            token = Token('NUMBER', token)
-                            return token
-                        # elif isinstance(token, bool):
-                        #     return token
-                        else:
-                            raise ValueError(token)
-                    else:
-                        raise ValueError
-
-                elif len(reduced_list) > 2:
-                    return self.reduce(ts_data, Tree('expression', reduced_list))
-
-                else:
-                    raise ValueError
-
-            else:
-                raise ValueError(clause.data)
-        # and deal with the case where clause is a token
-        elif isinstance(clause, Token):
-            LOG.debug('our clause is a token: {}, type: {}'.format(clause, type(clause)))
-            return clause
-        else:
-            raise ValueError
-
-    # def __str__(self):
-    #     return str(self.clause)
-    #
-    # def __repr__(self):
-    #     return self.__str__()
-
-
-class _Expression(_Base):
+class _Expression(_ObservationBase):
     # type can be either 'numerical' for a pure expression
     #  or 'composite' for an expression where one of the operants
     #  is a model_entity
 
-    def __init__(self, exprs):
+    def __init__(self, exprs, ts_dct):
         self.exprs = exprs
+        self.ts_dct =ts_dct
 
         if not isinstance(self.exprs, Tree):
             raise ValueError
         if self.exprs.data not in ['expression']:
             raise TypeError
 
-    @staticmethod
-    def _reduce_numerical_expression(*args):
-        from functools import reduce
-        string = reduce(lambda x, y: f'{str(x)} {str(y)}', args)
-        return eval(string)
-
-    def reduce(self, ts_data, expression=None):
-        LOG.debug('expression reduce invoked')
-        # reduced = None
-        if expression is None:
-            expression = self.exprs
-
-        if not isinstance(expression, Tree):
-            raise TypeError
-
-        if expression.data == 'model_entity':
-            return self.reduce_model_entity(expression, ts_data)
-
-        if all([isinstance(i, Token) for i in expression.children]):
-            return self.reduce_if_all_children_are_tokens(expression, ts_data)
-        else:
-            LOG.debug('expression.childre are not all tokens: {}'.format(expression))
-            l = []
-            for i in expression.children:
-                if isinstance(i, Tree):
-                    l.append(self.reduce(ts_data, i))
-                elif isinstance(i, Token):
-                    l.append(i)
+    def _reduce_terms(self):
+        l = []
+        for i in self.exprs.children:
+            if isinstance(i, Tree):
+                if i.data == 'term':
+                    l.append(_Term(i, self.ts_dct).reduce())
                 else:
-                    raise ValueError(i)
-            LOG.debug('list is {}'.format(l))
-            return self.reduce(ts_data, Tree('expression', l))
+                    l.append(i)
+            else:
+                l.append(i)
+        return l
 
     def _expression_string(self):
-        for i in self.exprs.children:
-            print(i)
-        reduced = reduce(lambda x, y: f'{str(x)} {str(y)}', self.exprs.children)
-        print('i am reduced', reduced)
-        try:
-            # first try to evaluate the experssion as python object
-            evaluated = eval(reduced)
-            if isinstance(evaluated, (float, int)):
-                return Token('NUMBER', evaluated)
-            else:
-                return evaluated
-        except NameError:
-            return reduced
+        children = self._reduce_terms()
+        reduced = reduce(lambda x, y: f'{str(x)} {str(y)}', children)
+        return str(reduced)
 
-    # todo if a reduced expression is a number, make it a new token and return
+    def reduce(self):
+        evaluated = eval(self._expression_string())
+        if isinstance(evaluated, (float, int)):
+            reduced = float(str(evaluated))
+            # coerce to int if needed
+            if reduced.is_integer():
+                return int(reduced)
+            else:
+                return reduced
+        else:
+            return str(evaluated)
 
     def __str__(self):
-        return str(self._expression_string())
+        return self._expression_string()
 
     def __repr__(self):
         return self.__str__()
 
 
-class _ModelEntity:
+class _ModelEntity(_ObservationBase):
     time_type = None
 
     def __init__(self, model_entity, ts_list):
         self.model_entity = model_entity
         self.ts_dct = ts_list
+
+        if not isinstance(model_entity, Tree):
+            raise TypeError
+
+        if not model_entity.data == 'model_entity':
+            raise ValueError(model_entity.data)
 
     @property
     def component_name(self):
@@ -626,13 +562,27 @@ class _ModelEntity:
         return output
 
 
-class _Term:
+class _Term(_ObservationBase):
 
-    def __init__(self, term):
+    def __init__(self, term, ts_dct):
         self.term = term
+        self.ts_dct = ts_dct
+
+    @property
+    def left(self):
+        return self.reduce_component(self.term.children[0], self.ts_dct)
+
+    @property
+    def right(self):
+        return self.reduce_component(self.term.children[2], self.ts_dct)
+
+    @property
+    def operator(self):
+        return self.reduce_component(self.term.children[1])
 
     def __str__(self):
-        return reduce(lambda x, y: f'{str(x)}{str(y)}', self.term.children)
+        return f"{self.left}{self.operator}{self.right}"
+        # return reduce(lambda x, y: f'{str(x)}{str(y)}', self.term.children)
 
     def __repr__(self):
         return self.__str__()
@@ -641,7 +591,13 @@ class _Term:
         return eval(self.__str__())
 
 
-class _Operator:
+# tasks to do
+# -----------
+# create a base class for each of these classes and have inside them:
+#     - reduce for each type of class.
+
+
+class _Operator(_ObservationBase):
 
     def __init__(self, op):
         self.op = op

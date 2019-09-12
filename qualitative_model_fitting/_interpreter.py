@@ -2,7 +2,7 @@ import pandas as pd
 from functools import reduce
 from lark import Tree, Token
 
-from qualitative_model_fitting._parser import _TimeSeriesArgumentList, _TimeSeriesArgument, _ComparisonStatement, \
+from qualitative_model_fitting._parser import _TimeSeriesArgumentList, _TimeSeriesArgument, _ComparisonStatementWithoutFunc, \
     _Observation, _Expression, _ModelEntity
 import logging
 
@@ -46,7 +46,7 @@ class Interpreter:
 
         comp_list = []
         for comparison_block in self.tree.find_data('comparison_statement'):
-            comp_list.append(_ComparisonStatement(comparison_block))
+            comp_list.append(_ComparisonStatementWithoutFunc(comparison_block))
 
         # print(comp_list)
 

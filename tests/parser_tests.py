@@ -112,7 +112,7 @@ class ParserTests(unittest.TestCase):
         obs = 'Obs1: 5 > 6'
         parsed = self.get_parsed_observatoin(obs)
         obs = parsed.observation_block[0]
-        expected = Token('NUMBER', 5)
+        expected = 5
         actual = obs.clause1.clause_elements[0]
         self.assertEqual(expected, actual)
 
@@ -128,7 +128,7 @@ class ParserTests(unittest.TestCase):
         obs = 'Obs1: 4*9 > 6'
         parsed = self.get_parsed_observatoin(obs)
         obs = parsed.observation_block[0]
-        actual = obs.clause1.clause_elements[0].reduce()
+        actual = obs.clause1.clause_elements[0]
         expected = 36
         self.assertEqual(expected, actual)
 
@@ -137,25 +137,76 @@ class ParserTests(unittest.TestCase):
         parsed = self.get_parsed_observatoin(obs)
         obs = parsed.observation_block[0]
         expected = 10.0050015500576
-        actual = obs.clause1.clause_elements[0].reduce()
+        actual = obs.clause1.clause_elements[0]
         self.assertEqual(expected, actual)
 
     def test_obs_term_plus_expression(self):
         obs = 'Obs3: 4*2 +1 > 3'
         parsed = self.get_parsed_observatoin(obs)
         obs = parsed.observation_block[0]
-        actual = obs.clause1.clause_elements#.reduce()
-        print(actual)
+        actual = obs.clause1.clause_elements[0]#.reduce()
         expected = 9
+        print(type(actual))
+        self.assertEqual(expected, int(str(actual)))
+
+    def test_obs_term_plus_expression2(self):
+        obs = 'Obs4: 1 - 4*2 > 3'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block[0]
+        actual = obs.clause1.clause_elements[0]#.reduce()
+        expected = -7
+        self.assertEqual(expected, int(str(actual)))
+
+    def test_obs_term_plus_expression3(self):
+        obs = 'Obs5: 1 - 4*2 + 6 > 3'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block[0]
+        actual = obs.clause1.clause_elements[0]  # .reduce()
+        expected = -1
+        self.assertEqual(expected, int(str(actual)))
+
+    def test_obs_term_plus_expression4(self):
+        obs = 'Obs6: 1 - 4*2 + 6/2.0 > 3'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block[0]
+        actual = obs.clause1.clause_elements[0]  # .reduce()
+        expected = -4.0
+        self.assertEqual(expected, float(str(actual)))
+
+    def test_obs_model_entity(self):
+        obs = 'Obs7: Akt[InsulinOnly]@t=0 > Akt[InsulinAndRapa]@t=0'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block[0]
+        actual = obs.clause1.clause_elements[0]
+        expected = 10.0050015500576
+        self.assertEqual(expected, actual)
+
+    def test_obs_model_entity_with_term(self):
+        obs = 'Obs8: Akt[InsulinOnly]@t=0*2 > Akt[InsulinAndRapa]@t=0'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block[0]
+        actual = obs.clause1.clause_elements[0]
+        expected = 20.0100031001152
+        self.assertEqual(expected, actual)
+
+    def test_obs_model_entity_with_expression_and_term(self):
+        obs = 'Obs9: 1 + Akt[InsulinOnly]@t=0*2 > Akt[InsulinAndRapa]@t=0'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block[0]
+        actual = obs.clause1.clause_elements[0]
+        expected = 21.0100031001152
+        self.assertEqual(expected, actual)
+
+    def test_obs_model_entity_with_interval_time(self):
+        obs = 'Obs10: all(Akt[InsulinOnly]@t=(0, 5) > Akt[InsulinAndRapa]@t=0)'
+        parsed = self.get_parsed_observatoin(obs)
+        # obs = parsed.observation_block[0]
+        # actual = obs.clause1.clause_elements[0]
+        # expected = 21.0100031001152
         # self.assertEqual(expected, actual)
 
-    obs = 'Obs4: 1 - 4*2 > 3'
-    obs = 'Obs5: 1 - 4*2 + 6> 3'
-    obs = 'Obs6: 1 - 4*2 + 6/2.0 > 3'
-    obs = 'Obs7: Akt[InsulinOnly]@t=0 > Akt[InsulinAndRapa]@t=0'
-    obs = 'Obs8: Akt[InsulinOnly]@t=0*2 > Akt[InsulinAndRapa]@t=0'
-    obs = 'Obs9: 1 + Akt[InsulinOnly]@t=0*2 > Akt[InsulinAndRapa]@t=0'
-    obs = 'Obs10: mean Akt[InsulinOnly]@t=(0, 5) > Akt[InsulinAndRapa]@t=0'
+
+
     obs = 'Obs11: all Akt[InsulinOnly]@t=(0, 5) > Akt[InsulinAndRapa]@t=0'
     obs = 'Obs12: hyperbolic up Akt[InsulinOnly]'
     obs = 'Obs13: oscillation Akt[InsulinOnly]'
