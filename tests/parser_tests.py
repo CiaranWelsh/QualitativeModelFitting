@@ -242,6 +242,15 @@ class ParserTests(unittest.TestCase):
         actual = obs[0].reduce()
         self.assertTrue(actual)
 
+    def test_obs_model_entity_with_interval_time_and_mean_func(self):
+        obs = 'Obs10: mean(Akt[InsulinOnly]@t=(0, 5)) > Akt[InsulinAndRapa]@t=1'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block
+        print(obs)
+        # actual = obs[0].reduce()
+
+        # self.assertTrue(actual)
+
     obs = 'Obs11: all Akt[InsulinOnly]@t=(0, 5) > Akt[InsulinAndRapa]@t=0'
     obs = 'Obs12: hyperbolic up Akt[InsulinOnly]'
     obs = 'Obs13: oscillation Akt[InsulinOnly]'

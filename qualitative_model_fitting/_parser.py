@@ -276,13 +276,19 @@ class _ObservationBase:
                 return _Expression(component, ts_dct).reduce()
             elif component.data == 'term':
                 return _Term(component, ts_dct).reduce()
-            elif component.data in ['clause1', 'clause2']:
+            # elif component.data in ['clause1', 'clause2']:
+            #     return _Clause(component, ts_dct)
+            elif component.data == 'clause_without_func':
+                print(component)
                 return _Clause(component, ts_dct)
-            elif component.data in ['clause_without_func', 'clause_with_func']:
-                if not len(component.children) == 1:
-                    raise ValueError
-                return _ObservationBase.reduce_component(component.children[0], ts_dct)
-                # return _Clause(component.children[0], ts_dct, clause_type=component.data)
+            # elif component.data == 'clause_with_func':
+            #     func = component.children[0]
+            #     if not func.type == 'FUNC_TYPE2':
+            #         raise ValueError
+            #     comp = component.children[1]
+            #     if not isinstance(comp, Tree):
+            #         raise ValueError
+            #     return _ModelEntity(comp, ts_dct, function=func)
             else:
                 raise ValueError(component)
         elif isinstance(component, Token):
@@ -351,11 +357,11 @@ class _ComparisonStatement(_ObservationBase):
                 if i.data == 'clause1':
                     if not len(i.children) == 1:
                         raise ValueError
-                    self.clause1 = _Clause(i, self.ts_list, i.children[0].data)
+                    self.clause1 = _Clause(i, self.ts_list)
                 elif i.data == 'clause2':
                     if not len(i.children) == 1:
                         raise ValueError
-                    self.clause2 = _Clause(i, self.ts_list, i.children[0].data)
+                    self.clause2 = _Clause(i, self.ts_list)
                 else:
                     raise ValueError
             else:
@@ -392,31 +398,28 @@ class _ComparisonStatement(_ObservationBase):
 
 class _Clause(_ObservationBase):
 
-    def __init__(self, clause, ts_list, clause_type):
+    def __init__(self, clause, ts_list):
         self.clause = clause
         self.ts_dct = ts_list
-        self.clause_type = clause_type
 
         if not isinstance(self.clause, Tree):
-            raise TypeError
-        if self.clause.data not in ['clause1', 'clause2']:
-            raise ValueError()
-        if clause_type not in ['clause_with_func', 'clause_without_func']:
-            raise ValueError(clause_type)
+            raise TypeError(self.clause)
+        if self.clause.data not in ['clause_without_func', 'clause_with_func',
+                                    'clause1', 'clause2']:
+            raise ValueError(self.clause.data)
 
     def reduce(self):
         for i in self.clause.children:
             if isinstance(i, Token):
                 if i.type == 'NUMBER':
-                    return self.token_to_number(i)
+                    reduced = self.token_to_number(i)
                 else:
-                    return str(i)
+                    reduced = str(i)
             elif isinstance(i, Tree):
-                return self.reduce_component(i, self.ts_dct)
+                reduced = self.reduce_component(i, self.ts_dct)
             else:
                 raise ValueError
-        raise ValueError('for loop should never get this far without returning')
-
+        return reduced
     def __str__(self):
         return self.reduce().__str__()
 
@@ -497,16 +500,23 @@ class _ModelEntity(_ObservationBase):
     #  implement the function
     time_type = None
 
-    def __init__(self, model_entity, ts_list, function=None):
+    def __init__(self, model_entity, ts_dct, function=None):
         self.model_entity = model_entity
-        self.ts_dct = ts_list
+        self.ts_dct = ts_dct
         self.function = function
+
+        if self.function is not None:
+            if not hasattr(np, self.function):
+                raise ValueError
+            self.function = getattr(np, self.function)
 
         if not isinstance(model_entity, Tree):
             raise TypeError
 
         if not model_entity.data == 'model_entity':
             raise ValueError(model_entity.data)
+
+
 
     @property
     def component_name(self):
@@ -538,15 +548,15 @@ class _ModelEntity(_ObservationBase):
         return self.__str__()
 
     def reduce(self):
-        LOG.debug('model entity reduce invoked')
         time = eval(self.time)
         if isinstance(time, tuple):
             output = self.ts_dct[self.condition].simulate()[self.component_name].loc[float(time[0]): float(time[1])]
         else:
             output = self.ts_dct[self.condition].simulate()[self.component_name].loc[float(time)]
-        LOG.debug('model entity reduce output is: ')
-        LOG.debug(output)
-        return output
+        if self.function is not None:
+            return self.function(output)
+        else:
+            return output
 
 
 class _Term(_ObservationBase):
