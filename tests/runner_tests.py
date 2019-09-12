@@ -29,10 +29,11 @@ class TestRunner(unittest.TestCase):
         runner = ManualRunner(MODEL1, string)
         return runner
 
-    def test(self):
+    def test_runner_one_observation(self):
         obs = 'Obs1: 5 > 4'
         runner = self.runner_func(obs)
-        runner.run()
+        df = runner.run()
+        self.assertTrue(df.loc[0, 'evaluation'])
 
 
 
