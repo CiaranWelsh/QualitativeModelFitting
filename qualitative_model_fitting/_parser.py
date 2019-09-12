@@ -267,6 +267,7 @@ class _ObservationBase:
 
     @staticmethod
     def reduce_component(component, ts_dct=None):
+
         if isinstance(component, Tree):
             if component.data == 'model_entity':
                 if ts_dct is None:
@@ -279,16 +280,16 @@ class _ObservationBase:
             # elif component.data in ['clause1', 'clause2']:
             #     return _Clause(component, ts_dct)
             elif component.data == 'clause_without_func':
-                print(component)
                 return _Clause(component, ts_dct)
-            # elif component.data == 'clause_with_func':
-            #     func = component.children[0]
-            #     if not func.type == 'FUNC_TYPE2':
-            #         raise ValueError
-            #     comp = component.children[1]
-            #     if not isinstance(comp, Tree):
-            #         raise ValueError
-            #     return _ModelEntity(comp, ts_dct, function=func)
+            elif component.data == 'clause_with_func':
+                func = component.children[0]
+                if not func.type == 'FUNC_TYPE2':
+                    raise ValueError
+                comp = component.children[1]
+                if not isinstance(comp, Tree):
+                    raise ValueError
+                return _ModelEntity(comp, ts_dct, function=func).reduce()
+
             else:
                 raise ValueError(component)
         elif isinstance(component, Token):
@@ -321,7 +322,7 @@ class ObservationBlock(list):
         super(ObservationBlock, self).__init__(*args)
 
         for i in self.args:
-            if not isinstance(i, (_ComparisonStatementWithoutFunc)):
+            if not isinstance(i, _ComparisonStatement):
                 raise TypeError(i)
 
 
@@ -394,6 +395,10 @@ class _ComparisonStatement(_ObservationBase):
             if isinstance(self.clause2, pd.Series):
                 self.clause2 = self.clause2.values
             return func(self.operator(self.clause1, self.clause2))
+        elif self.tree.data == 'comparison_statement_without_func':
+            return self.operator(self.clause1.reduce(), self.clause2.reduce())
+        else:
+            raise ValueError(self.tree)
 
 
 class _Clause(_ObservationBase):
@@ -409,6 +414,7 @@ class _Clause(_ObservationBase):
             raise ValueError(self.clause.data)
 
     def reduce(self):
+        reduced = None
         for i in self.clause.children:
             if isinstance(i, Token):
                 if i.type == 'NUMBER':
@@ -419,7 +425,10 @@ class _Clause(_ObservationBase):
                 reduced = self.reduce_component(i, self.ts_dct)
             else:
                 raise ValueError
+        if reduced is None:
+            raise ValueError
         return reduced
+
     def __str__(self):
         return self.reduce().__str__()
 
@@ -427,28 +436,44 @@ class _Clause(_ObservationBase):
         return self.__str__()
 
     def __gt__(self, other):
-        return self.reduce().__gt__(other)
+        if isinstance(other, _Clause):
+            return self.reduce().__gt__(other.reduce())
+        else:
+            return self.reduce().__gt__(other)
 
     def __lt__(self, other):
-        return self.reduce().__lt__(other)
+
+        if isinstance(other, _Clause):
+            return self.reduce().__lt__(other.reduce())
+        else:
+            return self.reduce().__lt__(other)
 
     def __ge__(self, other):
-        return self.reduce().__ge__(other)
+        if isinstance(other, _Clause):
+            return self.reduce().__ge__(other.reduce())
+        else:
+            return self.reduce().__ge__(other)
 
     def __le__(self, other):
-        return self.reduce().__le__(other)
+        if isinstance(other, _Clause):
+            return self.reduce().__le__(other.reduce())
+        else:
+            return self.reduce().__le__(other)
 
     def __eq__(self, other):
-        return self.reduce().__eq__(other)
+        if isinstance(other, _Clause):
+            return self.reduce().__eq__(other.reduce())
+        else:
+            return self.reduce().__eq__(other)
 
     def __ne__(self, other):
-        return self.reduce().__ne__(other)
+        if isinstance(other, _Clause):
+            return self.reduce().__ne__(other.reduce())
+        else:
+            return self.reduce().__ne__(other.reduce())
 
 
 class _Expression(_ObservationBase):
-    # type can be either 'numerical' for a pure expression
-    #  or 'composite' for an expression where one of the operants
-    #  is a model_entity
 
     def __init__(self, exprs, ts_dct):
         self.exprs = exprs
@@ -496,8 +521,6 @@ class _Expression(_ObservationBase):
 
 
 class _ModelEntity(_ObservationBase):
-    # todo maybe pass the clause type functions to model entity to
-    #  implement the function
     time_type = None
 
     def __init__(self, model_entity, ts_dct, function=None):
@@ -586,12 +609,6 @@ class _Term(_ObservationBase):
 
     def reduce(self):
         return eval(self.__str__())
-
-
-# tasks to do
-# -----------
-# create a base class for each of these classes and have inside them:
-#     - reduce for each type of class.
 
 
 class _Operator(_ObservationBase):

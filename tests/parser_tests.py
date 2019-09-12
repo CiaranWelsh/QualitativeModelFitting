@@ -246,12 +246,17 @@ class ParserTests(unittest.TestCase):
         obs = 'Obs10: mean(Akt[InsulinOnly]@t=(0, 5)) > Akt[InsulinAndRapa]@t=1'
         parsed = self.get_parsed_observatoin(obs)
         obs = parsed.observation_block
-        print(obs)
-        # actual = obs[0].reduce()
+        expected = 7.632460576669665
+        actual = obs[0].clause1.reduce()
+        self.assertEqual(expected, actual)
 
-        # self.assertTrue(actual)
+    def test_obs_model_entity_with_interval_time_and_max(self):
+        obs = 'Obs11: max(Akt[InsulinOnly]@t=(0, 5)) == max(Akt[InsulinAndRapa]@t=(0,5))'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block
+        actual = obs[0].reduce()
+        self.assertTrue(actual)
 
-    obs = 'Obs11: all Akt[InsulinOnly]@t=(0, 5) > Akt[InsulinAndRapa]@t=0'
     obs = 'Obs12: hyperbolic up Akt[InsulinOnly]'
     obs = 'Obs13: oscillation Akt[InsulinOnly]'
     obs = 'Obs14: sigmoidal down Akt[InsulinOnly]'
