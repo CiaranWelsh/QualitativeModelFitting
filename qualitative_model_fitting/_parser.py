@@ -30,10 +30,10 @@ class Parser:
     
     observation_block                   : "observation" statement+
     ?statement                          : comparison_statement | behavioural_statement
-    ?comparison_statement                : comparison_statement_func 
+    ?comparison_statement               : comparison_statement_with_func 
                                         | comparison_statement_without_func
-    ?comparison_statement_func           : OBS_NAME ":" function_type1 "("clause1 OPERATOR clause2")"
-    ?comparison_statement_without_func   : OBS_NAME ":" clause1 OPERATOR clause2
+    ?comparison_statement_with_func     : OBS_NAME ":" function_type1 "("clause1 OPERATOR clause2")"
+    ?comparison_statement_without_func  : OBS_NAME ":" clause1 OPERATOR clause2
     behavioural_statement               : OBS_NAME ":" qual_exp 
     
     
@@ -333,15 +333,20 @@ class _ComparisonStatement(_ObservationBase):
         if not isinstance(tree, Tree):
             raise TypeError
 
-        # if self.tree.data != ['comparison_statement_with_func']:
-        #     raise ValueError
+        if self.tree.data not in ['comparison_statement_with_func',
+                                  'comparison_statement_without_func']:
+            raise ValueError(self.tree.data)
 
         for i in self.tree.children:
             if isinstance(i, Token):
                 if i.type == 'OBS_NAME':
                     self.name = str(i)
                 elif i.type == 'OPERATOR':
-                    self.operator = str(i)
+                    self.operator = _Operator(str(i)).operator
+                elif i.type == 'FUNC_TYPE1':
+                    self.func = str(i)
+                else:
+                    raise ValueError(f'{i}, {i.type}')
             elif isinstance(i, Tree):
                 if i.data == 'clause1':
                     if not len(i.children) == 1:
@@ -362,70 +367,27 @@ class _ComparisonStatement(_ObservationBase):
     def __repr__(self):
         return self.__str__()
 
+    def reduce(self):
+        """
+        reduce a comparison to boolean
+        Returns:
 
-class _Observation(_ObservationBase):
-    # comparison or
-    type = 'comparison'
+        """
+        if self.tree.data == 'comparison_statement_with_func':
+            if not hasattr(np, self.func):
+                raise SyntaxError(self.func)
+            func = getattr(np, self.func)
 
-    def __init__(self, obs):  # clause1, op, clause2, name=None):
-        self.obs = obs
-
-    @property
-    def name(self):
-        # first element should be the name
-        name = self.obs.children[0]
-        assert name.type == 'OBS_NAME'
-        return name.value
-
-    @property
-    def clause1(self):
-        cl1 = self.obs.children[1]
-        assert cl1.type == 'clause1'
-        return _Clause(cl1)
-
-    @property
-    def operator(self):
-        return _Operator(self.obs.children[2])
-
-    @property
-    def clause2(self):
-        cl2 = self.obs.children[3]
-        assert cl2.type == 'clause2'
-        return _Clause(cl2)
-
-    def __str__(self):
-        return f'{self.name}: {self.clause1} {self.operator} {self.clause2}'
-
-    def __repr__(self):
-        return self.__str__()
-
-    def reduce(self, ts_data, obs=None):
-        LOG.debug('obsversation reduce invoked')
-        if obs is None:
-            obs = self.obs
-
-        cl1 = None
-        cl2 = None
-        operator = None
-        for i in obs.children:
-            # LOG.debug(i)
-            if isinstance(i, Tree):
-                if i.data == 'clause1':
-                    cl1 = _Clause(i).reduce(ts_data)
-                if i.data == 'clause2':
-                    cl2 = _Clause(i).reduce(ts_data)
-            elif isinstance(i, Token):
-                if i.type == 'OPERATOR':
-                    operator = i
-                elif i.type == 'OBS_NAME':
-                    obs_name = i
-                else:
-                    raise SyntaxError(f'Token {i.type} is invalid')
-        LOG.debug('output of observation reduce')
-        LOG.debug(f'full observation comparison is: "{cl1} {str(operator)} {cl2}"')
-        return {'obs_name': obs_name,
-                'evaluation': eval(f'{cl1} {str(operator)} {cl2}'),
-                'comparison': f'{cl1} {str(operator)} {cl2}'}
+            if isinstance(self.clause1, pd.Series) and isinstance(self.clause2, pd.Series):
+                if self.clause1.shape != self.clause2.shape:
+                    raise ValueError('Can only make comparisons between model entities '
+                                     'that have intervals of the same shape. Clause1={} != Clause2={}'
+                                     ''.format(self.clause1.shape, self.clause2.shape))
+            if isinstance(self.clause1, pd.Series):
+                self.clause1 = self.clause1.values
+            if isinstance(self.clause2, pd.Series):
+                self.clause2 = self.clause2.values
+            return func(self.operator(self.clause1, self.clause2))
 
 
 class _Clause(_ObservationBase):
@@ -442,21 +404,43 @@ class _Clause(_ObservationBase):
         if clause_type not in ['clause_with_func', 'clause_without_func']:
             raise ValueError(clause_type)
 
-        self.clause_elements = self._objectify_clause_elements()
-
-    def _objectify_clause_elements(self):
-        clause_elements = list()
+    def reduce(self):
         for i in self.clause.children:
             if isinstance(i, Token):
                 if i.type == 'NUMBER':
-                    clause_elements.append(self.token_to_number(i))
+                    return self.token_to_number(i)
                 else:
-                    clause_elements.append(str(i))
+                    return str(i)
             elif isinstance(i, Tree):
-                clause_elements.append(self.reduce_component(i, self.ts_dct))
+                return self.reduce_component(i, self.ts_dct)
             else:
                 raise ValueError
-        return clause_elements
+        raise ValueError('for loop should never get this far without returning')
+
+    def __str__(self):
+        return self.reduce().__str__()
+
+    def __repr__(self):
+        return self.__str__()
+
+    def __gt__(self, other):
+        return self.reduce().__gt__(other)
+
+    def __lt__(self, other):
+        return self.reduce().__lt__(other)
+
+    def __ge__(self, other):
+        return self.reduce().__ge__(other)
+
+    def __le__(self, other):
+        return self.reduce().__le__(other)
+
+    def __eq__(self, other):
+        return self.reduce().__eq__(other)
+
+    def __ne__(self, other):
+        return self.reduce().__ne__(other)
+
 
 class _Expression(_ObservationBase):
     # type can be either 'numerical' for a pure expression
@@ -465,7 +449,7 @@ class _Expression(_ObservationBase):
 
     def __init__(self, exprs, ts_dct):
         self.exprs = exprs
-        self.ts_dct =ts_dct
+        self.ts_dct = ts_dct
 
         if not isinstance(self.exprs, Tree):
             raise ValueError
@@ -509,11 +493,14 @@ class _Expression(_ObservationBase):
 
 
 class _ModelEntity(_ObservationBase):
+    # todo maybe pass the clause type functions to model entity to
+    #  implement the function
     time_type = None
 
-    def __init__(self, model_entity, ts_list):
+    def __init__(self, model_entity, ts_list, function=None):
         self.model_entity = model_entity
         self.ts_dct = ts_list
+        self.function = function
 
         if not isinstance(model_entity, Tree):
             raise TypeError
