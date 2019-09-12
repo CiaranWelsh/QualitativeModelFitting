@@ -99,12 +99,38 @@ class ParserTests(unittest.TestCase):
         expected = 'Obs1'
         self.assertEqual(expected, actual)
 
-    def test_obs_block_operator(self):
+    def test_obs_block_name2(self):
+        obs = 'Obs1: 5 < 6'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block[0]
+        actual = obs.name
+        expected = 'Obs1'
+        self.assertEqual(expected, actual)
+
+    def test_obs_block_operator_gt(self):
         obs = 'Obs1: 5 > 6'
         parsed = self.get_parsed_observatoin(obs)
         obs = parsed.observation_block[0]
         import operator
         expected = operator.gt
+        actual = obs.operator
+        self.assertEqual(expected, actual)
+
+    def test_obs_block_operator_ne(self):
+        obs = 'Obs1: 5 != 6'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block[0]
+        import operator
+        expected = operator.ne
+        actual = obs.operator
+        self.assertEqual(expected, actual)
+
+    def test_obs_block_operator_ge(self):
+        obs = 'Obs1: 5 >= 6'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block[0]
+        import operator
+        expected = operator.ge
         actual = obs.operator
         self.assertEqual(expected, actual)
 

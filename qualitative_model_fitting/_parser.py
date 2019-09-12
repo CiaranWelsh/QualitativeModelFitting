@@ -67,12 +67,12 @@ class Parser:
     DIRECTION               : "up" 
                             | "down"
     
-    OPERATOR                : ">"
-                            | "<" 
+    OPERATOR                : ">="
+                            | "<=" 
                             | "==" 
                             | "!="
-                            | "<="
-                            | ">="
+                            | "<"
+                            | ">"
     FUNC_TYPE1              : "all"|"any"
     FUNC_TYPE2              : "mean"|"min"|"max"
     _TIME_SYMBOL            : "@t=" 
@@ -596,7 +596,7 @@ class _Operator(_ObservationBase):
         elif self.op == '<':
             return operator.lt
         elif self.op == '>=':
-            return operator.le
+            return operator.ge
         elif self.op == '<=':
             return operator.le
         elif self.op == '!=':
