@@ -369,7 +369,17 @@ class _ComparisonStatement(_ObservationBase):
                 raise ValueError
 
     def __str__(self):
-        return f'{self.name}: {self.clause1} {self.operator} {self.clause2}'
+
+        clause1 = float(str(self.clause1))
+        clause2 = float(str(self.clause2))
+        clause1 = round(clause1, 4)
+        clause2 = round(clause2, 4)
+        if clause1.is_integer():
+            clause1 = int(clause1)
+        if clause2.is_integer():
+            clause2 = int(clause2)
+        return f'{clause1} {str(self.operator)} {clause2}'
+
 
     def __repr__(self):
         return self.__str__()
@@ -428,6 +438,9 @@ class _Clause(_ObservationBase):
         if reduced is None:
             raise ValueError
         return reduced
+
+    # def __format__(self, format_spec):
+    #     return self.__str__().__format__(format_spec)
 
     def __str__(self):
         return self.reduce().__str__()

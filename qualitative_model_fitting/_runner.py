@@ -23,7 +23,7 @@ class ManualRunner:
             )
             df = pd.DataFrame(obs_result, index=[0])
             results.append(df)
-        df = pd.concat(results).reset_index()
+        df = pd.concat(results).reset_index(drop=True)
         return df
 
 

@@ -29,11 +29,20 @@ class TestRunner(unittest.TestCase):
         runner = ManualRunner(MODEL1, string)
         return runner
 
-    def test_runner_one_observation(self):
+    def test_runner1(self):
         obs = 'Obs1: 5 > 4'
         runner = self.runner_func(obs)
         df = runner.run()
         self.assertTrue(df.loc[0, 'evaluation'])
+
+    def test_runner2(self):
+        obs = """
+        Obs1: 5 > 4
+        Obs2: IRS1a[InsulinOnly]@t=20 > IRS1a[InsulinAndRapa]@t=20
+        """
+        runner = self.runner_func(obs)
+        df = runner.run()
+        self.assertTrue(df.loc[1, 'evaluation'])
 
 
 
