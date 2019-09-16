@@ -18,6 +18,7 @@ library(Stack)
 
 
 WD = '/home/ncw135/Documents/QualitativeModelFitting'
+
 MODEL_DIR = file.path(WD, 'example_networks')
 WEB_DIR = file.path(WD, 'web_interface')
 APP_DIR = file.path(WEB_DIR, 'extended_pi3k_model')
@@ -130,7 +131,7 @@ ui <- fluidPage(
       )),
       column(3, actionButton('go_btn', 'Simulate', width = 100))
     ),
-  fluidRow(column(12, imageOutput("network_image")))
+  fillRow(column(12, imageOutput("network_image")))
 )
 
 

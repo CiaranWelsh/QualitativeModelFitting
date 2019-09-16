@@ -86,9 +86,9 @@ if __name__ == '__main__':
 
     # some flags
 
-    RUN_QMF = True
+    RUN_QMF = False
 
-    PLOT_TS = False
+    PLOT_TS = True
 
     WORKING_DIR = os.path.dirname(os.path.dirname(__file__))
     MODELS_DIR = os.path.join(WORKING_DIR, 'models')
