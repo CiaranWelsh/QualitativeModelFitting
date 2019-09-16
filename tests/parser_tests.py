@@ -142,6 +142,18 @@ class ParserTests(unittest.TestCase):
         actual = obs.clause1.reduce()
         self.assertEqual(expected, actual)
 
+    def test_obs_clause_is_time_interval(self):
+        obs = 'Obs1: 5 > 6'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block[0]
+        self.assertFalse(obs.clause1.is_time_interval())
+
+    def test_obs_clause_is_time_interval2(self):
+        obs = 'Obs1: Akt[InsulinOnly]@t=(0, 5) > 6'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block[0]
+        self.assertTrue(obs.clause1.is_time_interval())
+
     def test_obs_clause_sum(self):
         obs = 'Obs1: 5 + 6 > 6'
         parsed = self.get_parsed_observatoin(obs)
@@ -256,6 +268,14 @@ class ParserTests(unittest.TestCase):
         obs = parsed.observation_block
         actual = obs[0].reduce()
         self.assertTrue(actual)
+
+    def test_obs_model_entity_with_interval_all(self):
+        obs = 'Obs12: all(pS6K[InsulinOnly]@t=(0, 100) >= pS6K[InsulinAndRapa]@t=(0, 100))'
+        parsed = self.get_parsed_observatoin(obs)
+        obs = parsed.observation_block
+        actual = str(obs[0])
+        expected = 'all(TimeInterval >= TimeInterval)'
+        self.assertEqual(expected, actual)
 
     #todo build interface into global profile type statement
     obs = 'Obs12: hyperbolic up Akt[InsulinOnly]'

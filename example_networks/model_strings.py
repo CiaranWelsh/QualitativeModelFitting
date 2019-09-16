@@ -1,6 +1,3 @@
-#todo get the ER in the model with some observations
-
-
 functions = """
 
 function MM(km, Vmax, S)
@@ -58,6 +55,7 @@ model_string = f"""
 
 {functions}
 
+
 model ComplexPI3KModel
     compartment Cell=1;
     var IRS1 in Cell;
@@ -77,11 +75,10 @@ model ComplexPI3KModel
     var Akti in Cell;
     var TSC2 in Cell;
     var pTSC2 in Cell;
+    var TSC2i in Cell;
     var RhebGDP in Cell;
     var RhebGTP in Cell;
-    var ppPras40 in Cell;
     var mTORC1cyt in Cell;
-    var mTORC1_Pras40cyt in Cell;
     var mTORC1cyt in Cell;
     var mTORC1lys in Cell;
     var RAG_GDP in Cell;
@@ -89,7 +86,6 @@ model ComplexPI3KModel
     var mTORC1i in Cell;
     var mTORC1ii in Cell;
     var mTORC1iii in Cell;
-    var mTORC1iv in Cell;
     var FourEBP1 in Cell;
     var pFourEBP1 in Cell;
     var S6K in Cell;
@@ -157,11 +153,9 @@ model ComplexPI3KModel
     kAktBindMK              = 10;                    
     kTSC2Phos               = 0.1;                    
     kTSC2Dephos             = 0.1;                    
-    kRhebLoad               = 1;                    
+    kRhebLoad               = 2.5;                    
     kRhebUnload             = 5;                    
-    kmTORC1BindPras40       = 0.1;                            
-    kmTORC1UnbindPras40     = 0.1;                            
-    kmTORC1CytToLys         = 0.1;                        
+    kmTORC1CytToLys         = 2;                        
     kmTORC1LysToCyt         = 0.1;                        
     kRAGPhos                = 0.1;                    
     kRAGDephos              = 0.1;                    
@@ -171,7 +165,7 @@ model ComplexPI3KModel
     kmTORC1UnbindRapa       = 0.1;                                                       
     k4EBP1Phos              = 0.1;                    
     k4EBP1Dephos            = 0.1;                        
-    kS6KPhos                = 0.1;                    
+    kS6KPhos                = 0.4;                    
     kS6KDehos               = 0.1;                    
     kAMPKInhibPhosByAkt     = 0.1;                            
     kAMPKInhibPhosByS6K     = 0.1;                            
@@ -217,10 +211,12 @@ model ComplexPI3KModel
     kIP3UnbindIpR           = 0.1;                        
     kCa2In                  = 0.1;                
     kCa2Out                 = 0.1;                
-    kDUSPmRNAIn             = 0.001
-    kDUSPmRNAOut            = 0.1
-    kDUSPIn                 = 0.1
-    kDUSPOut                = 0.01
+    kDUSPmRNAIn             = 0.001;
+    kDUSPmRNAOut            = 0.1;
+    kDUSPIn                 = 0.1;
+    kDUSPOut                = 0.01;
+    kTSC2InhibitByAAf        = 0.1;
+    kTSC2InhibitByAAb        = 0.1;
 
     Insulin                 = 0;        
     AA                      = 0;    
@@ -248,22 +244,19 @@ model ComplexPI3KModel
     pAkt                    = 0;                        
     Akti                    = 0;                        
     TSC2                    = 10.001;                        
-    pTSC2                   = 0;                        
+    pTSC2                   = 0;     
+    TSC2i                   = 0;                   
     RhebGDP                 = 10.002;                        
     RhebGTP                 = 0;    
     RasGDP                  = 10.002;
     RasGTP                  = 0;                  
-    ppPras40                = 0;                            
-    mTORC1cyt               = 0;                            
-    mTORC1_Pras40cyt        = 10.001;                                    
-    mTORC1cyt               = 0;                            
+    mTORC1cyt               = 10.001;                            
     mTORC1lys               = 0;                            
     RAG_GDP                 = 10.001;                        
     RAG_GTP                 = 0;                        
     mTORC1i                 = 0;                        
     mTORC1ii                = 0;                            
     mTORC1iii               = 0;                            
-    mTORC1iv                = 0;    
     pmTORC1                 = 0;                        
     FourEBP1                = 10.001;                            
     pFourEBP1               = 0;                            
@@ -325,10 +318,10 @@ model ComplexPI3KModel
     R6i     : Akt + MK2206 => Akti                      ; Cell * kAktBindMK*Akt*MK2206;
     R7f     : TSC2 => pTSC2                             ; Cell * kTSC2Phos*TSC2*pAkt;
     R7b     : pTSC2 => TSC2                             ; Cell * kTSC2Dephos*pTSC2;
-    R8f     : RhebGDP => RhebGTP                        ; Cell * kRhebLoad*RhebGDP*AA;
+    R7f2    : TSC2 => TSC2i                             ; Cell * kTSC2InhibitByAAf*TSC2*AA;
+    R7b2    : TSC2i => TSC2                             ; Cell * kTSC2InhibitByAAb*TSC2*AA;
+    R8f     : RhebGDP => RhebGTP                        ; Cell * kRhebLoad*RhebGDP;
     R8b     : RhebGTP => RhebGDP                        ; Cell * kRhebUnload*RhebGTP*TSC2;
-    R9f     : ppPras40 + mTORC1cyt  => mTORC1_Pras40cyt ; Cell * kmTORC1BindPras40*ppPras40*mTORC1cyt; 
-    R9b     : mTORC1_Pras40cyt => ppPras40 + mTORC1cyt  ; Cell * kmTORC1UnbindPras40*mTORC1_Pras40cyt*pAkt;
     R10f    : mTORC1cyt + RAG_GTP => mTORC1lys + RAG_GDP; Cell * kmTORC1CytToLys*mTORC1cyt*RAG_GTP;
     R10b    : mTORC1lys => mTORC1cyt                    ; Cell * kmTORC1LysToCyt*mTORC1lys;
     R11f    : RAG_GDP => RAG_GTP                        ; Cell * kRAGPhos*RAG_GDP*AA;
@@ -341,8 +334,6 @@ model ComplexPI3KModel
     R13bii   : mTORC1ii => mTORC1lys + Rapamycin        ; Cell * kmTORC1UnbindRapa*mTORC1ii;
     R13fiii   : pmTORC1 + Rapamycin => mTORC1iii        ; Cell * kmTORC1BindRapa*pmTORC1*Rapamycin;
     R13biii   : mTORC1iii => pmTORC1 + Rapamycin       ; Cell * kmTORC1UnbindRapa*mTORC1iii;
-    R13fiv  : mTORC1_Pras40cyt + Rapamycin => mTORC1iv  ; Cell * kmTORC1BindRapa*mTORC1_Pras40cyt*Rapamycin;
-    R13biv  : mTORC1iv => mTORC1_Pras40cyt + Rapamycin  ; Cell * kmTORC1UnbindRapa*mTORC1iv;
     R14f    : FourEBP1 => pFourEBP1                     ; Cell * k4EBP1Phos*FourEBP1*pmTORC1;
     R14b    : pFourEBP1 => FourEBP1                     ; Cell * k4EBP1Dephos*pFourEBP1;
     R15f    : S6K => pS6K                               ; Cell * kS6KPhos*S6K*pmTORC1;
@@ -399,3 +390,8 @@ model ComplexPI3KModel
 end
 
 """
+
+
+
+
+

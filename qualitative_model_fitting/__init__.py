@@ -1,17 +1,22 @@
 """
-todo write a docstring
-todo all documentation
-todo expand grammer to allow expressions
-todo expand to steady state simulations as well
+todo implement a cache system for performance improvements
+todo build in full profile type analysis
+ Do I manually code this, and if so, how?
+ Or I could create lots of data and use ML to predict which class
+todo implement the 'between' operator
+todo implement the 'almost' operator
+todo implement the 'start' and 'end' operators for time intervals
+todo allow for assigning variables to collections so we can
+ list species that have the same rules
+todo write docs
+todo build the steady state block
+todo build a doseresponse block
+todo build the plot block
 todo build in loops so we can do bulk validations
-todo support events
-todo build interface to control logging.
- perhaps a logging class whereby options such as logging levels
- can be dynamically updated
+todo build in variable assignment
 """
 import logging
 
-from qualitative_model_fitting._api import manual_interface
 from qualitative_model_fitting._simulator import TimeSeries, TimeSeriesPlotter
 from qualitative_model_fitting._parser import Parser
 from qualitative_model_fitting._runner import ManualRunner

@@ -1,19 +1,19 @@
+import logging
 import operator
-from types import BuiltinFunctionType
 from functools import reduce
 
 import numpy as np
 import pandas as pd
-from lark import Lark, Transformer, v_args, Visitor, Token, Tree
+from lark import Lark, Token, Tree
 
 from ._simulator import TimeSeries
 
-# todo implement combinations modifier
-from deprecated import deprecated
-import logging
-
 LOG = logging.getLogger(__name__)
 
+#todo implement combinations modifier
+#todo implement a doseresponse keyword
+#todo implement a steady state keyword
+#todo implement the qualitative profile stuff
 
 class Parser:
     grammar = """
@@ -369,16 +369,26 @@ class _ComparisonStatement(_ObservationBase):
                 raise ValueError
 
     def __str__(self):
+        try:
+            clause1 = float(str(self.clause1))
+            clause1 = round(clause1, 4)
+            if clause1.is_integer():
+                clause1 = int(clause1)
+        except ValueError:
+            clause1 = 'TimeInterval'
 
-        clause1 = float(str(self.clause1))
-        clause2 = float(str(self.clause2))
-        clause1 = round(clause1, 4)
-        clause2 = round(clause2, 4)
-        if clause1.is_integer():
-            clause1 = int(clause1)
-        if clause2.is_integer():
-            clause2 = int(clause2)
-        return f'{clause1} {str(self.operator)} {clause2}'
+        try:
+            clause2 = float(str(self.clause2))
+            clause2 = round(clause2, 4)
+            if clause2.is_integer():
+                clause2 = int(clause2)
+        except ValueError:
+            clause2 = 'TimeInterval'
+
+        if self.func is None:
+            return f'{clause1} {str(self.operator)} {clause2}'
+        else:
+            return f'{self.func}({clause1} {str(self.operator)} {clause2})'
 
 
     def __repr__(self):
@@ -413,9 +423,9 @@ class _ComparisonStatement(_ObservationBase):
 
 class _Clause(_ObservationBase):
 
-    def __init__(self, clause, ts_list):
+    def __init__(self, clause, ts_dct):
         self.clause = clause
-        self.ts_dct = ts_list
+        self.ts_dct = ts_dct
 
         if not isinstance(self.clause, Tree):
             raise TypeError(self.clause)
@@ -439,8 +449,15 @@ class _Clause(_ObservationBase):
             raise ValueError
         return reduced
 
-    # def __format__(self, format_spec):
-    #     return self.__str__().__format__(format_spec)
+    def is_time_interval(self):
+        r = self.__str__()
+        try:
+            isint = float(r)
+            return False
+        except ValueError:
+            return True
+        raise NotImplementedError
+
 
     def __str__(self):
         return self.reduce().__str__()
