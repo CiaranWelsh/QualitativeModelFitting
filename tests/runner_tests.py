@@ -1,15 +1,12 @@
 import unittest
+import logging
 
 from qualitative_model_fitting._parser import Parser
-from qualitative_model_fitting._interpreter import *
 from qualitative_model_fitting._runner import ManualRunner
 from tests import MODEL1
 
 
-class TestRunner(unittest.TestCase):
-
-    def setUp(self) -> None:
-        string = """
+TIMESERIES_STRING = """
           timeseries InsulinOnly {
               Insulin=1, Rapamycin=0, AA=0
           } 0, 100, 101
@@ -19,29 +16,45 @@ class TestRunner(unittest.TestCase):
           timeseries InsulinAndRapaAndAA {
               Insulin=1, Rapamycin=1, AA=0.3
           } 0, 100, 101
-
-          observation 
-              Obs1: Akt[InsulinOnly]@t=0 > Akt[InsulinAndRapa]@t=10
-              Obs2: mean Akt[InsulinOnly]@t=(0, 100) > all Akt[InsulinAndRapa]@t=10
           """
-        parser = Parser()
-        self.tree = parser.parse(string)
-        self.interpreter = Interpreter(self.tree)
 
-    def test_time_series_is_run(self):
-        ts, obs = self.interpreter.interpret()
-        runner = ManualRunner(MODEL1, ts, obs)
-        dct = runner._run_timeseries()
-        expected = sorted(['InsulinOnly', 'InsulinAndRapa', 'InsulinAndRapaAndAA'])
-        actual = sorted(list(dct.keys()))
-        self.assertEqual(expected, actual)
+class TestRunner(unittest.TestCase):
 
-    def test_run(self):
-        ts, obs = self.interpreter.interpret()
-        runner = ManualRunner(MODEL1, ts, obs)
-        expected = {'Obs1: Akt[InsulinOnly]@t=0 > Akt[InsulinAndRapa]@t=10': {'truth': True}, 'Obs2: mean Akt[InsulinOnly]@t=(0, 100) > all Akt[InsulinAndRapa]@t=10': {'truth': True}}
-        actual = runner.run()
-        self.assertEqual(expected, actual)
+    def setUp(self) -> None:
+        pass
+
+    @staticmethod
+    def runner_func(obs):
+        string = TIMESERIES_STRING + '\nobservation\n\t' + obs
+        runner = ManualRunner(MODEL1, string)
+        return runner
+
+    def test_runner1(self):
+        obs = 'Obs1: 5 > 4'
+        runner = self.runner_func(obs)
+        df = runner.run()
+        self.assertTrue(df.loc[0, 'evaluation'])
+
+    def test_runner2(self):
+        obs = """
+        Obs1: 5 > 4
+        Obs2: IRS1a[InsulinOnly]@t=20 > IRS1a[InsulinAndRapa]@t=20
+        """
+        runner = self.runner_func(obs)
+        df = runner.run()
+        self.assertTrue(df.loc[1, 'evaluation'])
+
+    def test_runner3(self):
+        obs = """
+        Obs1: 5 > 4
+        Obs2: max(IRS1a[InsulinOnly]@t=(0, 100)) < max(IRS1a[InsulinAndRapa]@t=(0, 100))
+        """
+        runner = self.runner_func(obs)
+        df = runner.run()
+        print(df)
+        self.assertFalse(df.loc[1, 'evaluation'])
+
+
 
 
 if __name__ == '__main__':

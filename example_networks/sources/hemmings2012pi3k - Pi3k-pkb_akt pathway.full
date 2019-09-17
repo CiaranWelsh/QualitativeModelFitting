@@ -1,0 +1,1195 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+      xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>PI3K-PKB/Akt Pathway </title>
+      <meta name="googlebot" content="NOODP" />
+      <meta name="description"
+            content="A new type of review journal, featuring comprehensive collections of expert review articles on important topics in the molecular life sciences" />
+      <meta content="/cshperspect/4/9/a011189.atom" name="HW.identifier" />
+      <meta name="DC.Format" content="text/html" />
+      <meta name="DC.Language" content="en" />
+      <meta content="PI3K-PKB/Akt Pathway" name="DC.Title" />
+      <meta content="10.1101/cshperspect.a011189" name="DC.Identifier" />
+      <meta content="2012-09-01" name="DC.Date" />
+      <meta content="Cold Spring Harbor Laboratory Press" name="DC.Publisher" />
+      <meta content="Brian A. Hemmings" name="DC.Contributor" />
+      <meta content="David F. Restuccia" name="DC.Contributor" />
+      <meta content="063" name="citation_collection_id" />
+      <meta content="Cold Spring Harbor Perspectives in Biology"
+            name="citation_journal_title" />
+      <meta content="Cold Spring Harb Perspect Biol" name="citation_journal_abbrev" />
+      <meta content="Cold Spring Harbor Lab" name="citation_publisher" />
+      <meta content="" name="citation_issn" />
+      <meta content="1943-0264" name="citation_issn" />
+      <meta name="citation_author" content="Brian A. Hemmings" />
+      <meta name="citation_author_institution"
+            content="Friedrich Miescher Institute for Biomedical Research, Basel 4058, Switzerland" />
+      <meta name="citation_author" content="David F. Restuccia" />
+      <meta name="citation_author_institution"
+            content="Friedrich Miescher Institute for Biomedical Research, Basel 4058, Switzerland" />
+      <meta content="PI3K-PKB/Akt Pathway" name="citation_title" />
+      <meta content="09/01/2012" name="citation_date" />
+      <meta content="4" name="citation_volume" />
+      <meta content="9" name="citation_issue" />
+      <meta content="a011189" name="citation_firstpage" />
+      <meta content="4/9/a011189" name="citation_id" />
+      <meta content="4/9/a011189" name="citation_id_from_sass_path" />
+      <meta content="cshperspect;4/9/a011189" name="citation_mjid" />
+      <meta content="10.1101/cshperspect.a011189" name="citation_doi" />
+      <meta content="http://cshperspectives.cshlp.org/content/4/9/a011189.full"
+            name="citation_fulltext_html_url" />
+      <meta content="http://cshperspectives.cshlp.org/content/4/9/a011189.full.pdf"
+            name="citation_pdf_url" />
+      <meta content="/content/4/9.cover.gif" name="issue_cover_image" />
+      <meta content="http://cshperspectives.cshlp.org/content/4/9/a011189"
+            name="citation_public_url" />
+      <meta content="22952397" name="citation_pmid" />
+      <meta name="citation_fulltext_world_readable" content="" />
+      <meta name="citation_section" content="Cell Signaling" />
+      <meta name="robots" content="noarchive,nofollow" />
+      <meta name="googlebot" content="noarchive" />
+      <link href="/content/4/9/a008763.short" rel="prev" />
+      <link href="/content/4/9/a011403.short" rel="next" />
+      <link rel="stylesheet" type="text/css" media="all" href="/shared/css/hw-global.css" />
+      <link rel="stylesheet" type="text/css" media="all"
+            href="/shared/css/standard-designs/design2/main.css" />
+      <link rel="stylesheet" type="text/css" media="all"
+            href="/publisher/css/hw-cshljnls-global.css" />
+      <link rel="stylesheet" type="text/css" media="all"
+            href="/local/css/hw-journal-global.css" />
+      <link rel="stylesheet" type="text/css" media="all"
+            href="/shared/css/hw-citation-2.0-hacks.css" />
+      <link rel="stylesheet" type="text/css" media="print" href="/shared/css/hw-print.css" />
+      <link rel="stylesheet" type="text/css" media="print"
+            href="/publisher/css/hw-cshljnls-print.css" />
+      <link rel="stylesheet" type="text/css" media="all"
+            href="/shared/css/hw-page-content.css" />
+      <link rel="stylesheet" type="text/css" media="all"
+            href="/publisher/css/hw-cshljnls-page-content.css" />
+      <link rel="stylesheet" type="text/css" media="all"
+            href="/local/css/hw-journal-page-content.css" />
+      <link rel="stylesheet" type="text/css" media="all"
+            href="/site/misc/custom-global.css" /><script type="text/javascript" id="session-d5169681e1">var callbackToken='561C7846C6A3E0B';</script><script type="text/javascript" id="session-d5169681e3">
+                      var subCode='genesdev_sub';
+                    </script><script type="text/javascript" src="/shared/js/jquery-min.js"></script><script type="text/javascript" src="/shared/js/fingerprint.js"></script><script type="text/javascript" src="/shared/js/hw-shared.js"></script><script type="text/javascript" src="/shared/js/design/hw-design1.js"></script><script type="text/javascript" src="/publisher/js/cshl-shared.js"></script><script type="text/javascript" src="/shared/js/pages/hw-content.js"></script><script type="text/javascript" src="/publisher/js/cshl-content.js"></script><script type="text/javascript" async="async"
+              src="https://scholar.google.com/scholar_js/casa.js"></script><script type="text/javascript" src="/site/misc/custom-global.js"></script></head>
+   <body>
+      <div class="hw-gen-page pagetype-content" id="pageid-content" itemscope="itemscope"
+           itemtype="http://schema.org/ScholarlyArticle">
+         <div id="header">
+            <a href="/"><img title="Cold Spring Harbor Perspectives in Biology"
+                    alt="Cold Spring Harbor Perspectives in Biology"
+                    width="390"
+                    height="83"
+                    src="/local/img/journal_logo_standalone.gif" /></a>
+            
+            <p id="skip-link">
+               <a href="#content-block">Skip to main page content</a>
+               
+            </p>
+            
+            <ul class="button-list header-buttons">
+               <li class="first"><a href="/" title="HOME"><span>HOME</span></a></li>
+               <li><a href="/site/misc/about.xhtml" title="ABOUT"><span>ABOUT</span></a></li>
+               <li><a href="/cgi/collection/" title="SUBJECT COLLECTIONS"><span>SUBJECT COLLECTIONS</span></a></li>
+               <li><a href="/content/by/year" title="ARCHIVE"><span>ARCHIVE</span></a></li>
+               <li><a href="/site/misc/subscribe.xhtml" title="SUBSCRIBE"><span>SUBSCRIBE</span></a></li>
+               <li><a href="/site/misc/adinfo.xhtml" title="ADVERTISE"><span>ADVERTISE</span></a></li>
+               <li><a href="/site/misc/alertland.xhtml" title="ALERTS"><span>ALERTS</span></a></li>
+               <li><a href="/feedback" title="FEEDBACK"><span>FEEDBACK</span></a></li>
+               <li class="last"><a href="/help/" title="HELP"><span>HELP</span></a></li>
+            </ul>
+            
+            
+            <div class="header-qs">
+               
+               <form class="searchbox" action="/search" method="get">
+                  <div>
+                     	<label for="header-qs-input" id="header-qs-search-label">Search for Keyword:</label>
+                     	<input value="" title="Search Cold Spring Harbor Perspectives in Biology" type="text"
+                            name="fulltext"
+                            id="header-qs-input" /><input type="hidden" name="submit" value="yes" /><label for="header-qs-search" id="header-qs-search-label">GO</label><input value="GO" alt="Link: Go" type="image" id="header-qs-search-go"
+                            src="/shared/img/standard-design/design2/go.gif" />
+                     
+                  </div>
+                  <div class="adv-search-link"><a href="/search">Advanced Search</a></div>
+               </form>
+               
+               
+            </div>
+            
+            <div class="header-ac-elements">
+               
+               <div class="inst-branding">
+                  
+               </div>
+               
+               <div id="authstring" class="suppress-header-login">
+                  
+                  <ul>
+                     <li class="subscr-ref">Institution: Newcastle University</li>
+                     <li>
+                        <a href="/login?uri=https%3A%2F%2Fcshperspectives.cshlp.org%2Fcontent%2F4%2F9%2Fa011189.full">
+                           Sign In via User Name/Password
+                           </a>
+                        
+                     </li>
+                  </ul>           
+                  
+               </div> 
+               
+               
+               <div id="hdr-login" class="suppress-header-login"></div>
+               
+            </div>
+            
+            <div class="banner-ads">
+               
+               <ul>
+                  <li><a href="/cgi/adclick/?ad=36705&amp;adclick=true&amp;url=http%3A%2F%2Fwww.cellsignal.com%2Findex.jsp%3Futm_source%3DCold%252BSpring%252BHarbor%26utm_medium%3Dcpc%26utm_content%3DHomepage%26utm_campaign%3DCSH%252BBanners"
+                        target="_blank"><img title="Cell Signaling Technology Antibodies and Related Reagents"
+                             src="//cshperspectives.cshlp.org/adsystem/graphics/3590876775174384/cshperspect/leaderboard-cst.gif?ad=36705&amp;adview=true"
+                             alt="Cell Signaling Technology Antibodies and Related Reagents" /></a></li>
+               </ul>
+               
+            </div>
+            
+            <div class="bar">
+               
+               <div class="bar-inner"></div>
+               
+            </div>
+            
+         </div>
+         <div id="content-block">
+            <div class="article fulltext-view" itemprop="articleBody"><span class="highwire-journal-article-marker-start"></span><h1 id="article-title-1" itemprop="headline">PI3K-PKB/Akt Pathway</h1>
+               <div class="contributors">
+                  <ol class="contributor-list" id="contrib-group-1">
+                     <li class="contributor" id="contrib-1" itemprop="author" itemscope="itemscope"
+                         itemtype="http://schema.org/Person"><span class="name" itemprop="name"><a class="name-search"
+                              href="/search?author1=Brian+A.+Hemmings&amp;sortspec=date&amp;submit=Submit">Brian A. Hemmings</a></span> and 
+                     </li>
+                     <li class="last" id="contrib-2"><span class="name"><a class="name-search"
+                              href="/search?author1=David+F.+Restuccia&amp;sortspec=date&amp;submit=Submit">David F. Restuccia</a></span></li>
+                  </ol>
+                  <ol class="affiliation-list">
+                     <li class="aff"><a id="aff-1" name="aff-1"></a><address>Friedrich Miescher Institute for Biomedical Research, Basel 4058, Switzerland</address>
+                     </li>
+                  </ol>
+                  <ol class="corresp-list">
+                     <li class="corresp" id="corresp-1"><em>Correspondence:</em> <span class="em-link"><span class="em-addr">david.restuccia{at}fmi.ch</span></span></li>
+                  </ol>
+               </div>
+               <p id="p-5">Identification of the phosphoinositide-3-kinase–protein kinase B/Akt (PI3K-PKB/Akt) pathway and activating receptor tyrosine
+                  kinases (RTKs) began in earnest in the early 1980s through vigorous attempts to characterize insulin receptor signaling (for
+                  review, see <a id="xref-ref-1-1" class="xref-bibr" href="#ref-1">Alessi 2001</a>; <a id="xref-ref-6-1" class="xref-bibr" href="#ref-6">Brazil and Hemmings 2001</a>). These humble beginnings led to the identification of the components and mechanism of insulin receptor signaling via insulin
+                  receptor substrate (IRS) proteins to PI3K and consequent PKB/Akt-mediated activation by 3-phosphoinositide-dependent protein
+                  kinase 1 (PDK1). With the discovery of the potent contribution of PI3K and PKB/Akt activation to tumorigenesis, intense research
+                  into the regulation of this pathway led to the discovery of the negative regulators, the protein phosphatase 2 (PP2A), phosphatase
+                  and tensin homolog (PTEN), and the PH-domain leucine-rich-repeat-containing protein phosphatases (PHLPP1/2). More recently,
+                  the elusive PKB/Akt hydrophobic motif kinases—i.e., the mammalian target of rapamycin (mTOR), when associated with the mTOR
+                  complex 2 (mTORC2), and the DNA-dependent protein kinase (DNA-PK)—were identified, as was the ability of Ras to affect the
+                  PI3K-PKB/Akt pathway via PI3K, completing our current model of the PI3K-PKB/Akt pathway.
+               </p>
+               <p id="p-6">The PI3K-PKB/Akt pathway is highly conserved, and its activation is tightly controlled via a multistep process (as shown in
+                  <a id="xref-fig-1-1" class="xref-fig" href="#F1">Fig. 1</a>) Activated receptors directly stimulate class 1A PI3Ks bound via their regulatory subunit or adapter molecules such as the
+                  insulin receptor substrate (IRS) proteins. This triggers activation of PI3K and conversion by its catalytic domain of phosphatidylinositol
+                  (3,4)-bisphosphate (PIP<sub>2</sub>) lipids to phosphatidylinositol (3,4,5)-trisphosphate (PIP<sub>3</sub>). PKB/Akt binds to PIP<sub>3</sub> at the plasma membrane, allowing PDK1 to access and phosphorylate T308 in the “activation loop,” leading to partial PKB/Akt
+                  activation (<a id="xref-ref-2-1" class="xref-bibr" href="#ref-2">Alessi et al. 1997</a>). This PKB/Akt modification is sufficient to activate mTORC1 by directly phosphorylating and inactivating proline-rich Akt
+                  substrate of 40 kDa (PRAS40) and tuberous sclerosis protein 2 (TSC2) (<a id="xref-ref-13-1" class="xref-bibr" href="#ref-13">Vander Haar et al. 2007</a>). mTORC1 substrates include the eukaryotic translation initiation factor 4E binding protein 1 (4EBP1), and ribosomal protein
+                  S6 kinase, 70 kDa, polypeptide 1 (S6K1), which, in turn, phosphorylates the ribosomal protein S6 (S6/RPS6), promoting protein
+                  synthesis and cellular proliferation.
+               </p>
+               <div id="F1" class="fig pos-float odd">
+                  <div class="fig-inline"><a href="a011189/F1.expansion.html"><img alt="Figure 1." src="a011189/F1.small.gif" /></a><div class="callout"><span>View larger version:</span><ul class="callout-links">
+                           <li><a href="a011189/F1.expansion.html">In this window</a></li>
+                           <li><a class="in-nw" href="a011189/F1.expansion.html">In a new window</a></li>
+                        </ul>
+                        <ul class="fig-services">
+                           <li class="ppt-link"><a href="/powerpoint/4/9/a011189/F1">Download as PowerPoint Slide</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="fig-caption"><span class="fig-label">Figure 1.</span> 
+                     <p id="p-7" class="first-child">PKB/Akt activation downstream of RTKs via the P13K pathway.</p>
+                     <div class="sb-div caption-clear"></div>
+                  </div>
+               </div>
+               <p id="p-8">Phosphorylation of Akt at S473 in the carboxy-terminal hydrophobic motif, either by mTOR (<a id="xref-ref-11-1" class="xref-bibr" href="#ref-11">Sarbassov et al. 2005</a>) or by DNA-PK (<a id="xref-ref-8-1" class="xref-bibr" href="#ref-8">Feng et al. 2004</a>), stimulates full Akt activity. Full activation of Akt leads to additional substrate-specific phosphorylation events in both
+                  the cytoplasm and nucleus, including inhibitory phosphorylation of the pro-apoptotic FOXO proteins (<a id="xref-ref-9-1" class="xref-bibr" href="#ref-9">Guertin et al. 2006</a>). Fully active PKB/Akt mediates numerous cellular functions including angiogenesis, metabolism, growth, proliferation, survival,
+                  protein synthesis, transcription, and apoptosis (as shown in <a id="xref-fig-2-1" class="xref-fig" href="#F2">Fig. 2</a>). Dephosphorylation of T308 by PP2A (<a id="xref-ref-4-1" class="xref-bibr" href="#ref-4">Andjelković et al. 1996</a>), and S473 by PHLPP1/2 (<a id="xref-ref-7-1" class="xref-bibr" href="#ref-7">Brognard et al. 2007</a>), and the conversion of PIP<sub>3</sub> to PIP<sub>2</sub> by PTEN (<a id="xref-ref-12-1" class="xref-bibr" href="#ref-12">Stambolic et al. 1998</a>) antagonize Akt signaling.
+               </p>
+               <div id="F2" class="fig pos-float odd">
+                  <div class="fig-inline"><a href="a011189/F2.expansion.html"><img alt="Figure 2." src="a011189/F2.small.gif" /></a><div class="callout"><span>View larger version:</span><ul class="callout-links">
+                           <li><a href="a011189/F2.expansion.html">In this window</a></li>
+                           <li><a class="in-nw" href="a011189/F2.expansion.html">In a new window</a></li>
+                        </ul>
+                        <ul class="fig-services">
+                           <li class="ppt-link"><a href="/powerpoint/4/9/a011189/F2">Download as PowerPoint Slide</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="fig-caption"><span class="fig-label">Figure 2.</span> 
+                     <p id="p-9" class="first-child">Signalling events activating PKB/Akt and cellular functions regulated by PKB/Akt.</p>
+                     <div class="sb-div caption-clear"></div>
+                  </div>
+               </div>
+               <div class="section ack" id="ack-1">
+                  <div class="section-nav">
+                     <div class="nav-placeholder"> </div><a href="#fn-group-1" title="Footnotes" class="next-section-link"><span>Next Section</span></a></div>
+                  <h2>Acknowledgments</h2>
+                  
+                  <p id="p-10">Figures adapted, with kind permission, from Cell Signaling Technology (<a href="http://www.cellsignal.com">http://www.cellsignal.com</a>.)
+                  </p>
+                  
+               </div>
+               <div class="section fn-group" id="fn-group-1">
+                  <div class="section-nav"><a href="#ack-1" title="Acknowledgments" class="prev-section-link"><span>Previous Section</span></a><a href="#ref-list-1" title="REFERENCES" class="next-section-link"><span>Next Section</span></a></div>
+                  <h2>Footnotes</h2>
+                  <ul>
+                     <li class="fn" id="fn-1">
+                        <p id="p-1">Editors: Lewis Cantley, Tony Hunter, Richard Sever, and Jeremy Thorner</p>
+                     </li>
+                     <li class="fn" id="fn-2">
+                        <p id="p-2">Additional Perspectives on Signal Transduction available at <a href="http://www.cshperspectives.org">www.cshperspectives.org</a></p>
+                     </li>
+                  </ul>
+               </div>
+               <ul class="copyright-statement">
+                  <li class="fn" id="copyright-statement-1">Copyright © 2012 Cold Spring Harbor Laboratory Press; all rights reserved</li>
+               </ul>
+               <div class="license" id="license-1">
+                  <p id="p-3"></p>
+               </div>
+               <div class="section ref-list" id="ref-list-1">
+                  <div class="section-nav"><a href="#fn-group-1" title="Footnotes" class="prev-section-link"><span>Previous Section</span></a><div class="nav-placeholder"> </div>
+                  </div>
+                  <h2>REFERENCES</h2>
+                  <ol class="cit-list ref-use-labels">
+                     <li><span class="ref-label ref-label-empty"></span><a class="rev-xref-ref" href="#xref-ref-1-1" title="View reference in text"
+                           id="ref-1">↵</a><div class="cit ref-cit ref-journal" id="cit-4.9.a011189.1"
+                             data-doi="10.1042/BST0290001">
+                           <div class="cit-metadata">
+                              <ol class="duplicate">
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Alessi</span> <span class="cit-name-given-names">DR</span></span></li>
+                              </ol><cite><span class="cit-auth"><span class="cit-name-surname">Alessi</span>  <span class="cit-name-given-names">DR</span></span>. <span class="cit-pub-date">2001</span>. <span class="cit-article-title">Discovery of PDK1, one of the missing links in insulin signal transduction. Colworth Medal Lecture</span>. <abbr class="cit-jnl-abbrev">Biochem Soc Trans</abbr> <span class="cit-vol">29</span>: <span class="cit-fpage">1</span>–<span class="cit-lpage">14</span>.</cite></div>
+                           <div class="cit-extra"><a href="/openurl?query=rft.jtitle%3DBiochemical+Society+Transactions%26rft.stitle%3DBiochm.+Soc.+Trans.%26rft.aulast%3DAlessi%26rft.auinit1%3DD.+R.%26rft.volume%3D29%26rft.issue%3DPt+2%26rft.spage%3D1%26rft.epage%3D14%26rft.atitle%3DDiscovery+of+PDK1%2C+one+of+the+missing+links+in+insulin+signal+transduction.+Colworth+Medal+Lecture.%26rft_id%3Dinfo%3Adoi%2F10.1042%2FBST0290001%26rft_id%3Dinfo%3Apmid%2F11356119%26rft.genre%3Darticle%26rft_val_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal%26ctx_ver%3DZ39.88-2004%26url_ver%3DZ39.88-2004%26url_ctx_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Actx"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-open-url cit-ref-sprinkles-open-url-has-image"><span>Find @ Newcastle University</span><img src="/userimage/58b2264e-df79-401e-8792-2b81062ef352-20150819"
+                                      alt="Find @ Newcastle University" /></a><a href="/external-ref?access_num=10.1042/BST0290001&amp;link_type=DOI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">CrossRef</a><a href="/external-ref?access_num=11356119&amp;link_type=MED"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-medline">Medline</a><a href="/external-ref?access_num=000169416300001&amp;link_type=ISI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">Web of Science</a><a target="_blank"
+                                 href="http://scholar.google.com/scholar_lookup?title=Discovery%20of%20PDK1%2C%20one%20of%20the%20missing%20links%20in%20insulin%20signal%20transduction.%20Colworth%20Medal%20Lecture&amp;publication_year=2001&amp;journal=Biochem%20Soc%20Trans&amp;volume=29&amp;pages=1-14">Google Scholar</a></div>
+                        </div>
+                     </li>
+                     <li><span class="ref-label ref-label-empty"></span><a class="rev-xref-ref" href="#xref-ref-2-1" title="View reference in text"
+                           id="ref-2">↵</a><div class="cit ref-cit ref-journal" id="cit-4.9.a011189.2"
+                             data-doi="10.1016/S0960-9822(06)00122-9">
+                           <div class="cit-metadata">
+                              <ol class="duplicate">
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Alessi</span> <span class="cit-name-given-names">DR</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">James</span> <span class="cit-name-given-names">SR</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Downes</span> <span class="cit-name-given-names">CP</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Holmes</span> <span class="cit-name-given-names">AB</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Gaffney</span> <span class="cit-name-given-names">PR</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Reese</span> <span class="cit-name-given-names">CB</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Cohen</span> <span class="cit-name-given-names">P</span></span></li>
+                              </ol><cite><span class="cit-auth"><span class="cit-name-surname">Alessi</span>  <span class="cit-name-given-names">DR</span></span>, <span class="cit-auth"><span class="cit-name-surname">James</span>  <span class="cit-name-given-names">SR</span></span>, <span class="cit-auth"><span class="cit-name-surname">Downes</span>  <span class="cit-name-given-names">CP</span></span>, <span class="cit-auth"><span class="cit-name-surname">Holmes</span>  <span class="cit-name-given-names">AB</span></span>, <span class="cit-auth"><span class="cit-name-surname">Gaffney</span>  <span class="cit-name-given-names">PR</span></span>, <span class="cit-auth"><span class="cit-name-surname">Reese</span>  <span class="cit-name-given-names">CB</span></span>, <span class="cit-auth"><span class="cit-name-surname">Cohen</span>  <span class="cit-name-given-names">P</span></span>. <span class="cit-pub-date">1997</span>. <span class="cit-article-title">Characterization of a 3-phosphoinositide-dependent protein kinase which phosphorylates and activates protein kinase Bα</span>. <abbr class="cit-jnl-abbrev">Curr Biol</abbr> <span class="cit-vol">7</span>: <span class="cit-fpage">261</span>–<span class="cit-lpage">269</span>.</cite></div>
+                           <div class="cit-extra"><a href="/openurl?query=rft.jtitle%3DCurrent+biology+%3A++CB%26rft.stitle%3DCurr+Biol%26rft.aulast%3DAlessi%26rft.auinit1%3DD.+R.%26rft.volume%3D7%26rft.issue%3D4%26rft.spage%3D261%26rft.epage%3D269%26rft.atitle%3DCharacterization+of+a+3-phosphoinositide-dependent+protein+kinase+which+phosphorylates+and+activates+protein+kinase+Balpha.%26rft_id%3Dinfo%3Adoi%2F10.1016%2FS0960-9822%2806%2900122-9%26rft_id%3Dinfo%3Apmid%2F9094314%26rft.genre%3Darticle%26rft_val_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal%26ctx_ver%3DZ39.88-2004%26url_ver%3DZ39.88-2004%26url_ctx_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Actx"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-open-url cit-ref-sprinkles-open-url-has-image"><span>Find @ Newcastle University</span><img src="/userimage/58b2264e-df79-401e-8792-2b81062ef352-20150819"
+                                      alt="Find @ Newcastle University" /></a><a href="/external-ref?access_num=10.1016/S0960-9822(06)00122-9&amp;link_type=DOI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">CrossRef</a><a href="/external-ref?access_num=9094314&amp;link_type=MED"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-medline">Medline</a><a href="/external-ref?access_num=A1997WV36600025&amp;link_type=ISI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">Web of Science</a><a target="_blank"
+                                 href="http://scholar.google.com/scholar_lookup?title=Characterization%20of%20a%203-phosphoinositide-dependent%20protein%20kinase%20which%20phosphorylates%20and%20activates%20protein%20kinase%20B%CE%B1&amp;publication_year=1997&amp;journal=Curr%20Biol&amp;volume=7&amp;pages=261-269">Google Scholar</a></div>
+                        </div>
+                     </li>
+                     <li><span class="ref-label ref-label-empty"></span><div class="cit ref-cit ref-journal no-rev-xref" id="cit-4.9.a011189.3"
+                             data-doi="10.1038/sj.onc.1209085">
+                           <div class="cit-metadata">
+                              <ol class="duplicate">
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Altomare</span> <span class="cit-name-given-names">DA</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Testa</span> <span class="cit-name-given-names">JR</span></span></li>
+                              </ol><cite><span class="cit-auth"><span class="cit-name-surname">Altomare</span>  <span class="cit-name-given-names">DA</span></span>, <span class="cit-auth"><span class="cit-name-surname">Testa</span>  <span class="cit-name-given-names">JR</span></span>. <span class="cit-pub-date">2005</span>. <span class="cit-article-title">Perturbations of the AKT signaling pathway in human cancer</span>. <abbr class="cit-jnl-abbrev">Oncogene</abbr> <span class="cit-vol">24</span>: <span class="cit-fpage">7455</span>–<span class="cit-lpage">7464</span>.</cite></div>
+                           <div class="cit-extra"><a href="/openurl?query=rft.jtitle%3DOncogene%26rft.stitle%3DOncogene%26rft.aulast%3DAltomare%26rft.auinit1%3DD.+A.%26rft.volume%3D24%26rft.issue%3D50%26rft.spage%3D7455%26rft.epage%3D7464%26rft.atitle%3DPerturbations+of+the+AKT+signaling+pathway+in+human+cancer.%26rft_id%3Dinfo%3Adoi%2F10.1038%2Fsj.onc.1209085%26rft_id%3Dinfo%3Apmid%2F16288292%26rft.genre%3Darticle%26rft_val_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal%26ctx_ver%3DZ39.88-2004%26url_ver%3DZ39.88-2004%26url_ctx_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Actx"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-open-url cit-ref-sprinkles-open-url-has-image"><span>Find @ Newcastle University</span><img src="/userimage/58b2264e-df79-401e-8792-2b81062ef352-20150819"
+                                      alt="Find @ Newcastle University" /></a><a href="/external-ref?access_num=10.1038/sj.onc.1209085&amp;link_type=DOI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">CrossRef</a><a href="/external-ref?access_num=16288292&amp;link_type=MED"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-medline">Medline</a><a href="/external-ref?access_num=000233201900008&amp;link_type=ISI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">Web of Science</a><a target="_blank"
+                                 href="http://scholar.google.com/scholar_lookup?title=Perturbations%20of%20the%20AKT%20signaling%20pathway%20in%20human%20cancer&amp;publication_year=2005&amp;journal=Oncogene&amp;volume=24&amp;pages=7455-7464">Google Scholar</a></div>
+                        </div>
+                     </li>
+                     <li><span class="ref-label ref-label-empty"></span><a class="rev-xref-ref" href="#xref-ref-4-1" title="View reference in text"
+                           id="ref-4">↵</a><div class="cit ref-cit ref-journal" id="cit-4.9.a011189.4"
+                             data-doi="10.1073/pnas.93.12.5699">
+                           <div class="cit-metadata">
+                              <ol class="duplicate">
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Andjelković</span> <span class="cit-name-given-names">M</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Jakubowicz</span> <span class="cit-name-given-names">T</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Cron</span> <span class="cit-name-given-names">P</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Ming</span> <span class="cit-name-given-names">XF</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Han</span> <span class="cit-name-given-names">JW</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Hemmings</span> <span class="cit-name-given-names">BA</span></span></li>
+                              </ol><cite><span class="cit-auth"><span class="cit-name-surname">Andjelković</span>  <span class="cit-name-given-names">M</span></span>, <span class="cit-auth"><span class="cit-name-surname">Jakubowicz</span>  <span class="cit-name-given-names">T</span></span>, <span class="cit-auth"><span class="cit-name-surname">Cron</span>  <span class="cit-name-given-names">P</span></span>, <span class="cit-auth"><span class="cit-name-surname">Ming</span>  <span class="cit-name-given-names">XF</span></span>, <span class="cit-auth"><span class="cit-name-surname">Han</span>  <span class="cit-name-given-names">JW</span></span>, <span class="cit-auth"><span class="cit-name-surname">Hemmings</span>  <span class="cit-name-given-names">BA</span></span>. <span class="cit-pub-date">1996</span>. <span class="cit-article-title">Activation and phosphorylation of a pleckstrin homology domain containing protein kinase (RAC-PK/PKB) promoted by serum and
+                                    protein phosphatase inhibitors</span>. <abbr class="cit-jnl-abbrev">Proc Natl Acad Sci</abbr> <span class="cit-vol">93</span>: <span class="cit-fpage">5699</span>–<span class="cit-lpage">5704</span>.</cite></div>
+                           <div class="cit-extra"><a href="/cgi/ijlink?linkType=ABST&amp;journalCode=pnas&amp;resid=93/12/5699"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-ijlinks"><span class="cit-reflinks-abstract">Abstract</span><span class="cit-sep cit-reflinks-variant-name-sep">/</span><span class="cit-reflinks-full-text"><span class="free-full-text">FREE </span>Full Text</span></a></div>
+                        </div>
+                     </li>
+                     <li><span class="ref-label ref-label-empty"></span><div class="cit ref-cit ref-journal no-rev-xref" id="cit-4.9.a011189.5"
+                             data-doi="10.1016/j.ceb.2009.02.002">
+                           <div class="cit-metadata">
+                              <ol class="duplicate">
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Bozulic</span> <span class="cit-name-given-names">L</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Hemmings</span> <span class="cit-name-given-names">BA</span></span></li>
+                              </ol><cite><span class="cit-auth"><span class="cit-name-surname">Bozulic</span>  <span class="cit-name-given-names">L</span></span>, <span class="cit-auth"><span class="cit-name-surname">Hemmings</span>  <span class="cit-name-given-names">BA</span></span>. <span class="cit-pub-date">2009</span>. <span class="cit-article-title">PIKKing on PKB: Regulation of PKB activity by phosphorylation</span>. <abbr class="cit-jnl-abbrev">Curr Opin Cell Biol</abbr> <span class="cit-vol">21</span>: <span class="cit-fpage">256</span>–<span class="cit-lpage">261</span>.</cite></div>
+                           <div class="cit-extra"><a href="/openurl?query=rft.jtitle%3DCurrent+opinion+in+cell+biology%26rft.stitle%3DCurr+Opin+Cell+Biol%26rft.aulast%3DBozulic%26rft.auinit1%3DL.%26rft.volume%3D21%26rft.issue%3D2%26rft.spage%3D256%26rft.epage%3D261%26rft.atitle%3DPIKKing+on+PKB%3A+regulation+of+PKB+activity+by+phosphorylation.%26rft_id%3Dinfo%3Adoi%2F10.1016%2Fj.ceb.2009.02.002%26rft_id%3Dinfo%3Apmid%2F19303758%26rft.genre%3Darticle%26rft_val_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal%26ctx_ver%3DZ39.88-2004%26url_ver%3DZ39.88-2004%26url_ctx_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Actx"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-open-url cit-ref-sprinkles-open-url-has-image"><span>Find @ Newcastle University</span><img src="/userimage/58b2264e-df79-401e-8792-2b81062ef352-20150819"
+                                      alt="Find @ Newcastle University" /></a><a href="/external-ref?access_num=10.1016/j.ceb.2009.02.002&amp;link_type=DOI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">CrossRef</a><a href="/external-ref?access_num=19303758&amp;link_type=MED"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-medline">Medline</a><a href="/external-ref?access_num=000265773000015&amp;link_type=ISI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">Web of Science</a><a target="_blank"
+                                 href="http://scholar.google.com/scholar_lookup?title=PIKKing%20on%20PKB%3A%20Regulation%20of%20PKB%20activity%20by%20phosphorylation&amp;publication_year=2009&amp;journal=Curr%20Opin%20Cell%20Biol&amp;volume=21&amp;pages=256-261">Google Scholar</a></div>
+                        </div>
+                     </li>
+                     <li><span class="ref-label ref-label-empty"></span><a class="rev-xref-ref" href="#xref-ref-6-1" title="View reference in text"
+                           id="ref-6">↵</a><div class="cit ref-cit ref-journal" id="cit-4.9.a011189.6"
+                             data-doi="10.1016/S0968-0004(01)01958-2">
+                           <div class="cit-metadata">
+                              <ol class="duplicate">
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Brazil</span> <span class="cit-name-given-names">DP</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Hemmings</span> <span class="cit-name-given-names">BA</span></span></li>
+                              </ol><cite><span class="cit-auth"><span class="cit-name-surname">Brazil</span>  <span class="cit-name-given-names">DP</span></span>, <span class="cit-auth"><span class="cit-name-surname">Hemmings</span>  <span class="cit-name-given-names">BA</span></span>. <span class="cit-pub-date">2001</span>. <span class="cit-article-title">Ten years of protein kinase B signalling: A hard Akt to follow</span>. <abbr class="cit-jnl-abbrev">Trends Biochem Sci</abbr> <span class="cit-vol">26</span>: <span class="cit-fpage">657</span>–<span class="cit-lpage">664</span>.</cite></div>
+                           <div class="cit-extra"><a href="/openurl?query=rft.jtitle%3DTrends+in+biochemical+sciences%26rft.stitle%3DTrends+Biochem+Sci%26rft.aulast%3DBrazil%26rft.auinit1%3DD.+P.%26rft.volume%3D26%26rft.issue%3D11%26rft.spage%3D657%26rft.epage%3D664%26rft.atitle%3DTen+years+of+protein+kinase+B+signalling%3A+a+hard+Akt+to+follow.%26rft_id%3Dinfo%3Adoi%2F10.1016%2FS0968-0004%2801%2901958-2%26rft_id%3Dinfo%3Apmid%2F11701324%26rft.genre%3Darticle%26rft_val_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal%26ctx_ver%3DZ39.88-2004%26url_ver%3DZ39.88-2004%26url_ctx_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Actx"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-open-url cit-ref-sprinkles-open-url-has-image"><span>Find @ Newcastle University</span><img src="/userimage/58b2264e-df79-401e-8792-2b81062ef352-20150819"
+                                      alt="Find @ Newcastle University" /></a><a href="/external-ref?access_num=10.1016/S0968-0004(01)01958-2&amp;link_type=DOI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">CrossRef</a><a href="/external-ref?access_num=11701324&amp;link_type=MED"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-medline">Medline</a><a href="/external-ref?access_num=000172266900006&amp;link_type=ISI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">Web of Science</a><a target="_blank"
+                                 href="http://scholar.google.com/scholar_lookup?title=Ten%20years%20of%20protein%20kinase%20B%20signalling%3A%20A%20hard%20Akt%20to%20follow&amp;publication_year=2001&amp;journal=Trends%20Biochem%20Sci&amp;volume=26&amp;pages=657-664">Google Scholar</a></div>
+                        </div>
+                     </li>
+                     <li><span class="ref-label ref-label-empty"></span><a class="rev-xref-ref" href="#xref-ref-7-1" title="View reference in text"
+                           id="ref-7">↵</a><div class="cit ref-cit ref-journal" id="cit-4.9.a011189.7"
+                             data-doi="10.1016/j.molcel.2007.02.017">
+                           <div class="cit-metadata">
+                              <ol class="duplicate">
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Brognard</span> <span class="cit-name-given-names">J</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Sierecki</span> <span class="cit-name-given-names">E</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Gao</span> <span class="cit-name-given-names">T</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Newton</span> <span class="cit-name-given-names">AC</span></span></li>
+                              </ol><cite><span class="cit-auth"><span class="cit-name-surname">Brognard</span>  <span class="cit-name-given-names">J</span></span>, <span class="cit-auth"><span class="cit-name-surname">Sierecki</span>  <span class="cit-name-given-names">E</span></span>, <span class="cit-auth"><span class="cit-name-surname">Gao</span>  <span class="cit-name-given-names">T</span></span>, <span class="cit-auth"><span class="cit-name-surname">Newton</span>  <span class="cit-name-given-names">AC</span></span>. <span class="cit-pub-date">2007</span>. <span class="cit-article-title">PHLPP and a second isoform, PHLPP2, differentially attenuate the amplitude of Akt signaling by regulating distinct Akt isoforms</span>. <abbr class="cit-jnl-abbrev">Mol Cell</abbr> <span class="cit-vol">25</span>: <span class="cit-fpage">917</span>–<span class="cit-lpage">931</span>.</cite></div>
+                           <div class="cit-extra"><a href="/openurl?query=rft.jtitle%3DMolecular+cell%26rft.stitle%3DMol+Cell%26rft.aulast%3DBrognard%26rft.auinit1%3DJ.%26rft.volume%3D25%26rft.issue%3D6%26rft.spage%3D917%26rft.epage%3D931%26rft.atitle%3DPHLPP+and+a+second+isoform%2C+PHLPP2%2C+differentially+attenuate+the+amplitude+of+Akt+signaling+by+regulating+distinct+Akt+isoforms.%26rft_id%3Dinfo%3Adoi%2F10.1016%2Fj.molcel.2007.02.017%26rft_id%3Dinfo%3Apmid%2F17386267%26rft.genre%3Darticle%26rft_val_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal%26ctx_ver%3DZ39.88-2004%26url_ver%3DZ39.88-2004%26url_ctx_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Actx"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-open-url cit-ref-sprinkles-open-url-has-image"><span>Find @ Newcastle University</span><img src="/userimage/58b2264e-df79-401e-8792-2b81062ef352-20150819"
+                                      alt="Find @ Newcastle University" /></a><a href="/external-ref?access_num=10.1016/j.molcel.2007.02.017&amp;link_type=DOI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">CrossRef</a><a href="/external-ref?access_num=17386267&amp;link_type=MED"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-medline">Medline</a><a href="/external-ref?access_num=000245513900015&amp;link_type=ISI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">Web of Science</a><a target="_blank"
+                                 href="http://scholar.google.com/scholar_lookup?title=PHLPP%20and%20a%20second%20isoform%2C%20PHLPP2%2C%20differentially%20attenuate%20the%20amplitude%20of%20Akt%20signaling%20by%20regulating%20distinct%20Akt%20isoforms&amp;publication_year=2007&amp;journal=Mol%20Cell&amp;volume=25&amp;pages=917-931">Google Scholar</a></div>
+                        </div>
+                     </li>
+                     <li><span class="ref-label ref-label-empty"></span><a class="rev-xref-ref" href="#xref-ref-8-1" title="View reference in text"
+                           id="ref-8">↵</a><div class="cit ref-cit ref-journal" id="cit-4.9.a011189.8"
+                             data-doi="10.1074/jbc.M406731200">
+                           <div class="cit-metadata">
+                              <ol class="duplicate">
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Feng</span> <span class="cit-name-given-names">J</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Park</span> <span class="cit-name-given-names">J</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Cron</span> <span class="cit-name-given-names">P</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Hess</span> <span class="cit-name-given-names">D</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Hemmings</span> <span class="cit-name-given-names">BA</span></span></li>
+                              </ol><cite><span class="cit-auth"><span class="cit-name-surname">Feng</span>  <span class="cit-name-given-names">J</span></span>, <span class="cit-auth"><span class="cit-name-surname">Park</span>  <span class="cit-name-given-names">J</span></span>, <span class="cit-auth"><span class="cit-name-surname">Cron</span>  <span class="cit-name-given-names">P</span></span>, <span class="cit-auth"><span class="cit-name-surname">Hess</span>  <span class="cit-name-given-names">D</span></span>, <span class="cit-auth"><span class="cit-name-surname">Hemmings</span>  <span class="cit-name-given-names">BA</span></span>. <span class="cit-pub-date">2004</span>. <span class="cit-article-title">Identification of a PKB/Akt hydrophobic motif Ser-473 kinase as DNA-dependent protein kinase</span>. <abbr class="cit-jnl-abbrev">J Biol Chem</abbr> <span class="cit-vol">279</span>: <span class="cit-fpage">41189</span>–<span class="cit-lpage">41196</span>.</cite></div>
+                           <div class="cit-extra"><a href="/cgi/ijlink?linkType=ABST&amp;journalCode=jbc&amp;resid=279/39/41189"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-ijlinks"><span class="cit-reflinks-abstract">Abstract</span><span class="cit-sep cit-reflinks-variant-name-sep">/</span><span class="cit-reflinks-full-text"><span class="free-full-text">FREE </span>Full Text</span></a></div>
+                        </div>
+                     </li>
+                     <li><span class="ref-label ref-label-empty"></span><a class="rev-xref-ref" href="#xref-ref-9-1" title="View reference in text"
+                           id="ref-9">↵</a><div class="cit ref-cit ref-journal" id="cit-4.9.a011189.9"
+                             data-doi="10.1016/j.devcel.2006.10.007">
+                           <div class="cit-metadata">
+                              <ol class="duplicate">
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Guertin</span> <span class="cit-name-given-names">DA</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Stevens</span> <span class="cit-name-given-names">DM</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Thoreen</span> <span class="cit-name-given-names">CC</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Burds</span> <span class="cit-name-given-names">AA</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Kalaany</span> <span class="cit-name-given-names">NY</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Moffat</span> <span class="cit-name-given-names">J</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Brown</span> <span class="cit-name-given-names">M</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Fitzgerald</span> <span class="cit-name-given-names">KJ</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Sabatini</span> <span class="cit-name-given-names">DM</span></span></li>
+                              </ol><cite><span class="cit-auth"><span class="cit-name-surname">Guertin</span>  <span class="cit-name-given-names">DA</span></span>, <span class="cit-auth"><span class="cit-name-surname">Stevens</span>  <span class="cit-name-given-names">DM</span></span>, <span class="cit-auth"><span class="cit-name-surname">Thoreen</span>  <span class="cit-name-given-names">CC</span></span>, <span class="cit-auth"><span class="cit-name-surname">Burds</span>  <span class="cit-name-given-names">AA</span></span>, <span class="cit-auth"><span class="cit-name-surname">Kalaany</span>  <span class="cit-name-given-names">NY</span></span>, <span class="cit-auth"><span class="cit-name-surname">Moffat</span>  <span class="cit-name-given-names">J</span></span>, <span class="cit-auth"><span class="cit-name-surname">Brown</span>  <span class="cit-name-given-names">M</span></span>, <span class="cit-auth"><span class="cit-name-surname">Fitzgerald</span>  <span class="cit-name-given-names">KJ</span></span>, <span class="cit-auth"><span class="cit-name-surname">Sabatini</span>  <span class="cit-name-given-names">DM</span></span>. <span class="cit-pub-date">2006</span>. <span class="cit-article-title">Ablation in mice of the mTORC components raptor, rictor, or mLST8 reveals that mTORC2 is required for signaling to Akt-FOXO
+                                    and PKCα, but not S6K1</span>. <abbr class="cit-jnl-abbrev">Dev Cell</abbr> <span class="cit-vol">11</span>: <span class="cit-fpage">859</span>–<span class="cit-lpage">871</span>.</cite></div>
+                           <div class="cit-extra"><a href="/openurl?query=rft.jtitle%3DDevelopmental+cell%26rft.stitle%3DDev+Cell%26rft.aulast%3DGuertin%26rft.auinit1%3DD.+A.%26rft.volume%3D11%26rft.issue%3D6%26rft.spage%3D859%26rft.epage%3D871%26rft.atitle%3DAblation+in+mice+of+the+mTORC+components+raptor%2C+rictor%2C+or+mLST8+reveals+that+mTORC2+is+required+for+signaling+to+Akt-FOXO+and+PKCalpha%2C+but+not+S6K1.%26rft_id%3Dinfo%3Adoi%2F10.1016%2Fj.devcel.2006.10.007%26rft_id%3Dinfo%3Apmid%2F17141160%26rft.genre%3Darticle%26rft_val_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal%26ctx_ver%3DZ39.88-2004%26url_ver%3DZ39.88-2004%26url_ctx_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Actx"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-open-url cit-ref-sprinkles-open-url-has-image"><span>Find @ Newcastle University</span><img src="/userimage/58b2264e-df79-401e-8792-2b81062ef352-20150819"
+                                      alt="Find @ Newcastle University" /></a><a href="/external-ref?access_num=10.1016/j.devcel.2006.10.007&amp;link_type=DOI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">CrossRef</a><a href="/external-ref?access_num=17141160&amp;link_type=MED"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-medline">Medline</a><a href="/external-ref?access_num=000242664900014&amp;link_type=ISI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">Web of Science</a><a target="_blank"
+                                 href="http://scholar.google.com/scholar_lookup?title=Ablation%20in%20mice%20of%20the%20mTORC%20components%20raptor%2C%20rictor%2C%20or%20mLST8%20reveals%20that%20mTORC2%20is%20required%20for%20signaling%20to%20Akt-FOXO%20and%20PKC%CE%B1%2C%20but%20not%20S6K1&amp;publication_year=2006&amp;journal=Dev%20Cell&amp;volume=11&amp;pages=859-871">Google Scholar</a></div>
+                        </div>
+                     </li>
+                     <li><span class="ref-label ref-label-empty"></span><div class="cit ref-cit ref-journal no-rev-xref" id="cit-4.9.a011189.10"
+                             data-doi="10.1016/j.cell.2007.06.009">
+                           <div class="cit-metadata">
+                              <ol class="duplicate">
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Manning</span> <span class="cit-name-given-names">BD</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Cantley</span> <span class="cit-name-given-names">LC</span></span></li>
+                              </ol><cite><span class="cit-auth"><span class="cit-name-surname">Manning</span>  <span class="cit-name-given-names">BD</span></span>, <span class="cit-auth"><span class="cit-name-surname">Cantley</span>  <span class="cit-name-given-names">LC</span></span>. <span class="cit-pub-date">2007</span>. <span class="cit-article-title">AKT/PKB signaling: Navigating downstream</span>. <abbr class="cit-jnl-abbrev">Cell</abbr> <span class="cit-vol">129</span>: <span class="cit-fpage">1261</span>–<span class="cit-lpage">1274</span>.</cite></div>
+                           <div class="cit-extra"><a href="/openurl?query=rft.jtitle%3DCell%26rft.stitle%3DCell%26rft.aulast%3DManning%26rft.auinit1%3DB.+D.%26rft.volume%3D129%26rft.issue%3D7%26rft.spage%3D1261%26rft.epage%3D1274%26rft.atitle%3DAKT%2FPKB+signaling%3A+navigating+downstream.%26rft_id%3Dinfo%3Adoi%2F10.1016%2Fj.cell.2007.06.009%26rft_id%3Dinfo%3Apmid%2F17604717%26rft.genre%3Darticle%26rft_val_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal%26ctx_ver%3DZ39.88-2004%26url_ver%3DZ39.88-2004%26url_ctx_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Actx"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-open-url cit-ref-sprinkles-open-url-has-image"><span>Find @ Newcastle University</span><img src="/userimage/58b2264e-df79-401e-8792-2b81062ef352-20150819"
+                                      alt="Find @ Newcastle University" /></a><a href="/external-ref?access_num=10.1016/j.cell.2007.06.009&amp;link_type=DOI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">CrossRef</a><a href="/external-ref?access_num=17604717&amp;link_type=MED"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-medline">Medline</a><a href="/external-ref?access_num=000247911400013&amp;link_type=ISI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">Web of Science</a><a target="_blank"
+                                 href="http://scholar.google.com/scholar_lookup?title=AKT%2FPKB%20signaling%3A%20Navigating%20downstream&amp;publication_year=2007&amp;journal=Cell&amp;volume=129&amp;pages=1261-1274">Google Scholar</a></div>
+                        </div>
+                     </li>
+                     <li><span class="ref-label ref-label-empty"></span><a class="rev-xref-ref" href="#xref-ref-11-1" title="View reference in text"
+                           id="ref-11">↵</a><div class="cit ref-cit ref-journal" id="cit-4.9.a011189.11"
+                             data-doi="10.1126/science.1106148">
+                           <div class="cit-metadata">
+                              <ol class="duplicate">
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Sarbassov</span> <span class="cit-name-given-names">DD</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Guertin</span> <span class="cit-name-given-names">DA</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Ali</span> <span class="cit-name-given-names">SM</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Sabatini</span> <span class="cit-name-given-names">DM</span></span></li>
+                              </ol><cite><span class="cit-auth"><span class="cit-name-surname">Sarbassov</span>  <span class="cit-name-given-names">DD</span></span>, <span class="cit-auth"><span class="cit-name-surname">Guertin</span>  <span class="cit-name-given-names">DA</span></span>, <span class="cit-auth"><span class="cit-name-surname">Ali</span>  <span class="cit-name-given-names">SM</span></span>, <span class="cit-auth"><span class="cit-name-surname">Sabatini</span>  <span class="cit-name-given-names">DM</span></span>. <span class="cit-pub-date">2005</span>. <span class="cit-article-title">Phosphorylation and regulation of Akt/PKB by the rictor–mTOR complex</span>. <abbr class="cit-jnl-abbrev">Science</abbr> <span class="cit-vol">307</span>: <span class="cit-fpage">1098</span>–<span class="cit-lpage">1101</span>.</cite></div>
+                           <div class="cit-extra"><a href="/cgi/ijlink?linkType=ABST&amp;journalCode=sci&amp;resid=307/5712/1098"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-ijlinks"><span class="cit-reflinks-abstract">Abstract</span><span class="cit-sep cit-reflinks-variant-name-sep">/</span><span class="cit-reflinks-full-text"><span class="free-full-text">FREE </span>Full Text</span></a></div>
+                        </div>
+                     </li>
+                     <li><span class="ref-label ref-label-empty"></span><a class="rev-xref-ref" href="#xref-ref-12-1" title="View reference in text"
+                           id="ref-12">↵</a><div class="cit ref-cit ref-journal" id="cit-4.9.a011189.12"
+                             data-doi="10.1016/S0092-8674(00)81780-8">
+                           <div class="cit-metadata">
+                              <ol class="duplicate">
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Stambolic</span> <span class="cit-name-given-names">V</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Suzuki</span> <span class="cit-name-given-names">A</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">de la Pompa</span> <span class="cit-name-given-names">JL</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Brothers</span> <span class="cit-name-given-names">GM</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Mirtsos</span> <span class="cit-name-given-names">C</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Sasaki</span> <span class="cit-name-given-names">T</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Ruland</span> <span class="cit-name-given-names">J</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Penninger</span> <span class="cit-name-given-names">JM</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Siderovski</span> <span class="cit-name-given-names">DP</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Mak</span> <span class="cit-name-given-names">TW</span></span></li>
+                              </ol><cite><span class="cit-auth"><span class="cit-name-surname">Stambolic</span>  <span class="cit-name-given-names">V</span></span>, <span class="cit-auth"><span class="cit-name-surname">Suzuki</span>  <span class="cit-name-given-names">A</span></span>, <span class="cit-auth"><span class="cit-name-surname">de la Pompa</span>  <span class="cit-name-given-names">JL</span></span>, <span class="cit-auth"><span class="cit-name-surname">Brothers</span>  <span class="cit-name-given-names">GM</span></span>, <span class="cit-auth"><span class="cit-name-surname">Mirtsos</span>  <span class="cit-name-given-names">C</span></span>, <span class="cit-auth"><span class="cit-name-surname">Sasaki</span>  <span class="cit-name-given-names">T</span></span>, <span class="cit-auth"><span class="cit-name-surname">Ruland</span>  <span class="cit-name-given-names">J</span></span>, <span class="cit-auth"><span class="cit-name-surname">Penninger</span>  <span class="cit-name-given-names">JM</span></span>, <span class="cit-auth"><span class="cit-name-surname">Siderovski</span>  <span class="cit-name-given-names">DP</span></span>, <span class="cit-auth"><span class="cit-name-surname">Mak</span>  <span class="cit-name-given-names">TW</span></span>. <span class="cit-pub-date">1998</span>. <span class="cit-article-title">Negative regulation of PKB/Akt-dependent cell survival by the tumor suppressor PTEN</span>. <abbr class="cit-jnl-abbrev">Cell</abbr> <span class="cit-vol">95</span>: <span class="cit-fpage">29</span>–<span class="cit-lpage">39</span>.</cite></div>
+                           <div class="cit-extra"><a href="/openurl?query=rft.jtitle%3DCell%26rft.stitle%3DCell%26rft.aulast%3DStambolic%26rft.auinit1%3DV.%26rft.volume%3D95%26rft.issue%3D1%26rft.spage%3D29%26rft.epage%3D39%26rft.atitle%3DNegative+regulation+of+PKB%2FAkt-dependent+cell+survival+by+the+tumor+suppressor+PTEN.%26rft_id%3Dinfo%3Adoi%2F10.1016%2FS0092-8674%2800%2981780-8%26rft_id%3Dinfo%3Apmid%2F9778245%26rft.genre%3Darticle%26rft_val_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal%26ctx_ver%3DZ39.88-2004%26url_ver%3DZ39.88-2004%26url_ctx_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Actx"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-open-url cit-ref-sprinkles-open-url-has-image"><span>Find @ Newcastle University</span><img src="/userimage/58b2264e-df79-401e-8792-2b81062ef352-20150819"
+                                      alt="Find @ Newcastle University" /></a><a href="/external-ref?access_num=10.1016/S0092-8674(00)81780-8&amp;link_type=DOI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">CrossRef</a><a href="/external-ref?access_num=9778245&amp;link_type=MED"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-medline">Medline</a><a href="/external-ref?access_num=000076242300008&amp;link_type=ISI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">Web of Science</a><a target="_blank"
+                                 href="http://scholar.google.com/scholar_lookup?title=Negative%20regulation%20of%20PKB%2FAkt-dependent%20cell%20survival%20by%20the%20tumor%20suppressor%20PTEN&amp;publication_year=1998&amp;journal=Cell&amp;volume=95&amp;pages=29-39">Google Scholar</a></div>
+                        </div>
+                     </li>
+                     <li><span class="ref-label ref-label-empty"></span><a class="rev-xref-ref" href="#xref-ref-13-1" title="View reference in text"
+                           id="ref-13">↵</a><div class="cit ref-cit ref-journal" id="cit-4.9.a011189.13"
+                             data-doi="10.1038/ncb1547">
+                           <div class="cit-metadata">
+                              <ol class="duplicate">
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Vander Haar</span> <span class="cit-name-given-names">E</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Lee</span> <span class="cit-name-given-names">SI</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Bandhakavi</span> <span class="cit-name-given-names">S</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Griffin</span> <span class="cit-name-given-names">TJ</span></span>, 
+                                 </li>
+                                 <li><span class="cit-authors"><span class="cit-name-surname">Kim</span> <span class="cit-name-given-names">DH</span></span></li>
+                              </ol><cite><span class="cit-auth"><span class="cit-name-surname">Vander Haar</span>  <span class="cit-name-given-names">E</span></span>, <span class="cit-auth"><span class="cit-name-surname">Lee</span>  <span class="cit-name-given-names">SI</span></span>, <span class="cit-auth"><span class="cit-name-surname">Bandhakavi</span>  <span class="cit-name-given-names">S</span></span>, <span class="cit-auth"><span class="cit-name-surname">Griffin</span>  <span class="cit-name-given-names">TJ</span></span>, <span class="cit-auth"><span class="cit-name-surname">Kim</span>  <span class="cit-name-given-names">DH</span></span>. <span class="cit-pub-date">2007</span>. <span class="cit-article-title">Insulin signalling to mTOR mediated by the Akt/PKB substrate PRAS40</span>. <abbr class="cit-jnl-abbrev">Nat Cell Biol</abbr> <span class="cit-vol">9</span>: <span class="cit-fpage">316</span>–<span class="cit-lpage">323</span>.</cite></div>
+                           <div class="cit-extra"><a href="/openurl?query=rft.jtitle%3DNature+Cell+Biology%26rft.stitle%3DNature+Cell+Biology%26rft.aulast%3DHaar%26rft.auinit1%3DE.+V.%26rft.volume%3D9%26rft.issue%3D3%26rft.spage%3D316%26rft.epage%3D323%26rft.atitle%3DInsulin+signalling+to+mTOR+mediated+by+the+Akt%2FPKB+substrate+PRAS40.%26rft_id%3Dinfo%3Adoi%2F10.1038%2Fncb1547%26rft_id%3Dinfo%3Apmid%2F17277771%26rft.genre%3Darticle%26rft_val_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal%26ctx_ver%3DZ39.88-2004%26url_ver%3DZ39.88-2004%26url_ctx_fmt%3Dinfo%3Aofi%2Ffmt%3Akev%3Amtx%3Actx"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-open-url cit-ref-sprinkles-open-url-has-image"><span>Find @ Newcastle University</span><img src="/userimage/58b2264e-df79-401e-8792-2b81062ef352-20150819"
+                                      alt="Find @ Newcastle University" /></a><a href="/external-ref?access_num=10.1038/ncb1547&amp;link_type=DOI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">CrossRef</a><a href="/external-ref?access_num=17277771&amp;link_type=MED"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-medline">Medline</a><a href="/external-ref?access_num=000244558600016&amp;link_type=ISI"
+                                 class="cit-ref-sprinkles cit-ref-sprinkles-webofscience">Web of Science</a><a target="_blank"
+                                 href="http://scholar.google.com/scholar_lookup?title=Insulin%20signalling%20to%20mTOR%20mediated%20by%20the%20Akt%2FPKB%20substrate%20PRAS40&amp;publication_year=2007&amp;journal=Nat%20Cell%20Biol&amp;volume=9&amp;pages=316-323">Google Scholar</a></div>
+                        </div>
+                     </li>
+                  </ol>
+               </div><span class="highwire-journal-article-marker-end"></span></div>
+            <div class="social-bookmarking">
+               
+               <ul class="social-bookmark-links">
+                  <li class="social-bookmarking-item social-bookmarking-item-citeulike"><a href="/external-ref?tag_url=http://cshperspectives.cshlp.org/cgi/content/long/4/9/a011189&amp;title=PI3K-PKB%2FAkt%20Pathway+--+Hemmings%20and%20Restuccia%204%20%289%29+--+cshperspect&amp;doi=10.1101/cshperspect.a011189&amp;link_type=CITEULIKE"><img src="/shared/img/common/social-bookmarking/citeulike.gif"
+                             alt="Add to CiteULike"
+                             title="CiteULike" /></a><span class="soc-bm-link-text">CiteULike</span></li>
+                  <li class="social-bookmarking-item social-bookmarking-item-delicious"><a href="/external-ref?tag_url=http://cshperspectives.cshlp.org/cgi/content/long/4/9/a011189&amp;title=PI3K-PKB%2FAkt%20Pathway+--+Hemmings%20and%20Restuccia%204%20%289%29+--+cshperspect&amp;doi=10.1101/cshperspect.a011189&amp;link_type=DEL_ICIO_US"><img src="/shared/img/common/social-bookmarking/delicious.gif"
+                             alt="Add to Delicious"
+                             title="Delicious" /></a><span class="soc-bm-link-text">Delicious</span></li>
+                  <li class="social-bookmarking-item social-bookmarking-item-digg"><a href="/external-ref?tag_url=http://cshperspectives.cshlp.org/cgi/content/long/4/9/a011189&amp;title=PI3K-PKB%2FAkt%20Pathway+--+Hemmings%20and%20Restuccia%204%20%289%29+--+cshperspect&amp;doi=10.1101/cshperspect.a011189&amp;link_type=DIGG"><img src="/shared/img/common/social-bookmarking/digg.gif" alt="Add to Digg"
+                             title="Digg" /></a><span class="soc-bm-link-text">Digg</span></li>
+                  <li class="social-bookmarking-item social-bookmarking-item-facebook"><a href="/external-ref?tag_url=http://cshperspectives.cshlp.org/cgi/content/short/4/9/a011189&amp;title=PI3K-PKB%2FAkt%20Pathway+--+Hemmings%20and%20Restuccia%204%20%289%29+--+cshperspect&amp;doi=10.1101/cshperspect.a011189&amp;link_type=FACEBOOK"
+                        class="sb-facebook"
+                        rel="external-nw"><img src="/shared/img/common/social-bookmarking/facebook.gif" alt="Add to Facebook"
+                             title="Facebook" /></a><span class="soc-bm-link-text">Facebook</span></li>
+                  <li class="social-bookmarking-item social-bookmarking-item-reddit"><a href="/external-ref?tag_url=http://cshperspectives.cshlp.org/cgi/content/long/4/9/a011189&amp;title=PI3K-PKB%2FAkt%20Pathway+--+Hemmings%20and%20Restuccia%204%20%289%29+--+cshperspect&amp;doi=10.1101/cshperspect.a011189&amp;link_type=REDDIT"><img src="/shared/img/common/social-bookmarking/reddit.gif" alt="Add to Reddit"
+                             title="Reddit" /></a><span class="soc-bm-link-text">Reddit</span></li>
+                  <li class="social-bookmarking-item social-bookmarking-item-twitter"><a href="/external-ref?tag_url=http://cshperspectives.cshlp.org/cgi/content/long/4/9/a011189&amp;title=PI3K-PKB%2FAkt%20Pathway+--+Hemmings%20and%20Restuccia%204%20%289%29+--+cshperspect&amp;doi=10.1101/cshperspect.a011189&amp;link_type=TWITTER"><img src="/shared/img/common/social-bookmarking/twitter.gif" alt="Add to Twitter"
+                             title="Twitter" /></a><span class="soc-bm-link-text">Twitter</span></li>
+               </ul>
+               
+               <p class="social-bookmarking-help"><a href="/help/social_bookmarks.dtl">What's this?</a></p>
+               
+            </div><span id="related-urls"></span><div id="relmgr-related"></div>
+            <div id="content-end-sb" class="sb-div"></div>
+         </div>
+         <div id="col-2">
+            
+            <div class="article-nav sidebar-nav">
+               <a href="/content/4/9/a008763.short" title="Previous article" class="previous">« Previous</a><span class="article-nav-sep"> | </span><a href="/content/4/9/a011403.short" title="Next article" class="next">Next Article »</a>
+               
+               <span class="toc-link">
+                  				<a href="/content/4/9.toc" title="Table of Contents">Table of Contents</a>
+                  			</span>
+               
+               
+            </div>
+            <div class="content-box" id="article-cb-main">
+               <div class="cb-contents">
+                  <h3 class="cb-contents-header"><span>This Article</span></h3>
+                  <div class="cb-section cb-slug">
+                     <ol>
+                        <li>
+                           <div id="slugline">
+                              
+                              
+                              	    
+                              
+                              doi:
+                              <span title="10.1101/cshperspect.a011189" class="slug-doi">10.1101/cshperspect.a011189
+                                 </span>
+                              <cite>
+                                 	    <abbr title="Cold Spring Harbor Perspectives in Biology" class="slug-jnl-abbrev">
+                                    Cold Spring Harb. Perspect. Biol.</abbr><span class="slug-pub-date" itemprop="datePublished">
+                                    2012.
+                                    </span>
+                                 	    <span class="slug-vol">
+                                    4: 
+                                    </span>
+                                 </cite>
+                              
+                              	           
+                              
+                              <a href="/site/misc/terms.xhtml"><span class="copyright-statement">Copyright © 2012 Cold Spring Harbor Laboratory Press; all rights reserved</span></a>
+                              
+                           </div>
+                        </li>
+                     </ol>
+                  </div>
+                  <div class="cb-section" id="cb-art-links">
+                     <ol>
+                        <li class="notice"><span class="variant-indicator">» <span>Full Text</span></span><span class="free">Free</span></li>
+                        <li class="notice"><a href="/content/4/9/a011189.full.pdf+html" rel="view-full-text.pdf">Full Text (PDF)</a><span class="free">Free</span></li>
+                        <li class="notice">
+                           <ul id="content_box_errata">
+                              <li class="relmgr-relation errata"><a href="/content/7/4/a026609.short">
+                                    
+                                    				<span class="cit-section">Erratum</span>
+                                    			
+                                    </a></li>
+                           </ul>
+                        </li>
+                     </ol>
+                  </div>
+                  <div class="cb-section collapsible" id="cb-art-cat">
+                     <h4 class="cb-section-header"><span>Article Category</span></h4>
+                     <ol>
+                        <li>
+                           <ul class="subject-headings">
+                              <li>PRIMER
+                                 <ul class="subject-sub-headings last-child">
+                                    <li><a class="tocsection-search"
+                                          href="/search?tocsectionid=Cell+Signaling&amp;sortspec=date&amp;submit=Submit">Cell Signaling</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                     </ol>
+                  </div>
+                  <div class="cb-section collapsible default-closed" id="cb-art-svcs">
+                     <h4 class="cb-section-header"><span>Services</span></h4>
+                     <ol>
+                        <li><a href="/cgi/alerts/ctalert?alertType=citedby&amp;addAlert=cited_by&amp;cited_by_criteria_resid=cshperspect%3B4%2F9%2Fa011189&amp;saveAlert=no&amp;return-type=article&amp;return_url=http://cshperspectives.cshlp.org/content/4/9/a011189.short">Alert me when this article is cited</a></li>
+                        <li><a href="/cgi/alerts/ctalert?alertType=correction&amp;addAlert=correction&amp;correction_criteria_value=4/9/a011189&amp;saveAlert=no&amp;return-type=article&amp;return_url=http://cshperspectives.cshlp.org/content/4/9/a011189.short">Alert me if a correction is posted</a></li>
+                        <li><a href="/search?qbe=cshperspect%3B4%2F9%2Fa011189&amp;citation=Hemmings%20and%20Restuccia%204%20%289%29&amp;submit=yes">Similar articles in this journal</a></li>
+                        <li><a href="/external-ref?access_num=cshperspect%3B4%2F9%2Fa011189&amp;link_type=ISI_RELATEDRECORDS"
+                              id="cb-isi-similar-articles">Similar articles in Web of Science</a></li>
+                        <li><a href="/external-ref?access_num=22952397&amp;link_type=MED_NBRS">Similar articles in PubMed</a></li>
+                        <li><a href="/citmgr?gca=cshperspect%3B4%2F9%2Fa011189">Download to citation manager</a></li>
+                        <li><a href="/site/misc/permissions_landing.xhtml">
+                              Permissions
+                              </a></li>
+                     </ol>
+                  </div>
+                  <div class="cb-section collapsible default-closed" id="cb-letter-cit">
+                     <h4 class="cb-section-header"><span>Updates/Comments</span></h4>
+                     <ol>
+                        <li><a href="/letters/submit/cshperspect;4/9/a011189">Submit Updates/Comments</a></li>
+                        <li><span class="eletters-no-responses-published">No Updates/Comments published</span></li>
+                     </ol>
+                  </div>
+                  <div class="cb-section collapsible default-closed" id="cb-art-cit">
+                     <h4 class="cb-section-header"><span>Citing Articles</span></h4>
+                     <ol>
+                        <li><a href="/content/4/9/a011189.short?cited-by=yes&amp;legid=cshperspect;4/9/a011189#cited-by"
+                              id="cb-hw-citing-articles">Load citing article information</a></li>
+                        <li><a href="/external-ref?access_num=%2Fcshperspect%2F4%2F9%2Fa011189&amp;link_type=ISI_CITING&amp;accnum_type=native"
+                              rel="external-nw"
+                              id="cb-isi-citing-articles">Citing articles via Web of Science</a></li>
+                        <li><a href="/external-ref?access_num=http://cshperspectives.cshlp.org/content/4/9/a011189.full&amp;link_type=GOOGLESCHOLAR">Citing articles via Google Scholar</a></li>
+                     </ol>
+                  </div>
+                  <div class="cb-section collapsible default-closed" id="cb-art-gs">
+                     <h4 class="cb-section-header"><span>Google Scholar</span></h4>
+                     <ol>
+                        <li><a href="http://scholar.google.com/scholar?q=%22author%3AHemmings%20author%3AB.A.%22">Articles by  Hemmings, B. A.</a></li>
+                        <li><a href="http://scholar.google.com/scholar?q=%22author%3ARestuccia%20author%3AD.F.%22">Articles by  Restuccia, D. F.</a></li>
+                        <li><a href="/external-ref?access_num=http://cshperspectives.cshlp.org/content/4/9/a011189.full&amp;link_type=GOOGLESCHOLARRELATED">Search for related content</a></li>
+                     </ol>
+                  </div>
+                  <div class="cb-section collapsible default-closed" id="cb-art-pm">
+                     <h4 class="cb-section-header"><span>PubMed/NCBI</span></h4>
+                     <ol>
+                        <li><a href="/external-ref?access_num=22952397&amp;link_type=PUBMED">PubMed citation</a></li>
+                        <li><a href="/external-ref?access_num=Hemmings%20BA&amp;link_type=AUTHORSEARCH">Articles by  Hemmings, B. A.</a></li>
+                        <li><a href="/external-ref?access_num=Restuccia%20DF&amp;link_type=AUTHORSEARCH">Articles by  Restuccia, D. F.</a></li>
+                        <li>
+                           <div id="cb-entrez-links-placeholder"><a href="/entrez-links/22952397"></a></div>
+                        </li>
+                     </ol>
+                  </div>
+                  <div class="cb-section collapsible default-open" id="cb-art-col">
+                     <h4 class="cb-section-header"><span>Subject Collections</span></h4>
+                     <ol>
+                        <li><a href="/cgi/collection/signal_transduction">Signal Transduction</a></li>
+                     </ol>
+                  </div>
+                  <div class="cb-section collapsible default-closed" id="cb-art-soc">
+                     <h4 class="cb-section-header"><span>Share</span></h4>
+                     <ol>
+                        <li><a href="/email?gca=cshperspect%3B4%2F9%2Fa011189&amp;current-view-path=/content/4/9/a011189.short"></a></li>
+                        <li>
+                           <div class="social-bookmarking">
+                              
+                              <ul class="social-bookmark-links">
+                                 <li class="social-bookmarking-item social-bookmarking-item-citeulike"><a href="/external-ref?tag_url=http://cshperspectives.cshlp.org/cgi/content/long/4/9/a011189&amp;title=PI3K-PKB%2FAkt%20Pathway+--+Hemmings%20and%20Restuccia%204%20%289%29+--+cshperspect&amp;doi=10.1101/cshperspect.a011189&amp;link_type=CITEULIKE"><img src="/shared/img/common/social-bookmarking/citeulike.gif"
+                                            alt="Add to CiteULike"
+                                            title="CiteULike" /></a><span class="soc-bm-link-text">CiteULike</span></li>
+                                 <li class="social-bookmarking-item social-bookmarking-item-delicious"><a href="/external-ref?tag_url=http://cshperspectives.cshlp.org/cgi/content/long/4/9/a011189&amp;title=PI3K-PKB%2FAkt%20Pathway+--+Hemmings%20and%20Restuccia%204%20%289%29+--+cshperspect&amp;doi=10.1101/cshperspect.a011189&amp;link_type=DEL_ICIO_US"><img src="/shared/img/common/social-bookmarking/delicious.gif"
+                                            alt="Add to Delicious"
+                                            title="Delicious" /></a><span class="soc-bm-link-text">Delicious</span></li>
+                                 <li class="social-bookmarking-item social-bookmarking-item-digg"><a href="/external-ref?tag_url=http://cshperspectives.cshlp.org/cgi/content/long/4/9/a011189&amp;title=PI3K-PKB%2FAkt%20Pathway+--+Hemmings%20and%20Restuccia%204%20%289%29+--+cshperspect&amp;doi=10.1101/cshperspect.a011189&amp;link_type=DIGG"><img src="/shared/img/common/social-bookmarking/digg.gif" alt="Add to Digg"
+                                            title="Digg" /></a><span class="soc-bm-link-text">Digg</span></li>
+                                 <li class="social-bookmarking-item social-bookmarking-item-facebook"><a href="/external-ref?tag_url=http://cshperspectives.cshlp.org/cgi/content/short/4/9/a011189&amp;title=PI3K-PKB%2FAkt%20Pathway+--+Hemmings%20and%20Restuccia%204%20%289%29+--+cshperspect&amp;doi=10.1101/cshperspect.a011189&amp;link_type=FACEBOOK"
+                                       class="sb-facebook"
+                                       rel="external-nw"><img src="/shared/img/common/social-bookmarking/facebook.gif" alt="Add to Facebook"
+                                            title="Facebook" /></a><span class="soc-bm-link-text">Facebook</span></li>
+                                 <li class="social-bookmarking-item social-bookmarking-item-reddit"><a href="/external-ref?tag_url=http://cshperspectives.cshlp.org/cgi/content/long/4/9/a011189&amp;title=PI3K-PKB%2FAkt%20Pathway+--+Hemmings%20and%20Restuccia%204%20%289%29+--+cshperspect&amp;doi=10.1101/cshperspect.a011189&amp;link_type=REDDIT"><img src="/shared/img/common/social-bookmarking/reddit.gif" alt="Add to Reddit"
+                                            title="Reddit" /></a><span class="soc-bm-link-text">Reddit</span></li>
+                                 <li class="social-bookmarking-item social-bookmarking-item-twitter"><a href="/external-ref?tag_url=http://cshperspectives.cshlp.org/cgi/content/long/4/9/a011189&amp;title=PI3K-PKB%2FAkt%20Pathway+--+Hemmings%20and%20Restuccia%204%20%289%29+--+cshperspect&amp;doi=10.1101/cshperspect.a011189&amp;link_type=TWITTER"><img src="/shared/img/common/social-bookmarking/twitter.gif" alt="Add to Twitter"
+                                            title="Twitter" /></a><span class="soc-bm-link-text">Twitter</span></li>
+                              </ul>
+                              
+                              <p class="social-bookmarking-help"><a href="/help/social_bookmarks.dtl">What's this?</a></p>
+                              
+                           </div>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+            </div>
+            
+            
+            <style type="text/css">
+      
+#col-2 div#cb-biorxiv ol {
+    font-weight:normal;
+    list-style-position:outside;
+  list-style-type:none;
+  list-style-image:url(/publisher/icons/col2-dash.gif);
+    margin-left:4px;
+    
+}
+#col-2 #article-cb-mainx {
+  display:visible;
+}
+
+#col-2 div#cb-art-coll ol {
+    font-weight:normal;
+    list-style-position:outside;
+  list-style-type:none;
+  list-style-image:url(/publisher/icons/col2-dash.gif);
+    margin-left:4px;
+    
+}   
+    </style>
+            <div id="col-2-widget-placeholder">
+               
+               <div class="content-box" id="article-cb-main">
+                  
+                  <div class="cb-contents">
+                     <a href="http://biorxiv.org/" rel="external-nw">
+                        <img src="/site/misc/images/biorxiv_ad.gif" />
+                        </a>
+                     
+                  </div>
+                  
+               </div>
+               
+               <div class="content-box" id="author_chat">
+                  
+                  <div class="cb-contents">
+                     
+                     <h3 class="cb-contents-header"><span>Interview</span></h3>
+                     
+                     <center><a href="http://mediacentral2.cshl.edu/Symposium75/Symposium75/Interviews/Entries/2010/6/24_TOM_MISTELI.html"
+                           onclick="newWindow(this.href, 'popup', 640, 378, 1, 1, 0, 0, 0, 1, 0); return false;">
+                           <img alt="Misteli interview" src="/site/misc/images/misteli3.jpg"
+                                style="margin-top:15px;margin-bottom:4px;" />
+                           </a></center>
+                     
+                     <div style="padding-left:2px;padding-right:2px;">
+                        <a href="http://mediacentral2.cshl.edu/Symposium75/Symposium75/Interviews/Entries/2010/6/24_TOM_MISTELI.html"
+                           onclick="newWindow(this.href, 'popup', 640, 380, 1, 1, 0, 0, 0, 1, 0); return false;"
+                           style="font-size:8pt;">Click to see an interview with subject collection editor Tom Misteli </a>
+                        
+                     </div>
+                     
+                  </div>
+                  
+               </div>
+               
+               <div class="content-box" id="author_chat1">
+                  
+                  <div class="cb-contents">
+                     
+                     <h3 class="cb-contents-header"><span>Interview</span></h3>
+                     
+                     <center><a href="http://mediacentral.cshl.edu/symp09/cech.mov"
+                           onclick="newWindow(this.href, 'popup', 324, 260, 1, 1, 0, 0, 0, 1, 0); return false;">
+                           <img alt="Cech interview" src="/site/misc/images/tcech.jpg"
+                                style="margin-top:15px;margin-bottom:4px;" />
+                           </a></center>
+                     
+                     <div style="padding-left:2px;padding-right:2px;">
+                        <a href="http://mediacentral.cshl.edu/symp09/cech.mov"
+                           onclick="newWindow(this.href, 'popup', 324, 260, 1, 1, 0, 0, 0, 1, 0); return false;"
+                           style="font-size:8pt;">Click to see an interview with subject collection editor Tom Cech </a>
+                        
+                     </div>
+                     
+                  </div>
+                  
+               </div>
+               
+               <div class="content-box" id="author_chat2">
+                  
+                  <div class="cb-contents">
+                     
+                     <h3 class="cb-contents-header"><span>Interview</span></h3>
+                     
+                     <center><a href="http://mediacentral.cshl.edu/symp09/shapiro.mov"
+                           onclick="newWindow(this.href, 'popup', 324, 260, 1, 1, 0, 0, 0, 1, 0); return false;">
+                           <img alt="Shapiro interview" src="/site/misc/images/Shapiro_pic.jpg"
+                                style="margin-top:15px;margin-bottom:4px;" />
+                           </a></center>
+                     
+                     <div style="padding-left:2px;padding-right:2px;">
+                        <a href="http://mediacentral.cshl.edu/symp09/shapiro.mov"
+                           onclick="newWindow(this.href, 'popup', 324, 260, 1, 1, 0, 0, 0, 1, 0); return false;"
+                           style="font-size:8pt;">Click to see an interview with subject collection editor Lucy Shapiro</a>
+                        
+                     </div>
+                     
+                  </div>
+                  
+               </div>
+               
+               <div class="content-box" id="author_chat3">
+                  
+                  <div class="cb-contents">
+                     
+                     <h3 class="cb-contents-header"><span>Interview</span></h3>
+                     
+                     <center><a href="http://mediacentral2.cshl.edu/Symposium76/Symposium76/Interviews/Entries/2011/6/2_Paolo_Sassone-Corsi.html"
+                           onclick="newWindow(this.href, 'popup', 324, 260, 1, 1, 0, 0, 0, 1, 0); return false;">
+                           <img alt="Corsi interview" src="/site/misc/images/corsi.jpg"
+                                style="margin-top:15px;margin-bottom:4px;" />
+                           </a></center>
+                     
+                     <div style="padding-left:2px;padding-right:2px;">
+                        <a href="http://mediacentral2.cshl.edu/Symposium76/Symposium76/Interviews/Entries/2011/6/2_Paolo_Sassone-Corsi.html"
+                           onclick="newWindow(this.href, 'popup', 324, 260, 1, 1, 0, 0, 0, 1, 0); return false;"
+                           style="font-size:8pt;">Click to see an interview with subject collection editor Paolo Sassone-Corsi</a>
+                        
+                     </div>
+                     
+                  </div>
+                  
+               </div>
+               
+               <div class="content-box" id="author_chat4">
+                  
+                  <div class="cb-contents">
+                     
+                     <h3 class="cb-contents-header"><span>Interview</span></h3>
+                     
+                     <center><a href="http://mediacentral2.cshl.edu/Symposium76/Symposium76/Interviews/Entries/2011/6/3_Richard_Morimoto_1.html"
+                           onclick="newWindow(this.href, 'popup', 324, 260, 1, 1, 0, 0, 0, 1, 0); return false;">
+                           <img alt="Corsi interview" src="/site/misc/images/rm.jpg"
+                                style="margin-top:15px;margin-bottom:4px;" />
+                           </a></center>
+                     
+                     <div style="padding-left:2px;padding-right:2px;">
+                        <a href="http://mediacentral2.cshl.edu/Symposium76/Symposium76/Interviews/Entries/2011/6/3_Richard_Morimoto_1.html"
+                           onclick="newWindow(this.href, 'popup', 324, 260, 1, 1, 0, 0, 0, 1, 0); return false;"
+                           style="font-size:8pt;">Click to see an interview with subject collection editor Richard Morimoto</a>
+                        
+                     </div>
+                     
+                  </div>
+                  
+               </div>
+               
+               <div class="content-box" id="author_chat5">
+                  
+                  <div class="cb-contents">
+                     
+                     <h3 class="cb-contents-header"><span>Interview</span></h3>
+                     
+                     <center><a href="http://mediacentral2.cshl.edu/Symposium77/Estelle.html"
+                           onclick="newWindow(this.href, 'popup', 1124, 960, 1, 1, 0, 0, 0, 1, 0); return false;">
+                           <img alt="Estelle interview" src="/site/misc/images/estelle.jpg"
+                                style="margin-top:15px;margin-bottom:4px;" />
+                           </a></center>
+                     
+                     <div style="padding-left:2px;padding-right:2px;">
+                        <a href="http://mediacentral2.cshl.edu/Symposium77/Estelle.html"
+                           onclick="newWindow(this.href, 'popup',1124, 960, 1, 1, 0, 0, 0, 1, 0); return false;"
+                           style="font-size:8pt;">Click to see an interview with subject collection editor Mark Estelle</a>
+                        
+                     </div>
+                     
+                  </div>
+                  
+               </div>
+               
+               <div class="content-box" id="author_chat6">
+                  
+                  <div class="cb-contents">
+                     
+                     <h3 class="cb-contents-header"><span>Interview</span></h3>
+                     
+                     <center><a href="http://mediacentral2.cshl.edu/Symposium76/Symposium76/Interviews/Entries/2011/6/2_Craig_Thompson_1.html"
+                           onclick="newWindow(this.href, 'popup', 1124, 960, 1, 1, 0, 0, 0, 1, 0); return false;">
+                           <img alt="Craig Thompson interview" src="/site/misc/images/ct.jpg"
+                                style="margin-top:15px;margin-bottom:4px;" />
+                           </a></center>
+                     
+                     <div style="padding-left:2px;padding-right:2px;">
+                        <a href="http://mediacentral2.cshl.edu/Symposium76/Symposium76/Interviews/Entries/2011/6/2_Craig_Thompson_1.html"
+                           onclick="newWindow(this.href, 'popup',1124, 960, 1, 1, 0, 0, 0, 1, 0); return false;"
+                           style="font-size:8pt;">Click to see an interview with  Craig Thompson</a>
+                        
+                     </div>
+                     
+                  </div>
+                  
+               </div>
+               
+               <div class="content-box" id="author_chat7">
+                  
+                  <div class="cb-contents">
+                     
+                     <h3 class="cb-contents-header"><span>Interview</span></h3>
+                     
+                     <center><a href="http://mediacentral2.cshl.edu/symposium78/Mathis.html"
+                           onclick="newWindow(this.href, 'popup', 1124, 960, 1, 1, 0, 0, 0, 1, 0); return false;">
+                           <img alt="Craig Thompson interview" src="/site/misc/images/dm.jpg"
+                                style="margin-top:15px;margin-bottom:4px;" />
+                           </a></center>
+                     
+                     <div style="padding-left:2px;padding-right:2px;">
+                        <a href="http://mediacentral2.cshl.edu/symposium78/Mathis.html"
+                           onclick="newWindow(this.href, 'popup',1124, 960, 1, 1, 0, 0, 0, 1, 0); return false;"
+                           style="font-size:8pt;">Click to see an interview with  Diane Mathis</a>
+                        
+                     </div>
+                     
+                  </div>
+                  
+               </div>
+               <style type="text/css">
+#col-2 #article-cb-mainx {
+  display:visible;
+}
+
+#col-2 div#cb-art-coll ol {
+    font-weight:normal;
+    list-style-position:outside;
+  list-style-type:none;
+  list-style-image:url(/publisher/icons/col2-dash.gif);
+    margin-left:4px;
+    
+}    </style>
+               <div class="content-box" id="article-cb-mainx">
+                  
+                  <div class="cb-contents">
+                     
+                     <div class="cb-section collapsible default-open" id="cb-art-coll">
+                        
+                        <h4 class="cb-section-header">
+                           <span>In this Collection</span>
+                           
+                        </h4>
+                        
+                        <ol class="tweet" id="coll_list"></ol>
+                        
+                     </div>
+                     
+                  </div>
+                  
+               </div>
+               <script type="text/JavaScript">
+var pageid = $("div.hw-gen-page").attr("id");
+//alert(pageid);
+</script>
+               </div>
+            
+            <ul class="tower-ads">
+               <li class="no-ad tower_col_2"><span>  </span></li>
+            </ul>
+            <div class="content-box" id="article-dyn-nav">
+               <div class="cb-contents">
+                  <h3 class="cb-contents-header"><span>Navigate This Article</span></h3>
+                  <div class="cb-section" id="cb-art-nav">
+                     <ol>
+                        <li><a href="#content-block">Top</a></li>
+                        <li><a href="#ack-1">Acknowledgments</a></li>
+                        <li><a href="#fn-group-1">Footnotes</a></li>
+                        <li><a href="#ref-list-1">REFERENCES</a></li>
+                     </ol>
+                  </div>
+               </div>
+            </div>
+            
+         </div>
+         <div id="col-3">
+            
+            <div class="content-box" id="sidebar-current-issue">
+               <div class="cb-contents">
+                  <h3 class="cb-contents-header"><span>Current Issue</span></h3>
+                  <div class="cb-section">
+                     <ol>
+                        <li><span><a href="/content/current" rel="current-issue">September 2019, 11 (9)</a></span></li>
+                     </ol>
+                  </div>
+                  <div class="cb-section">
+                     <ol>
+                        <li>
+                           <div class="current-issue"><a href="/content/current" rel="current-issue"><img src="/content/11/9.cover.gif" width="67" height="89" alt="Current Issue" /></a></div>
+                        </li>
+                     </ol>
+                  </div> 
+                  
+                  <cb:item xmlns:cb="http://schema.highwire.org/Site/Content-Box">
+                     <div class="cb-section collapsible default-closed" id="sidebar-cur-issue-coverlines">
+                        
+                        <h4 class="cb-section-header">
+                           <span>From the cover</span>
+                           
+                        </h4>
+                        
+                        <ul>
+                           <li>
+                              <a href="/content/11/9/a032458.abstract">Analysis of Reverse Transcriptases</a>
+                              
+                           </li>
+                        </ul>
+                        
+                     </div>
+                  </cb:item>
+                  
+               </div>
+            </div>
+            <div id="sidebar-global-nav">
+               
+               
+               <ul class="button-list pub-links">
+                  <li class="first"><a href="/content/early/recent" title="Early Release Articles"><span>Early Release Articles</span></a></li>
+                  <li><a href="/site/misc/sample.xhtml" title="Featured Articles"><span>Featured Articles</span></a></li>
+                  <li><a href="/cgi/collection/" title="Subject Collections"><span>Subject Collections</span></a></li>
+                  <li><a href="/content/by/year" title="Archive by Date"><span>Archive by Date</span></a></li>
+                  <li><a href="/site/misc/alertland.xhtml" title="Alerts and RSS Feeds"><span>Alerts and RSS Feeds</span></a></li>
+                  <li><a href="http://www.cshlpress.com/library/?hwinfo"
+                        title="Recommend to Your Library"><span>Recommend to Your Library</span></a></li>
+                  <li class="last"><a href="/site/misc/permissions_landing.xhtml" title="Permissions"><span>Permissions</span></a></li>
+               </ul>
+               
+            </div>
+            
+            
+            <ul class="tower-ads">
+               <li><a href="/cgi/adclick/?ad=50831&amp;adclick=true&amp;url=http%3A%2F%2Fwww.genelink.com%2Fsirna%2FRNAprice.asp"
+                     target="_blank"><img class="adborder0" title="Gene Link 90s siRNA"
+                          src="//cshperspectives.cshlp.org/adsystem/graphics/9921625267052163/cshperspect/90siRNA-120x600_2.gif?ad=50831&amp;adview=true"
+                          alt="Gene Link 90s siRNA" /></a></li>
+            </ul>
+            
+            <div id="col-3-widget-placeholder" style="padding-top:5px;">
+               
+               <p style="text-align:center;font-weight:bold;font-size:12px;line-height:15px;margin-top:0;padding-top:0;margin-bottom:0px;color:black;">
+                  <a href="https://www.cshlpress.com/link/molclon4p.htm" style="color:black;">Molecular Cloning<br />The New Edition<br />
+                     <span style=" color: red; ">Buy Now and Save 30%</span>
+                     </a>
+                  <br />Paperback only<br />(limited time offer)
+               </p>
+               
+               <table style="border-spacing:6px;font-size: 80%;">
+                  <tr>
+                     <td style="padding-bottom:6px;padding-top:2px;padding-left:12px;vertical-align:top;">
+                        <a href="https://www.cshlpress.com/link/molclon4p.htm">
+                           <img src="https://www.cshlpress.com/productgraphics/small/Molclon4-1.jpg"
+                                alt="Support Research and Save at CSHL Press" />
+                           </a>
+                        
+                     </td>
+                     <td style="padding-bottom:9px;padding-left:6px;padding-right:12px;vertical-align:middle;">
+                        <a href="https://www.cshlpress.com/link/molclon4p.htm">Molecular Cloning: A Laboratory Manual  (Fourth Edition)</a>
+                        
+                     </td>
+                  </tr>
+               </table>
+               
+               <div id="ads3" style="padding:0p;margin:0;">
+                   
+               </div>
+               <br />
+               <br />
+               
+               <div>
+                  
+                  <center><img alt="CSH Perspectives" src="/site/misc/covers_hompage/cshlp.jpg" /></center>
+                  
+               </div>
+               
+            </div>
+            
+            
+         </div>
+         <div id="footer">
+            
+            <div class="bar">
+               	  
+               <div class="footer-group footer-col-left">
+                  	    
+                  <ul class="button-list footer-buttons">
+                     <li class="first"><a href="/" title="Home"><span>Home</span></a></li>
+                     <li><a href="/site/misc/about.xhtml" title="About"><span>About</span></a></li>
+                     <li><a href="/cgi/collection/" title="Subject Collections"><span>Subject Collections</span></a></li>
+                     <li><a href="/content/by/year" title="Archive"><span>Archive</span></a></li>
+                     <li><a href="/site/misc/subscribe.xhtml" title="Subscribe"><span>Subscribe</span></a></li>
+                     <li><a href="/site/misc/adinfo.xhtml" title="Advertise"><span>Advertise</span></a></li>
+                     <li><a href="/site/misc/alertland.xhtml" title="Alerts"><span>Alerts</span></a></li>
+                     <li><a href="/feedback" title="Feedback"><span>Feedback</span></a></li>
+                     <li class="last"><a href="/help/" title="Help"><span>Help</span></a></li>
+                  </ul>
+                  	    
+                  <p class="copyright"><a href="http://www.cshlpress.com/" rel="external-nw">Copyright © 2019 by Cold Spring Harbor Laboratory Press</a></p>
+                  	  
+               </div>
+               	  
+               <div class="footer-group footer-col-right">
+                  	    
+                  <ul class="issns">
+                     <li>
+                        <span>Online ISSN: </span>
+                        <span class="issn">1943-0264</span>
+                        
+                     </li>
+                  </ul>
+                  	  
+               </div>
+               	
+            </div>
+            
+            
+            
+            <div class="block-2 sb-div"></div>
+            <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script><script type="text/javascript">
+        try {
+
+        var pageTracker = _gat._getTracker("UA-743586-15");
+        _gat._anonymizeIp();
+        pageTracker._trackPageview();  
+
+        } catch(err) {}
+        </script>
+            </div><script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script><script type="text/javascript">
+        try {
+        var pageTracker = _gat._getTracker("UA-189672-38");
+        pageTracker._setDomainName(".cshlp.org");
+        _gat._anonymizeIp();
+        pageTracker._trackPageview();
+
+
+        } catch(err) {}
+        </script></div>
+   </body>
+</html>

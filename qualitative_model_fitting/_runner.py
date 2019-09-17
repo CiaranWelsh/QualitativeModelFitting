@@ -1,69 +1,102 @@
 import logging
-
-from ._simulator import TimeSeries
-from ._interpreter import _Clause, _Statement
+import pandas as pd
+from qualitative_model_fitting._parser import Parser
 
 LOG = logging.getLogger(__name__)
 
 
 class ManualRunner:
+    """
+        The manual interface into model valiation
 
-    def __init__(self, model, ts_definition, obs):
-        self.ant_str = model
-        self.ts_definition = ts_definition
-        self.obs = obs
+        This interface is intended for iteratively checking whether your
+        model reproduces your observations. The :py:class:`manual_interface`
+        is ideal for iteratively modifying a model and checking whether
+        the required observations are met by your model.
+
+        This contrasts with the :py:class:`automatic_interface` which will modify parameters
+        automatically until it finds a set that complies with all observations.
+
+
+
+        >>> antimony_string = '''
+        ... model SimpleFeedback()
+        ...     compartment Cell = 1;
+        ...     var A in Cell;
+        ...     var B in Cell;
+        ...     var C in Cell;
+        ...     const S;
+        ...     const I;
+        ...
+        ...     A = 0;
+        ...     B = 0;
+        ...     C = 0;
+        ...     S = 0;
+        ...     I = 0;
+        ...     BI = 0;
+        ...
+        ...     k1 = 0.1;
+        ...     k2 = 0.1;
+        ...     k3 = 0.1;
+        ...     k4 = 0.1;
+        ...     k5 = 10;
+        ...     k6 = 0.1;
+        ...     k7 = 0.1;
+        ...     k8 = 0.1;
+        ...
+        ...     R1: => A            ; Cell * k1*S;
+        ...     R2: A =>            ; Cell * k2*A*C;
+        ...     R3: => B            ; Cell * k3*A;
+        ...     R4: B =>            ; Cell * k4*B;
+        ...     R5: B + I => BI     ; Cell * k5*B*I;
+        ...     R6: BI => B + I     ; Cell * k6*BI;
+        ...     R7: => C            ; Cell * k7*B;
+        ...     R8: C =>            ; Cell * k8*C;
+        ... end'''
+
+        >>> input_string = '''
+        ... timeseries None {
+        ...    S=0, I=0
+        ... } 0, 100, 101
+        ... timeseries S {
+        ...    S=1, I=0
+        ... } 0, 100, 101
+        ... timeseries I {
+        ...    S=0, I=1
+        ... } 0, 100, 101
+        ... timeseries SI {
+        ...    S=1, I=1
+        ... } 0, 100, 101
+        ... observation
+        ...     Obs1: A[None]@t=0 > A[S]@t=10
+        ...     Obs2: mean B[SI]@t=(0, 100) > C[I]@t=10
+        ...     Obs3: C[SI]@t=10 == A[None]@t=10'''
+        >>> manual_runner(antimony_string, input_string)
+
+
+        Args:
+            ant_str:
+            input_string:
+
+        Returns:
+
+        """
+
+    def __init__(self, ant_str, obs_str):
+        self.ant_str = ant_str
+        self.obs_str = obs_str
 
     def run(self):
-        self.data = self._run_timeseries()
-        result = {}
-        for statement in self.obs:
-            result[str(statement)] = self._statement(statement)
-        return result
+        results = []
+        parser = Parser(self.ant_str, self.obs_str)
+        for obs in parser.observation_block:
+            obs_result = dict(
+                name=obs.name,
+                observation=str(obs),
+                evaluation=obs.reduce()
+            )
+            df = pd.DataFrame(obs_result, index=[0])
+            results.append(df)
+        df = pd.concat(results).reset_index(drop=True)
+        return df
 
-    def _run_timeseries(self):
-        dct = {}
-        for ts in self.ts_definition:
-            conditions = ts['conditions']
-            start = ts['integration_settings']['start']
-            stop = ts['integration_settings']['stop']
-            step = ts['integration_settings']['step']
-            data = TimeSeries(self.ant_str, conditions, int(start), int(stop), int(step)).simulate()
-            dct[ts['name']] = data
-        return dct
-
-    def _statement(self, statement):
-        if not isinstance(statement, _Statement):
-            raise TypeError
-        name = statement.name
-        clause1_value = self._clause(statement.clause1)
-        clause2_value = self._clause(statement.clause2)
-        op_func = statement.operator.operator
-        return {'truth': op_func(clause1_value, clause2_value)}
-
-    def _clause(self, clause):
-        if not isinstance(clause, _Clause):
-            raise TypeError
-        condition = clause.model_entity.condition
-        if condition not in self.data.keys():
-            raise ValueError(f'Condition {condition} has been referenced'
-                             f' but it does not exist. These are your defined '
-                             f'condition names: {self.data.keys()}')
-
-        name = clause.model_entity.component_name
-        if name not in self.data[condition].columns:
-            raise ValueError(f'model entity {name} not found. '
-                             f'These are valid model entities: {list(self.data[condition].columns)}')
-
-        time = clause.model_entity.time
-        time = eval(time)
-
-        clause_value = self.data[condition][name]
-        if isinstance(time, tuple):
-            clause_value = clause_value.loc[time[0]: time[1]]
-        else:
-            clause_value = clause_value.loc[time]
-
-        if clause.modifier:
-            clause_value = clause.modifier(clause_value)
-
-        return clause_value

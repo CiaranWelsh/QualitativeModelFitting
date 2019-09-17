@@ -14,6 +14,7 @@ import seaborn as sns
 import logging
 
 logging.getLogger("matplotlib").setLevel(logging.CRITICAL)
+LOG = logging.getLogger(__name__)
 
 
 class TimeSeries:
@@ -21,7 +22,8 @@ class TimeSeries:
     Wrapper around tellurium's ODE integration feature.
     """
 
-    def __init__(self, ant_str: str, inputs: (dict, str), start: int, stop: int, steps: int) -> None:
+    def __init__(self, ant_str: str, inputs: (dict, str),
+                 start: int, stop: int, steps: int) -> None:
         """
 
         Args:
@@ -100,13 +102,12 @@ class TimeSeries:
         colnames = [i.replace('[', '').replace(']', '') for i in results.colnames]
         results = pd.DataFrame(results, columns=colnames)
         results.set_index('time', inplace=True)
-
         return results
 
 
 class _PlotterBase:
 
-    def __init__(self, ts: TimeSeries, plot_selection: dict, conditions: list,
+    def __init__(self, ts: TimeSeries, plot_selection: dict, conditions=None,
                  subplot_titles={}, savefig=False,
                  plot_dir=os.path.abspath(''), fname=None, ncols=3, wspace=0.25, hspace=0.3,
                  figsize=(12, 7), legend_fontsize=12,
@@ -115,7 +116,7 @@ class _PlotterBase:
         sns.set_context(context=seaborn_context)
         self.ts = ts
         self.plot_selection = plot_selection
-        self.conditions = [conditions] if isinstance(conditions, str) else conditions
+        self.conditions = conditions
         self.subplot_titles = subplot_titles
         self.fname = fname
         self.savefig = savefig
@@ -131,8 +132,17 @@ class _PlotterBase:
 
         self.data = self._simulate()
 
-        if not self.savefig:
-            self.animation = False
+        if self.conditions is None:
+            self.conditions = ['default_condition']
+        elif isinstance(self.conditions, str):
+            self.conditions = [self.conditions]
+        elif isinstance(self.conditions, list):
+            for i in self.conditions:
+                if not isinstance(i, str):
+                    raise TypeError('expecting list of strings for condition argument')
+
+        if self.fname is None:
+            self.fname = 'simulation.png'
 
         self._nplots = len(self.plot_selection)
         if self._nplots == 1:
@@ -143,31 +153,15 @@ class _PlotterBase:
             self._num_rows += 1
 
     def _simulate(self):
-        print('ts', self.ts)
-        return self.ts._simulate_non_nested()
+        return self.ts.simulate()
 
-    def _recursive_fname(self, zipped_inputs) -> str:
-        """
-        Make an appropriate filename from strings of inputs and values
-        :return (str):
-        """
-        from functools import reduce
-        if isinstance(zipped_inputs[0], (list, tuple)):  # if zipped is nested list
-            new_zipped = [reduce(lambda x, y: f'{x}_{y}', i) for i in zipped_inputs]
-            reduced = self._recursive_fname(new_zipped)
-            return reduced
-        else:
-            reduced = reduce(lambda x, y: f'{x}_{y}', zipped_inputs)
-            assert reduced is not None
-            return reduced
-
-    def _savefig(self, fname, dire=None):
+    def _savefig(self, fname):
         if not os.path.isdir(self.plot_dir):
             os.makedirs(self.plot_dir)
 
         fname = os.path.join(self.plot_dir, f'{fname}-{str(self.count).zfill(self.num_zeros_needed)}.png')
         plt.savefig(fname, dpi=300, bbox_inches='tight')
-        print('saved to {}'.format(fname))
+        LOG.info('saved to {}'.format(fname))
         return fname
 
     def animate(self, fname, ext='mp4', ovewrite=False, fps=8):
@@ -199,16 +193,18 @@ class TimeSeriesPlotter(_PlotterBase):
         count = 0
         for k, v in self.plot_selection.items():
             ax = fig.add_subplot(gs[count])
-            for cond in self.conditions:
-                data = self.data[cond]
-                for i in v:
-                    plt.plot(
-                        data.index,
-                        data[i],
-                        label=f'{cond}_{i}' if len(self.conditions) != 1 else f'{i}'
-                    )
-            plt.legend(loc=self.legend_loc, fontsize=self.legend_fontsize)
+            # for cond in self.conditions:
+            #     print(cond)
+            #     print(self.data)
+            #     data = self.data[cond]
+            for i in v:
+                plt.plot(
+                    self.data.index,
+                    self.data[i],
+                    # label=f'{cond}_{i}' if len(self.conditions) != 1 else f'{i}'
+                )
             plt.title(k)
+            plt.legend(loc=self.legend_loc, fontsize=self.legend_fontsize)
             sns.despine(fig, top=True, right=True)
             count += 1
 
@@ -217,7 +213,6 @@ class TimeSeriesPlotter(_PlotterBase):
         if self.savefig:
             if not os.path.isdir(self.plot_dir):
                 os.makedirs(self.plot_dir)
-
             fname = os.path.join(self.plot_dir, self.fname)
             plt.savefig(fname, dpi=300, bbox_inches='tight')
             print('saved to {}'.format(fname))
