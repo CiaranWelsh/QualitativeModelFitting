@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html
+      xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Rheb GTPase is a direct target of TSC2 GAP activity and regulates mTOR signaling </title>
+      <meta name="googlebot" content="NOODP" />
+      <meta name="description"
+            content="A biweekly scientific journal publishing high-quality research in molecular biology and genetics, cancer biology, biochemistry, and related fields" />
+      <meta content="/genesdev/17/15/1829.atom" name="HW.identifier" />
+      <meta name="DC.Format" content="text/html" />
+      <meta name="DC.Language" content="en" />
+      <meta content="Rheb GTPase is a direct target of TSC2 GAP activity and regulates mTOR signaling"
+            name="DC.Title" />
+      <meta content="10.1101/gad.1110003" name="DC.Identifier" />
+      <meta content="2003-08-01" name="DC.Date" />
+      <meta content="Cold Spring Harbor Laboratory Press" name="DC.Publisher" />
+      <meta content="Ken Inoki" name="DC.Contributor" />
+      <meta content="Yong Li" name="DC.Contributor" />
+      <meta content="Tian Xu" name="DC.Contributor" />
+      <meta content="Kun-Liang Guan" name="DC.Contributor" />
+      <meta content="Genes &amp; Development" name="citation_journal_title" />
+      <meta content="Genes Dev." name="citation_journal_abbrev" />
+      <meta content="Cold Spring Harbor Lab" name="citation_publisher" />
+      <meta content="0890-9369" name="citation_issn" />
+      <meta content="1549-5477" name="citation_issn" />
+      <meta name="citation_author" content="Ken Inoki" />
+      <meta name="citation_author" content="Yong Li" />
+      <meta name="citation_author" content="Tian Xu" />
+      <meta name="citation_author" content="Kun-Liang Guan" />
+      <meta content="Rheb GTPase is a direct target of TSC2 GAP activity and regulates mTOR signaling"
+            name="citation_title" />
+      <meta content="08/01/2003" name="citation_date" />
+      <meta content="17" name="citation_volume" />
+      <meta content="15" name="citation_issue" />
+      <meta content="1829" name="citation_firstpage" />
+      <meta content="1834" name="citation_lastpage" />
+      <meta content="17/15/1829" name="citation_id" />
+      <meta content="17/15/1829" name="citation_id_from_sass_path" />
+      <meta content="genesdev;17/15/1829" name="citation_mjid" />
+      <meta content="10.1101/gad.1110003" name="citation_doi" />
+      <meta content="http://genesdev.cshlp.org/content/17/15/1829.abstract"
+            name="citation_abstract_html_url" />
+      <meta content="http://genesdev.cshlp.org/content/17/15/1829.full"
+            name="citation_fulltext_html_url" />
+      <meta content="http://genesdev.cshlp.org/content/17/15/1829.full.pdf"
+            name="citation_pdf_url" />
+      <meta content="/content/17/15.cover.gif" name="issue_cover_image" />
+      <meta content="http://genesdev.cshlp.org/content/17/15/1829"
+            name="citation_public_url" />
+      <meta content="12869586" name="citation_pmid" />
+      <meta name="citation_section" content="RESEARCH COMMUNICATION" />
+      <meta name="robots" content="noarchive,nofollow" />
+      <meta name="googlebot" content="noarchive" />
+      <link href="/content/17/15/1823.short" rel="prev" />
+      <link href="/content/17/15/1835.short" rel="next" />
+      <link rel="stylesheet" type="text/css" href="/shared/css/hw-global.css" />
+      <link rel="stylesheet" type="text/css"
+            href="/shared/css/standard-designs/design2/main.css" />
+      <link rel="stylesheet" type="text/css" href="/publisher/css/hw-cshljnls-global.css" />
+      <link rel="stylesheet" type="text/css" href="/local/css/hw-journal-global.css" />
+      <link rel="stylesheet" type="text/css" href="/shared/css/hw-citation-2.0-hacks.css" />
+      <link rel="stylesheet" type="text/css" href="/shared/css/hw-print.css" />
+      <link rel="stylesheet" type="text/css" href="/publisher/css/hw-cshljnls-print.css" />
+      <link rel="stylesheet" type="text/css" href="/shared/css/hw-page-content.css" />
+      <link rel="stylesheet" type="text/css"
+            href="/publisher/css/hw-cshljnls-page-content.css" /><script type="text/javascript" src="/shared/js/jquery-min.js"></script><script type="text/javascript" src="/shared/js/fingerprint.js"></script><script type="text/javascript" src="/shared/js/hw-shared.js"></script><script type="text/javascript" src="/shared/js/design/hw-design1.js"></script><script type="text/javascript" src="/publisher/js/cshl-shared.js"></script><script type="text/javascript" src="/shared/js/pages/hw-content.js"></script><script type="text/javascript" src="/publisher/js/cshl-content.js"></script></head>
+   <frameset rows="148,*">
+      <frame src="/content/17/15/1829.full.pdf+html?frame=header" name="HeaderLinks"
+             title="Header Links Frame"
+             scrolling="auto" />
+      <frameset cols="780,*">
+         <frame src="/content/17/15/1829.full.pdf#page=1&amp;view=FitH" name="ContentsPage"
+                title="Contents Frame" />
+         <frame src="/content/17/15/1829.full.pdf+html?frame=sidebar" name="SidebarLinks"
+                title="Sidebar Links Frame" />
+      </frameset>
+      <noframes>
+         <body></body>
+      </noframes>
+   </frameset>
+</html>

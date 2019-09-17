@@ -1,69 +1,76 @@
 import unittest
-import os, glob
-import yaml
 
 from collections import OrderedDict
-
-from .model_strings import *
-from qualitative_model_fitting._simulator import *
+import os
+import yaml
+from tests import MODEL1, TEST_INPUT2, TEST_INPUT1
+from qualitative_model_fitting._simulator import TimeSeries, TimeSeriesPlotter
+import pandas as pd
 
 
 class TimeSeriesTests(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.yaml_input = OrderedDict(
-            InsulinOnly=OrderedDict(
-                inputs=OrderedDict(
-                    Insulin=1,
-                    AA=0,
-                    Rapamycin=0
-                ),
-                obs=[
-                    'IRS1a@t=0 < IRS1a@t=20'
-                ]
+        self.input = dict(
+            Insulin=1,
+            Rapamycin=0,
+            AA=0
+        )
+        self.nested_input = dict(
+            InsulinOnly=dict(
+                Insulin=1,
+                Rapamycin=0,
+                AA=0
+            ),
+            InsulinAndAA=dict(
+                Insulin=1,
+                Rapamycin=0,
+                AA=1
             )
         )
-        self.yaml_file = os.path.join(os.path.abspath(''), 'config.yaml')
-        with open(self.yaml_file, 'w') as stream:
-            yaml.dump(self.yaml_input, stream, default_flow_style=False, allow_unicode=True)
-        assert os.path.isfile(self.yaml_file)
+        self.directory = os.path.abspath('')
+        self.fname = 'simulation.png'
+        self.sim_file = os.path.join(self.directory, self.fname)
 
-        with open(self.yaml_file, 'r') as stream:
-            self.config = yaml.load(stream, Loader=yaml.FullLoader)
 
     def tearDown(self) -> None:
-        if os.path.isfile(self.yaml_file):
-            pass
-            # os.remove(self.yaml_file)
+        if os.path.isfile(self.sim_file):
+            os.remove(self.sim_file)
 
-    def test_read_inputs_from_yaml(self):
-        ts = TimeSeries(MODEL1, self.yaml_file, 0, 10, 11)
-        actual = ts.inputs['InsulinOnly']['inputs']['Insulin']
-        expected = 1
-        self.assertEqual(expected, actual)
-        
-    def test_read_inputs_from_dict(self):
-        ts = TimeSeries(MODEL1, self.yaml_input, 0, 10, 11)
-        actual = ts.inputs['InsulinOnly']['inputs']['Insulin']
-        expected = 1
-        self.assertEqual(expected, actual)
+    def test_non_nested(self):
+        ts = TimeSeries(MODEL1, self.input, 0, 10, 11)
+        self.assertIsInstance(ts.simulate(), pd.DataFrame)
 
-    def test_load_model(self):
-        ts = TimeSeries(MODEL1, self.yaml_file, 0, 10, 11)
-        self.assertTrue(hasattr(ts, 'model'))
+    def test_nested(self):
+        ts = TimeSeries(MODEL1, self.nested_input, 0, 10, 11)
+        dct = ts.simulate()
+        self.assertIsInstance(dct['InsulinOnly'], pd.DataFrame)
 
-    def test_simulate(self):
-        ts = TimeSeries(MODEL1, self.yaml_file, 0, 10, 11)
-        res = ts.simulate()
-        actual = res['InsulinOnly'].shape
-        expected = (11, 52)
-        self.assertEqual(expected, actual)
+    def test_plot_ts_no_condition(self):
+        ts = TimeSeries(MODEL1, self.input, 0, 10, 11)
+        plot_selection = dict(S6K=['S6K', 'pS6K'])
+        TimeSeriesPlotter(ts, plot_selection, savefig=True,
+                          plot_dir=self.directory,
+                          fname=self.fname).plot()
+        self.assertTrue(os.path.isfile(self.sim_file))
 
 
+    def test_plot_ts_with_condition(self):
+        ts = TimeSeries(MODEL1, self.input, 0, 10, 11)
+        plot_selection = dict(
+            S6K=['S6K'],
+            pS6K=['pS6K'],
+        )
+        TimeSeriesPlotter(ts, plot_selection, ncols=2).plot()
+        # TimeSeriesPlotter(ts, plot_selection, savefig=True,
+        #                   plot_dir=self.directory,
+        #                   fname=self.fname).plot()
+        # self.assertTrue(os.path.isfile(self.sim_file))
 
 
-class SimpleObservationTest(unittest.TestCase):
-    pass
+
+
+
 
 
 if __name__ == '__main__':
