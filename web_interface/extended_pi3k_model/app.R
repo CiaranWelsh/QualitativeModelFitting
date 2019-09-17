@@ -13,22 +13,32 @@ library(reticulate)
 library(stringi)
 library(Stack)
 
+
+
 #todo use the instructions to build a
 #  dynamic UI (https://shiny.rstudio.com/articles/dynamic-ui.html)
 
 
-WD = '/home/ncw135/Documents/QualitativeModelFitting'
+# APP_DIR = file.path(WEB_DIR, 'extended_pi3k_model')
+APP_DIR = getwd() # /home/ncw135/Documents/QualitativeModelFitting/web_interface/extended_pi3k_model
+WEB_DIR = file.path(dirname(APP_DIR))
+WD = dirname(WEB_DIR)
+# WD = '/home/ncw135/Documents/QualitativeModelFitting'
+
 
 MODEL_DIR = file.path(WD, 'example_networks')
-WEB_DIR = file.path(WD, 'web_interface')
-APP_DIR = file.path(WEB_DIR, 'extended_pi3k_model')
 NETWORK_FNAME = file.path(WEB_DIR, 'network.png')
 NETWORK_FNAME
 SIMULATION_SCRIPT = file.path(WEB_DIR, 'run_timeseries.py')
-PYTHON_PATH = "/home/ncw135/miniconda3/envs/py36/bin/python"
+# PYTHON_PATH = "/home/ncw135/miniconda3/envs/py36/bin/python"
+PYTHON_PATH = "python"
 DATA_FILENAME = file.path(WD, 'data_file.csv')
 PLOTTABLE_SPECIES = file.path(WEB_DIR, 'plottable_species.txt')
 
+DEFAULT_OUTPUTS = c('TSC2', 'pmTORC1', 'TSC2_Rag')
+
+print('working dir is')
+print(getwd())
 # check filenames exist
 for (i in c(SIMULATION_SCRIPT, NETWORK_FNAME,
             PYTHON_PATH, DATA_FILENAME, 
@@ -111,7 +121,8 @@ ui <- fluidPage(
   fluidRow(
     column(2, 
            textAreaInput('inputs_text', label = 'Inputs', rows = 7, value = 'Insulin = 1\nAA = 1'),
-           selectizeInput('output_selection', label = 'Outputs', selected = c('IRS1a', 'pPI3K', 'pAkt'), 
+           selectizeInput('output_selection', label = 'Outputs', 
+                          selected = DEFAULT_OUTPUTS, 
                        choices = plottable_species, multiple = T, 
                        options = list(
                          selectOnTab = T
@@ -131,6 +142,10 @@ ui <- fluidPage(
       )),
       column(3, actionButton('go_btn', 'Simulate', width = 100))
     ),
+  fluidRow(
+    column(2,
+           actionButton('mTORC1Output', 'mTORC1 Output'))
+  ),
   fillRow(column(12, imageOutput("network_image")))
 )
 
@@ -183,6 +198,12 @@ server <- function(input, output, session) {
                                  inputs = inputs_list
                                )
                              }, ignoreNULL = FALSE)
+  mTOR_outputs = eventReactive(inputs$mTORC1Output, {
+      mtorc1_output = c('pmTORC1', 'mTORC1Cyt', 'mTORC1Lys')
+    observe({
+      updateSelectizeInput(session, 'output_selection', selected = mtorc1_output)
+    })
+  })
   
   output$plot_output = renderPlot({
     

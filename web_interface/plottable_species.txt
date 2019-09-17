@@ -23,8 +23,9 @@ RasGDP
 RasGTP
 mTORC1cyt
 mTORC1lys
-RAG_GDP
-RAG_GTP
+TSC2_Rag
+RagGDP
+RagGTP
 mTORC1i
 mTORC1ii
 mTORC1iii
@@ -63,3 +64,6 @@ IpRa
 Ca2
 DUSPmRNA
 DUSP
+AMP
+ADP
+ATP

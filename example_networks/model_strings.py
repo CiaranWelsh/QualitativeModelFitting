@@ -52,10 +52,7 @@ end
 """
 
 model_string = f"""
-
 {functions}
-
-
 model ComplexPI3KModel
     compartment Cell=1;
     var IRS1 in Cell;
@@ -244,16 +241,15 @@ model ComplexPI3KModel
     Akt_PIP3                = 0;                            
     pAkt                    = 0;                        
     Akti                    = 0;                        
-    TSC2                    = 10.001;                        
+    TSC2                    = 0;                        
     pTSC2                   = 0;     
-    TSC2i                   = 0;                   
+    TSC2_Rag                = 10;
     RhebGDP                 = 10.002;                        
     RhebGTP                 = 0;    
     RasGDP                  = 10.002;
     RasGTP                  = 0;                  
     mTORC1cyt               = 10.001;                            
     mTORC1lys               = 0;    
-    TSC2_Rag                = 0;
     RagGDP                  = 10.001;
     RagGTP                  = 0;
     mTORC1i                 = 0;                        
@@ -328,13 +324,13 @@ model ComplexPI3KModel
     R11f        : mTORC1lys + RhebGTP => pmTORC1 + RhebGDP  ; Cell * kmTORC1Phos*mTORC1lys*RhebGTP;
     R11b        : pmTORC1 => mTORC1lys                      ; Cell * kmTORC1Dephos*pmTORC1*AMPK;
     R12f        : RhebGDP => RhebGTP                        ; Cell * kRhebLoad*RhebGDP;
-    R12b        : RhebGTP => RhebGDP                        ; Cell * kRhebUnload*RhebGTP*TSC2;
+    R12b        : RhebGTP => RhebGDP                        ; Cell * kRhebUnload*RhebGTP*TSC2_Rag;
     R13fi       : mTORC1cyt + Rapamycin => mTORC1i          ; Cell * kmTORC1BindRapa*mTORC1cyt*Rapamycin;
     R13bi       : mTORC1i => mTORC1cyt + Rapamycin          ; Cell * kmTORC1UnbindRapa*mTORC1i;
     R13fii      : mTORC1lys + Rapamycin => mTORC1ii         ; Cell * kmTORC1BindRapa*mTORC1lys*Rapamycin;
     R13bii      : mTORC1ii => mTORC1lys + Rapamycin         ; Cell * kmTORC1UnbindRapa*mTORC1ii;
-    R13fiii     : pmTORC1 + Rapamycin => mTORC1iii           Cell * kmTORC1BindRapa*pmTORC1*Rapamycin;
-    R13biii     : mTORC1iii => pmTORC1 + Rapamycin           Cell * kmTORC1UnbindRapa*mTORC1iii;
+    R13fiii     : pmTORC1 + Rapamycin => mTORC1iii          ; Cell * kmTORC1BindRapa*pmTORC1*Rapamycin;
+    R13biii     : mTORC1iii => pmTORC1 + Rapamycin         ; Cell * kmTORC1UnbindRapa*mTORC1iii;
     R14f        : FourEBP1 => pFourEBP1                     ; Cell * k4EBP1Phos*FourEBP1*pmTORC1;
     R14b        : pFourEBP1 => FourEBP1                     ; Cell * k4EBP1Dephos*pFourEBP1;
     R15f        : S6K => pS6K                               ; Cell * kS6KPhos*S6K*pmTORC1;
