@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 import matplotlib
 
-matplotlib.use('Qt5Agg')
+matplotlib.use('TkAgg')
 import seaborn as sns
 
 import logging

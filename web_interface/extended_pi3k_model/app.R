@@ -9,9 +9,10 @@
 
 library(shiny)
 library(ggplot2)
-library(reticulate)
 library(stringi)
 library(Stack)
+
+#install.packages('Stack')
 
 
 
@@ -75,13 +76,13 @@ get_data = function(start, stop, step, inputs) {
     stop,
     step,
     '--file',
-    data_filename,
+    DATA_FILENAME,
     '-i',
     string
   )
   message('string passed to python "', str, '"')
   system(str)
-  data = read.csv(data_filename)
+  data = read.csv(DATA_FILENAME)
   return (data)
   
 }
