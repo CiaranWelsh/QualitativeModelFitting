@@ -191,6 +191,7 @@ app.layout = html.Div(children=[
 
         # a left panel for inputs
         html.H2('Select Model Inputs'),
+        html.Label('Inputs are constant throughout simulation. Checked=1, unchecked=0. '),
         html.Div([
             dcc.Checklist(
                 id='model_inputs',
@@ -378,6 +379,10 @@ def output_callbacks(*args):
 # def update_image_width(value):
 #     return value
 
+# for i in sorted(dir(app)):
+#     print(i)
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+
+
