@@ -11,8 +11,6 @@ import matplotlib
 try:
     matplotlib.use('TkAgg')
 except ImportError:
-    matplotlib.use('Qt5Agg')
-except ImportError:
     matplotlib.use('agg')
     
 import seaborn as sns
