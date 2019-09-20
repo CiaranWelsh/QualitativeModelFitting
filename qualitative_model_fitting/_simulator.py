@@ -10,7 +10,7 @@ import matplotlib
 
 try:
     matplotlib.use('TkAgg')
-except ImportError
+except ImportError:
     matplotlib.use('Agg')
 import seaborn as sns
 
