@@ -5,7 +5,6 @@ from dash_canvas import DashCanvas, utils as dash_canvas_utils
 from dash.dependencies import Input, Output
 from PIL import Image
 import os
-import pandas as pd
 import numpy as np
 from qualitative_model_fitting import TimeSeries
 from example_networks.growth_model_string import model_string
