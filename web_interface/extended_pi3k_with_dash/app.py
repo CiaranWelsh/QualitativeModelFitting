@@ -11,6 +11,10 @@ from example_networks.growth_model_string import model_string
 import plotly.graph_objs as go
 from collections import OrderedDict
 
+import matplotlib
+matplotlib.use("agg")
+
+
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 WD = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 WEB_INTERFACE_DIR = os.path.join(WD, 'web_interface')
