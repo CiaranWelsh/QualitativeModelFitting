@@ -420,3 +420,12 @@ there.
 input, label {
     display:block;
 }
+
+.center-block {
+  margin: auto;
+  display: block;
+}
+
+form {
+  text-align: center;
+}

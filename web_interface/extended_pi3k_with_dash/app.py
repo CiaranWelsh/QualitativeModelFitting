@@ -11,7 +11,6 @@ from example_networks.growth_model_string import model_string
 import plotly.graph_objs as go
 from collections import OrderedDict
 
-
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 WD = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 WEB_INTERFACE_DIR = os.path.join(WD, 'web_interface')
@@ -191,48 +190,60 @@ app.layout = html.Div(children=[
 
         # a left panel for inputs
         html.H2('Select Model Inputs'),
-        html.Label('Inputs are constant throughout simulation. Checked=1, unchecked=0. '),
         html.Div([
-            dcc.Checklist(
-                id='model_inputs',
-                options=[
-                    {'label': i, 'value': i} for i in model_inputs
-                ],
-                # multi=True,
-                value=['Insulin', 'AA'],
-                labelStyle={"display": "inline-block"},
-                style={'text-align': 'center'}
-            ),
+            html.Div([
+                dcc.Checklist(
+                    id='model_inputs',
+                    options=[
+                        {'label': i, 'value': i} for i in model_inputs
+                    ],
+                    # multi=True,
+                    value=['Insulin', 'AA'],
+                    labelStyle={"display": "inline-block"},
+                    style={'text-align': 'center'}
+                ),
+                html.Label('(Inputs are constant throughout simulation. Checked=1, unchecked=0).',
+                           style={'text-align': 'center'}),
+            ]),
 
-            html.H2('Select Model Outputs'),
-            dcc.Dropdown(
-                id='outputs',
-                options=[{'label': i, 'value': i} for i in species],
-                value=NCLICKS_DCT['active_pi3k_output_btn']['output'],
-                multi=True
-            ),
-            html.Button(id='all_output_btn', children='All Outputs'),
-            html.Button(id='all_pi3k_output_btn', children='PI3K Outputs'),
-            html.Button(id='active_pi3k_output_btn', children='Active PI3K Outputs'),
-            html.Button(id='erk_output_btn', children='Erk Output'),
-            html.Button(id='ampk_output_btn', children='AMPK Output'),
-            html.Button(id='ip3_output_btn', children='IP3 Output'),
-            html.Button(id='e2_output_btn', children='Estrogen Output'),
-            html.Button(id='phenom_output_btn', children='Phenomenological Output'),
-            html.Button(id='infg_output_btn', children='INFg Output'),
-            html.Button(id='trp_output_btn', children='Trp Output'),
+            html.Div([
+                html.H2('Select Model Outputs'),
+                dcc.Dropdown(
+                    id='outputs',
+                    options=[{'label': i, 'value': i} for i in species],
+                    value=NCLICKS_DCT['active_pi3k_output_btn']['output'],
+                    multi=True
+                ),
+            ]),
+
+            html.Div([
+                html.Button(id='all_output_btn', children='All Outputs'),
+                html.Button(id='all_pi3k_output_btn', children='PI3K Outputs'),
+                html.Button(id='active_pi3k_output_btn', children='Active PI3K Outputs'),
+                html.Button(id='erk_output_btn', children='Erk Output'),
+                html.Button(id='ampk_output_btn', children='AMPK Output'),
+                html.Button(id='ip3_output_btn', children='IP3 Output'),
+                html.Button(id='e2_output_btn', children='Estrogen Output'),
+                html.Button(id='phenom_output_btn', children='Phenomenological Output'),
+                html.Button(id='infg_output_btn', children='INFg Output'),
+                html.Button(id='trp_output_btn', children='Trp Output'),
+            ]),
 
             html.H2('Integration Parameters'),
-            html.Form([
-                html.Label('Start'),
-                dcc.Input(placeholder='', type='text', value=0, id='start', style={'float': 'left'}),
-                html.Label('Stop'),
-                dcc.Input(placeholder='', type='text', value=100, id='stop', style={'float': 'left'}),
-                html.Label('Step'),
-                dcc.Input(placeholder='', type='text', value=101, id='step', style={'float': 'left'}),
-            ],
-                style={'display': 'flex'},
-                # className='form-inline'
+
+            html.Div([
+                html.Form([
+                    html.Label('Start'),
+                    dcc.Input(placeholder='', type='text', value=0, id='start'),
+                    html.Label('Stop'),
+                    dcc.Input(placeholder='', type='text', value=100, id='stop'),
+                    html.Label('Step'),
+                    dcc.Input(placeholder='', type='text', value=101, id='step'),
+                ],
+                    style={'display': 'flex',
+                           'align': 'center'},
+                )
+            ], style={'align': 'center'}
             )
 
         ]),
@@ -364,7 +375,6 @@ def output_callbacks(*args):
  'updatemode', 'loading_state', 'persistence', 'persisted_props',
  'persistence_type']
 
-
 # @app.callback(
 #     Output('canvas_image', 'width'),
 #     [Input('width_slider', 'value')]
@@ -384,5 +394,3 @@ def output_callbacks(*args):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
-
