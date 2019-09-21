@@ -293,7 +293,7 @@ app.layout = html.Div(children=[
     html.Div([
 
         html.Img(
-            src='/assets/network3.png',
+            src='/assets/network4.png',
             style={
                 'width': '100%',
                 'height': '100%',
