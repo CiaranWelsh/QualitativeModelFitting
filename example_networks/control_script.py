@@ -4,7 +4,7 @@ import numpy as np
 from collections import OrderedDict
 
 import qualitative_model_fitting as qmf
-from example_networks.model_strings import model_string
+from example_networks.growth_model_string import model_string
 from example_networks import WD, PLOTS_DIR
 import logging
 
@@ -12,71 +12,76 @@ LOG = logging.getLogger(__name__)
 
 string = """
 timeseries Null                 {} 0, 100, 101
-timeseries AAOnly               {AA=1} 0, 100, 101
+timeseries FedOnly               {Feeding=1} 0, 100, 101
 timeseries InsulinOnly          {Insulin=1} 0, 100, 101
-timeseries InsulinAA            {Insulin=1, AA=1} 0, 100, 101
-timeseries AAOnlyWort           {AA=1, Wortmannin=1} 0, 100, 101
+timeseries InsulinFed            {Insulin=1, Feeding=1} 0, 100, 101
+timeseries FedOnlyWort           {Feeding=1, Wortmannin=1} 0, 100, 101
 timeseries InsulinOnlyWort      {Insulin=1, Wortmannin=1} 0, 100, 101
-timeseries InsulinAAWort        {Insulin=1, Wortmannin=1, AA=1} 0, 100, 101
-timeseries AARapamycin          {AA=1, Rapamycin=1} 0, 100, 101
+timeseries InsulinFedWort        {Insulin=1, Wortmannin=1, Feeding=1} 0, 100, 101
+timeseries FedRapamycin          {Feeding=1, Rapamycin=1} 0, 100, 101
 timeseries InsulinRapamycin     {Insulin=1, Rapamycin=1} 0, 100, 101
-timeseries InsulinAARapamycin   {AA=1, Rapamycin=1, Insulin=1} 0, 100, 101
+timeseries InsulinFedRapamycin   {Feeding=1, Rapamycin=1, Insulin=1} 0, 100, 101
 
-//timeseries RhebKD {Insulin=1, AA=1, RhebGDP=1} 0, 100, 101
-//timeseries TSC2KO {Insulin=1, AA=1, TSC2=0} 0, 100, 101
+//timeseries RhebKD {Insulin=1, Feeding=1, RhebGDP=1} 0, 100, 101
+//timeseries TSC2KO {Insulin=1, Feeding=1, TSC2=0} 0, 100, 101
 
 observation
-    // Patursky 2014 
-    PaturskyFig2A1: pS6K[AAOnly]@t=0 < pS6K[AAOnly]@t=10 //need hyperbolic up here
-    PaturskyFig2A2: pS6K[AAOnly]@t=10 < pS6K[AAOnly]@t=20
-    PaturskyFig2A3: all(pS6K[AAOnly]@t=(0, 100) >= pS6K[AARapamycin]@t=(0, 100))
+    Obs1    : IRS1a[InsulinOnly]@t=0 < IRS1a[InsulinOnly]@t=20
+    Obs2    : IRS1a[InsulinOnly]@t=20 < IRS1a[InsulinFed]@t=20
+    Obs3    : sum(IRS1a[InsulinOnly]@t=(0, 100)) < Sum(IRS1a[InsulinFed]@t=(0, 100))
+    // // Patursky 2014 
+    // PaturskyFig2A1: pS6K[FedOnly]@t=0 < pS6K[FedOnly]@t=10 //need hyperbolic up here
+    // PaturskyFig2A2: pS6K[FedOnly]@t=10 < pS6K[FedOnly]@t=20
+    // PaturskyFig2A3: all(pS6K[FedOnly]@t=(0, 100) >= pS6K[FedRapamycin]@t=(0, 100))
+    // 
+    // // hinalt2004
+    // HinaltFig1A1: pmTORC1[InsulinOnly]@t=80 > pmTORC1[Null]@t=80 
+    // HinaltFig1A2: pmTORC1[InsulinOnly]@t=80 > pmTORC1[FedOnly]@t=80 
+    // HinaltFig1A3: pmTORC1[FedOnly]@t=80 > pmTORC1[Null]@t=80 
+    // HinaltFig1A4: pmTORC1[InsulinFed]@t=80 > pmTORC1[FedOnly]@t=80 
+    // HinaltFig1A5: pmTORC1[InsulinFed]@t=80 > pmTORC1[InsulinOnly]@t=80
+    // // with wortmannin 
+    // HinaltFig1A6: pmTORC1[InsulinFed]@t=80 > pmTORC1[InsulinFedWort]@t=80 
+    // HinaltFig1A7: pmTORC1[InsulinFed]@t=80 > pmTORC1[InsulinFedWort]@t=80 
+    // HinaltFig1A8: pS6K[FedOnly]@t=80 > pS6K[Null]@t=80 
+    // HinaltFig1A9: pS6K[InsulinFed]@t=80 > pS6K[FedOnly]@t=80 
+    // HinaltFig1A10: pS6K[InsulinFed]@t=80 > pS6K[InsulinOnly]@t=80 
+    // HinaltFig1A11: pS6K[InsulinFed]@t=80 > pS6K[Null]@t=80 
+    // HinaltFig1A12: pS6K[InsulinFed]@t=80 > pS6K[InsulinFedWort]@t=80 
+    // // fig 2
+    // HinaltFig2A1: pAkt[FedOnly]@t=80 < pAkt[InsulinOnly]@t=80 
+    // HinaltFig2A2: pAkt[FedOnly]@t=80 < pAkt[InsulinFed]@t=80 
+    // HinaltFig2A3: pAkt[FedOnly]@t=80 < pAkt[InsulinFed]@t=80 
+    // HinaltFig2A4: pAkt[FedOnlyWort]@t=80 < pAkt[InsulinFedWort]@t=80 
+    // HinaltFig2A5: pAkt[InsulinFedWort]@t=80 > pAkt[Null]@t=80 
+    // HinaltFig2A6: pAkt[InsulinFedWort]@t=80 > pAkt[InsulinOnly]@t=80 
+    // HinaltFig2A7: pAkt[InsulinFedWort]@t=80 > pAkt[FedOnlyWort]@t=80 
+    // HinaltFig2A8: pAkt[InsulinFedWort]@t=80 > pAkt[FedOnlyWort]@t=80 
+    // // fig4
+    // HinaltFig4B1: pAkt[InsulinFedWort]@t=80 > pAkt[FedOnlyWort]@t=80 
+    // HinaltFig4B2: pAkt[InsulinRapamycin]@t=80 > pAkt[InsulinOnly]@t=80 //because of feedback S6K
+    // HinaltFig4B3: pAkt[InsulinFed]@t=80 > pAkt[InsulinFedRapamycin]@t=80 
     
-    // hinalt2004
-    HinaltFig1A1: pmTORC1[InsulinOnly]@t=80 > pmTORC1[Null]@t=80 
-    HinaltFig1A2: pmTORC1[InsulinOnly]@t=80 > pmTORC1[AAOnly]@t=80 
-    HinaltFig1A3: pmTORC1[AAOnly]@t=80 > pmTORC1[Null]@t=80 
-    HinaltFig1A4: pmTORC1[InsulinAA]@t=80 > pmTORC1[AAOnly]@t=80 
-    HinaltFig1A5: pmTORC1[InsulinAA]@t=80 > pmTORC1[InsulinOnly]@t=80
-    // with wortmannin 
-    HinaltFig1A6: pmTORC1[InsulinAA]@t=80 > pmTORC1[InsulinAAWort]@t=80 
-    HinaltFig1A7: pmTORC1[InsulinAA]@t=80 > pmTORC1[InsulinAAWort]@t=80 
-    HinaltFig1A8: pS6K[AAOnly]@t=80 > pS6K[Null]@t=80 
-    HinaltFig1A9: pS6K[InsulinAA]@t=80 > pS6K[AAOnly]@t=80 
-    HinaltFig1A10: pS6K[InsulinAA]@t=80 > pS6K[InsulinOnly]@t=80 
-    HinaltFig1A11: pS6K[InsulinAA]@t=80 > pS6K[Null]@t=80 
-    HinaltFig1A12: pS6K[InsulinAA]@t=80 > pS6K[InsulinAAWort]@t=80 
-    // fig 2
-    HinaltFig2A1: pAkt[AAOnly]@t=80 < pAkt[InsulinOnly]@t=80 
-    HinaltFig2A2: pAkt[AAOnly]@t=80 < pAkt[InsulinAA]@t=80 
-    HinaltFig2A3: pAkt[AAOnly]@t=80 < pAkt[InsulinAA]@t=80 
-    HinaltFig2A4: pAkt[AAOnlyWort]@t=80 < pAkt[InsulinAAWort]@t=80 
-    HinaltFig2A5: pAkt[InsulinAAWort]@t=80 > pAkt[Null]@t=80 
-    HinaltFig2A6: pAkt[InsulinAAWort]@t=80 > pAkt[InsulinOnly]@t=80 
-    HinaltFig2A7: pAkt[InsulinAAWort]@t=80 > pAkt[AAOnlyWort]@t=80 
-    HinaltFig2A8: pAkt[InsulinAAWort]@t=80 > pAkt[AAOnlyWort]@t=80 
-    // fig4
-    HinaltFig4B1: pAkt[InsulinAAWort]@t=80 > pAkt[AAOnlyWort]@t=80 
-    HinaltFig4B2: pAkt[InsulinRapamycin]@t=80 > pAkt[InsulinOnly]@t=80 //because of feedback S6K
-    HinaltFig4B3: pAkt[InsulinAA]@t=80 > pAkt[InsulinAARapamycin]@t=80 
+    // Obs1        : sum(pAkt['
      
 
 
-    //// without AA, mTORC1 is not activated so neither is s6k and no feedback.
+    //// without Fed, mTORC1 is not activated so neither is s6k and no feedback.
     //// therefore IRS1a is hyperbolic in this instance.
     //obs1: IRS1a[InsulinOnly]@t=0 < IRS1a[InsulinOnly]@t=10 
     //obs2: IRS1a[InsulinOnly]@t=10 < IRS1a[InsulinOnly]@t=20
     //
-    //// with AA, S6K negative FB causes transient negative shape
-    //obs3: IRS1a[InsulinAA]@t=0 < IRS1a[InsulinAA]@t=10 
-    //obs4: IRS1a[InsulinAA]@t=10 > IRS1a[InsulinAA]@t=20
+    //// with Fed, S6K negative FB causes transient negative shape
+    //obs3: IRS1a[InsulinFed]@t=0 < IRS1a[InsulinFed]@t=10 
+    //obs4: IRS1a[InsulinFed]@t=10 > IRS1a[InsulinFed]@t=20
     //
     //// lacher2010, figure 1a
-    //obs5: RhebGDP[RhebKD]@t=0 < RhebGDP[InsulinAA]@t=0 
-    //obs6: max(pS6K[RhebKD]@t=(0, 100)) < max(pS6K[InsulinAA]@t=(0, 100)) 
+    //obs5: RhebGDP[RhebKD]@t=0 < RhebGDP[InsulinFed]@t=0 
+    //obs6: max(pS6K[RhebKD]@t=(0, 100)) < max(pS6K[InsulinFed]@t=(0, 100)) 
     //
     //// vander2007
     //// Cells lacking TSC2 result in constitutive activation of mTORC1
-    //obs7: max(pmTORC1[TSC2KO]@t=(0, 100)) > max(pmTORC1[InsulinAA]@t=(0, 100))
+    //obs7: max(pmTORC1[TSC2KO]@t=(0, 100)) > max(pmTORC1[InsulinFed]@t=(0, 100))
     
 
 
@@ -86,9 +91,9 @@ if __name__ == '__main__':
 
     # some flags
 
-    RUN_QMF = False
+    RUN_QMF = True
 
-    PLOT_TS = True
+    PLOT_TS = False
 
     WORKING_DIR = os.path.dirname(os.path.dirname(__file__))
     MODELS_DIR = os.path.join(WORKING_DIR, 'models')
@@ -123,7 +128,7 @@ if __name__ == '__main__':
             plot_selection={
                 'IRS1': ['IRS1a'],
                 'Akt': ['pAkt'],
-                'TSC2': ['TSC2', 'pTSC2', 'TSC2i'],
+                'TSC2': ['TSC2', 'pTSC2'],
                 'Rheb': ['RhebGTP', 'RhebGDP'],
                 'mTORC1': ['pmTORC1'],
                 'S6K': ['pS6K']},
@@ -192,7 +197,7 @@ if __name__ == '__main__':
         #     InsulinStimulation=OrderedDict(
         #         inputs=OrderedDict(
         #             Insulin=[0, 1],
-        #             AA=[0, 1],
+        #             Fed=[0, 1],
         #         ),
         #         plot_selection=insulin_plot_selection,
         #         figsize=(12, 12),
@@ -203,7 +208,7 @@ if __name__ == '__main__':
         #     InsulinStimulationAndPI3KInhibition=OrderedDict(
         #         inputs=OrderedDict(
         #             Insulin=[1],
-        #             AA=[1],
+        #             Fed=[1],
         #             Wortmannin=[0, 1]
         #         ),
         #         figsize=(12, 12),
@@ -215,7 +220,7 @@ if __name__ == '__main__':
         #     InsulinStimulationAndAktInhibition=OrderedDict(
         #         inputs=OrderedDict(
         #             Insulin=[1],
-        #             AA=[1],
+        #             Fed=[1],
         #             MK2206=[0, 1]
         #         ),
         #         figsize=(12, 12),
@@ -228,7 +233,7 @@ if __name__ == '__main__':
         #     InsulinStimulationAndmTORC1Inhibition=OrderedDict(
         #         inputs=OrderedDict(
         #             Insulin=[1],
-        #             AA=[1],
+        #             Fed=[1],
         #             Rapamycin=[0, 1]
         #         ),
         #         figsize=(12, 12),
@@ -240,7 +245,7 @@ if __name__ == '__main__':
         #     InsulinStimulationAndTSC2Manipulation=OrderedDict(
         #         inputs=OrderedDict(
         #             Insulin=[1],
-        #             AA=[1],
+        #             Fed=[1],
         #             TSC2=[0, 10, 20]
         #         ),
         #         figsize=(12, 12),

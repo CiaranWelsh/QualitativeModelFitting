@@ -45,7 +45,7 @@ css = {
 # inputs string
 model_inputs = [
     'Insulin',
-    'AA',
+    'Feeding',
     'E2',
     'Rapamycin',
     'MK2206',
@@ -55,19 +55,40 @@ model_inputs = [
     'PMA',
     'IGF',
     'INFg',
-    'Feeding',
 ]
 
-# load from file plottable species. #todo replace with string manipulation of model string
-with open(PLOTTABLE_SPECIES_FILE, 'r') as f:
-    species = f.read().split('\n')
-species = sorted([i.strip() for i in species])
+
+def get_model_inputs(model_string):
+    model_inputs = model_string.split('// inputs')[1].split('// model components')[0]
+    model_inputs = model_inputs.split('\n')
+    model_inputs = [i.strip().replace(' ', '').replace(';', '') for i in model_inputs]
+    model_inputs = [i for i in model_inputs if i != '']
+    model_inputs = [i.split('=')[0] for i in model_inputs if not i.startswith('//')]
+    print('model inputs: ', model_inputs)
+    return model_inputs
+
+
+def get_model_species(model_string):
+    model_species = model_string.split('// model components')[1].split('// reactions')[0]
+    model_species = model_species.split('\n')
+    model_species = [i.strip().replace(' ', '').replace(';', '') for i in model_species]
+    model_species = [i for i in model_species if i != '']
+    model_species = [i.split('=')[0] for i in model_species]
+    return sorted(model_species)
+
+
+model_inputs = get_model_inputs(model_string)
+model_species = get_model_species(model_string)
 
 # dictionary to support the output buttons callback
 NCLICKS_DCT = OrderedDict(
     all_output_btn={
         'n_clicks': 0,
-        'output': species
+        'output': model_species
+    },
+    clear_output_btn={
+        'n_clicks': 0,
+        'output': []
     },
     all_pi3k_output_btn={
         'n_clicks': 0,
@@ -109,10 +130,10 @@ NCLICKS_DCT = OrderedDict(
 
     e2_output_btn={
         'n_clicks': 0,
-        'output': ['E2_cyt', 'ERa_cyt', 'ERa_E2', 'ERa_dimer',
-                   'ERa_dimer_nuc', 'ERa_nuc', 'TFFmRNA', 'Greb1mRNA', 'TFF',
-                   'Greb1',
-                   ]
+        'output': [
+            'E2', 'E2_cyt', 'ERa_cyt', 'ERa_E2', 'ERa_dimer', 'ERa_dimer_nuc',
+            'Greb1mRNA', 'Greb1', 'TFFmRNA', 'TFF', 'eIFa', 'ERa_cyti'
+        ]
     },
     phenom_output_btn={
         'n_clicks': 0,
@@ -125,11 +146,17 @@ NCLICKS_DCT = OrderedDict(
     },
     trp_output_btn={
         'n_clicks': 0,
-        'output': ['tRNA_Trp', 'Trp', 'Kyn', 'tRNA',
-                   'tRNA_trp', 'GCN2', 'GCN2_a', 'eIFa',
-                   'peIFa', 'mERa',
-                   ]
+        'output': ['Kyn', 'GCN2', 'GCN2_a', 'eIFa',
+                   'peIFa']
     },
+    # estrogen_output_btn={
+    #     'n_clicks': 0,
+    #     'output': [
+    #         'E2', 'E2_cyt', 'ERa_cyt', 'ERa_E2', 'ERa_dimer', 'ERa_dimer_nuc',
+    #         'Greb1mRNA', 'Greb1', 'TFFmRNA', 'TFF', 'eIFa', 'ERa_cyti'
+    #
+    #     ]
+    # },
 )
 
 
@@ -153,6 +180,7 @@ def plot_graph(model_string, model_inputs, start, stop, step, outputs):
     model_inputs = {i: 1 for i in model_inputs}
     ts = TimeSeries(model_string, model_inputs, float(start), float(stop), int(step)).simulate()
     ts = ts[outputs]
+    print(ts.head())
     traces = []
     for i in ts:
         traces.append(
@@ -198,7 +226,7 @@ app.layout = html.Div(children=[
                         {'label': i, 'value': i} for i in model_inputs
                     ],
                     # multi=True,
-                    value=['Insulin', 'AA'],
+                    value=['Insulin', 'Feeding'],
                     labelStyle={"display": "inline-block"},
                     style={'text-align': 'center'}
                 ),
@@ -210,13 +238,14 @@ app.layout = html.Div(children=[
                 html.H2('Select Model Outputs'),
                 dcc.Dropdown(
                     id='outputs',
-                    options=[{'label': i, 'value': i} for i in species],
+                    options=[{'label': i, 'value': i} for i in model_species],
                     value=NCLICKS_DCT['active_pi3k_output_btn']['output'],
                     multi=True
                 ),
             ]),
 
             html.Div([
+                html.Button(id='clear_output_btn', children='Clear'),
                 html.Button(id='all_output_btn', children='All Outputs'),
                 html.Button(id='all_pi3k_output_btn', children='PI3K Outputs'),
                 html.Button(id='active_pi3k_output_btn', children='Active PI3K Outputs'),
@@ -248,11 +277,11 @@ app.layout = html.Div(children=[
 
         ]),
 
-        # right panel is graph
+        # graph
         html.Div([dcc.Graph(
             id='graph', figure=plot_graph(
                 model_string,
-                {i: 1 for i in ['Insulin', 'AA']},
+                {i: 1 for i in ['Insulin', 'Feeding']},
                 0, 100, 101,
                 NCLICKS_DCT['active_pi3k_output_btn']['output'],
             )
@@ -262,6 +291,7 @@ app.layout = html.Div(children=[
 
     # for network image
     html.Div([
+
         html.Img(
             src='/assets/network3.png',
             style={
@@ -269,35 +299,17 @@ app.layout = html.Div(children=[
                 'height': '100%',
             }
         ),
-        # DashCanvas(id='canvas_image',
-        #            image_content=img,
-        #            tool='select',
-        #            zoom=10,
-        #            scale=2,
-        #            height=2000,
-        #            ),
-        # html.Label('Width Slider'),
-        # dcc.Slider(
-        #     id='width_slider',
-        #     min=100,
-        #     max=2000,
-        #     step=20,
-        #     value=800
-        # ),
-        # html.Label('Height Slider'),
-        # dcc.Slider(
-        #     id='height_slider',
-        #     min=100,
-        #     max=2000,
-        #     step=20,
-        #     value=800
-        # ),
     ], style={
         'height': '100%',
         'width': '100%'
     }),
 
     html.Div([
+        html.H2('Model Definition'),
+        html.Label('If you modify the model definition below, the changes will be reflected '
+                   'in the simulation output. For instance, to simulate TSC knockdown, '
+                   'ensure all relevant TSC2 components start with an initial '
+                   'amount of 0.'),
         dcc.Textarea(
             id='model_string',
             value=model_string,
@@ -365,7 +377,6 @@ def output_callbacks(*args):
                 to_return = NCLICKS_DCT[btn]['output']
             else:
                 continue
-    print(to_return)
     return to_return
 
 
