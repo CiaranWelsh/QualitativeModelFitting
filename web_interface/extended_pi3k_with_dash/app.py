@@ -27,10 +27,10 @@ for i in [WD, WEB_INTERFACE_DIR, ASSETS_DIR, APP_DIR]:
     if not os.path.isdir(i):
         raise ValueError(i)
 
-# checks for files
-for i in [PLOTTABLE_SPECIES_FILE]:
-    if not os.path.isfile(i):
-        raise ValueError
+# # checks for files
+# for i in [PLOTTABLE_SPECIES_FILE]:
+#     if not os.path.isfile(i):
+#         raise ValueError
 
 # get img as matrix
 # img = Image.open(NETWORK_FNAME)
