@@ -2856,8 +2856,8 @@
           <speciesReference species="IDO1" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <listOfModifiers>
-          <modifierSpeciesReference species="eIFa"/>
           <modifierSpeciesReference species="IDO1mRNA"/>
+          <modifierSpeciesReference species="eIFa"/>
         </listOfModifiers>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -2893,6 +2893,9 @@
         <listOfProducts>
           <speciesReference species="Kyn" stoichiometry="1" constant="true"/>
         </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="IDO1"/>
+        </listOfModifiers>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -2900,6 +2903,7 @@
               <ci> Cell </ci>
               <ci> kAAToKyn </ci>
               <ci> Trp </ci>
+              <ci> IDO1 </ci>
             </apply>
           </math>
         </kineticLaw>
@@ -3002,7 +3006,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R59f" reversible="false" fast="false">
+      <reaction id="R60f" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="Trp" stoichiometry="1" constant="true"/>
         </listOfReactants>

@@ -180,6 +180,7 @@ def plot_graph(model_string, model_inputs, start, stop, step, outputs):
     model_inputs = {i: 1 for i in model_inputs}
     ts = TimeSeries(model_string, model_inputs, float(start), float(stop), int(step)).simulate()
     ts = ts[outputs]
+    print('model inputs: ', model_inputs)
     print(ts.head())
     traces = []
     for i in ts:
