@@ -28,14 +28,14 @@ for i in [WD, WEB_INTERFACE_DIR, ASSETS_DIR, APP_DIR]:
         raise ValueError(i)
 
 # checks for files
-for i in [PLOTTABLE_SPECIES_FILE, NETWORK_FNAME]:
+for i in [PLOTTABLE_SPECIES_FILE]:
     if not os.path.isfile(i):
         raise ValueError
 
 # get img as matrix
-img = Image.open(NETWORK_FNAME)
-img = np.array(img.convert('RGBA'))
-img = dash_canvas_utils.array_to_data_url(img)
+# img = Image.open(NETWORK_FNAME)
+# img = np.array(img.convert('RGBA'))
+# img = dash_canvas_utils.array_to_data_url(img)
 
 # some css
 css = {
