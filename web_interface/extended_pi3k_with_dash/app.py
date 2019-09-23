@@ -291,7 +291,6 @@ app.layout = html.Div(children=[
 
     # for network image
     html.Div([
-
         html.Img(
             src='/assets/network4.png',
             style={

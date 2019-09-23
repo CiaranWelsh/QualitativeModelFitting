@@ -114,7 +114,11 @@ model ComplexModel
     var LKB1a          in Cell;
     var LKB1           in Cell;
     var ERa_cyti        in Cell;
+    var Trp             in Cell;
 
+
+    const Fulvestrant ;
+    const Rapamycin   ;
     const Insulin;
     // const AA                      
     const Rapamycin               
@@ -248,14 +252,13 @@ model ComplexModel
     kIDO1mRNAOut            = 0.1;             
     kIDO1In                 = 0.1;     
     kIDO1Out                = 0.1;         
-    kAAToKyn_km             = 5.0;
-    kAAToKyn_kcat           = 15;         
+    kAAToKyn                = 10;
     kKynToAA                = 0.1;         
-    kAAIn                   = 0.1;     
+    kAAIn                   = 1;     
     kAAOut                  = 0.1;     
     kGCN2Act                = 0.1;         
     kGCN2Inact              = 0.1;         
-    keIFaPhos               = 0.1;         
+    keIFaPhos               = 0.5;         
     keIFaDephos             = 0.1;    
     kAASuffIn               = 0.1;
     kAASuffOut              = 0.1;
@@ -271,6 +274,8 @@ model ComplexModel
     kmTORC1UnbindRapa       = 0.1;
     kERaBindFulv            = 100;
     kERaUnbindFulv          = 0.1;
+    kTrpIn                  = 0.3;
+    kTrpOut                 = 0.1;
 
     // inputs
     Insulin                 = 0;        
@@ -287,7 +292,6 @@ model ComplexModel
     E2                      = 0;
     
     // model components
-    AminoAcids              = 0;
     IRS1                    = 10;                        
     IRS1a                   = 0;                        
     pIRS1                   = 0;                        
@@ -386,8 +390,8 @@ model ComplexModel
     PTEN                    = 10;                       
     LKB1a                   = 0;                       
     LKB1                    = 10;         
-    AminoAcidSufficiency    = 0;              
-    
+    Trp                     = 0;              
+
     // reactions
     // PI3K reactions
     R1f         : IRS1 => IRS1a                             ; Cell * kIRS1Act*IRS1*Insulin;
@@ -415,7 +419,7 @@ model ComplexModel
     R7b         : pTSC2 => TSC2                             ; Cell * kTSC2Dephos*pTSC2;
     R8f         : TSC2 + RagGDP => TSC2_Rag                 ; Cell * kTSC2BindRagGDP*TSC2*RagGDP;
     R8b         : TSC2_Rag => TSC2 + RagGDP                 ; Cell * kTSC2UnbindRagGDP*TSC2_Rag*pAkt;
-    R9f         : RagGDP => RagGTP                          ; Cell * kRagLoad*RagGDP*AminoAcids;
+    R9f         : RagGDP => RagGTP                          ; Cell * kRagLoad*RagGDP*Trp;
     R10f        : mTORC1cyt + RagGTP => mTORC1lys + RagGDP  ; Cell * kmTORC1CytToLys*mTORC1cyt*RagGTP;
     R10b        : mTORC1lys => mTORC1cyt                    ; Cell * kmTORC1LysToCyt*mTORC1lys;
     R11f        : mTORC1lys + RhebGTP => pmTORC1 + RhebGDP  ; Cell * kmTORC1Phos*mTORC1lys*RhebGTP;
@@ -539,18 +543,14 @@ model ComplexModel
     R52Out      : IDO1mRNA =>                               ; Cell * kIDO1mRNAOut*IDO1mRNA
     R53In       : => IDO1                                   ; Cell * kIDO1In*IDO1mRNA*eIFa
     R53Out      : IDO1 =>                                   ; Cell * kIDO1Out*IDO1
-    R54f        : AminoAcids => Kyn                         ; Cell * MMWithKcat(kAAToKyn_km, kAAToKyn_kcat, AminoAcids, IDO1)//MMWithKcat(km, kcat, S, E)
-    R54b        : Kyn => AminoAcids                         ; Cell * kKynToAA*Kyn
-    R55In       : => AminoAcids                             ; Cell * kAAIn*Feeding;          
-    R55Out      : AminoAcids =>                             ; Cell * kAAOut*AminoAcids;          
-    
-    R56f        : => AminoAcidSufficiency                   ; Cell * kAASuffIn*AminoAcids
-    R56b        : AminoAcidSufficiency =>                   ; Cell * kAASuffOut*AminoAcidSufficiency
-    
-    R57f        : GCN2a => GCN2                            ; Cell * kGCN2Act*GCN2a
-    R57b        : GCN2 => GCN2a                            ; Cell * kGCN2Inact*GCN2a*AminoAcidSufficiency 
+    R54f        : Trp => Kyn                                ; Cell * kAAToKyn*Trp;
+    R54b        : Kyn => Trp                                ; Cell * kKynToAA*Kyn
+    R57f        : GCN2a => GCN2                             ; Cell * kGCN2Act*GCN2a*Trp 
+    R57b        : GCN2 => GCN2a                             ; Cell * kGCN2Inact*GCN2
     R58f        : eIFa => peIFa                             ; Cell * keIFaPhos*eIFa*GCN2a
     R58b        : peIFa => eIFa                             ; Cell * keIFaDephos*peIFa
+    R59f        : => Trp                                    ; Cell * kTrpIn*Feeding;
+    R59f        : Trp =>                                    ; Cell * kTrpOut*Trp;
 end
 
 """
@@ -558,7 +558,12 @@ end
 if __name__ == '__main__':
     import tellurium
 
-    mod = tellurium.loada(model_string)
-    mod.simulate(0, 100, 101)
+    # mod = tellurium.loada(model_string)
+    # mod.simulate(0, 100, 101)
+    import pycotools3 as py3
+    import os
+    copasi_file = os.path.join(os.path.dirname(__file__), 'copasi_model.cps')
+    mod = py3.model.loada(model_string, copasi_file)
+    mod.open()
 
 
