@@ -1,9 +1,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-from dash_canvas import DashCanvas, utils as dash_canvas_utils
 from dash.dependencies import Input, Output
-from PIL import Image
 import os
 import numpy as np
 from qualitative_model_fitting import TimeSeries
@@ -19,8 +17,6 @@ ASSETS_DIR = os.path.join(APP_DIR, 'assets')
 
 PLOTTABLE_SPECIES_FILE = os.path.join(WEB_INTERFACE_DIR, 'plottable_species.txt')
 NETWORK_FNAME = os.path.join(WEB_INTERFACE_DIR, 'network.png')
-# STYLESHEET_FILE = os.path.join(STYLESHEETS_DIR, 'dash-style.css')
-# STYLESHEET_FILE = os.path.join(STYLESHEETS_DIR, 'dash-style-mod.css')
 
 # checks for directories
 for i in [WD, WEB_INTERFACE_DIR, ASSETS_DIR, APP_DIR]:
