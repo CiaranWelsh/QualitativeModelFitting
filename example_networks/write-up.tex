@@ -153,26 +153,62 @@
         \item
     \end{itemize}
 
-    \subsection{\cite{}}
+    \subsection{\cite{fumarola2013effects}}
+    \begin{itemize}
+        \item Sorafenib is a multi kinase inhibitor
+        \item Inhibits Raf
+    \end{itemize}
+
+    \subsection{\cite{van2011long}}
+    \begin{itemize}
+        \item LKB1 activates AMPK during times of food scaricity.
+        \item LKB1 resides in the nucleus. On activation, LKB1 forms a heterotrimer with STRAD$\alpha$ and MO25
+        \item Strad$\alpha$ prevents nuclear relocalisation of LKB1 while MO25 stablizes the interaction between Strad and LKB1
+        \item When cytoplasmic and active, LKB1 activates AMPK
+        \item AMPK is a sensor of cellular energy status via ratios of AMP to ATP and ADP to ATP.
+        \item When AMPK is bound to AMP (or ADP) it can be phosphorylated by LKB1.
+        \item An alternative mode of AMPK activation is via CaMKK2 in response to Ca2+ influx
+        \item The reverse reaction of AMPK dephosphorylation is catalysed by PP2A and PP2C.
+        \item The consequence of AMPK activation is the production of metabolic enzymes such as acetyl-CoA carboxylase and HMG-CoA reductase.
+        \item AMPK is a key component that results in suppression of energy consumption processes such as energy storage in glycogen and lipid synthesis and enhancing energy gaining processes on the other, such as glycolysis.
+        \item Therefore AMPK results in restoration of cellular energy status.
+        \item Further, AMPK stimulates translocation of GLUT4 to the plasma membrane
+        \item Importantly, TSC2 is a downstream target of AMPK
+        \item Erk inhibits TSC2
+        \item
+        \item mTORC1 phosphorylates ATG and ULK1/2, inhibiting autophagy.
+    \end{itemize}
+
+    \subsection{\cite{hardie2012ampk}}
     \begin{itemize}
         \item
     \end{itemize}
 
-    \subsection{\cite{}}
+    \section{Model Features}
+    \subsection{PI3K / mTORC1}
     \begin{itemize}
-        \item
+        \item Stimulation with insulin induces PI3K activation and conversion of PIP2 to PIP3.
+        \item Akt and PDK1 both bind to PIP3 allowing PDK1 to phos Akt. Activate Akt inactivates TSC2.
+        \item Meanwhile, amino acid stimulation causes activataion of Rag G proteins which stimulate the migration of mTOR from the cytoplasm to the lysosome.
+        \item TSC2, when active associates with the inactivated form of Rag which maintains Rheb in the inactive state
+        \item When TSC is inhibited by phos from Akt, Rheb is primed with GTP, allowing the phos and activation of lysosomal mTORC1
+        \item Activated mTORC1 actuvates both 4EBP1 and S6K by phosphorylation.
+        \item Wortmannin, MK2206 and Rapamycin inhibit the PI3K system at PI3K, Akt and all mTORC1 subspecies.
     \end{itemize}
 
-    \subsection{\cite{}}
+    \subsection{EGF}
     \begin{itemize}
-        \item
+        \item EGF binds EGFR which is a receptor tyrosine kinase. The receptor binds scaffolding proteins such as Sos leading to a fully activated receptor.
+        \item The activated receptor primes Ras GTP for activating Raf which activates Mek and Erk by sequential phosphorylations.
+        \item Two feedbacks are included: a slow and fast.
+        \item The slow feedback is by the de novo transcription of phosphatases such as DUSPs.
+        \item The fast feedback is Erk directly phosphorylating and inhibiting Sos
+        \item AZD inhibits the Erk system at Mek
     \end{itemize}
 
-    \section{Model notes}
-    \begin{itemize}
-        \item Looks like this topology causes pAkt to have a hyperbolic curve, instead of following the transient curve induced by pPI3K. Is this correct?
-        \item
-    \end{itemize}
+    \subsection{Cross-talk between Erk and PI3K systems}
+
+    \subsection{AMPK}
 
     %	\subsection{x}
     %%\cite{nobukini2005amino}}
