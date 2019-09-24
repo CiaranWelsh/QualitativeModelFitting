@@ -381,10 +381,10 @@ def output_callbacks(*args):
 
 
 # Here are the available properties in "width_slider":
-['id', 'marks', 'value', 'className', 'disabled', 'dots',
- 'included', 'min', 'max', 'tooltip', 'step', 'vertical',
- 'updatemode', 'loading_state', 'persistence', 'persisted_props',
- 'persistence_type']
+# ['id', 'marks', 'value', 'className', 'disabled', 'dots',
+#  'included', 'min', 'max', 'tooltip', 'step', 'vertical',
+#  'updatemode', 'loading_state', 'persistence', 'persisted_props',
+#  'persistence_type']
 
 # @app.callback(
 #     Output('canvas_image', 'width'),

@@ -148,7 +148,7 @@ model ComplexModel
     kAktUnbindPIP3          = 0.1;             
     kAktPhos                = 1;         
     kAktDephos              = 0.1;         
-    kAktBindMK              = 0.1;         
+    
     kTSC2Phos               = 0.1;         
     kTSC2Dephos             = 0.1;         
     kTSC2BindRagGDP         = 0.1;             
@@ -199,9 +199,9 @@ model ComplexModel
     kMekDephos              = 0.1;         
     kErkPhos                = 0.1;         
     kErkDephos              = 0.1;         
-    kDUSPmRNAIn             = 0.1;         
+    kDUSPmRNAIn             = 0.01;         
     kDUSPmRNAOut            = 0.1;             
-    kDUSPIn                 = 0.1;     
+    kDUSPIn                 = 0.01;     
     kDUSPOut                = 0.1;         
     kPLCPhos                = 0.1;         
     kPLCPhosBasal           = 0.1;             
@@ -248,10 +248,10 @@ model ComplexModel
     kStat1Undim             = 0.1;         
     kStat1DimToNuc          = 1;             
     kStat1DimToCyt          = 0.1;             
-    kIDO1mRNAIn             = 0.1;         
+    kIDO1mRNAIn             = 0.01;         
     kIDO1mRNAOut            = 0.1;             
     kIDO1In                 = 0.1;     
-    kIDO1Out                = 0.1;         
+    kIDO1Out                = 0.01;         
     kAAToKyn                = 10;
     kKynToAA                = 0.1;         
     kAAIn                   = 1;     
@@ -276,6 +276,9 @@ model ComplexModel
     kERaUnbindFulv          = 0.1;
     kTrpIn                  = 0.3;
     kTrpOut                 = 0.1;
+    kAktBindMK              = 100;         
+    kAktUnbindMK            = 0.1;         
+    
 
     // inputs
     Insulin                 = 0;        
