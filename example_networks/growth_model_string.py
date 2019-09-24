@@ -543,14 +543,14 @@ model ComplexModel
     R52Out      : IDO1mRNA =>                               ; Cell * kIDO1mRNAOut*IDO1mRNA
     R53In       : => IDO1                                   ; Cell * kIDO1In*IDO1mRNA*eIFa
     R53Out      : IDO1 =>                                   ; Cell * kIDO1Out*IDO1
-    R54f        : Trp => Kyn                                ; Cell * kAAToKyn*Trp;
+    R54f        : Trp => Kyn                                ; Cell * kAAToKyn*Trp*IDO1;
     R54b        : Kyn => Trp                                ; Cell * kKynToAA*Kyn
     R57f        : GCN2a => GCN2                             ; Cell * kGCN2Act*GCN2a*Trp 
     R57b        : GCN2 => GCN2a                             ; Cell * kGCN2Inact*GCN2
     R58f        : eIFa => peIFa                             ; Cell * keIFaPhos*eIFa*GCN2a
     R58b        : peIFa => eIFa                             ; Cell * keIFaDephos*peIFa
     R59f        : => Trp                                    ; Cell * kTrpIn*Feeding;
-    R59f        : Trp =>                                    ; Cell * kTrpOut*Trp;
+    R59b        : Trp =>                                    ; Cell * kTrpOut*Trp;
 end
 
 """

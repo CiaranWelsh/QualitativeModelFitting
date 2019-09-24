@@ -23,10 +23,10 @@ for i in [WD, WEB_INTERFACE_DIR, ASSETS_DIR, APP_DIR]:
     if not os.path.isdir(i):
         raise ValueError(i)
 
-# checks for files
-for i in [PLOTTABLE_SPECIES_FILE]:
-    if not os.path.isfile(i):
-        raise ValueError
+# # checks for files
+# for i in [PLOTTABLE_SPECIES_FILE]:
+#     if not os.path.isfile(i):
+#         raise ValueError
 
 # get img as matrix
 # img = Image.open(NETWORK_FNAME)
@@ -176,6 +176,7 @@ def plot_graph(model_string, model_inputs, start, stop, step, outputs):
     model_inputs = {i: 1 for i in model_inputs}
     ts = TimeSeries(model_string, model_inputs, float(start), float(stop), int(step)).simulate()
     ts = ts[outputs]
+    print('model inputs: ', model_inputs)
     print(ts.head())
     traces = []
     for i in ts:
