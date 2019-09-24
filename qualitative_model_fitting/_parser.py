@@ -74,7 +74,7 @@ class Parser:
                             | "<"
                             | ">"
     FUNC_TYPE1              : "all"|"any"
-    FUNC_TYPE2              : "mean"|"min"|"max"
+    FUNC_TYPE2              : "mean"|"min"|"max"|"sum"
     _TIME_SYMBOL            : "@t=" 
     POINT_TIME              :  DIGIT+
     INTERVAL_TIME           : "(" DIGIT+ [WS]* "," [WS]* DIGIT + ")"
