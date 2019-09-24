@@ -30,8 +30,8 @@ MODEL_DIR = file.path(WD, 'example_networks')
 NETWORK_FNAME = file.path(WEB_DIR, 'network.png')
 NETWORK_FNAME
 SIMULATION_SCRIPT = file.path(WEB_DIR, 'run_timeseries.py')
-# PYTHON_PATH = "/home/ncw135/miniconda3/envs/py36/bin/python"
 PYTHON_PATH = "python"
+PYTHON_PATH = "/home/ncw135/miniconda3/envs/py36/bin/python"
 DATA_FILENAME = file.path(WD, 'data_file.csv')
 PLOTTABLE_SPECIES = file.path(WEB_DIR, 'plottable_species.txt')
 
