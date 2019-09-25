@@ -2758,7 +2758,7 @@
 <celldesigner:briefView>
 <celldesigner:innerPosition x="0.0" y="0.0"/>
 <celldesigner:boxSize width="80.0" height="60.0"/>
-<celldesigner:singleLine width="0.0"/>
+<celldesigner:singleLine width="1.0"/>
 <celldesigner:paint color="3fff0000" scheme="Color"/>
 </celldesigner:briefView>
 <celldesigner:info state="empty" angle="-1.5707963267948966"/>
@@ -4414,6 +4414,9 @@
 <celldesigner:class>PROTEIN</celldesigner:class>
 <celldesigner:proteinReference>pr181</celldesigner:proteinReference>
 </celldesigner:speciesIdentity>
+<celldesigner:listOfCatalyzedReactions>
+<celldesigner:catalyzed reaction="re222"/>
+</celldesigner:listOfCatalyzedReactions>
 </celldesigner:extension>
 </annotation>
 </species>
@@ -4425,9 +4428,6 @@
 <celldesigner:class>PROTEIN</celldesigner:class>
 <celldesigner:proteinReference>pr180</celldesigner:proteinReference>
 </celldesigner:speciesIdentity>
-<celldesigner:listOfCatalyzedReactions>
-<celldesigner:catalyzed reaction="re222"/>
-</celldesigner:listOfCatalyzedReactions>
 </celldesigner:extension>
 </annotation>
 </species>
@@ -5429,7 +5429,7 @@
 <celldesigner:editPoints>0.6949723096970347,-0.460419155174284</celldesigner:editPoints>
 <celldesigner:line width="4.0" color="ff000000"/>
 <celldesigner:listOfModification>
-<celldesigner:modification type="CATALYSIS" modifiers="s17" aliases="sa71" targetLineIndex="-1,2" editPoints="-0.021397811724521487,-0.10535502447172666 0.9161266867949011,-0.7505618622820573 1.2602969336297094,-0.2601735938502794 0.9514471030670145,-0.04506663686359412 0.9902906019986113,0.006534889562633778">
+<celldesigner:modification type="CATALYSIS" modifiers="s17" aliases="sa71" targetLineIndex="-1,2" editPoints="-0.021397811724521487,-0.10535502447172666 0.9161266867949007,-0.7505618622820571 1.2602969336297092,-0.26017359385027927 0.9514471030670142,-0.045066636863594065 0.9902906019986111,0.006534889562633945">
 <celldesigner:connectScheme connectPolicy="direct">
 <celldesigner:listOfLineDirection>
 <celldesigner:lineDirection index="0" value="unknown"/>
@@ -5801,7 +5801,7 @@
 </celldesigner:connectScheme>
 <celldesigner:line width="4.0" color="ff000000"/>
 <celldesigner:listOfModification>
-<celldesigner:modification type="CATALYSIS" modifiers="s207" aliases="sa271" targetLineIndex="-1,2" editPoints="0.9288709193147016,-0.1125316105041061">
+<celldesigner:modification type="CATALYSIS" modifiers="s207" aliases="sa271" targetLineIndex="-1,2" editPoints="0.9288709193147007,-0.1125316105041061">
 <celldesigner:connectScheme connectPolicy="direct">
 <celldesigner:listOfLineDirection>
 <celldesigner:lineDirection index="0" value="unknown"/>
@@ -6517,7 +6517,7 @@
 </celldesigner:connectScheme>
 <celldesigner:line width="4.0" color="ff000000"/>
 <celldesigner:listOfModification>
-<celldesigner:modification type="CATALYSIS" modifiers="s3" aliases="sa162" targetLineIndex="-1,2" editPoints="0.8481203708598601,-0.18920390596975878 0.8955284230919534,0.023306161593291463">
+<celldesigner:modification type="CATALYSIS" modifiers="s3" aliases="sa162" targetLineIndex="-1,2" editPoints="0.8481203708598597,-0.18920390596975878 0.8955284230919529,0.02330616159329235">
 <celldesigner:connectScheme connectPolicy="square">
 <celldesigner:listOfLineDirection>
 <celldesigner:lineDirection index="0" value="vertical"/>
@@ -6530,7 +6530,7 @@
 </celldesigner:linkTarget>
 <celldesigner:line width="4.0" color="ff000000"/>
 </celldesigner:modification>
-<celldesigner:modification type="CATALYSIS" modifiers="s89" aliases="sa159" targetLineIndex="-1,7" editPoints="0.31626702247634997,0.2081047097224995 0.5747897665692931,-0.19492325222813234">
+<celldesigner:modification type="CATALYSIS" modifiers="s89" aliases="sa159" targetLineIndex="-1,7" editPoints="0.31626702247634975,0.2081047097224995 0.5747897665692929,-0.19492325222813234">
 <celldesigner:connectScheme connectPolicy="direct">
 <celldesigner:listOfLineDirection>
 <celldesigner:lineDirection index="0" value="unknown"/>
@@ -7087,7 +7087,7 @@
 </celldesigner:connectScheme>
 <celldesigner:line width="4.0" color="ff000000"/>
 <celldesigner:listOfModification>
-<celldesigner:modification type="CATALYSIS" modifiers="s5" aliases="sa160" targetLineIndex="-1,2" editPoints="0.03457935142625246,-0.23733908702569684 1.0137932650547912,-0.09467155398184168">
+<celldesigner:modification type="CATALYSIS" modifiers="s5" aliases="sa160" targetLineIndex="-1,2" editPoints="0.03457935142625246,-0.23733908702569773 1.0137932650547912,-0.09467155398184213">
 <celldesigner:connectScheme connectPolicy="square">
 <celldesigner:listOfLineDirection>
 <celldesigner:lineDirection index="0" value="vertical"/>
@@ -7319,7 +7319,7 @@
 </celldesigner:connectScheme>
 <celldesigner:line width="4.0" color="ff000000"/>
 <celldesigner:listOfModification>
-<celldesigner:modification type="CATALYSIS" modifiers="s108" aliases="sa134" targetLineIndex="-1,2" editPoints="-0.09743429498529066,-0.030365766127585125 0.003291540188045783,-0.35356362965862154 1.0121964471452314,-0.03913460388016965">
+<celldesigner:modification type="CATALYSIS" modifiers="s108" aliases="sa134" targetLineIndex="-1,2" editPoints="-0.09743429498529155,-0.03036576612758557 0.003291540188045783,-0.353563629658622 1.0121964471452314,-0.03913460388016965">
 <celldesigner:connectScheme connectPolicy="square">
 <celldesigner:listOfLineDirection>
 <celldesigner:lineDirection index="0" value="horizontal"/>
@@ -7385,7 +7385,7 @@
 </celldesigner:connectScheme>
 <celldesigner:line width="4.0" color="ff000000"/>
 <celldesigner:listOfModification>
-<celldesigner:modification type="CATALYSIS" modifiers="s96" aliases="sa142" targetLineIndex="-1,2" editPoints="0.8293384317070203,0.4265442379340536 1.038526835438097,0.019815070704162885">
+<celldesigner:modification type="CATALYSIS" modifiers="s96" aliases="sa142" targetLineIndex="-1,2" editPoints="0.8293384317070203,0.4265442379340536 1.0385268354380965,0.019815070704162885">
 <celldesigner:connectScheme connectPolicy="square">
 <celldesigner:listOfLineDirection>
 <celldesigner:lineDirection index="0" value="vertical"/>
@@ -7491,7 +7491,7 @@
 </celldesigner:connectScheme>
 <celldesigner:line width="4.0" color="ff000000"/>
 <celldesigner:listOfModification>
-<celldesigner:modification type="CATALYSIS" modifiers="s99" aliases="sa152" targetLineIndex="-1,3" editPoints="0.05615354759304125,0.15644467789130445 0.9420228520028546,-0.16152525765966308">
+<celldesigner:modification type="CATALYSIS" modifiers="s99" aliases="sa152" targetLineIndex="-1,3" editPoints="0.056153547593040365,0.156444677891304 0.9420228520028546,-0.16152525765966308">
 <celldesigner:connectScheme connectPolicy="square">
 <celldesigner:listOfLineDirection>
 <celldesigner:lineDirection index="0" value="vertical"/>
@@ -8382,7 +8382,7 @@
 <celldesigner:editPoints num0="0" num1="0" num2="0" tShapeIndex="0">-0.26189594000944005,0.6176430558675743</celldesigner:editPoints>
 <celldesigner:line width="4.0" color="ff000000"/>
 <celldesigner:listOfModification>
-<celldesigner:modification type="CATALYSIS" modifiers="s6" aliases="sa120" targetLineIndex="0,3" editPoints="-0.07300778912998096,-0.5710595201516391 0.7763330444013445,-0.6796445174868921 0.8654226327738619,0.01720520488916044">
+<celldesigner:modification type="CATALYSIS" modifiers="s6" aliases="sa120" targetLineIndex="0,3" editPoints="-0.07300778912998096,-0.5710595201516391 0.7763330444013454,-0.6796445174868904 0.8654226327738601,0.01720520488916044">
 <celldesigner:connectScheme connectPolicy="square">
 <celldesigner:listOfLineDirection>
 <celldesigner:lineDirection index="0" value="horizontal"/>
@@ -8957,7 +8957,7 @@
 </celldesigner:connectScheme>
 <celldesigner:line width="4.0" color="ff000000"/>
 <celldesigner:listOfModification>
-<celldesigner:modification type="CATALYSIS" modifiers="s171" aliases="sa23" targetLineIndex="-1,2" editPoints="-0.3217152248776429,0.12825603648462458 -0.7229795226293865,-1.1024986180272487 1.0367914655195247,-1.6768691362053882 0.7533451919486005,-2.500077636525255 1.3397101438966974,-2.6965287559017552 1.8566635896531398,-1.1323998399845863 0.8410114953518297,-0.7824843195181952 1.089912075045567,-0.029592981936752416">
+<celldesigner:modification type="CATALYSIS" modifiers="s171" aliases="sa23" targetLineIndex="-1,2" editPoints="-0.32171522487764204,0.12825603648462458 -0.7229795226293856,-1.1024986180272487 1.0367914655195265,-1.6768691362053882 0.7533451919486014,-2.500077636525255 1.3397101438966983,-2.6965287559017552 1.8566635896531407,-1.1323998399845863 0.8410114953518306,-0.7824843195181952 1.0899120750455684,-0.029592981936752416">
 <celldesigner:connectScheme connectPolicy="direct">
 <celldesigner:listOfLineDirection>
 <celldesigner:lineDirection index="0" value="unknown"/>
@@ -11547,13 +11547,13 @@
 </celldesigner:connectScheme>
 <celldesigner:line width="4.0" color="ff000000"/>
 <celldesigner:listOfModification>
-<celldesigner:modification type="CATALYSIS" modifiers="s205" aliases="sa272" targetLineIndex="-1,7">
+<celldesigner:modification type="CATALYSIS" modifiers="s206" aliases="sa274" targetLineIndex="-1,7">
 <celldesigner:connectScheme connectPolicy="direct">
 <celldesigner:listOfLineDirection>
 <celldesigner:lineDirection index="0" value="unknown"/>
 </celldesigner:listOfLineDirection>
 </celldesigner:connectScheme>
-<celldesigner:linkTarget species="s205" alias="sa272">
+<celldesigner:linkTarget species="s206" alias="sa274">
 <celldesigner:linkAnchor position="W"/>
 </celldesigner:linkTarget>
 <celldesigner:line width="4.0" color="ff000000"/>
@@ -11591,10 +11591,10 @@
 </speciesReference>
 </listOfProducts>
 <listOfModifiers>
-<modifierSpeciesReference metaid="CDMT00268" species="s205">
+<modifierSpeciesReference metaid="CDMT00268" species="s206">
 <annotation>
 <celldesigner:extension>
-<celldesigner:alias>sa272</celldesigner:alias>
+<celldesigner:alias>sa274</celldesigner:alias>
 </celldesigner:extension>
 </annotation>
 </modifierSpeciesReference>

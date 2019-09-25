@@ -168,7 +168,7 @@ model ComplexModel
     kAMPKPhosByCaMKK2a      = 0.1;
     kAMPKInact              = 0.1;
     kLKB1ToCyt              = 0.1;
-    kLKB1ToNuc              = 0.1;
+    kLKB1ToNuc              = 1;
     kCaMKK2Act              = 0.1;         
     kCaMKK2Inact            = 0.1;             
     kUlkPhos                = 0.1;
@@ -328,8 +328,8 @@ model ComplexModel
     pAMPK                   = 0;                        
     CaMKK2                  = 10;                        
     CaMKK2a                 = 0;      
-    LKB1_nuc                = 10;
-    LKB1                    = 0;                  
+    LKB1_nuc                = 0;
+    LKB1                    = 10;                  
     Ca2                     = 0;
     PKC                     = 10;                    
     PKCa                    = 0;                        
