@@ -5,7 +5,7 @@ from dash.dependencies import Input, Output
 import os
 import numpy as np
 from qualitative_model_fitting import TimeSeries
-from example_networks.growth_model_string import model_string
+from example_networks.extended_model_string import model_string
 import plotly.graph_objs as go
 from collections import OrderedDict
 

@@ -6,7 +6,7 @@ import site
 
 site.addsitedir(os.path.dirname(os.path.dirname(__file__)))
 from qualitative_model_fitting import TimeSeries
-from example_networks.growth_model_string import model_string
+from example_networks.extended_model_string import model_string
 
 parser = argparse.ArgumentParser()
 parser.add_argument('start', type=int)

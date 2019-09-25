@@ -4,7 +4,7 @@ import numpy as np
 from collections import OrderedDict
 
 import qualitative_model_fitting as qmf
-from example_networks.growth_model_string import model_string
+from example_networks.extended_model_string import model_string
 from example_networks import WD, PLOTS_DIR
 import logging
 

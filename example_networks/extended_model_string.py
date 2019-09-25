@@ -111,8 +111,8 @@ model ComplexModel
     var eIFa           in Cell;
     var peIFa          in Cell;
     var PTEN           in Cell;
-    var LKB1a          in Cell;
     var LKB1           in Cell;
+    var LKB1_nuc        in Cell;
     var ERa_cyti        in Cell;
     var Trp             in Cell;
     var AK             in Cell;
@@ -402,8 +402,6 @@ model ComplexModel
     eIFa                    = 10;                        
     peIFa                   = 0; 
     PTEN                    = 10;                       
-    LKB1a                   = 0;                       
-    LKB1                    = 10;         
     Trp                     = 0;              
 
     // reactions
@@ -460,9 +458,9 @@ model ComplexModel
     R16AMPK3b   : AMPK_ATP => AMPK + ATP                    ; Cell * kAMPKUnbindATP*AMPK_ATP;
     R16AMPKif   : AMPK => pAMPKi                            ; Cell * kAMPKInhibByAkt*AMPK*pAkt;
     R16AMPKib   : pAMPKi => AMPK                            ; Cell * kAMPKDephos*pAMPKi;
-    R17f1       : AMPK_AMP => pAMPK                         ; Cell * kAMPKAMPActByLKB1*AMPK_AMP*LKB1a
+    R17f1       : AMPK_AMP => pAMPK                         ; Cell * kAMPKAMPActByLKB1*AMPK_AMP*LKB1
     R17b1       : pAMPK => AMPK_AMP                         ; Cell * kAMPKInact*pAMPK
-    R17f2       : AMPK_ADP => pAMPK                         ; Cell * kAMPKADPActByLKB1*AMPK_ADP*LKB1a
+    R17f2       : AMPK_ADP => pAMPK                         ; Cell * kAMPKADPActByLKB1*AMPK_ADP*LKB1
     R17b2       : pAMPK => AMPK_ADP                         ; Cell * kAMPKInact*pAMPK
     R17f3       : AMPK => pAMPK                             ; Cell * kAMPKActByCaMKK2*AMPK*CaMKK2a;
     R17b3       : pAMPK => AMPK                             ; Cell * kAMPKInact*pAMPK;
@@ -470,9 +468,9 @@ model ComplexModel
     R18b        : CaMKK2a => CaMKK2                         ; Cell * kCaMKK2Inact*CaMKK2a;    
     R19In       : ADP => ATP                                ; Cell * kATPIn*ADP*Feeding
     R19Out      : ATP => ADP                                ; Cell * kATPUsage*ATP
-    R20f        : LKB1_nuc => LKB1                          ; Cell * kLKB1ToCyt*LKB1_nuc*Feeding;
-    R20b        : LKB1 => LKB1_nuc                          ; Cell * kLKB1ToNuc*LKB1;
-    R21f        : ADP + ADP => ATP + AMP                      ; Cell * kAK*AK*ADP^2;
+    R20f        : LKB1_nuc => LKB1                          ; Cell * kLKB1ToCyt*LKB1_nuc;
+    R20b        : LKB1 => LKB1_nuc                          ; Cell * kLKB1ToNuc*LKB1*Feeding;
+    R21f        : ADP + ADP => ATP + AMP                    ; Cell * kAK*AK*ADP^2;
 
      
     // Erk pathway
