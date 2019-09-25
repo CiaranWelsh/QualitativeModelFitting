@@ -106,10 +106,8 @@ NCLICKS_DCT = OrderedDict(
     ampk_output_btn={
         'n_clicks': 0,
         'output': [
-            'AMPK', 'AMP',
-            'AMPK_AMP', 'ADP', 'AMPK_ADP', 'ATP',
-            'AMPK_ATP', 'pAMPKi', 'pAMPK', 'CaMKK2',
-            'CaMKK2a', 'Ca2', 'PKC', 'PKCa', 'LKB1a', 'LKB1'
+            'AMPK', 'AMPKi', 'pAMPK', 'CaMKK2',
+            'CaMKK2a', 'Ca2', 'PKC', 'PKCa', 'LKB1', 'LKB1_nuc'
         ]
     },
     erk_output_btn={
@@ -237,7 +235,9 @@ app.layout = html.Div(children=[
                     id='outputs',
                     options=[{'label': i, 'value': i} for i in model_species],
                     value=NCLICKS_DCT['active_pi3k_output_btn']['output'],
-                    multi=True
+                    multi=True,
+                    persistence=True,
+                    style={'autocomplete': 'off'}
                 ),
             ]),
 

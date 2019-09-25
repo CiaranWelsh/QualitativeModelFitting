@@ -54,7 +54,7 @@ model ComplexModel
     var ATP            in Cell;
     var AMPK_ATP       in Cell;
     var ATP            in Cell;
-    var pAMPKi         in Cell;
+    var AMPKi         in Cell;
     var pAMPK          in Cell;
     var CaMKK2         in Cell;
     var CaMKK2a        in Cell;
@@ -165,22 +165,14 @@ model ComplexModel
     k4EBP1Dephos            = 0.1;             
     kS6KPhos                = 0.1;         
     kS6KDehos               = 0.1;         
-    kAMPKBindAMP            = 0.1;             
-    kAMPKUnbindAMP          = 0.1;             
-    kAMPKBindADP            = 0.1;             
-    kAMPKUnbindADP          = 0.1;             
-    kAMPKBindATP            = 0.1;             
-    kAMPKUnbindATP          = 0.1;             
-    kAMPKInhibByAkt         = 0.1;             
-    kAMPKDephos             = 0.1;         
-    kAMPKActByLKB1          = 0.1;             
-    kAMPKInact              = 0.1;         
-    kAMPKActByLKB1          = 0.1;             
-    kAMPKInact              = 0.1;         
-    kAMPKActByCaMKK2        = 0.1;                 
-    kAMPKInact              = 0.1;       
-    kAMPKAMPActByLKB1       = 1;
-    kAMPKADPActByLKB1       = 0.1;
+
+    kAMPKInhibByAkt         = 0.1;
+    kAMPKDephos             = 0.1;
+    kAMPKPhosByLKB1         = 0.1;
+    kAMPKPhosByCaMKK2a      = 0.1;
+    kAMPKInact              = 0.1;
+    
+
     kATPIn                  = 10;
     kATPUsage               = 0.01;
     kLKB1ToCyt              = 0.1;
@@ -343,7 +335,7 @@ model ComplexModel
     AMPK_ADP                = 0;                            
     ATP                     = 10;                    
     AMPK_ATP                = 0;                            
-    pAMPKi                  = 0;                        
+    AMPKi                  = 0;                        
     pAMPK                   = 0;                        
     CaMKK2                  = 10;                        
     CaMKK2a                 = 0;      
@@ -438,39 +430,28 @@ model ComplexModel
     R11b        : pmTORC1 => mTORC1lys                      ; Cell * kmTORC1Dephos*pmTORC1*AMPK;
     R12f        : RhebGDP => RhebGTP                        ; Cell * kRhebLoad*RhebGDP;
     R12b        : RhebGTP => RhebGDP                        ; Cell * kRhebUnload*RhebGTP*TSC2_Rag;
-    R13fi       : mTORC1cyt + Rapamycin => mTORC1i          ; Cell * kmTORC1BindRapa*mTORC1cyt*Rapamycin;
-    R13bi       : mTORC1i => mTORC1cyt + Rapamycin          ; Cell * kmTORC1UnbindRapa*mTORC1i;
-    R13fii      : mTORC1lys + Rapamycin => mTORC1ii         ; Cell * kmTORC1BindRapa*mTORC1lys*Rapamycin;
-    R13bii      : mTORC1ii => mTORC1lys + Rapamycin         ; Cell * kmTORC1UnbindRapa*mTORC1ii;
-    R13fiii     : pmTORC1 + Rapamycin => mTORC1iii          ; Cell * kmTORC1BindRapa*pmTORC1*Rapamycin;
-    R13biii     : mTORC1iii => pmTORC1 + Rapamycin          ; Cell * kmTORC1UnbindRapa*mTORC1iii;
+    R13fi       : mTORC1cyt  => mTORC1i                     ; Cell * kmTORC1BindRapa*mTORC1cyt*Rapamycin;
+    R13bi       : mTORC1i => mTORC1cyt                      ; Cell * kmTORC1UnbindRapa*mTORC1i;
+    R13fii      : mTORC1lys  => mTORC1ii                    ; Cell * kmTORC1BindRapa*mTORC1lys*Rapamycin;
+    R13bii      : mTORC1ii => mTORC1lys                     ; Cell * kmTORC1UnbindRapa*mTORC1ii;
+    R13fiii     : pmTORC1  => mTORC1iii                     ; Cell * kmTORC1BindRapa*pmTORC1*Rapamycin;
+    R13biii     : mTORC1iii => pmTORC1                      ; Cell * kmTORC1UnbindRapa*mTORC1iii;
     R14f        : FourEBP1 => pFourEBP1                     ; Cell * k4EBP1Phos*FourEBP1*pmTORC1;
     R14b        : pFourEBP1 => FourEBP1                     ; Cell * k4EBP1Dephos*pFourEBP1;
     R15f        : S6K => pS6K                               ; Cell * kS6KPhos*S6K*pmTORC1;
     R15b        : pS6K => S6K                               ; Cell * kS6KDehos*pS6K;
     
     // AMPK reactions
-    R16AMPK1f   : AMPK + AMP => AMPK_AMP                    ; Cell * kAMPKBindAMP*AMPK*AMP;
-    R16AMPK1b   : AMPK_AMP => AMPK + AMP                    ; Cell * kAMPKUnbindAMP*AMPK_AMP;
-    R16AMPK2f   : AMPK + ADP => AMPK_ADP                    ; Cell * kAMPKBindADP*AMPK*ADP;
-    R16AMPK2b   : AMPK_ADP => AMPK + ADP                    ; Cell * kAMPKUnbindADP*AMPK_ADP;
-    R16AMPK3f   : AMPK + ATP => AMPK_ATP                    ; Cell * kAMPKBindATP*AMPK*ATP;
-    R16AMPK3b   : AMPK_ATP => AMPK + ATP                    ; Cell * kAMPKUnbindATP*AMPK_ATP;
-    R16AMPKif   : AMPK => pAMPKi                            ; Cell * kAMPKInhibByAkt*AMPK*pAkt;
-    R16AMPKib   : pAMPKi => AMPK                            ; Cell * kAMPKDephos*pAMPKi;
-    R17f1       : AMPK_AMP => pAMPK                         ; Cell * kAMPKAMPActByLKB1*AMPK_AMP*LKB1
+    
+    R16AMPKif   : AMPK => AMPKi                             ; Cell * kAMPKInhibByAkt*AMPK*pAkt;
+    R16AMPKib   : AMPKi => AMPK                             ; Cell * kAMPKDephos*AMPKi;    
+    R17f1       : AMPK => pAMPK                             ; Cell * kAMPKPhosByLKB1*AMPK*LKB1
+    R17f2       : AMPK => pAMPK                             ; Cell * kAMPKPhosByCaMKK2a*AMPK*CaMKK2a
     R17b1       : pAMPK => AMPK_AMP                         ; Cell * kAMPKInact*pAMPK
-    R17f2       : AMPK_ADP => pAMPK                         ; Cell * kAMPKADPActByLKB1*AMPK_ADP*LKB1
-    R17b2       : pAMPK => AMPK_ADP                         ; Cell * kAMPKInact*pAMPK
-    R17f3       : AMPK => pAMPK                             ; Cell * kAMPKActByCaMKK2*AMPK*CaMKK2a;
-    R17b3       : pAMPK => AMPK                             ; Cell * kAMPKInact*pAMPK;
-    R18f        : CaMKK2 => CaMKK2a                         ; Cell * kCaMKK2Act*CaMKK2*Ca2;
-    R18b        : CaMKK2a => CaMKK2                         ; Cell * kCaMKK2Inact*CaMKK2a;    
-    R19In       : ADP => ATP                                ; Cell * kATPIn*ADP*Feeding
-    R19Out      : ATP => ADP                                ; Cell * kATPUsage*ATP
-    R20f        : LKB1_nuc => LKB1                          ; Cell * kLKB1ToCyt*LKB1_nuc;
-    R20b        : LKB1 => LKB1_nuc                          ; Cell * kLKB1ToNuc*LKB1*Feeding;
-    R21f        : ADP + ADP => ATP + AMP                    ; Cell * kAK*AK*ADP^2;
+    R19f        : LKB1_nuc => LKB1                          ; Cell * kLKB1ToCyt*LKB1_nuc;
+    R19b        : LKB1 => LKB1_nuc                          ; Cell * kLKB1ToNuc*LKB1*Feeding;
+    R20f        : CaMKK2 => CaMKK2a                         ; Cell * kCaMKK2Act*CaMKK2*Ca2;
+    R20b        : CaMKK2a => CaMKK2                         ; Cell * kCaMKK2Inact*CaMKK2a;    
 
      
     // Erk pathway
@@ -516,8 +497,8 @@ model ComplexModel
     R37b        : E2_cyt => E2                              ; Cell * kE2CytToEx*E2_cyt;
     R38f        : ERa_cyt + E2_cyt  => ERa_E2               ; Cell * kE2BindER*ERa_cyt*E2_cyt;
     R38b        : ERa_E2 => ERa_cyt + E2_cyt                ; Cell * kE2UnbindER*ERa_E2;
-    R39if       : ERa_cyt + Fulvestrant => ERa_cyti         ; Cell * kERaBindFulv*ERa_cyt*Fulvestrant;
-    R39ib       : ERa_cyti => ERa_cyt + Fulvestrant         ; Cell * kERaUnbindFulv*ERa_cyti;
+    R39if       : ERa_cyt => ERa_cyti                       ; Cell * kERaBindFulv*ERa_cyt*Fulvestrant;
+    R39ib       : ERa_cyti => ERa_cyt                       ; Cell * kERaUnbindFulv*ERa_cyti;
     R40f        : ERa_E2 + ERa_E2 => ERa_dimer              ; Cell * kERDim*ERa_E2*ERa_E2;
     R40b        : ERa_dimer => ERa_E2 + ERa_E2              ; Cell * kERUndim*ERa_dimer;
     R41f        : ERa_dimer => ERa_dimer_nuc                ; Cell * kERCytToNuc*ERa_dimer;
@@ -575,13 +556,13 @@ end
 
 if __name__ == '__main__':
     import tellurium
-    # import pycotools3 as py3
-    # import os
-    # copasi_file = os.path.join(os.path.dirname(__file__), 'copasi_model.cps')
-    # mod = py3.model.loada(model_string, copasi_file)
-    # mod.open()
+    import pycotools3 as py3
+    import os
+    copasi_file = os.path.join(os.path.dirname(__file__), 'copasi_model.cps')
+    mod = py3.model.loada(model_string, copasi_file)
+    mod.open()
 
-    mod = tellurium.loada(model_string)
-    mod.simulate(0, 100, 101)
+    # mod = tellurium.loada(model_string)
+    # mod.simulate(0, 100, 101)
 
 
