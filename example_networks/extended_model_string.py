@@ -76,13 +76,13 @@ model ComplexModel
     var DAG            in Cell;
     var IpR            in Cell;
     var IpRa           in Cell;
-    var E2             in Cell;
     var E2_cyt         in Cell;
     var ERa_cyt        in Cell;
     var ERa_E2         in Cell;
     var ERa_dimer      in Cell;
     var ERa_dimer_nuc  in Cell;
     var ERa_nuc        in Cell;
+    var ERa_cyti       in Cell;
     var TFFmRNA        in Cell;
     var Greb1mRNA      in Cell;
     var TFF            in Cell;
@@ -105,19 +105,16 @@ model ComplexModel
     var peIFa          in Cell;
     var PTEN           in Cell;
     var LKB1           in Cell;
-    var LKB1_nuc        in Cell;
-    var ERa_cyti        in Cell;
-    var Trp             in Cell;
-    var Ulk             in Cell;
-    var pUlk                in Cell;
-    var Autophagy               in Cell;
+    var LKB1_nuc       in Cell;
+    var Trp            in Cell;
+    var Ulk            in Cell;
+    var pUlk           in Cell;
+    var Autophagy      in Cell;
 
 
-    const Fulvestrant ;
-    const Rapamycin   ;
+    const Fulvestrant;
+    const Rapamycin;
     const Insulin;
-    // const AA                      
-    const Rapamycin               
     const MK2206                  
     const AZD                     
     const EGF                     
@@ -125,7 +122,8 @@ model ComplexModel
     const PMA                     
     const IGF                     
     const INFg                    
-    const Feeding                 
+    const Feeding   
+    const E2              
 
     kIRS1Act                = 0.1;         
     kIRS1Inact              = 0.1;         
@@ -488,8 +486,8 @@ model ComplexModel
     R36b        : PKCa => PKC                               ; Cell * kPKCInact*PKCa; 
     
     // Estrogen pathway
-    R37f        : E2 => E2_cyt                              ; Cell * kE2ToCyt*E2;
-    R37b        : E2_cyt => E2                              ; Cell * kE2CytToEx*E2_cyt;
+    R37f        : => E2_cyt                                 ; Cell * kE2ToCyt*E2;
+    R37b        : E2_cyt =>                                 ; Cell * kE2CytToEx*E2_cyt;
     R38f        : ERa_cyt + E2_cyt  => ERa_E2               ; Cell * kE2BindER*ERa_cyt*E2_cyt;
     R38b        : ERa_E2 => ERa_cyt + E2_cyt                ; Cell * kE2UnbindER*ERa_E2;
     R39if       : ERa_cyt => ERa_cyti                       ; Cell * kERaBindFulv*ERa_cyt*Fulvestrant;
@@ -511,40 +509,40 @@ model ComplexModel
     
     
     // growth module
-    R46In1      : => ProlifSignals                          ; Cell * kProlifSignalIn*ERa_dimer_nuc
-    R46In2      : => ProlifSignals                          ; Cell * kProlifSignalIn*pS6K
-    R46Out      : ProlifSignals =>                          ; Cell * kProlifSignalOut*ProlifSignals
-    R47In1      : => Growth                                 ; Cell * kGrowthBasal
-    R47In2      : => Growth                                 ; Cell * kGrowthActive*ProlifSignals
-    R47Out1     : Growth =>                                 ; Cell * kGrowthInhibBasal*Growth
-    R47Out2     : Growth =>                                 ; Cell * kGrowthInhibActive*Growth*Immuno
-    R48In1      : => Immuno                                 ; Cell * kImmunoInBasal
-    R48In2      : => Immuno                                 ; Cell * kImmunoInActive*Kyn
-    R48Out      : Immuno =>                                 ; Cell * kImmunoOut*Immuno
+    R47In1      : => ProlifSignals                          ; Cell * kProlifSignalIn*ERa_dimer_nuc
+    R47In2      : => ProlifSignals                          ; Cell * kProlifSignalIn*pS6K
+    R47Out      : ProlifSignals =>                          ; Cell * kProlifSignalOut*ProlifSignals
+    R48In1      : => Growth                                 ; Cell * kGrowthBasal
+    R48In2      : => Growth                                 ; Cell * kGrowthActive*ProlifSignals
+    R48Out1     : Growth =>                                 ; Cell * kGrowthInhibBasal*Growth
+    R48Out2     : Growth =>                                 ; Cell * kGrowthInhibActive*Growth*Immuno
+    R49In1      : => Immuno                                 ; Cell * kImmunoInBasal
+    R49In2      : => Immuno                                 ; Cell * kImmunoInActive*Kyn
+    R49Out      : Immuno =>                                 ; Cell * kImmunoOut*Immuno
     
     // INFg system
-    R49f        : Jak => pJak                               ; Cell * kJakPhos*Jak*INFg
-    R49b        : pJak => Jak                               ; Cell * kJakDephos*pJak
-    R50f        : Stat1 => pStat1                           ; Cell * kStat1Phos*Stat1*pJak
-    R50b        : pStat1 => Stat1                           ; Cell * kStat1Dephos*pStat1
-    R51f        : pStat1 + pStat1 => pStat1_dim_cyt         ; Cell * kStat1Dim*pStat1^2
-    R51b        : pStat1_dim_cyt => pStat1 + pStat1         ; Cell * kStat1Undim*pStat1_dim_cyt
-    R52f        : pStat1_dim_cyt => pStat1_dim_nuc          ; Cell * kStat1DimToNuc*pStat1_dim_cyt
-    R52b        : pStat1_dim_nuc => pStat1_dim_cyt          ; Cell * kStat1DimToCyt*pStat1_dim_nuc
+    R50f        : Jak => pJak                               ; Cell * kJakPhos*Jak*INFg
+    R50b        : pJak => Jak                               ; Cell * kJakDephos*pJak
+    R51f        : Stat1 => pStat1                           ; Cell * kStat1Phos*Stat1*pJak
+    R51b        : pStat1 => Stat1                           ; Cell * kStat1Dephos*pStat1
+    R52f        : pStat1 + pStat1 => pStat1_dim_cyt         ; Cell * kStat1Dim*pStat1^2
+    R52b        : pStat1_dim_cyt => pStat1 + pStat1         ; Cell * kStat1Undim*pStat1_dim_cyt
+    R53f        : pStat1_dim_cyt => pStat1_dim_nuc          ; Cell * kStat1DimToNuc*pStat1_dim_cyt
+    R53b        : pStat1_dim_nuc => pStat1_dim_cyt          ; Cell * kStat1DimToCyt*pStat1_dim_nuc
     
     // Trp stuff
-    R53In       : => IDO1mRNA                               ; Cell * kIDO1mRNAIn*pStat1_dim_nuc
-    R53Out      : IDO1mRNA =>                               ; Cell * kIDO1mRNAOut*IDO1mRNA
-    R54In       : => IDO1                                   ; Cell * kIDO1In*IDO1mRNA*eIFa
-    R54Out      : IDO1 =>                                   ; Cell * kIDO1Out*IDO1
-    R55f        : Trp => Kyn                                ; Cell * kAAToKyn*Trp*IDO1;
-    R55b        : Kyn => Trp                                ; Cell * kKynToAA*Kyn
-    R56f        : GCN2a => GCN2                             ; Cell * kGCN2Act*GCN2a*Trp 
-    R56b        : GCN2 => GCN2a                             ; Cell * kGCN2Inact*GCN2
-    R57f        : eIFa => peIFa                             ; Cell * keIFaPhos*eIFa*GCN2a
-    R57b        : peIFa => eIFa                             ; Cell * keIFaDephos*peIFa
-    R58f        : => Trp                                    ; Cell * kTrpIn*Feeding;
-    R58b        : Trp =>                                    ; Cell * kTrpOut*Trp;
+    R54In       : => IDO1mRNA                               ; Cell * kIDO1mRNAIn*pStat1_dim_nuc
+    R54Out      : IDO1mRNA =>                               ; Cell * kIDO1mRNAOut*IDO1mRNA
+    R55In       : => IDO1                                   ; Cell * kIDO1In*IDO1mRNA*eIFa
+    R55Out      : IDO1 =>                                   ; Cell * kIDO1Out*IDO1
+    R56f        : Trp => Kyn                                ; Cell * kAAToKyn*Trp*IDO1;
+    R56b        : Kyn => Trp                                ; Cell * kKynToAA*Kyn
+    R57f        : GCN2a => GCN2                             ; Cell * kGCN2Act*GCN2a*Trp 
+    R57b        : GCN2 => GCN2a                             ; Cell * kGCN2Inact*GCN2
+    R58f        : eIFa => peIFa                             ; Cell * keIFaPhos*eIFa*GCN2a
+    R58b        : peIFa => eIFa                             ; Cell * keIFaDephos*peIFa
+    R59f        : => Trp                                    ; Cell * kTrpIn*Feeding;
+    R59b        : Trp =>                                    ; Cell * kTrpOut*Trp;
 end
 
 """
@@ -555,6 +553,7 @@ if __name__ == '__main__':
     import os
     copasi_file = os.path.join(os.path.dirname(__file__), 'copasi_model.cps')
     mod = py3.model.loada(model_string, copasi_file)
+    mod = py3.tasks.TimeCourse(mod, start=0, stop=100).model
     mod.open()
 
     # mod = tellurium.loada(model_string)
