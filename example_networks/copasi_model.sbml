@@ -225,15 +225,16 @@
       <species id="GCN2a" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="eIFa" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="peIFa" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="LKB1" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="ERa_cyti" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="Trp" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="Fulvestrant" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
       <species id="Rapamycin" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species id="LKB1_nuc" compartment="default_compartment" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
     </listOfSpecies>
     <listOfParameters>
       <parameter id="PTEN" value="10" constant="false"/>
       <parameter id="LKB1a" value="0" constant="false"/>
-      <parameter id="LKB1" value="10" constant="false"/>
       <parameter id="Insulin" value="0" constant="true"/>
       <parameter id="MK2206" value="0" constant="true"/>
       <parameter id="AZD" value="0" constant="true"/>
@@ -260,7 +261,6 @@
       <parameter id="kAktUnbindPIP3" value="0.1" constant="true"/>
       <parameter id="kAktPhos" value="1" constant="true"/>
       <parameter id="kAktDephos" value="0.1" constant="true"/>
-      <parameter id="kAktBindMK" value="0.1" constant="true"/>
       <parameter id="kTSC2Phos" value="0.1" constant="true"/>
       <parameter id="kTSC2Dephos" value="0.1" constant="true"/>
       <parameter id="kTSC2BindRagGDP" value="0.1" constant="true"/>
@@ -308,9 +308,9 @@
       <parameter id="kMekDephos" value="0.1" constant="true"/>
       <parameter id="kErkPhos" value="0.1" constant="true"/>
       <parameter id="kErkDephos" value="0.1" constant="true"/>
-      <parameter id="kDUSPmRNAIn" value="0.1" constant="true"/>
+      <parameter id="kDUSPmRNAIn" value="0.01" constant="true"/>
       <parameter id="kDUSPmRNAOut" value="0.1" constant="true"/>
-      <parameter id="kDUSPIn" value="0.1" constant="true"/>
+      <parameter id="kDUSPIn" value="0.01" constant="true"/>
       <parameter id="kDUSPOut" value="0.1" constant="true"/>
       <parameter id="kPLCPhos" value="0.1" constant="true"/>
       <parameter id="kPLCPhosBasal" value="0.1" constant="true"/>
@@ -356,10 +356,10 @@
       <parameter id="kStat1Undim" value="0.1" constant="true"/>
       <parameter id="kStat1DimToNuc" value="1" constant="true"/>
       <parameter id="kStat1DimToCyt" value="0.1" constant="true"/>
-      <parameter id="kIDO1mRNAIn" value="0.1" constant="true"/>
+      <parameter id="kIDO1mRNAIn" value="0.01" constant="true"/>
       <parameter id="kIDO1mRNAOut" value="0.1" constant="true"/>
       <parameter id="kIDO1In" value="0.1" constant="true"/>
-      <parameter id="kIDO1Out" value="0.1" constant="true"/>
+      <parameter id="kIDO1Out" value="0.01" constant="true"/>
       <parameter id="kAAToKyn" value="10" constant="true"/>
       <parameter id="kKynToAA" value="0.1" constant="true"/>
       <parameter id="kAAIn" value="1" constant="true"/>
@@ -381,6 +381,15 @@
       <parameter id="kERaUnbindFulv" value="0.1" constant="true"/>
       <parameter id="kTrpIn" value="0.3" constant="true"/>
       <parameter id="kTrpOut" value="0.1" constant="true"/>
+      <parameter id="kAktBindMK" value="100" constant="true"/>
+      <parameter id="kAMPKAMPActByLKB1" constant="true"/>
+      <parameter id="kAMPKADPActByLKB1" constant="true"/>
+      <parameter id="kATPIn" constant="true"/>
+      <parameter id="kATPUsage" constant="true"/>
+      <parameter id="kLKB1ToCyt" constant="true"/>
+      <parameter id="kLKB1ToNuc" constant="true"/>
+      <parameter id="kAK" constant="true"/>
+      <parameter id="AK" constant="true"/>
     </listOfParameters>
     <listOfReactions>
       <reaction id="R1f" reversible="false" fast="false">
@@ -1385,7 +1394,7 @@
             <apply>
               <times/>
               <ci> Cell </ci>
-              <ci> kAMPKActByLKB1 </ci>
+              <ci> kAMPKAMPActByLKB1 </ci>
               <ci> AMPK_AMP </ci>
               <ci> LKB1a </ci>
             </apply>
@@ -1422,7 +1431,7 @@
             <apply>
               <times/>
               <ci> Cell </ci>
-              <ci> kAMPKActByLKB1 </ci>
+              <ci> kAMPKADPActByLKB1 </ci>
               <ci> AMPK_ADP </ci>
               <ci> LKB1a </ci>
             </apply>
@@ -1527,61 +1536,101 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R19f1" reversible="false" fast="false">
+      <reaction id="R19In" reversible="false" fast="false">
         <listOfReactants>
-          <speciesReference species="PKC" stoichiometry="1" constant="true"/>
+          <speciesReference species="ADP" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="PKCa" stoichiometry="1" constant="true"/>
+          <speciesReference species="ATP" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <listOfModifiers>
-          <modifierSpeciesReference species="DAG"/>
-        </listOfModifiers>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> Cell </ci>
-              <ci> kPKCAct </ci>
-              <ci> PKC </ci>
-              <ci> DAG </ci>
+              <ci> kATPIn </ci>
+              <ci> ADP </ci>
+              <ci> Feeding </ci>
             </apply>
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R19f2" reversible="false" fast="false">
+      <reaction id="R19Out" reversible="false" fast="false">
         <listOfReactants>
-          <speciesReference species="PKC" stoichiometry="1" constant="true"/>
+          <speciesReference species="ATP" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="PKCa" stoichiometry="1" constant="true"/>
+          <speciesReference species="ADP" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> Cell </ci>
-              <ci> kPKCActByPMA </ci>
-              <ci> PKC </ci>
-              <ci> PMA </ci>
+              <ci> kATPUsage </ci>
+              <ci> ATP </ci>
             </apply>
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R19b" reversible="false" fast="false">
+      <reaction id="R20f" reversible="false" fast="false">
         <listOfReactants>
-          <speciesReference species="PKCa" stoichiometry="1" constant="true"/>
+          <speciesReference species="LKB1_nuc" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="PKC" stoichiometry="1" constant="true"/>
+          <speciesReference species="LKB1" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> Cell </ci>
-              <ci> kPKCInact </ci>
-              <ci> PKCa </ci>
+              <ci> kLKB1ToCyt </ci>
+              <ci> LKB1_nuc </ci>
+              <ci> Feeding </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R20b" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="LKB1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="LKB1_nuc" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> kLKB1ToNuc </ci>
+              <ci> LKB1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R21f" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="ADP" stoichiometry="1" constant="true"/>
+          <speciesReference species="ADP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="ATP" stoichiometry="1" constant="true"/>
+          <speciesReference species="AMP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> kAK </ci>
+              <ci> AK </ci>
+              <apply>
+                <power/>
+                <ci> ADP </ci>
+                <cn type="integer"> 2 </cn>
+              </apply>
             </apply>
           </math>
         </kineticLaw>
@@ -2149,7 +2198,66 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R36f" reversible="false" fast="false">
+      <reaction id="R36f1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="PKC" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PKCa" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="DAG"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> kPKCAct </ci>
+              <ci> PKC </ci>
+              <ci> DAG </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R36f2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="PKC" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PKCa" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> kPKCActByPMA </ci>
+              <ci> PKC </ci>
+              <ci> PMA </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R36b" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="PKCa" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PKC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> kPKCInact </ci>
+              <ci> PKCa </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R37f" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="E2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2167,7 +2275,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R36b" reversible="false" fast="false">
+      <reaction id="R37b" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="E2_cyt" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2185,7 +2293,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R37f" reversible="false" fast="false">
+      <reaction id="R38f" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="ERa_cyt" stoichiometry="1" constant="true"/>
           <speciesReference species="E2_cyt" stoichiometry="1" constant="true"/>
@@ -2205,7 +2313,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R37b" reversible="false" fast="false">
+      <reaction id="R38b" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="ERa_E2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2224,7 +2332,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R37if" reversible="false" fast="false">
+      <reaction id="R39if" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="ERa_cyt" stoichiometry="1" constant="true"/>
           <speciesReference species="Fulvestrant" stoichiometry="1" constant="true"/>
@@ -2244,7 +2352,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R37ib" reversible="false" fast="false">
+      <reaction id="R39ib" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="ERa_cyti" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2263,7 +2371,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R38f" reversible="false" fast="false">
+      <reaction id="R40f" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="ERa_E2" stoichiometry="1" constant="true"/>
           <speciesReference species="ERa_E2" stoichiometry="1" constant="true"/>
@@ -2283,7 +2391,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R38b" reversible="false" fast="false">
+      <reaction id="R40b" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="ERa_dimer" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2302,7 +2410,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R39f" reversible="false" fast="false">
+      <reaction id="R41f" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="ERa_dimer" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2320,7 +2428,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R39b" reversible="false" fast="false">
+      <reaction id="R41b" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="ERa_dimer_nuc" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2338,7 +2446,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R40f" reversible="false" fast="false">
+      <reaction id="R42f" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="ERa_dimer_nuc" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2357,7 +2465,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R40b" reversible="false" fast="false">
+      <reaction id="R42b" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="ERa_nuc" stoichiometry="1" constant="true"/>
           <speciesReference species="ERa_nuc" stoichiometry="1" constant="true"/>
@@ -2377,7 +2485,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R41In" reversible="false" fast="false">
+      <reaction id="R43In" reversible="false" fast="false">
         <listOfProducts>
           <speciesReference species="TFFmRNA" stoichiometry="1" constant="true"/>
         </listOfProducts>
@@ -2395,7 +2503,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R41Out" reversible="false" fast="false">
+      <reaction id="R43Out" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="TFFmRNA" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2410,7 +2518,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R42In" reversible="false" fast="false">
+      <reaction id="R44In" reversible="false" fast="false">
         <listOfProducts>
           <speciesReference species="Greb1mRNA" stoichiometry="1" constant="true"/>
         </listOfProducts>
@@ -2428,7 +2536,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R42Out" reversible="false" fast="false">
+      <reaction id="R44Out" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="Greb1mRNA" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2443,7 +2551,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R43In" reversible="false" fast="false">
+      <reaction id="R45In" reversible="false" fast="false">
         <listOfProducts>
           <speciesReference species="TFF" stoichiometry="1" constant="true"/>
         </listOfProducts>
@@ -2463,7 +2571,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R43Out" reversible="false" fast="false">
+      <reaction id="R45Out" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="TFF" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2478,7 +2586,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R44In" reversible="false" fast="false">
+      <reaction id="R46In" reversible="false" fast="false">
         <listOfProducts>
           <speciesReference species="Greb1" stoichiometry="1" constant="true"/>
         </listOfProducts>
@@ -2498,22 +2606,22 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R44Out" reversible="false" fast="false">
+      <reaction id="R46Out" reversible="false" fast="false">
         <listOfReactants>
-          <speciesReference species="Greb1" stoichiometry="1" constant="true"/>
+          <speciesReference species="ProlifSignals" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> Cell </ci>
-              <ci> kGreb1Out </ci>
-              <ci> Greb1 </ci>
+              <ci> kProlifSignalOut </ci>
+              <ci> ProlifSignals </ci>
             </apply>
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R45In1" reversible="false" fast="false">
+      <reaction id="R46In1" reversible="false" fast="false">
         <listOfProducts>
           <speciesReference species="ProlifSignals" stoichiometry="1" constant="true"/>
         </listOfProducts>
@@ -2531,7 +2639,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R45In2" reversible="false" fast="false">
+      <reaction id="R46In2" reversible="false" fast="false">
         <listOfProducts>
           <speciesReference species="ProlifSignals" stoichiometry="1" constant="true"/>
         </listOfProducts>
@@ -2549,22 +2657,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R45Out" reversible="false" fast="false">
-        <listOfReactants>
-          <speciesReference species="ProlifSignals" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <apply>
-              <times/>
-              <ci> Cell </ci>
-              <ci> kProlifSignalOut </ci>
-              <ci> ProlifSignals </ci>
-            </apply>
-          </math>
-        </kineticLaw>
-      </reaction>
-      <reaction id="R46In1" reversible="false" fast="false">
+      <reaction id="R47In1" reversible="false" fast="false">
         <listOfProducts>
           <speciesReference species="Growth" stoichiometry="1" constant="true"/>
         </listOfProducts>
@@ -2578,7 +2671,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R46In2" reversible="false" fast="false">
+      <reaction id="R47In2" reversible="false" fast="false">
         <listOfProducts>
           <speciesReference species="Growth" stoichiometry="1" constant="true"/>
         </listOfProducts>
@@ -2596,7 +2689,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R46Out1" reversible="false" fast="false">
+      <reaction id="R47Out1" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="Growth" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2611,7 +2704,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R46Out2" reversible="false" fast="false">
+      <reaction id="R47Out2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="Growth" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2630,7 +2723,21 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R47In" reversible="false" fast="false">
+      <reaction id="R48In1" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="Immuno" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> kImmunoInBasal </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R48In2" reversible="false" fast="false">
         <listOfProducts>
           <speciesReference species="Immuno" stoichiometry="1" constant="true"/>
         </listOfProducts>
@@ -2648,7 +2755,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R47Out" reversible="false" fast="false">
+      <reaction id="R48Out" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="Immuno" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2663,7 +2770,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R48f" reversible="false" fast="false">
+      <reaction id="R49f" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="Jak" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2682,7 +2789,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R48b" reversible="false" fast="false">
+      <reaction id="R49b" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="pJak" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2700,7 +2807,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R49f" reversible="false" fast="false">
+      <reaction id="R50f" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="Stat1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2722,7 +2829,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R49b" reversible="false" fast="false">
+      <reaction id="R50b" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="pStat1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2740,7 +2847,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R50f" reversible="false" fast="false">
+      <reaction id="R51f" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="pStat1" stoichiometry="1" constant="true"/>
           <speciesReference species="pStat1" stoichiometry="1" constant="true"/>
@@ -2763,7 +2870,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R50b" reversible="false" fast="false">
+      <reaction id="R51b" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="pStat1_dim_cyt" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2782,7 +2889,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R51f" reversible="false" fast="false">
+      <reaction id="R52f" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="pStat1_dim_cyt" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2800,7 +2907,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R51b" reversible="false" fast="false">
+      <reaction id="R52b" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="pStat1_dim_nuc" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2818,7 +2925,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R52In" reversible="false" fast="false">
+      <reaction id="R53In" reversible="false" fast="false">
         <listOfProducts>
           <speciesReference species="IDO1mRNA" stoichiometry="1" constant="true"/>
         </listOfProducts>
@@ -2836,7 +2943,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R52Out" reversible="false" fast="false">
+      <reaction id="R53Out" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="IDO1mRNA" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2851,13 +2958,13 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R53In" reversible="false" fast="false">
+      <reaction id="R54In" reversible="false" fast="false">
         <listOfProducts>
           <speciesReference species="IDO1" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <listOfModifiers>
-          <modifierSpeciesReference species="IDO1mRNA"/>
           <modifierSpeciesReference species="eIFa"/>
+          <modifierSpeciesReference species="IDO1mRNA"/>
         </listOfModifiers>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -2871,7 +2978,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R53Out" reversible="false" fast="false">
+      <reaction id="R54Out" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="IDO1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2886,7 +2993,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R54f" reversible="false" fast="false">
+      <reaction id="R55f" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="Trp" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2908,7 +3015,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R54b" reversible="false" fast="false">
+      <reaction id="R55b" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="Kyn" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2926,7 +3033,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R57f" reversible="false" fast="false">
+      <reaction id="R56f" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="GCN2a" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2948,7 +3055,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R57b" reversible="false" fast="false">
+      <reaction id="R56b" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="GCN2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2966,7 +3073,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R58f" reversible="false" fast="false">
+      <reaction id="R57f" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="eIFa" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2988,7 +3095,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R58b" reversible="false" fast="false">
+      <reaction id="R57b" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="peIFa" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -3006,7 +3113,22 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="R60f" reversible="false" fast="false">
+      <reaction id="R58f" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="Trp" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> kTrpIn </ci>
+              <ci> Feeding </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R58b" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="Trp" stoichiometry="1" constant="true"/>
         </listOfReactants>
