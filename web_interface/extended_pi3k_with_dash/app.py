@@ -131,7 +131,7 @@ NCLICKS_DCT = OrderedDict(
     },
     phenom_output_btn={
         'n_clicks': 0,
-        'output': ['ProlifSignals', 'Growth', 'Immuno']
+        'output': ['ProlifSignals', 'Growth', 'Immuno', 'Autophagy']
     },
     infg_output_btn={
         'n_clicks': 0,

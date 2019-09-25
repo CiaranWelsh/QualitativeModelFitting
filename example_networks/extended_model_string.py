@@ -47,13 +47,6 @@ model ComplexModel
     var S6K            in Cell;
     var pS6K           in Cell;
     var AMPK           in Cell;
-    var AMP            in Cell;
-    var AMPK_AMP       in Cell;
-    var ADP            in Cell;
-    var AMPK_ADP       in Cell;
-    var ATP            in Cell;
-    var AMPK_ATP       in Cell;
-    var ATP            in Cell;
     var AMPKi         in Cell;
     var pAMPK          in Cell;
     var CaMKK2         in Cell;
@@ -115,7 +108,9 @@ model ComplexModel
     var LKB1_nuc        in Cell;
     var ERa_cyti        in Cell;
     var Trp             in Cell;
-    var AK             in Cell;
+    var Ulk             in Cell;
+    var pUlk                in Cell;
+    var Autophagy               in Cell;
 
 
     const Fulvestrant ;
@@ -165,21 +160,22 @@ model ComplexModel
     k4EBP1Dephos            = 0.1;             
     kS6KPhos                = 0.1;         
     kS6KDehos               = 0.1;         
-
+    
+    // ampk parameters
     kAMPKInhibByAkt         = 0.1;
     kAMPKDephos             = 0.1;
     kAMPKPhosByLKB1         = 0.1;
     kAMPKPhosByCaMKK2a      = 0.1;
     kAMPKInact              = 0.1;
-    
-
-    kATPIn                  = 10;
-    kATPUsage               = 0.01;
     kLKB1ToCyt              = 0.1;
     kLKB1ToNuc              = 0.1;
-    kAK                     = 0.1;
     kCaMKK2Act              = 0.1;         
     kCaMKK2Inact            = 0.1;             
+    kUlkPhos                = 0.1;
+    kUlkDephos                = 0.1;
+    kAutophagyIn            = 0.1;
+    kAutophagyOut           = 0.1;
+
     kPKCAct                 = 0.1;     
     kPKCActByPMA            = 0.1;             
     kPKCInact               = 0.1;         
@@ -327,14 +323,7 @@ model ComplexModel
     pFourEBP1               = 0;                            
     S6K                     = 10;                    
     pS6K                    = 0;                        
-    AK                      = 10;
     AMPK                    = 10;                        
-    AMP                     = 0;                    
-    AMPK_AMP                = 0;                            
-    ADP                     = 0;                    
-    AMPK_ADP                = 0;                            
-    ATP                     = 10;                    
-    AMPK_ATP                = 0;                            
     AMPKi                  = 0;                        
     pAMPK                   = 0;                        
     CaMKK2                  = 10;                        
@@ -395,6 +384,9 @@ model ComplexModel
     peIFa                   = 0; 
     PTEN                    = 10;                       
     Trp                     = 0;              
+    Ulk                     = 10;        
+    pUlk                    = 0;            
+    Autophagy               = 0;                
 
     // reactions
     // PI3K reactions
@@ -447,11 +439,14 @@ model ComplexModel
     R16AMPKib   : AMPKi => AMPK                             ; Cell * kAMPKDephos*AMPKi;    
     R17f1       : AMPK => pAMPK                             ; Cell * kAMPKPhosByLKB1*AMPK*LKB1
     R17f2       : AMPK => pAMPK                             ; Cell * kAMPKPhosByCaMKK2a*AMPK*CaMKK2a
-    R17b1       : pAMPK => AMPK_AMP                         ; Cell * kAMPKInact*pAMPK
     R19f        : LKB1_nuc => LKB1                          ; Cell * kLKB1ToCyt*LKB1_nuc;
     R19b        : LKB1 => LKB1_nuc                          ; Cell * kLKB1ToNuc*LKB1*Feeding;
     R20f        : CaMKK2 => CaMKK2a                         ; Cell * kCaMKK2Act*CaMKK2*Ca2;
     R20b        : CaMKK2a => CaMKK2                         ; Cell * kCaMKK2Inact*CaMKK2a;    
+    R21f        : Ulk => pUlk                               ; Cell * kUlkPhos*Ulk*pAMPK;
+    R21b        : pUlk => Ulk                               ; Cell * kUlkDephos*pUlk;
+    R21f2       : => Autophagy                              ; Cell * kAutophagyIn*pUlk
+    R21b2       : Autophagy =>                              ; Cell * kAutophagyOut*Autophagy
 
      
     // Erk pathway
