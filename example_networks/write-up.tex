@@ -184,7 +184,7 @@
         \item
     \end{itemize}
 
-    \section{Model Features}
+    \section{Model Features and Mechanisms}
     \subsection{PI3K / mTORC1}
     \begin{itemize}
         \item Stimulation with insulin induces PI3K activation and conversion of PIP2 to PIP3.
@@ -209,6 +209,50 @@
     \subsection{Cross-talk between Erk and PI3K systems}
 
     \subsection{AMPK}
+    \begin{itemize}
+        \item AMPK is activated in two ways: LKB1 and CaMKK2a
+        \item LKB1 resides normally in the nucleus and is activated on a starvation signal. Given the model has no starvation signal, i've made the nuclear localisation of LKB1 'feeding` dependent
+        \item Without Feeding being active, the flux tends towards LKB1 which phosphorylates AMPK
+        \item Calcium can bind CaMKK2 activating it's ability to phos and activate AMPK.
+        \item When active AMPK activates Ulks by phos and increases autophagy.
+        \item Moreover, when activated, AMPK activates the GAP activity of TSCs, ensuring inactivity of mTORC1.
+    \end{itemize}
+
+    \subsection{IP3}
+    \begin{itemize}
+        \item PIP2 can either undergo conversion to PIP3 via PI3K or can be broken down into IP3 and DAG by active PLC.
+        \item DAG goes on to activate PKC while IP3 binds the IP receptor leading to intracellular influx of Ca2+
+        \item the ca2+ can then go on to activate AMPK and autophagy
+    \end{itemize}
+
+    \subsection{INFg and IDO1}
+    \begin{itemize}
+        \item INFg activates Jak and Stat, causing cytoplasmic dimerisation of pStat1 followed by nuclear localisation
+        \item Nuclear pStat1 dimers regulate transcription, for example of IDO1 mRNA.
+        \item The Translation factor eIFa explicitely mediates translation because it is inactivated by phosphorylation.
+        \item A lack of Trp caused by too much conversion to Kyn by IDO1 activates GCN2 stress response leading to phos and inactivation of eIFa, thereby inhibiting translation.
+    \end{itemize}
+
+    \subsection{Estrogen}
+    \begin{itemize}
+        \item Estrogen molecules diffuse through membranes due to their lipophillic nature.
+        \item Cytosolic E2 binds to ERa in the cytosol which then dimerise
+        \item ERa dimers translocate to the nucleus where they can modulate transcription of TFF and Greb1
+        \item TFF is a readout of E2 used by the experimentalists
+        \item Greb1 is a plausible connection between E2 and PI3K
+        \item Fulvesrtrant binds and sequesters ERa in the cytoplasm
+    \end{itemize}
+
+    \subsection{Growth}
+    It seemed to me that we need to begin thinking a metric for the concept of growth in the model.
+    Ideally we'd employ some kind multilevel model model where signalling  can be related to higher level properties such as growth.
+    This is harder however so I've put in place a simplisitic growth module
+
+    \begin{itemize}
+        \item Proliferation signals are caused by both activated mTORc1 and ERa dimers in the nucleus
+        \item Immuno signals are normally high, inhibiting too much growth.
+        \item Kyn suppresses the these signals, reducing the immune systems ability to reduce tissue growth.
+    \end{itemize}
 
     %	\subsection{x}
     %%\cite{nobukini2005amino}}
