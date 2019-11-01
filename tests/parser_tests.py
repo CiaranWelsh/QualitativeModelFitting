@@ -277,7 +277,22 @@ class ParserTests(unittest.TestCase):
         expected = 'all(TimeInterval >= TimeInterval)'
         self.assertEqual(expected, actual)
 
-    #todo build interface into global profile type statement
+    def test_run_qmf(self):
+        import qualitative_model_fitting as qmf
+
+        input_string = '''
+        timeseries None { S=0, I=0 } 0, 100, 101
+        timeseries S { S=1, I=0 } 0, 100, 101
+        timeseries I { S=0, I=1 } 0, 100, 101
+        timeseries SI { S=1, I=1 } 0, 100, 101
+        observation
+            Obs1: A[None]@t=0 > A[S]@t=10
+            Obs2: mean B[SI]@t=(0, 100) > C[I]@t=10
+            Obs3: C[SI]@t=10 == A[None]@t=10'''
+        runner = qmf.ManualRunner(MODEL2, input_string)
+        print(runner.run())
+
+    # todo build interface into global profile type statement
     obs = 'Obs12: hyperbolic up Akt[InsulinOnly]'
     obs = 'Obs13: oscillation Akt[InsulinOnly]'
     obs = 'Obs14: sigmoidal down Akt[InsulinOnly]'
