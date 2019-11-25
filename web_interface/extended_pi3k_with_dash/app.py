@@ -106,8 +106,13 @@ NCLICKS_DCT = OrderedDict(
     ampk_output_btn={
         'n_clicks': 0,
         'output': [
-            'AMPK', 'AMPKi', 'pAMPK', 'CaMKK2',
-            'CaMKK2a', 'Ca2', 'PKC', 'PKCa', 'LKB1', 'LKB1_nuc'
+            'AMPK', 'AMPKi', 'pAMPK',
+        ]
+    },
+    ampk_regulation_btn={
+        'n_clicks': 0,
+        'output': [
+            'CaMKK2', 'CaMKK2a', 'Ca2', 'PKC', 'PKCa', 'LKB1', 'LKB1_nuc'
         ]
     },
     erk_output_btn={
@@ -248,6 +253,7 @@ app.layout = html.Div(children=[
                 html.Button(id='active_pi3k_output_btn', children='Active PI3K Outputs'),
                 html.Button(id='erk_output_btn', children='Erk Output'),
                 html.Button(id='ampk_output_btn', children='AMPK Output'),
+                html.Button(id='ampk_regulation_btn', children='AMPK Regulation Output'),
                 html.Button(id='ip3_output_btn', children='IP3 Output'),
                 html.Button(id='e2_output_btn', children='Estrogen Output'),
                 html.Button(id='phenom_output_btn', children='Phenomenological Output'),
