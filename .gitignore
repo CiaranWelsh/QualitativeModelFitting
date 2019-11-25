@@ -3,8 +3,5 @@
 __pycache__
 *.bak
 *.sav
-.Rproj.user
 auxil
-.RData
 *.gz 
-.Rhistory

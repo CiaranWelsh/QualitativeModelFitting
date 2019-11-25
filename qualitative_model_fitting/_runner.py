@@ -55,23 +55,15 @@ class ManualRunner:
         ... end'''
 
         >>> input_string = '''
-        ... timeseries None {
-        ...    S=0, I=0
-        ... } 0, 100, 101
-        ... timeseries S {
-        ...    S=1, I=0
-        ... } 0, 100, 101
-        ... timeseries I {
-        ...    S=0, I=1
-        ... } 0, 100, 101
-        ... timeseries SI {
-        ...    S=1, I=1
-        ... } 0, 100, 101
+        ... timeseries None { S=0, I=0 } 0, 100, 101
+        ... timeseries S { S=1, I=0 } 0, 100, 101
+        ... timeseries I { S=0, I=1 } 0, 100, 101
+        ... timeseries SI { S=1, I=1 } 0, 100, 101
         ... observation
         ...     Obs1: A[None]@t=0 > A[S]@t=10
         ...     Obs2: mean B[SI]@t=(0, 100) > C[I]@t=10
         ...     Obs3: C[SI]@t=10 == A[None]@t=10'''
-        >>> manual_runner(antimony_string, input_string)
+        >>> ManualRunner.run(antimony_string, input_string)
 
 
         Args:

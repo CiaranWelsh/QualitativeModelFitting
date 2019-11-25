@@ -14,6 +14,12 @@ todo build a doseresponse block
 todo build the plot block
 todo build in loops so we can do bulk validations
 todo build in variable assignment
+
+#todo build interface into global profile type statement with the following syntax
+# obs = 'Obs12: hyperbolic up Akt[InsulinOnly]'
+# obs = 'Obs13: oscillation Akt[InsulinOnly]'
+# obs = 'Obs14: sigmoidal down Akt[InsulinOnly]'
+
 """
 import logging
 

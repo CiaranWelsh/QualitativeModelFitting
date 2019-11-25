@@ -111,35 +111,30 @@ class ParserTests(unittest.TestCase):
         obs = 'Obs1: 5 > 6'
         parsed = self.get_parsed_observatoin(obs)
         obs = parsed.observation_block[0]
-        import operator
-        expected = operator.gt
-        actual = obs.operator
-        self.assertEqual(expected, actual)
+        actual = str(obs.operator)
+        self.assertEqual('>', actual)
 
     def test_obs_block_operator_ne(self):
         obs = 'Obs1: 5 != 6'
         parsed = self.get_parsed_observatoin(obs)
         obs = parsed.observation_block[0]
-        import operator
-        expected = operator.ne
-        actual = obs.operator
+        expected = '!='
+        actual = str(obs.operator)
         self.assertEqual(expected, actual)
 
     def test_obs_block_operator_ge(self):
         obs = 'Obs1: 5 >= 6'
         parsed = self.get_parsed_observatoin(obs)
         obs = parsed.observation_block[0]
-        import operator
-        expected = operator.ge
-        actual = obs.operator
-        self.assertEqual(expected, actual)
+        actual = str(obs.operator)
+        self.assertEqual('>=', actual)
 
     def test_obs_clause1(self):
         obs = 'Obs1: 5 > 6'
         parsed = self.get_parsed_observatoin(obs)
         obs = parsed.observation_block[0]
-        expected = 5
-        actual = obs.clause1.reduce()
+        expected = '5'
+        actual = str(obs.clause1.reduce())
         self.assertEqual(expected, actual)
 
     def test_obs_clause_is_time_interval(self):
@@ -298,10 +293,6 @@ class ParserTests(unittest.TestCase):
         runner = qmf.ManualRunner(MODEL2, input_string)
         print(runner.run())
 
-    #todo build interface into global profile type statement
-    obs = 'Obs12: hyperbolic up Akt[InsulinOnly]'
-    obs = 'Obs13: oscillation Akt[InsulinOnly]'
-    obs = 'Obs14: sigmoidal down Akt[InsulinOnly]'
 
 
 if __name__ == '__main__':
