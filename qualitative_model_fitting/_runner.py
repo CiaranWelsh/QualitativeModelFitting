@@ -5,7 +5,7 @@ from qualitative_model_fitting._parser import Parser
 LOG = logging.getLogger(__name__)
 
 
-class ManualRunner:
+class Runner:
     """
         The manual interface into model valiation
 
@@ -63,7 +63,7 @@ class ManualRunner:
         ...     Obs1: A[None]@t=0 > A[S]@t=10
         ...     Obs2: mean B[SI]@t=(0, 100) > C[I]@t=10
         ...     Obs3: C[SI]@t=10 == A[None]@t=10'''
-        >>> ManualRunner.run(antimony_string, input_string)
+        >>> Runner.run(antimony_string, input_string)
 
 
         Args:

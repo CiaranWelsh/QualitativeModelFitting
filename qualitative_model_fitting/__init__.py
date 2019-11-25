@@ -25,7 +25,7 @@ import logging
 
 from qualitative_model_fitting._simulator import TimeSeries, TimeSeriesPlotter
 from qualitative_model_fitting._parser import Parser
-from qualitative_model_fitting._runner import ManualRunner
+from qualitative_model_fitting._runner import Runner
 
 MAJOR = 2
 MINOR = 1

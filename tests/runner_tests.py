@@ -2,7 +2,7 @@ import unittest
 import logging
 
 from qualitative_model_fitting._parser import Parser
-from qualitative_model_fitting._runner import ManualRunner
+from qualitative_model_fitting._runner import Runner
 from tests import MODEL1
 
 
@@ -26,7 +26,7 @@ class TestRunner(unittest.TestCase):
     @staticmethod
     def runner_func(obs):
         string = TIMESERIES_STRING + '\nobservation\n\t' + obs
-        runner = ManualRunner(MODEL1, string)
+        runner = Runner(MODEL1, string)
         return runner
 
     def test_runner1(self):

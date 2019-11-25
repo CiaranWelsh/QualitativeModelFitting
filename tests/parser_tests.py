@@ -290,7 +290,7 @@ class ParserTests(unittest.TestCase):
             Obs_any:        any(B[SI]@t=(0, 100)    <  0)
             Obs_all:        all(B[S]@t=(0, 100)     <  0) 
         '''
-        runner = qmf.ManualRunner(MODEL2, input_string)
+        runner = qmf.Runner(MODEL2, input_string)
         print(runner.run())
 
 
