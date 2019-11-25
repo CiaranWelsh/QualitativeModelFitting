@@ -80,7 +80,7 @@ class Parser:
     INTERVAL_TIME           : "(" DIGIT+ [WS]* "," [WS]* DIGIT + ")"
     OBS_NAME                : NAME
     CONDITION               : NAME
-    NAME                    : /(?!\d+)[A-Za-z0-9]+/
+    NAME                    : /(?!\d+)[A-Za-z0-9_]+/
     START                   : DIGIT+
     STOP                    : DIGIT+
     STEP                    : DIGIT+
