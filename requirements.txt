@@ -2,4 +2,4 @@ tellurium
 pycotools3
 pandas
 numpy
-python-lark
+lark-parser
