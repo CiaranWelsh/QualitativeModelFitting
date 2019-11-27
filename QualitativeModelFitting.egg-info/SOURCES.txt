@@ -1,0 +1,12 @@
+README.md
+setup.cfg
+setup.py
+QualitativeModelFitting.egg-info/PKG-INFO
+QualitativeModelFitting.egg-info/SOURCES.txt
+QualitativeModelFitting.egg-info/dependency_links.txt
+QualitativeModelFitting.egg-info/requires.txt
+QualitativeModelFitting.egg-info/top_level.txt
+qualitative_model_fitting/__init__.py
+qualitative_model_fitting/_parser.py
+qualitative_model_fitting/_runner.py
+qualitative_model_fitting/_simulator.py

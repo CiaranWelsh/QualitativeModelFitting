@@ -11,4 +11,4 @@ script:
   - nosetests --with-coverage
 after_success:
   - codecov -t $CODECOV_TOKEN
-  -
+

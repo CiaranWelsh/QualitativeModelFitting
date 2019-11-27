@@ -85,7 +85,7 @@ class Runner:
         Now we have a model and an input string we can use :py:class:`Runner.run`
         to automatically check the validity of the statements in the input string.
 
-        >>> Runner(antimony_string, input_string).run()
+        >>> Runner.run(antimony_string, input_string)
                   name            observation  evaluation
         0  Obs_basics1                  0 > 0       False
         1  Obs_basics2             0.9779 > 0        True
