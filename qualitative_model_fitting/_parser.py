@@ -1,6 +1,7 @@
 import logging
 import operator
 from functools import reduce
+import typing
 
 import numpy as np
 import pandas as pd
@@ -10,12 +11,18 @@ from ._simulator import TimeSeries
 
 LOG = logging.getLogger(__name__)
 
-#todo implement combinations modifier
-#todo implement a doseresponse keyword
-#todo implement a steady state keyword
-#todo implement the qualitative profile stuff
+
+# todo implement combinations modifier
+# todo implement a doseresponse keyword
+# todo implement a steady state keyword
+# todo implement the qualitative profile stuff
 
 class Parser:
+    """
+    Defines the grammar of the input language, parses the
+    user input using lark and dynamically interprets the language
+    by creating all the relevant objects for the comparison.
+    """
     grammar = """
     start                  : block+
     ?block                  : timeseries_block  
@@ -109,24 +116,52 @@ class Parser:
     %ignore COMMENT
     """
 
-    def __init__(self, model_string, observation_string):
+    def __init__(self, model_string: str, observation_string: str) -> None:
+        """
+
+        Args:
+            model_string: str. An antimony model.
+            observation_string: str. An qmf input string.
+        """
         self.observation_string = observation_string
         self.model_string = model_string
         self.lark = Lark(self.grammar)
         self.tree = self.parse()
         self.ts_blocks, self.observation_block = self.objectify()
 
-    def parse(self, string=None):
+    def parse(self, string: typing.Optional[str] = None):
+        """
+        Wrapper around lark.parse
+
+        Args:
+            string: Optional. String to parse. Default is the observation string.
+
+        Returns:
+
+        """
         if string is None:
             string = self.observation_string
         return self.lark.parse(string)
 
     def pretty(self, string=None):
+        """
+        Pretty print function
+        Args:
+            string:
+
+        Returns:
+
+        """
         if string is None:
             string = self.observation_string
         return self.lark.parse(string).pretty()
 
     def objectify(self):
+        """
+        Convert the varioius blocks into objects for later use.
+        Returns:
+
+        """
         ts_dct = {}
         for ts_block in self.tree.find_data('timeseries_block'):
             name = str(ts_block.children[0])
@@ -151,11 +186,10 @@ class Parser:
 
 
 class _TimeSeriesBlock:
-    start = None
-    stop = None
-    step = None
-    name = None
-
+    """
+    Reads timeseries blocks into python and executes the time series
+    simulation using tellurium and roadrunner.
+    """
     def __init__(self, model_string, ts_block):
         self.model_string = model_string
         self.ts_block = ts_block
@@ -212,6 +246,10 @@ class _TimeSeriesBlock:
 
 
 class _TimeSeriesArgumentList(list):
+    """
+    A data class that holds time series arguments. Inherits
+    from list.
+    """
 
     def __init__(self, *args):
         self.args = args
@@ -230,6 +268,9 @@ class _TimeSeriesArgumentList(list):
 
 
 class _TimeSeriesArgument:
+    """
+    A data class for holding a single time series argument
+    """
 
     def __init__(self, ts_arg):
         self.ts_arg = ts_arg
@@ -257,9 +298,9 @@ class _TimeSeriesArgument:
 
 class _ObservationBase:
     """
-    Some tasks are needed in multiple subclasses involved in
-    interpreting an observation (i.e. converting an entity tree to object).
-    This base provides these classes with these methods.
+    Base class for observation types. Observation types are
+    those involved in getting the users observations understood by the
+    program.
     """
 
     def __init__(self):
@@ -315,7 +356,10 @@ class _ObservationBase:
 
 
 class _ObservationBlock(list):
-
+    """
+    Contain all observations in a list like structure. Inherits
+    from list.
+    """
     def __init__(self, ts_list, *args):
         self.ts_list = ts_list
         self.args = args
@@ -327,6 +371,13 @@ class _ObservationBlock(list):
 
 
 class _ComparisonStatement(_ObservationBase):
+    """
+    Comparison statements have everything they need in order
+    to make instructions for a comparison of type operator
+    between clause1 and clause2. Comparison statements also
+    have a name and either clause can have functions that modify their
+    meaning.
+    """
     name = None
     operator = None
     clause1 = None
@@ -334,6 +385,7 @@ class _ComparisonStatement(_ObservationBase):
     func = None
 
     def __init__(self, tree, ts_list):
+        super().__init__()
         self.tree = tree
         self.ts_list = ts_list
 
@@ -389,7 +441,6 @@ class _ComparisonStatement(_ObservationBase):
             return f'{clause1} {str(self.operator)} {clause2}'
         else:
             return f'{self.func}({clause1} {str(self.operator)} {clause2})'
-
 
     def __repr__(self):
         return self.__str__()
@@ -457,7 +508,6 @@ class _Clause(_ObservationBase):
         except ValueError:
             return True
         raise NotImplementedError
-
 
     def __str__(self):
         return self.reduce().__str__()

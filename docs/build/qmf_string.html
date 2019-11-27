@@ -1,0 +1,427 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The qmf input string &mdash; QualitativeModelFitting 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Runner" href="runner.html" />
+    <link rel="prev" title="QualitativeModelFitting" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> QualitativeModelFitting
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The qmf input string</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-timeseries-block">The timeseries block</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-observation-block">The Observation Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clause">Clause</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#constants-and-expressions">Constants and expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-variables">Model variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#type1-functions">Type1 functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#type1-function-examples">Type1 Function Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#type2-functions">Type2 functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#type-2-function-examples">Type 2 function examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="runner.html">Runner</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QualitativeModelFitting</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>The qmf input string</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/qmf_string.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-qmf-input-string">
+<h1>The qmf input string<a class="headerlink" href="#the-qmf-input-string" title="Permalink to this headline">¶</a></h1>
+<p><cite>qmf</cite> defines its own syntax for retrieving user input. In <cite>qmf</cite> this
+is known as an <cite>input</cite> or <cite>observation</cite> string. An input string is
+divided into blocks and each block has a type. For now, there are only
+<cite>timeseries</cite> blocks and an <cite>observation</cite> block. You can have as many
+<cite>timeseries</cite> blocks as you like, but there must only be one <cite>observation</cite>
+block.</p>
+<div class="section" id="the-timeseries-block">
+<h2>The timeseries block<a class="headerlink" href="#the-timeseries-block" title="Permalink to this headline">¶</a></h2>
+<p>This is where you define the timeseries that you can use in later comparisons. Each
+timeseries block you specify requires a separate time series simulation with its own
+independent variables (i.e. starting conditions) and therefore the more you have,
+the longer the programs execurion time.</p>
+<p>The syntax of a <cite>timeseries</cite> block looks like this:</p>
+<blockquote>
+<div><div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">timeseries</span> <span class="n">name</span> <span class="p">{</span><span class="n">component1</span><span class="o">=</span><span class="n">amount1</span><span class="p">,</span> <span class="n">component2</span><span class="o">=</span><span class="n">amount2</span><span class="p">,</span> <span class="p">...}</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">101</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>Spaces are ignored, so:</p>
+<blockquote>
+<div></div></blockquote>
+<p>is syntactically equivalent and sometimes preferred, when a <cite>timeseries</cite> has lots of
+independent variables. The <cite>name</cite> argument is a handle for this timeseries and is used later
+within the observation block to refer to it. The final three arguments are <cite>start</cite>, <cite>stop</cite> and <cite>num</cite> which are
+the <cite>start</cite> and <cite>stop</cite> points of numerical integration and <cite>num</cite> how many equally spaced time points
+to have between them.</p>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">timeseries</span> <span class="n">SInactive</span> <span class="p">{</span><span class="n">S</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">51</span>
+<span class="n">timeseries</span> <span class="n">SActive</span> <span class="p">{</span><span class="n">S</span><span class="o">=</span><span class="mi">1</span><span class="p">}</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">51</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>These two timeseries encode the two situations where a hypothetical stimulus <cite>S</cite> is on in <cite>SActive</cite>
+or off in <cite>SInactive</cite>. Both timeseries will be integrated from <cite>0</cite> to <cite>50</cite> using a wrapper
+around <a class="reference external" href="https://tellurium.readthedocs.io/en/latest/">tellurium</a> and <a class="reference external" href="https://sys-bio.github.io/roadrunner/python_docs/index.html">roadrunner</a>
+packages.</p>
+</div>
+</div>
+<div class="section" id="the-observation-block">
+<h2>The Observation Block<a class="headerlink" href="#the-observation-block" title="Permalink to this headline">¶</a></h2>
+<p>As the name suggests, this is where we define our observations. Observations can be one of several types.
+The simplest look like the following:</p>
+<blockquote>
+<div><div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nl">name</span><span class="p">:</span> <span class="n">statement</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>where</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>name</cite>: The name of your observation. Arbitrary.</p></li>
+<li><p><cite>statement</cite>: A binary comparison instruction</p></li>
+</ul>
+</div></blockquote>
+<p>The <cite>statement</cite> has the following form:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>clause operator clause</cite></p></li>
+</ul>
+</div></blockquote>
+<p>Where:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>operator</cite>: One of the comparison operators (<cite>&gt;</cite>, <cite>&lt;</cite>, <cite>&gt;=</cite>, <cite>&lt;=</cite>, <cite>==</cite>, <cite>!=</cite>).</p></li>
+<li><p><cite>clause</cite>: an entity for comparison (see below)</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="clause">
+<h2>Clause<a class="headerlink" href="#clause" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="constants-and-expressions">
+<h3>Constants and expressions<a class="headerlink" href="#constants-and-expressions" title="Permalink to this headline">¶</a></h3>
+<p>A <cite>clause</cite>, in analogy to part of a sentence, can have one of several forms. At its simplest,
+a clause can be a constant value or a numerical expression.</p>
+<blockquote>
+<div><div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<span class="mi">5</span><span class="o">*</span><span class="mi">10</span>
+<span class="mi">4</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="mi">9</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>The usual precedent rules in math are applied correctly.</p>
+</div>
+<div class="section" id="model-variables">
+<h3>Model variables<a class="headerlink" href="#model-variables" title="Permalink to this headline">¶</a></h3>
+<p>More often, we want a particular model variable at a particular time:</p>
+<blockquote>
+<div><div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>model_component[timeseries_name]@t=x
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>Which will resolve to a single number representing the amount of <cite>model_component</cite>
+in condition <cite>timeseries_name</cite> at time <cite>x</cite>. For example we could do:</p>
+<blockquote>
+<div><div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>A[SActive]@t=0
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>Which returns that scalar number. Sometimes we do not want a scalar but the amount
+of a variable between two time points.</p>
+<blockquote>
+<div><div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>model_component[timeseries_name]@t=(x, y)
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>Which be resolved to a vector of numbers representing the amount of <cite>model_component</cite>
+in condition <cite>timeseries_name</cite> between the time ranges of <cite>x</cite> and <cite>y</cite>. Since
+a vector cannot directly be compared with a scalar, to use a range of values in a comparison
+we need to use a function (see below).</p>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>Functions can take two forms:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>Type1</cite>: Those which tell the <cite>Runner</cite> how to make a comparison between scalar and vector</p></li>
+<li><p><cite>Type2</cite>: Those which convert vectors to scalars prior to making the comparison.</p></li>
+</ul>
+</div></blockquote>
+<p>These two function types have a slightly different syntax:</p>
+<p>Type1:</p>
+<blockquote>
+<div><div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nl">name</span><span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">clause</span> <span class="n">operator</span> <span class="n">clause</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>Type2:</p>
+<blockquote>
+<div><div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nl">name</span><span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">clause</span><span class="p">)</span> <span class="n">operator</span> <span class="n">clause</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>Type1</cite> function type takes as argument the whole <cite>clause operator clause</cite> statement
+while the <cite>Type2</cite> function takes only a clause as argument.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Point 2 here assumes that the first <cite>clause</cite> is the time interval clause and the
+second is a scalar.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Comparing a vector with another vector (i.e. element wise) is not yet supported.</p>
+</div>
+<div class="section" id="type1-functions">
+<h3>Type1 functions<a class="headerlink" href="#type1-functions" title="Permalink to this headline">¶</a></h3>
+<p>There are two <cite>Type1</cite> functions: <cite>any</cite> and <cite>all</cite> which are analogous to Python’s and <cite>numpy</cite>
+<cite>any</cite> and <cite>all</cite> functions. If you use the <cite>all</cite> function when comparing a vector and
+scalar, the function will return <cite>True</cite> if all of the elements in the vector meet the condition
+set by the operator and the other clause. The <cite>any</cite> function on the other hand will
+return True if any of the elements in the vector meet the conditions set by the operator and the other
+clause.</p>
+</div>
+<div class="section" id="type1-function-examples">
+<h3>Type1 Function Examples<a class="headerlink" href="#type1-function-examples" title="Permalink to this headline">¶</a></h3>
+<p>All of <cite>A</cite> in the <cite>SActive</cite> timeseries between <cite>0</cite> and <cite>50</cite> are <cite>greater than</cite>
+the amount of <cite>A</cite> in the <cite>SInactive</cite> timeseries at time 25.</p>
+<blockquote>
+<div><div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>all(A[SActive]@t=(0, 50) &gt;  A[SInactive]@t=25)
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>If <cite>A</cite> in the <cite>SActive</cite> timeseries at time <cite>0</cite> are <cite>greater then</cite> any of
+<cite>B</cite> between the bounaries of <cite>13</cite> and <cite>19</cite>, return <cite>True</cite> else <cite>False</cite></p>
+<blockquote>
+<div><div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>any(A[SActive]@t=0 &gt;  B[SActive]@t=(13, 19))
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="type2-functions">
+<h3>Type2 functions<a class="headerlink" href="#type2-functions" title="Permalink to this headline">¶</a></h3>
+<p>Type 2 functions currently include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>mean</p></li>
+<li><p>min</p></li>
+<li><p>max</p></li>
+</ul>
+</div></blockquote>
+<p>Which are self explainatory in what they do.</p>
+</div>
+<div class="section" id="type-2-function-examples">
+<h3>Type 2 function examples<a class="headerlink" href="#type-2-function-examples" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>mean</strong>, <strong>maximum</strong> or <strong>minimum</strong> (respectively) of <cite>A</cite> in the <cite>SActive</cite> time series between time <cite>0</cite> and <cite>50</cite> is <cite>greater than</cite>
+the amount of <cite>A</cite> in the <cite>SInactive</cite> time series at time <cite>0</cite></p>
+<blockquote>
+<div><div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>mean(A[SActive]@t=(0, 50)) &gt; A[SInactive]@t=0
+max(A[SActive]@t=(0, 50)) &gt; A[SInactive]@t=0
+min(A[SActive]@t=(0, 50)) &gt; A[SInactive]@t=0
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="runner.html" class="btn btn-neutral float-right" title="Runner" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="QualitativeModelFitting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Ciaran Welsh
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
