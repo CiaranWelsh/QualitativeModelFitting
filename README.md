@@ -1,7 +1,7 @@
 # QualitativeModelFitting
 [![Build Status](https://travis-ci.org/CiaranWelsh/QualitativeModelFitting.svg?branch=master)](https://travis-ci.org/CiaranWelsh/QualitativeModelFitting)
-[![Docs](https://readthedocs.org/projects/qualitativemodelfitting/badge/?version=latest)]
-[!Coverage](coverage.svg)]
+[![Docs](https://readthedocs.org/projects/qualitativemodelfitting/badge/?version=latest)](https://qualitativemodelfitting.readthedocs.io/en/latest/)
+[![codecov](https://codecov.io/gh/CiaranWelsh/QualitativeModelFitting/branch/master/graph/badge.svg)](https://codecov.io/gh/CiaranWelsh/QualitativeModelFitting)
 
 A package for fine tuning `sbml` models in accordance with qualitative observations derived from literature and data. 
 
@@ -29,7 +29,7 @@ Quickstart
 ----------
 
 Make an model using [antimony](http://tellurium.analogmachine.org/antimony-tutorial/). 
-
+```
 antimony_string = '''
 model SimpleFeedback()
 compartment Cell = 1;
@@ -93,13 +93,4 @@ Runner(antimony_string, input_string).run()
 5      Obs_min                 0 == 0       False
 6      Obs_any  any(TimeInterval > 3)       False
 7      Obs_all  all(TimeInterval < 1)       False
-
-
-
-
-
-
-
-
-
-
+```
