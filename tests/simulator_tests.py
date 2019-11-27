@@ -61,11 +61,10 @@ class TimeSeriesTests(unittest.TestCase):
             S6K=['S6K'],
             pS6K=['pS6K'],
         )
-        TimeSeriesPlotter(ts, plot_selection, ncols=2).plot()
-        # TimeSeriesPlotter(ts, plot_selection, savefig=True,
-        #                   plot_dir=self.directory,
-        #                   fname=self.fname).plot()
-        # self.assertTrue(os.path.isfile(self.sim_file))
+        TimeSeriesPlotter(ts, plot_selection, savefig=True,
+                          plot_dir=self.directory,
+                          fname=self.fname).plot()
+        self.assertTrue(os.path.isfile(self.sim_file))
 
 
 

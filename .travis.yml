@@ -1,6 +1,6 @@
 language: python
 env:
-  - CODECOV_TOKEN=""
+  - CODECOV_TOKEN="9167fe5e-40c3-42a9-a830-ffa468fbd660"
 python:
   - "3.6"
 install:
