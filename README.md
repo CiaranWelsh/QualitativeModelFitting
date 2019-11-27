@@ -1,7 +1,7 @@
 # QualitativeModelFitting
 [![Build Status](https://travis-ci.org/CiaranWelsh/QualitativeModelFitting.svg?branch=master)](https://travis-ci.org/CiaranWelsh/QualitativeModelFitting)
 [![Docs](https://readthedocs.org/projects/qualitativemodelfitting/badge/?version=latest)](https://qualitativemodelfitting.readthedocs.io/en/latest/)
-[![Coveralls](http://img.shields.io/coveralls/rstacruz/REPO.svg?style=flat)](https://codecov.io/gh/CiaranWelsh/QualitativeModelFitting)
+[![Coveralls](https://codecov.io/gh/codecov/qualitativemodelfitting/branch/master/graph/badge.svg)](https://codecov.io/gh/CiaranWelsh/QualitativeModelFitting)
 
 A package for fine tuning `sbml` models in accordance with qualitative observations derived from literature and data. 
 
