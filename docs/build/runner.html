@@ -35,8 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The qmf input string" href="qmf_string.html" />
-    <link rel="prev" title="QualitativeModelFitting" href="index.html" /> 
+    <link rel="prev" title="The qmf input string" href="qmf_string.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,8 +80,8 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="qmf_string.html">The qmf input string</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Runner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qmf_string.html">The <cite>qmf</cite> input string</a></li>
 </ul>
 
             
@@ -268,7 +267,7 @@ and comparisons. There are described in more detail below.</p>
 </td></tr></table></div>
 <p>Now we have a model and an input string we can use <code class="xref py py-class docutils literal notranslate"><span class="pre">Runner.run</span></code>
 to automatically check the validity of the statements in the input string.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">antimony_string</span><span class="p">,</span> <span class="n">input_string</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Runner</span><span class="p">(</span><span class="n">antimony_string</span><span class="p">,</span> <span class="n">input_string</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="go">          name            observation  evaluation</span>
 <span class="go">0  Obs_basics1                  0 &gt; 0       False</span>
 <span class="go">1  Obs_basics2             0.9779 &gt; 0        True</span>
@@ -292,10 +291,8 @@ to automatically check the validity of the statements in the input string.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="qmf_string.html" class="btn btn-neutral float-right" title="The qmf input string" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="QualitativeModelFitting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="qmf_string.html" class="btn btn-neutral float-left" title="The qmf input string" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

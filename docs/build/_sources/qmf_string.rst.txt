@@ -19,15 +19,15 @@ the longer the programs execurion time.
 
 The syntax of a `timeseries` block looks like this:
 
-    .. code-block:: C
-        :linenos:
+    .. code-block::
+
 
         timeseries name {component1=amount1, component2=amount2, ...} 0, 100, 101
 
 Spaces are ignored, so:
 
-    .. code-block:: C
-        :linenos:
+    .. code-block::
+
 
      timeseries name {
         component1=amount1,
@@ -44,8 +44,8 @@ to have between them.
 Examples
 --------
 
-    .. code-block:: C
-        :linenos:
+    .. code-block::
+
 
         timeseries SInactive {S=0} 0, 50, 51
         timeseries SActive {S=1} 0, 50, 51
@@ -61,8 +61,8 @@ The Observation Block
 As the name suggests, this is where we define our observations. Observations can be one of several types.
 The simplest look like the following:
 
-    .. code-block:: C
-        :linenos:
+    .. code-block::
+
 
         name: statement
 
@@ -88,8 +88,8 @@ Constants and expressions
 A `clause`, in analogy to part of a sentence, can have one of several forms. At its simplest,
 a clause can be a constant value or a numerical expression.
 
-    .. code-block:: C
-        :linenos:
+    .. code-block::
+
 
         0
         5*10
@@ -102,24 +102,24 @@ Model variables
 
 More often, we want a particular model variable at a particular time:
 
-    .. code-block:: C
-        :linenos:
+    .. code-block::
+
 
         model_component[timeseries_name]@t=x
 
 Which will resolve to a single number representing the amount of `model_component`
 in condition `timeseries_name` at time `x`. For example we could do:
 
-    .. code-block:: C
-        :linenos:
+    .. code-block::
+
 
         A[SActive]@t=0
 
 Which returns that scalar number. Sometimes we do not want a scalar but the amount
 of a variable between two time points.
 
-    .. code-block:: C
-        :linenos:
+    .. code-block::
+
 
         model_component[timeseries_name]@t=(x, y)
 
@@ -140,15 +140,15 @@ These two function types have a slightly different syntax:
 
 Type1:
 
-    .. code-block:: C
-        :linenos:
+    .. code-block::
+
 
         name: function(clause operator clause)
 
 Type2:
 
-    .. code-block:: C
-        :linenos:
+    .. code-block::
+
 
         name: function(clause) operator clause
 
@@ -182,16 +182,15 @@ Type1 Function Examples
 All of `A` in the `SActive` timeseries between `0` and `50` are `greater than`
 the amount of `A` in the `SInactive` timeseries at time 25.
 
-    .. code-block:: C
-        :linenos:
+    .. code-block::
+
 
         all(A[SActive]@t=(0, 50) >  A[SInactive]@t=25)
 
 If `A` in the `SActive` timeseries at time `0` are `greater then` any of
 `B` between the bounaries of `13` and `19`, return `True` else `False`
 
-    .. code-block:: C
-        :linenos:
+    .. code-block::
 
         any(A[SActive]@t=0 >  B[SActive]@t=(13, 19))
 
@@ -212,8 +211,8 @@ Type 2 function examples
 The **mean**, **maximum** or **minimum** (respectively) of `A` in the `SActive` time series between time `0` and `50` is `greater than`
 the amount of `A` in the `SInactive` time series at time `0`
 
-    .. code-block:: C
-        :linenos:
+    .. code-block::
+
 
         mean(A[SActive]@t=(0, 50)) > A[SInactive]@t=0
         max(A[SActive]@t=(0, 50)) > A[SInactive]@t=0
