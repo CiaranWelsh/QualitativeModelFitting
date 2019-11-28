@@ -22,7 +22,7 @@ class Runner:
             First get the antimony string for the model you
             want to test.
 
-        .. code-block::
+        .. code-block:: python
             :linenos:
 
             antimony_string = '''
@@ -64,7 +64,7 @@ class Runner:
         And then create an input string that defines your simulations
         and comparisons. There are described in more detail below.
 
-        .. code-block::
+        .. code-block:: python
             :linenos:
 
             input_string='''
