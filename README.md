@@ -83,7 +83,10 @@ Obs_all:        all(B[S]@t=(0, 100)     <  1)'''
 
 Run the `Runner`
 ```
-Runner(antimony_string, input_string).run()
+>>> Runner(antimony_string, input_string).run()
+```
+
+```
           name            observation  evaluation
 0  Obs_basics1                  0 > 0       False
 1  Obs_basics2             0.9779 > 0        True
