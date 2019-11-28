@@ -71,14 +71,14 @@ timeseries S { S=1, I=0 } 0, 100, 101
 timeseries I { S=0, I=1 } 0, 100, 101
 timeseries SI { S=1, I=1 } 0, 100, 101
 observation
-Obs_basics1:    A[None]@t=0             >  A[None]@t=10
-Obs_basics2:    A[S]@t=10               >  A[S]@t=0
-Obs_basics3:    A[S]@t=25               >  A[SI]@t=25
-Obs_mean:       mean(B[S]@t=(0, 100))   >  mean(B[SI]@t=(0, 100))
-Obs_max:        max(B[SI]@t=(0, 100))   >  max(B[S]@t=(0, 100))
-Obs_min:        min(B[SI]@t=(0, 100))   == 0
-Obs_any:        any(B[SI]@t=(0, 100)    >  3)
-Obs_all:        all(B[S]@t=(0, 100)     <  1)'''
+    Obs_basics1:    A[None]@t=0             >  A[None]@t=10
+    Obs_basics2:    A[S]@t=10               >  A[S]@t=0
+    Obs_basics3:    A[S]@t=25               >  A[SI]@t=25
+    Obs_mean:       mean(B[S]@t=(0, 100))   >  mean(B[SI]@t=(0, 100))
+    Obs_max:        max(B[SI]@t=(0, 100))   >  max(B[S]@t=(0, 100))
+    Obs_min:        min(B[SI]@t=(0, 100))   == 0
+    Obs_any:        any(B[SI]@t=(0, 100)    >  3)
+    Obs_all:        all(B[S]@t=(0, 100)     <  1)'''
 ```
 
 Run the `Runner`
