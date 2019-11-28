@@ -36,7 +36,8 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.doctest',
               'sphinx.ext.coverage',
               'sphinx.ext.todo',
-              'sphinx.ext.extlinks']
+              'sphinx.ext.extlinks',
+              'sphinx_rtd_theme']
 todo_include_todos = True
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

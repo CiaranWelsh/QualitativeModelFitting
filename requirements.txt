@@ -3,3 +3,4 @@ pycotools3
 pandas
 numpy
 lark-parser
+sphinx-rtd-theme

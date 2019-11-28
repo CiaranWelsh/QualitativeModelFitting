@@ -181,20 +181,16 @@ timeseries block you specify requires a separate time series simulation with its
 independent variables (i.e. starting conditions) and therefore the more you have,
 the longer the programs execurion time.</p>
 <p>The syntax of a <cite>timeseries</cite> block looks like this:</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">timeseries</span> <span class="n">name</span> <span class="p">{</span><span class="n">component1</span><span class="o">=</span><span class="n">amount1</span><span class="p">,</span> <span class="n">component2</span><span class="o">=</span><span class="n">amount2</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">101</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">timeseries</span> <span class="n">name</span> <span class="p">{</span><span class="n">component1</span><span class="o">=</span><span class="n">amount1</span><span class="p">,</span> <span class="n">component2</span><span class="o">=</span><span class="n">amount2</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">101</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>Spaces are ignored, so:</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">timeseries</span> <span class="n">name</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">timeseries</span> <span class="n">name</span> <span class="p">{</span>
    <span class="n">component1</span><span class="o">=</span><span class="n">amount1</span><span class="p">,</span>
    <span class="n">component2</span><span class="o">=</span><span class="n">amount2</span><span class="p">,</span>
    <span class="o">...</span><span class="p">}</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">num</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>is syntactically equivalent and sometimes preferred, when a <cite>timeseries</cite> has lots of
 independent variables. The <cite>name</cite> argument is a handle for this timeseries and is used later
 within the observation block to refer to it. The final three arguments are <cite>start</cite>, <cite>stop</cite> and <cite>num</cite> which are
@@ -202,12 +198,10 @@ the <cite>start</cite> and <cite>stop</cite> points of numerical integration and
 to have between them.</p>
 <div class="section" id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">timeseries</span> <span class="n">SInactive</span> <span class="p">{</span><span class="n">S</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">51</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">timeseries</span> <span class="n">SInactive</span> <span class="p">{</span><span class="n">S</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">51</span>
 <span class="n">timeseries</span> <span class="n">SActive</span> <span class="p">{</span><span class="n">S</span><span class="o">=</span><span class="mi">1</span><span class="p">}</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">51</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>These two timeseries encode the two situations where a hypothetical stimulus <cite>S</cite> is on in <cite>SActive</cite>
 or off in <cite>SInactive</cite>. Both timeseries will be integrated from <cite>0</cite> to <cite>50</cite> using a wrapper
 around <a class="reference external" href="https://tellurium.readthedocs.io/en/latest/">tellurium</a> and <a class="reference external" href="https://sys-bio.github.io/roadrunner/python_docs/index.html">roadrunner</a>
@@ -218,11 +212,9 @@ packages.</p>
 <h2>The Observation Block<a class="headerlink" href="#the-observation-block" title="Permalink to this headline">¶</a></h2>
 <p>As the name suggests, this is where we define our observations. Observations can be one of several types.
 The simplest look like the following:</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">statement</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">statement</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>where</p>
 <blockquote>
 <div><ul class="simple">
@@ -250,37 +242,29 @@ The simplest look like the following:</p>
 <h3>Constants and expressions<a class="headerlink" href="#constants-and-expressions" title="Permalink to this headline">¶</a></h3>
 <p>A <cite>clause</cite>, in analogy to part of a sentence, can have one of several forms. At its simplest,
 a clause can be a constant value or a numerical expression.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
 <span class="mi">5</span><span class="o">*</span><span class="mi">10</span>
 <span class="mi">4</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="mi">9</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>The usual precedent rules in math are applied correctly.</p>
 </div>
 <div class="section" id="model-variables">
 <h3>Model variables<a class="headerlink" href="#model-variables" title="Permalink to this headline">¶</a></h3>
 <p>More often, we want a particular model variable at a particular time:</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_component</span><span class="p">[</span><span class="n">timeseries_name</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="n">x</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_component</span><span class="p">[</span><span class="n">timeseries_name</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="n">x</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>Which will resolve to a single number representing the amount of <cite>model_component</cite>
 in condition <cite>timeseries_name</cite> at time <cite>x</cite>. For example we could do:</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">[</span><span class="n">SActive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="mi">0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">[</span><span class="n">SActive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="mi">0</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>Which returns that scalar number. Sometimes we do not want a scalar but the amount
 of a variable between two time points.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_component</span><span class="p">[</span><span class="n">timeseries_name</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_component</span><span class="p">[</span><span class="n">timeseries_name</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>Which be resolved to a vector of numbers representing the amount of <cite>model_component</cite>
 in condition <cite>timeseries_name</cite> between the time ranges of <cite>x</cite> and <cite>y</cite>. Since
 a vector cannot directly be compared with a scalar, to use a range of values in a comparison
@@ -298,17 +282,13 @@ we need to use a function (see below).</p>
 </div></blockquote>
 <p>These two function types have a slightly different syntax:</p>
 <p>Type1:</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">clause</span> <span class="n">operator</span> <span class="n">clause</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">clause</span> <span class="n">operator</span> <span class="n">clause</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>Type2:</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">clause</span><span class="p">)</span> <span class="n">operator</span> <span class="n">clause</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">clause</span><span class="p">)</span> <span class="n">operator</span> <span class="n">clause</span>
 </pre></div>
 </div>
-</div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <cite>Type1</cite> function type takes as argument the whole <cite>clause operator clause</cite> statement
@@ -336,18 +316,14 @@ clause.</p>
 <h3>Type1 Function Examples<a class="headerlink" href="#type1-function-examples" title="Permalink to this headline">¶</a></h3>
 <p>All of <cite>A</cite> in the <cite>SActive</cite> timeseries between <cite>0</cite> and <cite>50</cite> are <cite>greater than</cite>
 the amount of <cite>A</cite> in the <cite>SInactive</cite> timeseries at time 25.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">SActive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="o">&gt;</span>  <span class="n">A</span><span class="p">[</span><span class="n">SInactive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">SActive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="o">&gt;</span>  <span class="n">A</span><span class="p">[</span><span class="n">SInactive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>If <cite>A</cite> in the <cite>SActive</cite> timeseries at time <cite>0</cite> are <cite>greater then</cite> any of
 <cite>B</cite> between the bounaries of <cite>13</cite> and <cite>19</cite>, return <cite>True</cite> else <cite>False</cite></p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">any</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">SActive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;</span>  <span class="n">B</span><span class="p">[</span><span class="n">SActive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">any</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">SActive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;</span>  <span class="n">B</span><span class="p">[</span><span class="n">SActive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="type2-functions">
 <h3>Type2 functions<a class="headerlink" href="#type2-functions" title="Permalink to this headline">¶</a></h3>
@@ -365,13 +341,11 @@ the amount of <cite>A</cite> in the <cite>SInactive</cite> timeseries at time 25
 <h3>Type 2 function examples<a class="headerlink" href="#type-2-function-examples" title="Permalink to this headline">¶</a></h3>
 <p>The <strong>mean</strong>, <strong>maximum</strong> or <strong>minimum</strong> (respectively) of <cite>A</cite> in the <cite>SActive</cite> time series between time <cite>0</cite> and <cite>50</cite> is <cite>greater than</cite>
 the amount of <cite>A</cite> in the <cite>SInactive</cite> time series at time <cite>0</cite></p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">SActive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">[</span><span class="n">SInactive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="mi">0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">SActive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">[</span><span class="n">SInactive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="mi">0</span>
 <span class="nb">max</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">SActive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">[</span><span class="n">SInactive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="mi">0</span>
 <span class="nb">min</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">SActive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">[</span><span class="n">SInactive</span><span class="p">]</span><span class="nd">@t</span><span class="o">=</span><span class="mi">0</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 </div>
 </div>
