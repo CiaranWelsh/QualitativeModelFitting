@@ -19,20 +19,18 @@ the longer the programs execurion time.
 
 The syntax of a `timeseries` block looks like this:
 
-.. code-block::
-
+.. code-block:: C
 
     timeseries name {component1=amount1, component2=amount2, ...} 0, 100, 101
 
 Spaces are ignored, so:
 
-.. code-block::
+.. code-block:: python
 
-
- timeseries name {
-    component1=amount1,
-    component2=amount2,
-    ...} start, stop, num
+    timeseries name {
+        component1=amount1,
+        component2=amount2,
+        ...} start, stop, num
 
 
 is syntactically equivalent and sometimes preferred, when a `timeseries` has lots of
