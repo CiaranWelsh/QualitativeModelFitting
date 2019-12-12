@@ -2,7 +2,7 @@ from setuptools import setup
 
 MAJOR = 0
 MINOR = 0
-MICRO = 2
+MICRO = 4
 
 version = f'{MAJOR}.{MINOR}.{MICRO}'
 
@@ -17,6 +17,7 @@ setup(
     url='https://github.com/CiaranWelsh/QualitativeModelFitting',
     keywords=['SBML', 'antimony', 'tellurium', 'qualitative modelling'],
     install_requires=[
-        'tellurium', 'pycotools3', 'pandas', 'numpy'
+        'tellurium', 'pycotools3', 'pandas', 'numpy',
+        'lark-parser'
     ]
 )

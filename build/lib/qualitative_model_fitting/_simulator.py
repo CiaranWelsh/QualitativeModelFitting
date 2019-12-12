@@ -12,7 +12,7 @@ try:
     matplotlib.use('TkAgg')
 except ImportError:
     matplotlib.use('agg')
-    
+
 import seaborn as sns
 
 import logging
@@ -151,6 +151,8 @@ class _PlotterBase:
         self._nplots = len(self.plot_selection)
         if self._nplots == 1:
             self.ncols = 1
+        if self._nplots < self.ncols:
+            self.ncols = self._nplots
         self._num_rows = int(self._nplots / ncols)
         self._remainder = self._nplots % ncols
         if self._remainder > 0:
@@ -191,28 +193,55 @@ class _PlotterBase:
 
 class TimeSeriesPlotter(_PlotterBase):
 
-    def plot(self):
+    def plot(self, **kwargs):
         fig = plt.figure(figsize=self.figsize)
         gs = GridSpec(self._num_rows, self.ncols, wspace=self.wspace, hspace=self.hspace)
         count = 0
         for k, v in self.plot_selection.items():
             ax = fig.add_subplot(gs[count])
-            # for cond in self.conditions:
-            #     print(cond)
-            #     print(self.data)
-            #     data = self.data[cond]
             for i in v:
                 plt.plot(
                     self.data.index,
                     self.data[i],
-                    # label=f'{cond}_{i}' if len(self.conditions) != 1 else f'{i}'
+                    label=i,
+                    **kwargs
                 )
             plt.title(k)
             plt.legend(loc=self.legend_loc, fontsize=self.legend_fontsize)
             sns.despine(fig, top=True, right=True)
             count += 1
 
-        # # plt.suptitle(plot_suptitle)
+        plt.subplots_adjust(**self.subplots_adjust)
+        if self.savefig:
+            if not os.path.isdir(self.plot_dir):
+                os.makedirs(self.plot_dir)
+            fname = os.path.join(self.plot_dir, self.fname)
+            plt.savefig(fname, dpi=300, bbox_inches='tight')
+            print('saved to {}'.format(fname))
+            return fname
+        else:
+            plt.show()
+
+    def plot_with_conditions(self, legend_loc='best', **kwargs):
+        data = pd.concat(self.data)
+        colours = list(sns.color_palette('hls', len(self.conditions)))
+        colours = dict(zip(self.conditions, colours))
+        fig = plt.figure(figsize=self.figsize)
+        gs = GridSpec(self._num_rows, self.ncols, wspace=self.wspace, hspace=self.hspace)
+        count = 0
+        for name, selection in self.plot_selection.items():
+            ax = fig.add_subplot(gs[count])
+            count += 1
+            for c in self.conditions:
+                for v in selection:
+                    plot_data = data.loc[c, [v]].reset_index()
+                    plt.plot(plot_data['time'], plot_data[v],
+                             label=f'{c}_{v}' if len(selection) != 1 else f'{c}',
+                             color=colours[c], **kwargs)
+                plt.xlabel('Time')
+                plt.title(name)
+                sns.despine(fig=fig)
+                plt.legend(loc=legend_loc)
         plt.subplots_adjust(**self.subplots_adjust)
         if self.savefig:
             if not os.path.isdir(self.plot_dir):
